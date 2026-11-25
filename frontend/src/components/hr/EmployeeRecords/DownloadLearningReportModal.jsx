@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import calendarIcon from "../../../assets/reportsanalytics/calendar-copy.svg";
-import downArrowIcon from "../../../assets/profile/downarrow.svg";
+import downArrowIcon from "../../../assets/Profile/downarrow.svg";
 import downloadIcon from "../../../assets/reportsanalytics/download.svg";
 import closeIcon from "../../../assets/Leaderboard/close.svg";
 import { useAuth } from "../../../context/AuthContext";

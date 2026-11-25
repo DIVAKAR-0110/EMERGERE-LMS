@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { createPortal } from "react-dom";
 import { X, Check, Undo2 } from "lucide-react";
 import axios from "axios";
-import "../../../styles/L&D/dashboard.css";
+import "../../../styles/L&D/Dashboard.css";
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "http://localhost:5000";
 
