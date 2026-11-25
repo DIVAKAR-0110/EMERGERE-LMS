@@ -1,0 +1,730 @@
+/* =========================================================
+   ENTERPRISE RESPONSIVE STYLES – LEARNING RECORDS
+   src/styles/responsive/responsive-Learning Records.css
+   ========================================================= */
+
+/* ==========================================================================
+   1. DESKTOP & LAPTOP VIEW (1025px and above)
+   ========================================================================== */
+@media (min-width: 1025px) {
+
+    .learning-records-page,
+    .rm-learning-records-page {
+        width: 100%;
+        height: 100%;
+        max-width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+        padding: 20px 24px 16px 24px;
+        box-sizing: border-box;
+        overflow: hidden;
+    }
+
+    .learning-records-header,
+    .rm-learning-records-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        flex-shrink: 0;
+    }
+
+    .learning-records-toolbar,
+    .rm-learning-records-toolbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        gap: 16px;
+        flex-shrink: 0;
+    }
+
+    .records-table-container-card,
+    .rm-records-table-container-card {
+        flex: 1;
+        min-height: 0;
+        overflow: hidden !important;
+        width: 100%;
+    }
+}
+
+/* ==========================================================================
+   2. TABLET & MOBILE VIEW (≤ 1024px / 150% Scaling) - CARDS LIKE EMPLOYEE DIRECTORY
+   ========================================================================== */
+@media (max-width: 1024px) {
+
+    .learning-records-page,
+    .rm-learning-records-page {
+        position: relative !important;
+        top: auto !important;
+        left: auto !important;
+        right: auto !important;
+        bottom: auto !important;
+        width: 100% !important;
+        height: 100% !important;
+        max-height: 100vh !important;
+        overflow: hidden !important;
+        display: flex !important;
+        flex-direction: column !important;
+        padding: 16px 18px 16px 18px !important;
+        box-sizing: border-box !important;
+    }
+
+    .rm-learning-records-toolbar {
+        flex-shrink: 0 !important;
+    }
+
+    /* Stack toolbar: tabs on top, controls below */
+    .learning-records-toolbar,
+    .rm-learning-records-toolbar {
+        flex-direction: column !important;
+        align-items: stretch !important;
+        gap: 12px !important;
+    }
+
+    .pill-tabs-container,
+    .rm-pill-tabs-container {
+        width: 100% !important;
+        justify-content: flex-start !important;
+    }
+
+    .toolbar-controls-right,
+    .rm-toolbar-controls-right {
+        width: 100% !important;
+        flex-wrap: wrap !important;
+        gap: 8px !important;
+    }
+
+    .records-search-wrapper,
+    .rm-records-search-wrapper {
+        flex: 1 1 auto !important;
+        min-width: 0 !important;
+    }
+
+    .records-search-input,
+    .rm-records-search-input {
+        width: 100% !important;
+    }
+
+    /* ---- Card-based container layout ---- */
+    .records-table-container-card,
+    .rm-records-table-container-card {
+        width: 100% !important;
+        flex: 1 1 0 !important;
+        min-height: 0 !important;
+        overflow: hidden !important;
+        display: flex !important;
+        flex-direction: column !important;
+        background: transparent !important;
+        border: none !important;
+        box-shadow: none !important;
+        height: auto !important;
+        max-height: none !important;
+    }
+
+    .rm-records-table-scroll-body {
+        width: 100% !important;
+        flex: 1 1 0 !important;
+        min-height: 0 !important;
+        height: auto !important;
+        max-height: none !important;
+        overflow-y: auto !important;
+        overflow-x: hidden !important;
+        -webkit-overflow-scrolling: touch !important;
+        padding-right: 2px !important;
+        padding-bottom: 10px !important;
+        scrollbar-width: none !important;
+        -ms-overflow-style: none !important;
+    }
+
+    .rm-records-table-scroll-body::-webkit-scrollbar {
+        display: none !important;
+        width: 0 !important;
+        height: 0 !important;
+    }
+
+    /* Hide desktop custom scrollbar track */
+    .rm-tm-card-scrollbar-track {
+        display: none !important;
+    }
+
+    .records-data-table,
+    .records-data-table thead,
+    .records-data-table tbody,
+    .records-data-table th,
+    .records-data-table td,
+    .records-data-table tr,
+    .rm-records-data-table,
+    .rm-records-data-table thead,
+    .rm-records-data-table tbody,
+    .rm-records-data-table th,
+    .rm-records-data-table td,
+    .rm-records-data-table tr {
+        display: block !important;
+        width: 100% !important;
+    }
+
+    .records-data-table,
+    .rm-records-data-table {
+        min-width: 0 !important;
+        border: none !important;
+        background: transparent !important;
+        table-layout: auto !important;
+    }
+
+    /* Hide table header on tablet and mobile */
+    .records-data-table thead,
+    .rm-records-data-table thead {
+        display: none !important;
+    }
+
+    /* =========================================================
+       EMPTY TABLE STATE – MOBILE & RESPONSIVE CENTERING FIX
+       ========================================================= */
+    .records-data-table tbody tr.ld-empty-table-row,
+    .rm-records-data-table tbody tr.ld-empty-table-row,
+    .rm-records-data-table tr.ld-empty-table-row,
+    tr.ld-empty-table-row {
+        grid-column: 1 / -1 !important;
+        width: 100% !important;
+        min-height: 280px !important;
+        height: 100% !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+        background: #FFFFFF !important;
+        border: 1px solid #E2E8F0 !important;
+        border-radius: 12px !important;
+        box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04) !important;
+        padding: 24px 16px !important;
+        box-sizing: border-box !important;
+        margin: 0 !important;
+    }
+
+    .records-data-table tbody tr.ld-empty-table-row td.ld-empty-table-cell,
+    .rm-records-data-table tbody tr.ld-empty-table-row td.ld-empty-table-cell,
+    .rm-records-data-table tr.ld-empty-table-row td,
+    .records-data-table tr.ld-empty-table-row td,
+    td.ld-empty-table-cell {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+        width: 100% !important;
+        height: 100% !important;
+        min-height: 0 !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        border: none !important;
+        border-bottom: none !important;
+        background: transparent !important;
+        text-align: center !important;
+        box-sizing: border-box !important;
+    }
+
+    .records-data-table tbody tr.ld-empty-table-row td::before,
+    .rm-records-data-table tbody tr.ld-empty-table-row td::before,
+    .ld-empty-table-cell::before {
+        display: none !important;
+    }
+
+    .records-data-table .ld-empty-table-state,
+    .rm-records-data-table .ld-empty-table-state,
+    .ld-empty-table-state {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+        text-align: center !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        height: 100% !important;
+        min-height: 0 !important;
+        padding: 16px !important;
+        margin: auto !important;
+        box-sizing: border-box !important;
+    }
+
+    .records-data-table .ld-empty-table-icon,
+    .rm-records-data-table .ld-empty-table-icon,
+    .ld-empty-table-icon {
+        display: block !important;
+        margin: 0 auto 8px auto !important;
+        width: 56px !important;
+        height: 42px !important;
+        object-fit: contain !important;
+        flex-shrink: 0 !important;
+    }
+
+    .records-data-table .ld-empty-table-state span,
+    .rm-records-data-table .ld-empty-table-state span,
+    .ld-empty-table-state span {
+        display: block !important;
+        text-align: center !important;
+        width: 100% !important;
+        color: #7f7f7f !important;
+        font-size: 13px !important;
+        font-weight: 500 !important;
+        line-height: 1.4 !important;
+    }
+
+    /* Containerized Cards in responsive grid matching Employee Directory */
+    .records-data-table tbody,
+    .rm-records-data-table tbody {
+        display: grid !important;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)) !important;
+        gap: 12px !important;
+        padding: 14px 0 !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+    }
+
+    /* Each row becomes a card */
+    .records-data-table tbody tr,
+    .rm-records-data-table tbody tr {
+        background: #FFFFFF !important;
+        border-radius: 12px !important;
+        border: 1px solid #E2E8F0 !important;
+        box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04) !important;
+        padding: 12px 14px !important;
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 6px !important;
+        box-sizing: border-box !important;
+        margin: 0 !important;
+        width: 100% !important;
+        position: relative !important;
+        transition: transform 0.15s ease, box-shadow 0.15s ease !important;
+    }
+
+    .records-data-table tbody tr:hover,
+    .rm-records-data-table tbody tr:hover {
+        background: #FFFFFF !important;
+        border-color: #CBD5E1 !important;
+        box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08) !important;
+    }
+
+    /* Reset all td styles for card layout */
+    .records-data-table td,
+    .rm-records-data-table td {
+        padding: 5px 0 !important;
+        border-bottom: 1px solid #F1F5F9 !important;
+        white-space: normal !important;
+        overflow: visible !important;
+        text-overflow: unset !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        min-width: 0 !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+        font-size: 12px !important;
+    }
+
+    .records-data-table tbody tr td:last-child,
+    .rm-records-data-table tbody tr td:last-child {
+        border-bottom: none !important;
+    }
+
+    /* Reset fixed column widths */
+    .records-data-table th:nth-child(n),
+    .rm-records-data-table th:nth-child(n),
+    .records-data-table td:nth-child(n),
+    .rm-records-data-table td:nth-child(n) {
+        width: 100% !important;
+        min-width: 0 !important;
+        max-width: none !important;
+    }
+
+    /* Card Header: Employee Name on top row without label */
+    .records-data-table.courses-table-layout td:nth-child(1),
+    .rm-records-data-table.courses-table-layout td:nth-child(1),
+    .rm-courses-table-layout td:nth-child(1),
+    .records-data-table.cert-table-layout td:nth-child(1),
+    .rm-records-data-table.cert-table-layout td:nth-child(1),
+    .rm-cert-table-layout td:nth-child(1) {
+        padding: 0 0 8px 0 !important;
+        border-bottom: 1px solid #E2E8F0 !important;
+        justify-content: flex-start !important;
+        font-weight: 600 !important;
+        font-size: 13px !important;
+    }
+
+    .records-data-table.courses-table-layout td:nth-child(1)::before,
+    .rm-records-data-table.courses-table-layout td:nth-child(1)::before,
+    .rm-courses-table-layout td:nth-child(1)::before,
+    .records-data-table.cert-table-layout td:nth-child(1)::before,
+    .rm-records-data-table.cert-table-layout td:nth-child(1)::before,
+    .rm-cert-table-layout td:nth-child(1)::before {
+        display: none !important;
+    }
+
+    /* Cert tab: Action buttons (View + Download) at top-right corner */
+    .records-data-table.cert-table-layout td:nth-child(7),
+    .rm-records-data-table.cert-table-layout td:nth-child(7),
+    .rm-cert-table-layout td:nth-child(7) {
+        position: absolute !important;
+        top: 10px !important;
+        right: 14px !important;
+        width: auto !important;
+        min-height: 0 !important;
+        padding: 0 !important;
+        border: none !important;
+        display: flex !important;
+        align-items: center !important;
+        gap: 6px !important;
+    }
+
+    .records-data-table.cert-table-layout td:nth-child(7)::before,
+    .rm-records-data-table.cert-table-layout td:nth-child(7)::before,
+    .rm-cert-table-layout td:nth-child(7)::before {
+        display: none !important;
+    }
+
+    /* Data labels for Courses Table */
+    .records-data-table.courses-table-layout td:nth-child(1)::before,
+    .rm-records-data-table.courses-table-layout td:nth-child(1)::before,
+    .rm-courses-table-layout td:nth-child(1)::before {
+        content: "Employee";
+    }
+
+    .records-data-table.courses-table-layout td:nth-child(2)::before,
+    .rm-records-data-table.courses-table-layout td:nth-child(2)::before,
+    .rm-courses-table-layout td:nth-child(2)::before {
+        content: "Designation";
+    }
+
+    .records-data-table.courses-table-layout td:nth-child(3)::before,
+    .rm-records-data-table.courses-table-layout td:nth-child(3)::before,
+    .rm-courses-table-layout td:nth-child(3)::before {
+        content: "Course";
+    }
+
+    .records-data-table.courses-table-layout td:nth-child(4)::before,
+    .rm-records-data-table.courses-table-layout td:nth-child(4)::before,
+    .rm-courses-table-layout td:nth-child(4)::before {
+        content: "Enrolled";
+    }
+
+    .records-data-table.courses-table-layout td:nth-child(5)::before,
+    .rm-records-data-table.courses-table-layout td:nth-child(5)::before,
+    .rm-courses-table-layout td:nth-child(5)::before {
+        content: "Learning Progress";
+    }
+
+    .records-data-table.courses-table-layout td:nth-child(6)::before,
+    .rm-records-data-table.courses-table-layout td:nth-child(6)::before,
+    .rm-courses-table-layout td:nth-child(6)::before {
+        content: "Hours Logged";
+    }
+
+    .records-data-table.courses-table-layout td:nth-child(7)::before,
+    .rm-records-data-table.courses-table-layout td:nth-child(7)::before,
+    .rm-courses-table-layout td:nth-child(7)::before {
+        content: "Status";
+    }
+
+    /* Data labels for Certification Table */
+    .records-data-table.cert-table-layout td:nth-child(1)::before,
+    .rm-records-data-table.cert-table-layout td:nth-child(1)::before,
+    .rm-cert-table-layout td:nth-child(1)::before {
+        content: "Employee";
+    }
+
+    .records-data-table.cert-table-layout td:nth-child(2)::before,
+    .rm-records-data-table.cert-table-layout td:nth-child(2)::before,
+    .rm-cert-table-layout td:nth-child(2)::before {
+        content: "Designation";
+    }
+
+    .records-data-table.cert-table-layout td:nth-child(3)::before,
+    .rm-records-data-table.cert-table-layout td:nth-child(3)::before,
+    .rm-cert-table-layout td:nth-child(3)::before {
+        content: "Certificate";
+    }
+
+    .records-data-table.cert-table-layout td:nth-child(4)::before,
+    .rm-records-data-table.cert-table-layout td:nth-child(4)::before,
+    .rm-cert-table-layout td:nth-child(4)::before {
+        content: "Certificate ID";
+    }
+
+    .records-data-table.cert-table-layout td:nth-child(5)::before,
+    .rm-records-data-table.cert-table-layout td:nth-child(5)::before,
+    .rm-cert-table-layout td:nth-child(5)::before {
+        content: "Provider";
+    }
+
+    .records-data-table.cert-table-layout td:nth-child(6)::before,
+    .rm-records-data-table.cert-table-layout td:nth-child(6)::before,
+    .rm-cert-table-layout td:nth-child(6)::before {
+        content: "Status";
+    }
+
+    .records-data-table.cert-table-layout td:nth-child(7)::before,
+    .rm-records-data-table.cert-table-layout td:nth-child(7)::before,
+    .rm-cert-table-layout td:nth-child(7)::before {
+        content: "Download";
+    }
+
+    /* Label styling */
+    .records-data-table td::before,
+    .rm-records-data-table td::before {
+        font-size: 12px !important;
+        font-weight: 500 !important;
+        color: #6B7280 !important;
+        flex-shrink: 0 !important;
+        min-width: 110px !important;
+        text-align: left !important;
+    }
+
+    /* Employee info cell */
+    .employee-info-cell,
+    .rm-employee-info-cell {
+        gap: 6px !important;
+        height: auto !important;
+        min-height: 0 !important;
+    }
+
+    .employee-name-text,
+    .rm-employee-name-text {
+        white-space: normal !important;
+        overflow: visible !important;
+        text-overflow: unset !important;
+    }
+
+    .text-bold-title,
+    .rm-text-bold-title {
+        white-space: normal !important;
+        overflow: visible !important;
+        text-overflow: unset !important;
+        text-align: right !important;
+        max-width: 60% !important;
+    }
+
+    .text-secondary,
+    .rm-text-secondary {
+        white-space: normal !important;
+        overflow: visible !important;
+        text-overflow: unset !important;
+        text-align: right !important;
+    }
+
+    /* Progress bar */
+    .progress-bar-cell,
+    .rm-progress-bar-cell {
+        justify-content: flex-end !important;
+    }
+
+    .progress-track,
+    .rm-progress-track {
+        width: 60px !important;
+    }
+
+    /* Download button */
+    .btn-table-download,
+    .rm-btn-table-download {
+        margin-left: auto !important;
+    }
+
+    /* Empty state */
+    .empty-records-cell,
+    .rm-empty-records-cell {
+        text-align: center !important;
+        padding: 24px !important;
+    }
+
+    .empty-records-cell::before,
+    .rm-empty-records-cell::before {
+        display: none !important;
+    }
+}
+
+/* ==========================================================================
+   3. MOBILE VIEW (≤ 767px)
+   ========================================================================== */
+@media (max-width: 767px) {
+
+    .learning-records-page,
+    .rm-learning-records-page {
+        padding: 14px 14px 48px 14px !important;
+        gap: 12px !important;
+    }
+
+    /* Header stacks vertically */
+    .learning-records-header,
+    .rm-learning-records-header {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 10px !important;
+    }
+
+    .header-right-actions,
+    .rm-header-right-actions {
+        width: 100% !important;
+        justify-content: flex-end !important;
+    }
+
+    .records-header-title,
+    .rm-records-header-title {
+        font-size: 20px !important;
+    }
+
+    .records-header-subtitle,
+    .rm-records-header-subtitle {
+        font-size: 13px !important;
+    }
+
+    /* Toolbar fully stacked */
+    .learning-records-toolbar,
+    .rm-learning-records-toolbar {
+        flex-direction: column !important;
+        align-items: stretch !important;
+        gap: 10px !important;
+    }
+
+    .pill-tabs-container,
+    .rm-pill-tabs-container {
+        width: 100% !important;
+    }
+
+    .pill-tab-btn,
+    .rm-pill-tab-btn {
+        flex: 1 1 0 !important;
+        min-width: 0 !important;
+    }
+
+    .toolbar-controls-right,
+    .rm-toolbar-controls-right {
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        gap: 6px !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+    }
+
+    .records-search-wrapper,
+    .rm-records-search-wrapper {
+        flex: 1 1 0 !important;
+        min-width: 0 !important;
+        width: auto !important;
+    }
+
+    .records-search-input,
+    .rm-records-search-input {
+        width: 100% !important;
+        height: 30px !important;
+        font-size: 13px !important;
+        padding: 0 10px 0 32px !important;
+    }
+
+    .records-search-icon-img,
+    .rm-records-search-icon-img {
+        left: 10px !important;
+        width: 14px !important;
+        height: 14px !important;
+    }
+
+    .btn-filter-action,
+    .rm-btn-filter-action,
+    .rm-custom-filter-container,
+    .sort-dropdown-wrapper,
+    .rm-sort-dropdown-wrapper,
+    .rm-custom-sort-container {
+        width: auto !important;
+        position: relative !important;
+        flex-shrink: 0 !important;
+    }
+
+    .rm-custom-filter-container .rm-btn-filter-action,
+    .rm-btn-filter-action {
+        width: auto !important;
+        height: 32px !important;
+        padding: 0 10px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 5px !important;
+        font-size: 12px !important;
+        white-space: nowrap !important;
+        box-sizing: border-box !important;
+    }
+
+    .rm-custom-sort-trigger {
+        width: auto !important;
+        height: 32px !important;
+        padding: 0 10px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 4px !important;
+        font-size: 12px !important;
+        white-space: nowrap !important;
+        box-sizing: border-box !important;
+    }
+
+    .rm-filter-label-prefix {
+        display: none !important;
+    }
+
+    .rm-custom-filter-menu {
+        left: 0 !important;
+        right: auto !important;
+        min-width: 175px !important;
+    }
+
+    .rm-custom-sort-menu {
+        right: 0 !important;
+        left: auto !important;
+        min-width: 130px !important;
+    }
+
+    .records-sort-select,
+    .rm-records-sort-select {
+        flex: 1 !important;
+    }
+
+    /* Single column cards on phone */
+    .records-data-table tbody,
+    .rm-records-data-table tbody {
+        grid-template-columns: 1fr !important;
+        gap: 10px !important;
+    }
+}
+
+/* ==========================================================================
+   4. SMALL MOBILE VIEW (≤ 400px)
+   ========================================================================== */
+@media (max-width: 400px) {
+
+    .learning-records-page,
+    .rm-learning-records-page {
+        padding: 12px 10px 48px 10px !important;
+    }
+
+    .records-header-title,
+    .rm-records-header-title {
+        font-size: 18px !important;
+    }
+
+    .pill-tab-btn,
+    .rm-pill-tab-btn {
+        font-size: 12px !important;
+        padding: 0 14px !important;
+        height: 30px !important;
+    }
+
+    .records-data-table tbody tr,
+    .rm-records-data-table tbody tr {
+        padding: 12px 12px !important;
+    }
+
+    .records-data-table td::before,
+    .rm-records-data-table td::before {
+        min-width: 85px !important;
+        font-size: 11px !important;
+    }
+}

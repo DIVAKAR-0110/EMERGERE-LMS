@@ -1,0 +1,297 @@
+/* EmpDatePicker.css - Custom LMS-styled Date Picker */
+
+.emp-datepicker-wrapper {
+    position: relative;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.emp-datepicker-trigger {
+    width: 100%;
+    height: 30px;
+    padding: 0 10px;
+    background: #FFFFFF;
+    border: 1px solid #CBD5E1;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: text;
+    box-sizing: border-box;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.emp-datepicker-trigger.is-disabled,
+.emp-datepicker-trigger:has(input:disabled) {
+    background: #F8FAFC !important;
+    border-color: #E2E8F0 !important;
+    cursor: not-allowed !important;
+    box-shadow: none !important;
+}
+
+.emp-datepicker-trigger.is-disabled input,
+.emp-datepicker-trigger input:disabled {
+    background: transparent !important;
+    color: #000000 !important;
+    cursor: not-allowed !important;
+}
+
+.emp-datepicker-trigger.is-disabled .emp-datepicker-icon,
+.emp-datepicker-trigger:has(input:disabled) .emp-datepicker-icon {
+    cursor: not-allowed !important;
+    opacity: 0.8;
+}
+
+.emp-datepicker-trigger:hover {
+    border-color: #94A3B8;
+}
+
+.emp-datepicker-trigger.is-open,
+.emp-datepicker-trigger:focus-within {
+    border-color: #2563EB;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+.emp-datepicker-trigger.has-error {
+    border-color: #EF4444 !important;
+}
+
+.emp-datepicker-trigger.has-error.is-open,
+.emp-datepicker-trigger.has-error:focus-within {
+    box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.15) !important;
+}
+
+.emp-datepicker-icon {
+    width: 15px;
+    height: 15px;
+    flex-shrink: 0;
+    cursor: pointer;
+    transition: opacity 0.15s ease;
+}
+
+.emp-datepicker-icon:hover {
+    opacity: 0.8;
+}
+
+.emp-datepicker-input {
+    flex: 1;
+    width: 100%;
+    height: 100%;
+    border: none !important;
+    outline: none !important;
+    background: transparent !important;
+    font-size: 12px;
+    font-weight: 400;
+    color: #000000;
+    padding: 0 !important;
+    margin: 0;
+    box-shadow: none !important;
+}
+
+.emp-datepicker-input::placeholder {
+    color: #7F7F7F;
+    font-size: 12px;
+    font-weight: 400;
+}
+
+.emp-datepicker-wrapper.is-open {
+    z-index: 100;
+}
+
+/* Dropdown Calendar Popover */
+.emp-datepicker-dropdown {
+    position: fixed;
+    z-index: 99999999;
+    width: 250px;
+    background: #FFFFFF;
+    border: 1px solid #E2E8F0;
+    border-radius: 8px;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.12), 0 8px 10px -6px rgba(0, 0, 0, 0.06);
+    padding: 10px 12px;
+    box-sizing: border-box;
+    animation: empDateFadeIn 0.15s ease-out forwards;
+}
+
+.emp-datepicker-dropdown.drop-up {
+    box-shadow: 0 -10px 25px -5px rgba(0, 0, 0, 0.12), 0 -8px 10px -6px rgba(0, 0, 0, 0.06);
+    animation: empDateFadeInUp 0.15s ease-out forwards;
+}
+
+@keyframes empDateFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-4px) scale(0.98);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes empDateFadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(4px) scale(0.98);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Header with month/year navigation */
+.emp-datepicker-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    user-select: none;
+}
+
+.emp-datepicker-title {
+    font-size: 13px;
+    font-weight: 500;
+    color: #000000;
+}
+
+.emp-datepicker-nav-btns {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+}
+
+.emp-datepicker-nav-btn {
+    width: 24px;
+    height: 24px;
+    border: none;
+    background: transparent;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: #64748B;
+    transition: background 0.12s ease, color 0.12s ease;
+    padding: 0;
+}
+
+.emp-datepicker-nav-btn:hover:not(:disabled) {
+    background: #F1F5F9;
+    color: #0F172A;
+}
+
+.emp-datepicker-nav-btn:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+}
+
+/* Weekday header row */
+.emp-datepicker-weekdays {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    margin-bottom: 4px;
+    user-select: none;
+}
+
+.emp-datepicker-weekday {
+    text-align: center;
+    font-size: 10px;
+    font-weight: 600;
+    color: #898989;
+    padding: 1px 0;
+}
+
+/* Days Grid */
+.emp-datepicker-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 2px;
+    user-select: none;
+}
+
+.emp-datepicker-cell {
+    height: 26px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    font-weight: 500;
+    color: #818181;
+    border-radius: 4px;
+    cursor: pointer;
+    background: transparent;
+    border: 1px solid transparent;
+    transition: background 0.12s ease, color 0.12s ease, border-color 0.12s ease;
+}
+
+.emp-datepicker-cell:hover:not(.is-disabled):not(.is-selected) {
+    background: #EFF6FF;
+    color: #215EF8;
+}
+
+.emp-datepicker-cell.is-selected {
+    background: #215EF8 !important;
+    color: #FFFFFF !important;
+    font-weight: 600;
+}
+
+.emp-datepicker-cell.is-today:not(.is-selected) {
+    border-color: #215EF8;
+    color: #215EF8;
+    font-weight: 600;
+}
+
+.emp-datepicker-cell.is-outside {
+    color: #CBD5E1;
+}
+
+.emp-datepicker-cell.is-disabled {
+    color: #CBD5E1;
+    cursor: not-allowed;
+    background: transparent !important;
+    pointer-events: none;
+    opacity: 0.45;
+}
+
+/* Footer (Clear / Today) */
+.emp-datepicker-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 8px;
+    padding-top: 6px;
+    border-top: 1px solid #F1F5F9;
+    user-select: none;
+}
+
+.emp-datepicker-footer-btn {
+    border: none;
+    background: transparent;
+    font-size: 11px;
+    font-weight: 500;
+    color: #215EF8;
+    cursor: pointer;
+    padding: 2px 6px;
+    border-radius: 4px;
+    transition: background 0.12s ease;
+}
+
+.emp-datepicker-footer-btn:hover:not(:disabled) {
+    background: #EFF6FF;
+}
+
+.emp-datepicker-footer-btn:disabled {
+    color: #94A3B8;
+    cursor: not-allowed;
+}
+
+.emp-datepicker-footer-btn.clear-btn {
+    color: #000000;
+}
+
+.emp-datepicker-footer-btn.clear-btn:hover {
+    color: #EF4444;
+    background: #FEF2F2;
+}

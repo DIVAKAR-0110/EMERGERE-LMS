@@ -1,0 +1,516 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700;800;900&display=swap');
+
+/* =========================================================
+   SIDEBAR - PIXEL-PERFECT FIGMA IMPLEMENTATION (236px)
+   ========================================================= */
+
+:root {
+    --sidebar-width: 215px;
+    --primary-blue: rgba(33, 94, 248, 1);
+    --border-subtle: rgba(255, 255, 255, 1);
+}
+
+.sidebar {
+    position: relative;
+    flex-shrink: 0;
+    width: var(--sidebar-width);
+    height: 100vh;
+    max-height: 100vh;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-right: 1.5px solid #ffffff;
+    z-index: 100;
+    overflow: hidden !important;
+    background: transparent;
+    font-family: 'Roboto', sans-serif;
+    scrollbar-width: none !important;
+    -ms-overflow-style: none !important;
+}
+
+.sidebar * {
+    font-family: 'Roboto', sans-serif;
+    box-sizing: border-box;
+}
+
+.sidebar::-webkit-scrollbar {
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
+}
+
+/* =========================================================
+   SIDEBAR TOP & LOGO (FIGMA: 190px x 75px, TOP: 6px, LEFT: 27px)
+   ========================================================= */
+
+.sidebar-top {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-height: 0;
+    overflow: hidden;
+}
+
+.sidebar-brand {
+    width: 100%;
+    height: 87px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0 0 0 17px;
+    box-sizing: border-box;
+    cursor: pointer;
+    outline: none;
+    flex-shrink: 0;
+}
+
+.sidebar-logo {
+    width: 160px;
+    height: 75px;
+    object-fit: contain;
+    display: block;
+}
+
+/* =========================================================
+   SIDEBAR NAVIGATION (FIGMA: 236px x 258px, TOP: 112px)
+   ========================================================= */
+
+.sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    margin-top: 7px;
+    gap: 0;
+    width: var(--sidebar-width);
+    box-sizing: border-box;
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    padding-bottom: 85px;
+    scrollbar-width: none !important;
+    -ms-overflow-style: none !important;
+}
+
+.sidebar-nav::-webkit-scrollbar {
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
+}
+
+/* NAV ITEM (FIGMA: 235px x 45px, ICON LEFT: 44px, TEXT LEFT: 76px) */
+.nav-item {
+    position: relative;
+    width: 215px;
+    height: 40px;
+    min-height: 40px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    padding: 0 0 0 30px;
+    text-decoration: none;
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    transition: background 0.15s ease;
+}
+
+.nav-item:hover {
+    background-color: rgba(243, 244, 248, 0.6);
+}
+
+/* ACTIVE NAV ITEM (FIGMA: LINEAR GRADIENT #E9ECF9 -> #CAD6FF, LEFT PILL #215EF8) */
+.nav-item.active {
+    background: linear-gradient(90deg, #E9ECF9 0%, #CAD6FF 100%) !important;
+}
+
+.nav-item.active::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 5px;
+    height: 40px;
+    background-color: rgba(33, 94, 248, 1);
+    border-radius: 10px 10px 10px 10px;
+    opacity: 1;
+}
+
+/* NAV ICON (FIGMA: 18px x 18px, LEFT: 44px) */
+.nav-icon {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(101, 101, 101, 1);
+}
+
+.nav-icon svg {
+    width: 18px;
+    height: 18px;
+    object-fit: contain;
+}
+
+.nav-icon-img {
+    width: 16px;
+    height: 16px;
+    object-fit: contain;
+    display: block;
+    filter: brightness(0) opacity(0.65);
+    transition: filter 0.15s ease;
+}
+
+.nav-icon-img.nav-icon-copilot {
+    width: 18px;
+    height: 18px;
+}
+
+.nav-item:hover .nav-icon-img {
+    filter: brightness(0) opacity(0.85);
+}
+
+.nav-item.active .nav-icon-img {
+    filter: brightness(0) saturate(100%) invert(27%) sepia(98%) saturate(2289%) hue-rotate(218deg) brightness(97%) contrast(98%);
+}
+
+.nav-item.active .nav-icon {
+    color: #215EF8;
+}
+
+/* NAV LABEL (FIGMA: 15px Roboto 500, LINE-HEIGHT 22.75px, TEXT LEFT: 76px -> GAP: 14px) */
+.nav-label {
+    margin-left: 14px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 22.75px;
+    letter-spacing: 0%;
+    color: #1f1f1f;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: flex;
+    align-items: center;
+}
+
+.nav-item.active .nav-label {
+    color: #215EF8;
+    font-weight: 500;
+    font-size: 13px;
+}
+
+/* =========================================================
+   USER PROFILE SECTION & WIDGET (FIGMA: 211px x 58px, BOTTOM: 18px, LEFT: 13px)
+   ========================================================= */
+
+.user-profile-section {
+    position: absolute;
+    bottom: 18px;
+    left: 13px;
+    width: 190px;
+    z-index: 150;
+}
+
+.user-profile-widget {
+    position: relative;
+    width: 100%;
+    height: 50px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 1);
+    border: 1px solid #ffffff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    padding: 6px 12px 6px 15px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    cursor: pointer;
+    outline: none;
+    transition: background 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+    user-select: none;
+}
+
+.user-profile-widget:hover,
+.user-profile-widget.active {
+    background: rgba(248, 250, 252, 1);
+    border-color: rgba(33, 94, 248, 0.4);
+    box-shadow: 0 4px 12px rgba(33, 94, 248, 0.08);
+}
+
+/* PROFILE DROPDOWN MENU */
+.profile-dropdown-menu {
+    position: absolute;
+    bottom: calc(100% + 8px);
+    left: 0;
+    width: 100%;
+    background: #FFFFFF;
+    border: 1px solid #DDE0EE;
+    border-radius: 10px;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.12), 0 8px 10px -6px rgba(0, 0, 0, 0.06);
+    padding: 6px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    z-index: 200;
+    animation: profileDropdownFade 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes profileDropdownFade {
+    from {
+        opacity: 0;
+        transform: translateY(6px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.profile-dropdown-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 6px;
+    background: transparent;
+    cursor: pointer;
+    font-family: 'Roboto', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    color: #000000;
+    text-align: left;
+    transition: background 0.15s ease, color 0.15s ease;
+    outline: none;
+    box-sizing: border-box;
+}
+
+.profile-dropdown-item:hover {
+    background: #F1F5F9;
+    color: #215EF8;
+}
+
+.profile-dropdown-icon {
+    width: 18px;
+    height: 18px;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+.profile-dropdown-divider {
+    height: 1px;
+    background: #E2E8F0;
+    margin: 4px 0;
+}
+
+.profile-dropdown-logout {
+    color: #EF4444;
+}
+
+.profile-dropdown-logout:hover {
+    background: #FEF2F2;
+    color: #DC2626;
+}
+
+/* AVATAR CIRCLE (FIGMA: 45px x 45px, BACKGROUND: #88C4FF) */
+.avatar-circle {
+    width: 35px;
+    height: 35px;
+    min-width: 35px;
+    min-height: 35px;
+    border-radius: 50%;
+    background: rgba(136, 196, 255, 1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 22.75px;
+    letter-spacing: 0%;
+    color: #ffffff;
+}
+
+/* USER INFO */
+.user-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1px;
+    min-width: 0;
+}
+
+/* USER NAME (FIGMA: 81px x 23px, 14px Roboto 500) */
+.user-name {
+    height: 23px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 22.75px;
+    letter-spacing: 0%;
+    color: #000000;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: flex;
+    align-items: center;
+}
+
+/* STATUS ROW */
+.user-role-dot {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+/* BLUE DOT (FIGMA: 6px x 6px, #203DF4) */
+.status-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #203DF4;
+    flex-shrink: 0;
+}
+
+/* ROLE TEXT (FIGMA: 53px x 14px, 12px Roboto 400, #656565) */
+.user-role-text {
+    height: 14px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 14px;
+    letter-spacing: 0%;
+    color: #656565;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+}
+
+/* =========================================================
+   LAYOUT CONTAINER FOR MAIN APP
+   ========================================================= */
+
+.app-container {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    min-height: 100vh;
+    /* Figma Ellipse 683: subtle light-blue ambient glow on #F3F4F8 canvas */
+    background-color: #F3F4F8;
+    background-image:
+        radial-gradient(ellipse 1000px 483px at -64px -97px, rgba(144, 173, 255, 0.30) 0%, transparent 70%),
+        radial-gradient(ellipse 850px 850px at 100% 100%, rgba(144, 173, 255, 0.15) 0%, transparent 70%);
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.main-content {
+    position: relative;
+    z-index: auto;
+    flex: 1;
+    min-width: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    background: transparent;
+}
+
+.page-body {
+    padding: 0;
+    box-sizing: border-box;
+    width: 100%;
+    flex: 1;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    background: transparent;
+}
+
+/* Desktop Only: 100vh static viewport fit */
+@media (min-width: 1024px) {
+    .app-container {
+        width: 100vw;
+        height: 100vh;
+        max-width: 100vw;
+        max-height: 100vh;
+        overflow: hidden !important;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        overscroll-behavior: none;
+    }
+
+    .main-content {
+        width: calc(100vw - var(--sidebar-width));
+        max-width: calc(100vw - var(--sidebar-width));
+        height: 100vh;
+        max-height: 100vh;
+        overflow-y: auto !important;
+        overflow-x: hidden !important;
+        scrollbar-width: none !important;
+        -ms-overflow-style: none !important;
+    }
+
+    .main-content::-webkit-scrollbar,
+    .page-body::-webkit-scrollbar {
+        display: none !important;
+        width: 0 !important;
+        height: 0 !important;
+    }
+
+    /* Allow vertical scroll for dashboard, daily learning on constrained heights / zoom */
+    .main-content:has(.emp-employee-dashboard-page),
+    .main-content:has(.emp-daily-learning-page),
+    .main-content:has(.all-learning-logs-view) {
+        overflow-y: auto !important;
+        scrollbar-width: none !important;
+        -ms-overflow-style: none !important;
+    }
+
+    /* Fixed header & inner-only scroll for table / card catalog views */
+    .main-content:has(.ld-directory-page),
+    .main-content:has(.ld-approvals-workflow-page),
+    .main-content:has(.ld-workshops-page),
+    .main-content:has(.ld-course-management-page),
+    .main-content:has(.budget-modern-container),
+    .main-content:has(.ld-budget-page),
+    .main-content:has(.rm-learning-records-page) {
+        height: 100vh !important;
+        max-height: 100vh !important;
+        overflow: hidden !important;
+    }
+
+    .page-body:has(.ld-directory-page),
+    .page-body:has(.ld-approvals-workflow-page),
+    .page-body:has(.ld-workshops-page),
+    .page-body:has(.ld-course-management-page),
+    .page-body:has(.budget-modern-container),
+    .page-body:has(.ld-budget-page),
+    .page-body:has(.rm-learning-records-page) {
+        height: 100% !important;
+        max-height: 100vh !important;
+        overflow: hidden !important;
+        display: flex !important;
+        flex-direction: column !important;
+    }
+
+    .page-body {
+        min-height: 100%;
+        height: 100%;
+        overflow: visible !important;
+    }
+}

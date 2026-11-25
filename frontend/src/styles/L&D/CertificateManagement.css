@@ -1,0 +1,815 @@
+/* ==========================================================================
+   Certificate Management - L&D Styles (Exact Figma Reproduction)
+   ========================================================================== */
+
+.ld-certificate-management-page {
+    padding: 20px 24px 16px 24px;
+    background-color: #ffffff00;
+    height: 100%;
+    max-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+/* --------------------------------------------------------------------------
+   Tabs (Pill Buttons)
+   -------------------------------------------------------------------------- */
+.ld-cm-tabs-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 14px;
+    margin-bottom: 16px;
+    padding-bottom: 10px;
+    border-bottom: 1.3px solid #D2D2D2;
+    flex-shrink: 0;
+    width: 100%;
+}
+
+.ld-cm-tab-pill {
+    padding: 7px 22px;
+    border-radius: 9999px;
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    background-color: #FFFFFF;
+    color: #000000;
+    border: 1px solid #DDE0EE;
+    transition: all 0.15s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ld-cm-tab-pill:hover:not(.active) {
+    background-color: #F1F5F9;
+}
+
+.ld-cm-tab-pill.active {
+    background-color: #215EF8;
+    color: #FFFFFF;
+    border-color: #215EF8;
+    box-shadow: 0 2px 5px rgba(33, 94, 248, 0.2);
+}
+
+/* --------------------------------------------------------------------------
+   Filter & Search Bar
+   -------------------------------------------------------------------------- */
+.ld-cm-filter-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-shrink: 0;
+}
+
+.ld-cm-search-box {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background-color: #FFFFFF;
+    border: 1px solid #DDE0EE;
+    border-radius: 6px;
+    padding: 0 12px;
+    height: 30px;
+    width: 360px;
+    transition: border-color 0.15s ease;
+}
+
+.ld-cm-search-box:focus-within {
+    border-color: #215EF8;
+}
+
+.ld-cm-search-icon {
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+    opacity: 0.6;
+}
+
+.ld-cm-search-input {
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: 12px;
+    color: #000000;
+    width: 100%;
+}
+
+.ld-cm-search-input::placeholder {
+    color: #A0AEC0;
+}
+
+.ld-cm-filter-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.ld-cm-dropdown-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background-color: #FFFFFF;
+    border: 1px solid #DDE0EE;
+    border-radius: 6px;
+    height: 30px;
+    padding: 0 14px;
+    font-size: 12px;
+    font-weight: 400;
+    color: #000000;
+    cursor: pointer;
+    position: relative;
+    user-select: none;
+    transition: all 0.15s ease;
+}
+
+.ld-cm-dropdown-btn:hover {
+    border-color: #CBD5E1;
+}
+
+.ld-cm-filter-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background-color: #FFFFFF;
+    border: 1px solid #DDE0EE;
+    border-radius: 6px;
+    height: 30px;
+    padding: 0 14px;
+    font-size: 12px;
+    font-weight: 400;
+    color: #000000;
+    cursor: pointer;
+    position: relative;
+    user-select: none;
+    transition: all 0.15s ease;
+}
+
+.ld-cm-filter-btn:hover {
+    border-color: #CBD5E1;
+}
+
+.ld-cm-dropdown-btn.filtered,
+.ld-cm-filter-btn.filtered {
+    border-color: #215EF8 !important;
+    background-color: #EEF2FF !important;
+    color: #215EF8 !important;
+}
+
+.ld-cm-dropdown-btn.filtered span,
+.ld-cm-filter-btn.filtered span:not(.ld-cm-clear-cross) {
+    font-weight: 500;
+}
+
+.ld-cm-dropdown-btn .ld-cm-clear-cross,
+.ld-cm-filter-btn .ld-cm-clear-cross {
+    margin-left: 5px;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 1;
+    color: #EF4444 !important;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 1px;
+    transition: transform 0.15s ease, color 0.15s ease;
+}
+
+.ld-cm-dropdown-btn .ld-cm-clear-cross:hover,
+.ld-cm-filter-btn .ld-cm-clear-cross:hover {
+    color: #DC2626 !important;
+    transform: scale(1.2);
+}
+
+.ld-cm-chevron {
+    width: 8px;
+    height: 5px;
+    flex-shrink: 0;
+    opacity: 0.85;
+}
+
+.ld-cm-dropdown-arrow {
+    width: 8px;
+    height: 5px;
+    flex-shrink: 0;
+    opacity: 0.85;
+}
+
+.ld-cm-filter-icon {
+    width: 13px;
+    height: 9px;
+    flex-shrink: 0;
+}
+
+.ld-cm-dropdown-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.ld-cm-dropdown-menu {
+    position: absolute;
+    top: calc(100% + 5px);
+    right: 0;
+    background: #FFFFFF;
+    border: 1px solid #E2E8F0;
+    border-radius: 6px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
+    min-width: 150px;
+    z-index: 50;
+    padding: 4px;
+    display: flex;
+    flex-direction: column;
+}
+
+.ld-cm-menu-header {
+    font-size: 12px;
+    font-weight: 500;
+    color: #7f7f7f;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 6px 12px 4px 12px;
+    border-bottom: 1px solid #F1F5F9;
+    margin-bottom: 4px;
+}
+
+.ld-cm-dropdown-item {
+    padding: 7px 12px;
+    font-size: 12px;
+    font-weight: 400;
+    color: #000000;
+    background: none;
+    border: none;
+    text-align: left;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.15s ease;
+}
+
+.ld-cm-dropdown-item:hover,
+.ld-cm-dropdown-item.active,
+.ld-cm-dropdown-item.selected {
+    background-color: #EFF6FF;
+    color: #215EF8;
+    font-weight: 500;
+}
+
+.ld-cm-dropdown-item.multi-select-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    user-select: none;
+    cursor: pointer;
+}
+
+.ld-cm-checkbox {
+    width: 14px;
+    height: 14px;
+    border: 1.5px solid #CBD5E1;
+    border-radius: 3px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: #FFFFFF;
+    flex-shrink: 0;
+    transition: all 0.15s ease;
+    box-sizing: border-box;
+}
+
+.ld-cm-dropdown-item:hover .ld-cm-checkbox:not(.checked) {
+    border-color: #94A3B8;
+}
+
+.ld-cm-checkbox.checked {
+    background: #215EF8;
+    border-color: #215EF8;
+}
+
+/* --------------------------------------------------------------------------
+   Table Card & Scrollable Container
+   -------------------------------------------------------------------------- */
+.ld-certificate-management-page .ld-cm-table-card {
+    background: #FFFFFF;
+    border: 1px solid #E2E8F0;
+    border-radius: 12px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+    overflow: hidden;
+    position: relative;
+    flex: 1;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.ld-certificate-management-page .ld-cm-table-wrap,
+.ld-certificate-management-page .ld-cm-table-container {
+    width: calc(100% - 14px);
+    margin-right: 14px;
+    overflow-y: auto !important;
+    overflow-x: auto;
+    flex: 1;
+    min-height: 0;
+    padding: 0 16px;
+    box-sizing: border-box;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.ld-certificate-management-page .ld-cm-table-wrap::-webkit-scrollbar,
+.ld-certificate-management-page .ld-cm-table-container::-webkit-scrollbar {
+    display: none;
+    width: 0;
+    height: 0;
+}
+
+/* Custom 7px x 80px scrollbar (#D9D9D9) as in CEO module */
+.ld-cm-table-scroll-track {
+    position: absolute;
+    right: 4px;
+    top: 44px;
+    bottom: 6px;
+    width: 10px;
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+    background: #FFFFFF;
+    user-select: none;
+    z-index: 25;
+}
+
+.ld-cm-table-scroll-thumb {
+    width: 4.5px;
+    height: 65px;
+    background-color: #D9D9D9;
+    border-radius: 3.5px;
+    cursor: grab;
+    transition: background-color 0.15s ease;
+    will-change: transform;
+    flex-shrink: 0;
+}
+
+.ld-cm-table-scroll-thumb:hover,
+.ld-cm-table-scroll-thumb.dragging {
+    background-color: #BFBFBF;
+}
+
+.ld-cm-table-scroll-thumb.dragging {
+    cursor: grabbing !important;
+}
+
+.ld-certificate-management-page .ld-cm-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    table-layout: fixed;
+    text-align: left;
+}
+
+.ld-approvals-workflow-page .ld-cm-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    table-layout: fixed;
+    text-align: left;
+}
+
+.ld-certificate-management-page .ld-cm-table th,
+.ld-approvals-workflow-page .ld-cm-table th {
+    padding: 13px 11px;
+    font-size: 12px;
+    font-weight: 500;
+    color: #3730a3;
+    border-bottom: 1px solid #DDE0EE;
+    box-shadow: inset 0 -1px 0 #DDE0EE;
+    background-color: #e0e7ff;
+    white-space: nowrap;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.ld-certificate-management-page .ld-cm-table td,
+.ld-approvals-workflow-page .ld-cm-table td {
+    padding: 15px 12px;
+    border-bottom: 1px solid #DDE0EE;
+    font-size: 13px;
+    font-weight: 400;
+    vertical-align: middle;
+    overflow: hidden;
+}
+
+.ld-certificate-management-page .ld-cm-table th:first-child,
+.ld-certificate-management-page .ld-cm-table td:first-child {
+    padding-left: 8px;
+}
+
+.ld-certificate-management-page .ld-cm-table th:last-child,
+.ld-certificate-management-page .ld-cm-table td:last-child {
+    padding-right: 8px;
+}
+
+.ld-approvals-workflow-page .ld-cm-table th:first-child,
+.ld-approvals-workflow-page .ld-cm-table td:first-child {
+    padding-left: 24px;
+}
+
+.ld-approvals-workflow-page .ld-cm-table th:last-child,
+.ld-approvals-workflow-page .ld-cm-table td:last-child {
+    padding-right: 24px;
+}
+
+.ld-certificate-management-page .ld-cm-table tbody tr:last-child td,
+.ld-approvals-workflow-page .ld-cm-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.ld-certificate-management-page .ld-cm-table tbody tr:hover,
+.ld-approvals-workflow-page .ld-cm-table tbody tr:hover {
+    background-color: #F8FAFC;
+}
+
+/* Employee Column */
+.ld-cm-emp-cell {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 0;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+.ld-cm-emp-avatar {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    color: #FFFFFF;
+    font-size: 9px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.ld-cm-emp-cell-vertical {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+    min-width: 0;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+.ld-cm-emp-name {
+    font-size: 12px;
+    font-weight: 400;
+    color: #000000;
+    line-height: 1.25;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    min-width: 0;
+    width: 100%;
+    max-width: 100%;
+}
+
+.ld-cm-emp-id {
+    font-size: 11px;
+    color: #7F7F7F;
+    font-weight: 400;
+    line-height: 1.2;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+    width: 100%;
+    max-width: 100%;
+}
+
+/* Certificate Column */
+.ld-cm-cert-title {
+    font-size: 12px;
+    font-weight: 400;
+    color: #000000;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.3;
+    display: block;
+    width: 100%;
+    max-width: 100%;
+}
+
+.ld-cm-cert-id {
+    font-size: 10px;
+    font-weight: 400;
+    color: #7F7F7F;
+    margin-top: 3px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Reimbursement Request - Certificate Column */
+.ld-cm-cell-cert {
+    min-width: 0;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+.ld-cm-reimb-cert-title,
+.ld-cm-reimb-table .ld-cm-reimb-cert-title,
+.ld-approvals-workflow-page .ld-cm-table td .ld-cm-reimb-cert-title {
+    font-size: 12px;
+    font-weight: 400;
+    color: #000000;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.3;
+    display: block;
+    width: 100%;
+    max-width: 100%;
+}
+
+/* Provider Column */
+.ld-cm-cell-provider {
+    min-width: 0;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+.ld-cm-provider-text,
+.ld-certificate-management-page .ld-cm-table td .ld-cm-provider-text,
+.ld-approvals-workflow-page .ld-cm-table td .ld-cm-provider-text {
+    font-size: 12px;
+    font-weight: 400;
+    color: #000000;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+    width: 100%;
+    max-width: 100%;
+}
+
+/* Text formatting */
+.ld-cm-regular-text {
+    font-size: 12px;
+    font-weight: 400;
+    color: #000000;
+    white-space: nowrap;
+}
+
+.ld-cm-regular-text.ld-cm-text-pending {
+    color: #E79519;
+    font-weight: 400;
+}
+
+.ld-aw-badge-pending {
+    background: #FFFBEB;
+    border: 0.5px solid #FDE68A;
+    color: #D97706;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 4px 14px;
+    border-radius: 6px;
+    display: inline-block;
+    white-space: nowrap;
+    cursor: default;
+}
+
+.ld-cm-amount-text {
+    font-size: 12px;
+    font-weight: 400;
+    color: #000000;
+    white-space: nowrap;
+}
+
+/* Action View Button */
+.ld-cm-view-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 26px;
+    height: 26px;
+    border-radius: 6px;
+    background: #FFFFFF;
+    border: 1px solid #DDE0EE;
+    padding: 0;
+    cursor: pointer;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02);
+    transition: background 0.15s ease, border-color 0.15s ease;
+    flex-shrink: 0;
+}
+
+.ld-cm-view-btn:hover {
+    background-color: #EFF6FF;
+    border-color: #215EF8;
+}
+
+.ld-cm-view-btn .ld-cm-eye-icon {
+    width: 13px;
+    height: 9px;
+    display: block;
+    flex-shrink: 0;
+}
+
+/* Status Badges for Reimbursement */
+.ld-cm-status-badge,
+.ld-cm-reimb-table .ld-cm-status-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 80px;
+    width: auto;
+    height: 23px;
+    box-sizing: border-box;
+    padding: 0 10px;
+    border-radius: 4px;
+    font-size: 10px;
+    font-weight: 500;
+    white-space: nowrap;
+    text-align: center;
+}
+
+.ld-cm-status-badge.paid,
+.ld-cm-reimb-table .ld-cm-status-badge.paid {
+    background-color: #EEFBF5;
+    color: #1CB06A;
+    border: 0.5px solid #AEEDBE;
+}
+
+.ld-cm-status-badge.in-progress,
+.ld-cm-reimb-table .ld-cm-status-badge.in-progress {
+    background-color: #FDF5EA;
+    color: #EAA133;
+    border: 0.5px solid #FFD696;
+}
+
+.ld-cm-status-badge.submitted-to-hr,
+.ld-cm-reimb-table .ld-cm-status-badge.submitted-to-hr {
+    background-color: #F1F2F8;
+    color: #215EF8;
+    border: 0.5px solid #A1BCFF;
+}
+
+.ld-cm-status-badge.rejected,
+.ld-cm-reimb-table .ld-cm-status-badge.rejected {
+    background-color: #FEF2F2;
+    color: #EF4444;
+    border: 0.5px solid #FCA5A5;
+}
+
+/* Empty State */
+.ld-cm-empty-state {
+    padding: 50px 20px;
+    text-align: center;
+    color: #64748B;
+}
+
+.ld-cm-empty-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: #1E293B;
+    margin-bottom: 4px;
+}
+
+.ld-cm-empty-desc {
+    font-size: 12px;
+}
+
+/* --------------------------------------------------------------------------
+   View Certificate Details Modal
+   -------------------------------------------------------------------------- */
+.ld-cm-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(15, 23, 42, 0.45);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 99999;
+    padding: 24px;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+}
+
+.ld-cm-modal-card {
+    position: relative;
+    background: #FFFFFF;
+    border-radius: 16px;
+    width: 100%;
+    max-width: 540px;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    animation: cadScaleUp 0.15s ease;
+}
+
+.ld-cm-modal-header {
+    padding: 20px 24px 14px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    border-bottom: 1px solid #F1F5F9;
+}
+
+.ld-cm-modal-title {
+    margin: 0;
+    font-size: 17px;
+    font-weight: 700;
+    color: #215EF8;
+}
+
+.ld-cm-modal-subtitle {
+    margin: 4px 0 0 0;
+    font-size: 12px;
+    color: #64748B;
+}
+
+.ld-cm-modal-close-btn {
+    background: transparent;
+    border: none;
+    color: #64748B;
+    cursor: pointer;
+    padding: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    transition: background 0.15s ease, color 0.15s ease;
+}
+
+.ld-cm-modal-close-btn:hover {
+    color: #0F172A;
+    background: #F1F5F9;
+}
+
+.ld-cm-modal-body {
+    padding: 18px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.ld-cm-modal-row {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #F8FAFC;
+}
+
+.ld-cm-modal-row:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.ld-cm-modal-label {
+    font-size: 12px;
+    font-weight: 500;
+    color: #64748B;
+    width: 40%;
+}
+
+.ld-cm-modal-val {
+    font-size: 12px;
+    font-weight: 600;
+    color: #0F172A;
+    width: 60%;
+    text-align: right;
+    word-break: break-word;
+}
+
+.ld-cm-modal-footer {
+    padding: 12px 24px;
+    background: #F8FAFC;
+    border-top: 1px solid #F1F5F9;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.ld-cm-modal-ok-btn {
+    background: #215EF8;
+    color: #FFFFFF;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 7px 22px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    transition: background 0.15s ease;
+}
+
+.ld-cm-modal-ok-btn:hover {
+    background: #1D4ED8;
+}

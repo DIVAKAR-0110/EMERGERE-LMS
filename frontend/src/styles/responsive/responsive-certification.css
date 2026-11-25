@@ -1,0 +1,1908 @@
+/* =========================================================
+   ENTERPRISE RESPONSIVE STYLES – CERTIFICATION & REIMBURSEMENT
+   src/styles/responsive/responsive-certification.css
+   ========================================================= */
+
+/* ==========================================================================
+   1. STANDARD DESKTOP & LAPTOP (1200px and above)
+   ========================================================================== */
+@media (min-width: 1200px) {
+    .emp-cert-reimb-page {
+        width: 100%;
+        height: 100vh !important;
+        max-height: 100vh !important;
+        max-width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: clamp(12px, 1.4vh, 16px);
+        padding: 20px 24px 16px 24px;
+        box-sizing: border-box;
+        overflow: hidden !important;
+    }
+
+    .emp-cert-stats-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: clamp(10px, 1.2vw, 16px);
+        width: 100%;
+        flex-shrink: 0;
+    }
+
+    .emp-cert-stat-card {
+        min-width: 0;
+        height: clamp(68px, 8.5vh, 80px);
+        padding: clamp(8px, 1vh, 12px) clamp(12px, 1.2vw, 18px);
+        gap: clamp(10px, 1vw, 14px);
+    }
+
+    .emp-cert-tabs-bar-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        flex-shrink: 0;
+        width: 100%;
+        margin-bottom: 12px;
+    }
+
+    .emp-cert-card-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: clamp(10px, 1.2vw, 16px);
+        width: 100%;
+        min-width: 0;
+        padding: clamp(10px, 1.2vh, 14px) clamp(12px, 1.2vw, 16px);
+    }
+
+    .emp-cert-left-section {
+        display: flex;
+        align-items: center;
+        gap: clamp(10px, 1vw, 16px);
+        min-width: 0;
+        flex: 1;
+    }
+
+    .emp-cert-main-details {
+        flex: 1 1 200px;
+        min-width: 160px;
+        max-width: 320px;
+        width: auto;
+    }
+
+    .emp-cert-meta-section {
+        display: flex;
+        align-items: center;
+        gap: clamp(16px, 1.8vw, 32px);
+        min-width: 0;
+        flex: 1.5 1 260px;
+    }
+
+    .emp-cert-provider-info {
+        flex: 1 1 130px;
+        min-width: 110px;
+        max-width: 200px;
+        width: auto;
+    }
+
+    .emp-cert-status-info {
+        flex: 1 1 150px;
+        min-width: 120px;
+        max-width: 220px;
+        width: auto;
+    }
+
+    .emp-cert-right-actions {
+        flex: 0 0 auto;
+        margin-left: auto;
+        gap: clamp(8px, 0.8vw, 14px);
+        width: auto;
+    }
+
+    /* Reimbursement Claims Table Grid */
+    .emp-reimb-header-row,
+    .emp-reimb-card-row {
+        display: grid;
+        grid-template-columns: 105px minmax(170px, 1fr) 85px 135px 120px 80px 24px;
+        align-items: center;
+        gap: 12px;
+        width: 100%;
+        min-width: 0;
+        box-sizing: border-box;
+    }
+
+    /* Requests Table Grid */
+    .emp-requests-header-row,
+    .emp-requests-card-row {
+        display: grid;
+        grid-template-columns: minmax(220px, 1.8fr) minmax(140px, 1.2fr) minmax(140px, 1.2fr) 95px 28px;
+        align-items: center;
+        gap: 16px;
+        width: 100%;
+        min-width: 0;
+        box-sizing: border-box;
+    }
+
+    /* My Certificates Table Grid */
+    .emp-my-certs-header-row,
+    .emp-my-certs-card-row {
+        display: grid;
+        grid-template-columns: minmax(220px, 1.8fr) minmax(140px, 1.2fr) minmax(140px, 1.2fr) 139px;
+        align-items: center;
+        gap: 16px;
+        width: 100%;
+        min-width: 0;
+        box-sizing: border-box;
+    }
+
+    .emp-col-claim-id,
+    .emp-col-cert-title,
+    .emp-col-amount,
+    .emp-col-purchase-date,
+    .emp-col-submitted-on,
+    .emp-col-status,
+    .emp-col-action {
+        width: auto;
+        min-width: 0;
+        flex: none;
+    }
+
+    /* Full-Height Box Expansion for Desktop */
+    .emp-cert-scrollable-content {
+        flex: 1 1 auto !important;
+        min-height: 0 !important;
+        display: flex !important;
+        flex-direction: column !important;
+    }
+
+    .emp-my-certificates-wrapper {
+        flex: 1 1 auto !important;
+        min-height: 100% !important;
+        height: 100% !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: space-between !important;
+        box-sizing: border-box !important;
+    }
+
+    .emp-cert-list-container {
+        flex: 0 0 auto !important;
+        min-height: 0 !important;
+        height: auto !important;
+        display: flex !important;
+        flex-direction: column !important;
+    }
+
+    .emp-empty-cert-state {
+        flex: 1 0 auto !important;
+        min-height: 100% !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+
+    .emp-reimb-claims-outer-container {
+        flex: 1 1 auto !important;
+        min-height: calc(100vh - 340px) !important;
+        display: flex !important;
+        flex-direction: column !important;
+    }
+
+    .emp-reimb-claims-container {
+        flex: 1 1 auto !important;
+        min-height: 0 !important;
+        display: flex !important;
+        flex-direction: column !important;
+    }
+
+    .emp-reimb-cards-list {
+        flex: 1 1 0% !important;
+        min-height: 0 !important;
+        display: flex !important;
+        flex-direction: column !important;
+    }
+
+    .emp-no-claims-found {
+        flex: 1 1 auto !important;
+        min-height: 250px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+}
+
+/* ==========================================================================
+   2. TABLET BREAKPOINT (768px - 1023px)
+   ========================================================================== */
+@media (min-width: 768px) and (max-width: 1023px) {
+    .emp-cert-reimb-page {
+        height: 100vh !important;
+        max-height: 100vh !important;
+        overflow: hidden !important;
+        padding: 20px 24px 16px 24px !important;
+        gap: 12px !important;
+        display: flex !important;
+        flex-direction: column !important;
+    }
+
+    .emp-cert-scrollable-content {
+        flex: 1 1 auto !important;
+        min-height: 0 !important;
+        display: flex !important;
+        flex-direction: column !important;
+    }
+
+    /* 4-Column KPI Grid (1 row of 4 cards on Tablet) */
+    .emp-cert-stats-grid {
+        display: grid !important;
+        grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+        gap: 10px !important;
+        width: 100% !important;
+    }
+
+    .emp-cert-stat-card {
+        height: auto !important;
+        min-height: 66px !important;
+        padding: 10px 10px !important;
+        gap: 8px !important;
+        min-width: 0 !important;
+    }
+
+    .emp-stat-card-icon-circle {
+        width: 34px !important;
+        height: 34px !important;
+        flex-shrink: 0 !important;
+    }
+
+    .emp-stat-card-info-box {
+        min-width: 0 !important;
+    }
+
+    .emp-stat-value-text {
+        font-size: 18px !important;
+    }
+
+    .emp-stat-label-text {
+        font-size: 10.5px !important;
+        white-space: normal !important;
+        line-height: 1.2 !important;
+    }
+
+    /* Single-Row Tabs & Actions Bar on Tablet */
+    .emp-cert-tabs-bar-row {
+        flex-direction: row !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        gap: 8px !important;
+        margin-bottom: 6px !important;
+        width: 100% !important;
+        flex-wrap: nowrap !important;
+    }
+
+    .emp-cert-tabs-group {
+        display: flex !important;
+        align-items: center !important;
+        width: auto !important;
+        gap: 6px !important;
+        flex-shrink: 0 !important;
+    }
+
+    .emp-cert-tab-pill {
+        flex: 0 0 auto !important;
+        width: auto !important;
+        height: 30px !important;
+        padding: 0 12px !important;
+        font-size: 11.5px !important;
+        white-space: nowrap !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+
+    .emp-cert-tabs-actions {
+        display: flex !important;
+        flex-direction: row !important;
+        flex-wrap: nowrap !important;
+        align-items: center !important;
+        justify-content: flex-end !important;
+        gap: 6px !important;
+        width: auto !important;
+        flex-shrink: 0 !important;
+    }
+
+    .emp-cert-action-btns-group {
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        gap: 6px !important;
+        flex: 0 0 auto !important;
+    }
+
+    .emp-btn-upload-outline-blue,
+    .emp-btn-primary-blue-pill,
+    .emp-btn-toolbar-outline {
+        flex: 0 0 auto !important;
+        width: auto !important;
+        height: 30px !important;
+        padding: 0 10px !important;
+        font-size: 11.5px !important;
+        gap: 5px !important;
+        white-space: nowrap !important;
+        justify-content: center !important;
+    }
+
+    /* My Certificates Card */
+    .emp-my-certificates-wrapper {
+        flex: 1 1 auto !important;
+        min-height: 100% !important;
+        height: 100% !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: space-between !important;
+        box-sizing: border-box !important;
+    }
+
+    .emp-cert-list-container {
+        flex: 0 0 auto !important;
+        min-height: 0 !important;
+        height: auto !important;
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 10px !important;
+    }
+
+    .emp-cert-card-row {
+        flex-direction: row !important;
+        flex-wrap: nowrap !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        padding: 12px 16px !important;
+        gap: 8px !important;
+        height: auto !important;
+        min-height: 70px !important;
+    }
+
+    .emp-cert-left-section {
+        flex-direction: row !important;
+        flex-wrap: nowrap !important;
+        align-items: center !important;
+        gap: 8px !important;
+        flex: 1 1 auto !important;
+        min-width: 0 !important;
+    }
+
+    .emp-cert-main-details {
+        flex: 1.3 1 0 !important;
+        width: auto !important;
+        min-width: 0 !important;
+    }
+
+    .emp-cert-category-text {
+        white-space: nowrap !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+    }
+
+    .emp-cert-row-divider-img {
+        height: 24px !important;
+        margin: 0 4px !important;
+        flex-shrink: 0 !important;
+    }
+
+    .emp-cert-meta-section {
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        gap: 8px !important;
+        width: auto !important;
+        flex: 1.4 1 0 !important;
+        min-width: 0 !important;
+        padding-left: 0 !important;
+    }
+
+    .emp-cert-provider-info,
+    .emp-cert-status-info {
+        flex: 1 1 0 !important;
+        width: auto !important;
+        min-width: 0 !important;
+        font-size: 11px !important;
+    }
+
+    .emp-cert-provider-info span,
+    .emp-cert-status-info span {
+        white-space: nowrap !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+    }
+
+    .emp-cert-right-actions {
+        width: auto !important;
+        flex: 0 0 auto !important;
+        margin-left: auto !important;
+        gap: 6px !important;
+        justify-content: flex-end !important;
+    }
+
+    /* Reimbursement Claims Container */
+    .emp-reimb-claims-container {
+        overflow: hidden !important;
+        flex: 1 1 0% !important;
+        min-height: 0 !important;
+        padding: 14px 16px !important;
+        display: flex !important;
+        flex-direction: column !important;
+    }
+
+    .emp-reimb-header-row {
+        min-width: 660px !important;
+        flex-shrink: 0 !important;
+    }
+
+    .emp-reimb-card-row {
+        min-width: 660px !important;
+    }
+
+    .emp-reimb-cards-list {
+        overflow-y: auto !important;
+        overflow-x: hidden !important;
+        flex: 1 1 0% !important;
+        min-height: 0 !important;
+        scrollbar-width: none !important;
+        -ms-overflow-style: none !important;
+    }
+
+    /* Requests Container */
+    .emp-requests-table-container {
+        overflow: hidden !important;
+        flex: 1 1 0% !important;
+        min-height: 0 !important;
+        padding: 14px 16px !important;
+        display: flex !important;
+        flex-direction: column !important;
+    }
+
+    .emp-requests-header-row {
+        min-width: 660px !important;
+        flex-shrink: 0 !important;
+    }
+
+    .emp-requests-card-row {
+        min-width: 660px !important;
+    }
+
+    .emp-requests-cards-list {
+        overflow-y: auto !important;
+        overflow-x: hidden !important;
+        flex: 1 1 0% !important;
+        min-height: 0 !important;
+        scrollbar-width: thin !important;
+    }
+
+    /* My Certificates Container */
+    .emp-my-certs-table-container {
+        overflow: hidden !important;
+        flex: 1 1 0% !important;
+        min-height: 0 !important;
+        padding: 14px 16px !important;
+        display: flex !important;
+        flex-direction: column !important;
+    }
+
+    .emp-my-certs-header-row {
+        min-width: 660px !important;
+        flex-shrink: 0 !important;
+    }
+
+    .emp-my-certs-card-row {
+        min-width: 660px !important;
+    }
+
+    .emp-my-certs-cards-list {
+        overflow-y: auto !important;
+        overflow-x: hidden !important;
+        flex: 1 1 0% !important;
+        min-height: 0 !important;
+        scrollbar-width: thin !important;
+    }
+
+    .emp-reimb-cards-list::-webkit-scrollbar {
+        display: none !important;
+        width: 0 !important;
+        height: 0 !important;
+    }
+
+    /* Expanded Stepper */
+    .emp-cert-timeline-expanded-container {
+        flex-direction: column !important;
+        align-items: stretch !important;
+        gap: 12px !important;
+        padding: 12px 14px !important;
+    }
+
+    .emp-timeline-stepper-row {
+        overflow-x: auto !important;
+        padding-bottom: 4px !important;
+        justify-content: flex-start !important;
+        width: 100% !important;
+    }
+
+    .emp-timeline-step-item {
+        min-width: 80px !important;
+        flex-shrink: 0 !important;
+    }
+
+    .emp-tracker-timeline-connector,
+    .emp-timeline-dotline-img {
+        min-width: 20px !important;
+        max-width: 35px !important;
+        margin-top: 12px !important;
+        margin-bottom: 0 !important;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 899px) {
+    .emp-cert-reimb-page .emp-tab-label-full {
+        display: none !important;
+    }
+
+    .emp-cert-reimb-page .emp-tab-label-short {
+        display: inline !important;
+    }
+
+    .emp-cert-reimb-page .emp-cert-tab-pill,
+    .emp-cert-reimb-page .emp-btn-upload-outline-blue,
+    .emp-cert-reimb-page .emp-btn-primary-blue-pill,
+    .emp-cert-reimb-page .emp-btn-toolbar-outline {
+        padding: 0 8px !important;
+        font-size: 11px !important;
+    }
+}
+
+/* ==========================================================================
+   2b. COMPACT LAPTOP (1024px – 1199px)
+   Handles 13"–14" laptops at 100% zoom and larger screens at 125%–150% zoom
+   ========================================================================== */
+@media (min-width: 1024px) and (max-width: 1199px) {
+    .emp-cert-reimb-page {
+        padding: 20px 24px 16px 24px !important;
+        gap: 10px !important;
+        overflow: hidden !important;
+        height: 100vh !important;
+        max-height: 100vh !important;
+    }
+
+    .emp-cert-stats-grid {
+        gap: 10px !important;
+    }
+
+    .emp-cert-stat-card {
+        height: 66px !important;
+        padding: 8px 12px !important;
+        gap: 10px !important;
+    }
+
+    .emp-cert-tabs-bar-row {
+        gap: 10px !important;
+        margin-bottom: 8px !important;
+    }
+
+    /* Full-Height Box Expansion for Compact Laptop */
+    .emp-cert-scrollable-content {
+        flex: 1 1 auto !important;
+        min-height: 0 !important;
+        display: flex !important;
+        flex-direction: column !important;
+    }
+
+    .emp-my-certificates-wrapper {
+        flex: 1 1 auto !important;
+        min-height: 100% !important;
+        height: 100% !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: space-between !important;
+        box-sizing: border-box !important;
+    }
+
+    .emp-cert-list-container {
+        flex: 0 0 auto !important;
+        min-height: 0 !important;
+        height: auto !important;
+        display: flex !important;
+        flex-direction: column !important;
+    }
+
+    .emp-empty-cert-state {
+        flex: 1 0 auto !important;
+        min-height: 100% !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+
+    .emp-reimb-claims-outer-container {
+        flex: 1 1 auto !important;
+        min-height: calc(100vh - 330px) !important;
+        display: flex !important;
+        flex-direction: column !important;
+    }
+
+    .emp-reimb-claims-container {
+        flex: 1 1 auto !important;
+        min-height: calc(100vh - 390px) !important;
+        display: flex !important;
+        flex-direction: column !important;
+    }
+
+    .emp-reimb-cards-list {
+        flex: 1 1 auto !important;
+        min-height: 240px !important;
+        display: flex !important;
+        flex-direction: column !important;
+    }
+
+    .emp-no-claims-found {
+        flex: 1 1 auto !important;
+        min-height: 240px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+}
+
+/* ==========================================================================
+   3. MOBILE BREAKPOINT (375px - 767px)
+   ========================================================================== */
+@media (max-width: 767px) {
+    .emp-cert-reimb-page {
+        height: auto !important;
+        min-height: auto !important;
+        max-height: none !important;
+        /* app-container is the mobile scroll container — page flows naturally */
+        overflow: visible !important;
+        padding: 14px 14px 28px 14px !important;
+        /* Offset for the 56px fixed mobile top header bar */
+        padding-top: 70px !important;
+        gap: 12px !important;
+        display: flex !important;
+        flex-direction: column !important;
+    }
+
+    /* Mobile inner lists: all visible so app-container scrolls everything */
+    .emp-cert-list-container,
+    .emp-my-certificates-wrapper {
+        overflow-y: visible !important;
+        flex: none !important;
+        height: auto !important;
+        min-height: 0 !important;
+    }
+
+    .emp-reimb-claims-outer-container {
+        height: auto !important;
+        flex: none !important;
+    }
+
+    .emp-reimb-claims-container {
+        overflow: visible !important;
+        flex: none !important;
+        height: auto !important;
+        min-height: 0 !important;
+    }
+
+    .emp-reimb-cards-list {
+        overflow-y: visible !important;
+        flex: none !important;
+        height: auto !important;
+        min-height: 0 !important;
+    }
+
+    /* Mobile Header */
+    .cert-reimb-header {
+        align-items: flex-start !important;
+        gap: 10px !important;
+        margin-bottom: 2px !important;
+    }
+
+    .cert-reimb-title {
+        font-size: 19px !important;
+        line-height: 23px !important;
+    }
+
+    .cert-reimb-subtitle {
+        font-size: 12.5px !important;
+        line-height: 17px !important;
+        margin-top: 2px !important;
+    }
+
+    .emp-cert-notification-btn {
+        width: 34px !important;
+        height: 34px !important;
+    }
+
+    /* KPI Cards Grid */
+    .emp-cert-stats-grid {
+        display: grid !important;
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 8px !important;
+        width: 100% !important;
+    }
+
+    .emp-cert-stat-card {
+        height: auto !important;
+        min-height: 60px !important;
+        padding: 8px 10px !important;
+        gap: 8px !important;
+        border-radius: 10px !important;
+    }
+
+    .emp-stat-card-icon-circle {
+        width: 34px !important;
+        height: 34px !important;
+    }
+
+    .emp-stat-card-icon-circle img {
+        width: 18px !important;
+        height: 18px !important;
+    }
+
+    .emp-stat-value-text {
+        font-size: 17px !important;
+        line-height: 1.1 !important;
+    }
+
+    .emp-stat-label-text {
+        font-size: 11px !important;
+        margin-top: 2px !important;
+    }
+
+    /* Tabs & Actions Bar Row (Row 1: Tabs, Row 2: Action Button Left + Filter Right) */
+    .emp-cert-tabs-bar-row {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: stretch !important;
+        gap: 8px !important;
+        margin-top: 2px !important;
+        margin-bottom: 8px !important;
+        width: 100% !important;
+    }
+
+    /* Row 1: Tabs Group */
+    .emp-cert-tabs-group {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: flex-start !important;
+        gap: 6px !important;
+        width: 100% !important;
+        overflow-x: auto !important;
+        scrollbar-width: none !important;
+        -webkit-overflow-scrolling: touch !important;
+        order: 1 !important;
+    }
+
+    .emp-cert-tabs-group::-webkit-scrollbar {
+        display: none !important;
+    }
+
+    .emp-cert-tab-pill {
+        flex: 0 0 auto !important;
+        text-align: center !important;
+        justify-content: center !important;
+        padding: 0 12px !important;
+        height: 32px !important;
+        font-size: 11.5px !important;
+        border-radius: 20px !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        white-space: nowrap !important;
+    }
+
+    .emp-tab-label-short {
+        display: inline !important;
+    }
+
+    .emp-tab-label-full {
+        display: none !important;
+    }
+
+    /* Row 2: Actions Bar (Action Button Left + Filter Button Right) */
+    .emp-cert-tabs-actions {
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        gap: 8px !important;
+        width: 100% !important;
+        order: 2 !important;
+    }
+
+    .emp-cert-action-btns-group {
+        display: flex !important;
+        flex: 1 1 auto !important;
+        min-width: 0 !important;
+        width: auto !important;
+    }
+
+    .emp-btn-upload-outline-blue,
+    .emp-btn-primary-blue-pill {
+        width: 100% !important;
+        height: 36px !important;
+        padding: 0 10px !important;
+        font-size: 12px !important;
+        font-weight: 500 !important;
+        letter-spacing: -0.15px !important;
+        white-space: nowrap !important;
+        justify-content: center !important;
+        border-radius: 8px !important;
+        box-sizing: border-box !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        gap: 6px !important;
+    }
+
+    .emp-btn-upload-outline-blue {
+        color: #215EF8 !important;
+        background: #FFFFFF !important;
+        border: 1px solid #215EF8 !important;
+        font-weight: 600 !important;
+    }
+
+    .emp-btn-primary-blue-pill {
+        color: #FFFFFF !important;
+        background: #2563EB !important;
+    }
+
+    .emp-btn-claim-action {
+        width: 100% !important;
+        height: 36px !important;
+        font-size: 12px !important;
+        font-weight: 500 !important;
+        border-radius: 8px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+
+    .emp-btn-toolbar-outline {
+        flex: 0 0 auto !important;
+        width: auto !important;
+        min-width: 72px !important;
+        height: 36px !important;
+        padding: 0 12px !important;
+        font-size: 12px !important;
+        border-radius: 8px !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 5px !important;
+        box-sizing: border-box !important;
+        border: 1px solid #DDE0EE !important;
+        background: #FFFFFF !important;
+        color: #080808 !important;
+        margin-left: auto !important;
+    }
+
+    .emp-btn-toolbar-outline.filtered {
+        border: 1px solid #2563EB !important;
+        background: #EFF6FF !important;
+        color: #2563EB !important;
+    }
+
+    .emp-btn-toolbar-outline.filtered span:not(.emp-filter-clear-cross) {
+        color: #2563EB !important;
+    }
+
+    .emp-btn-toolbar-outline .emp-filter-clear-cross {
+        color: #EF4444 !important;
+    }
+
+    .emp-filter-menu-dropdown {
+        position: absolute !important;
+        top: calc(100% + 4px) !important;
+        right: 0 !important;
+        left: auto !important;
+        width: 150px !important;
+        z-index: 1000 !important;
+        background: #FFFFFF !important;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12) !important;
+        border-radius: 8px !important;
+        border: 1px solid #E2E8F0 !important;
+    }
+
+    /* =========================================================
+       1. MY CERTIFICATES – RESPONSIVE CARD VIEW (MOBILE)
+       ========================================================= */
+    .emp-my-certs-table-wrapper {
+        width: 100% !important;
+        height: auto !important;
+        min-height: 0 !important;
+        flex: none !important;
+        overflow: visible !important;
+    }
+
+    .emp-my-certs-table-container {
+        background: transparent !important;
+        border: none !important;
+        box-shadow: none !important;
+        padding: 0 !important;
+        height: auto !important;
+        max-height: none !important;
+        overflow: visible !important;
+        flex: none !important;
+    }
+
+    .emp-my-certs-header-row {
+        display: none !important;
+    }
+
+    .emp-my-certs-cards-list {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 10px !important;
+        overflow-y: visible !important;
+        height: auto !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        flex: none !important;
+    }
+
+    .emp-my-certs-card-wrapper {
+        background: #FFFFFF !important;
+        border: 1.5px solid #E3E7F7;
+        border-radius: 12px !important;
+        padding: 12px 14px !important;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04) !important;
+        height: auto !important;
+        min-height: auto !important;
+        flex: none !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+        position: relative !important;
+        overflow: hidden !important;
+    }
+
+    .emp-my-certs-card-wrapper.has-bottom-line {
+        border-bottom-color: #C1D2FF !important;
+        padding-bottom: 4px !important;
+    }
+
+    .emp-my-certs-bottom-line {
+        position: absolute !important;
+        bottom: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        width: 100% !important;
+        height: 4px !important;
+        display: block !important;
+        object-fit: fill !important;
+        pointer-events: none !important;
+        border-bottom-left-radius: 10px !important;
+        border-bottom-right-radius: 10px !important;
+        z-index: 1 !important;
+    }
+
+    .emp-my-certs-card-row {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: stretch !important;
+        gap: 8px !important;
+        width: 100% !important;
+        height: auto !important;
+        min-height: auto !important;
+    }
+
+    /* Card Name Header */
+    .emp-my-certs-card-row .emp-cert-col-name {
+        display: flex !important;
+        align-items: flex-start !important;
+        gap: 10px !important;
+        width: 100% !important;
+    }
+
+    .emp-my-certs-card-row .emp-cert-type-icon-box {
+        width: 32px !important;
+        height: 32px !important;
+        flex-shrink: 0 !important;
+        border-radius: 8px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+
+    .emp-my-certs-card-row .emp-cert-type-icon-box img {
+        width: auto !important;
+        height: auto !important;
+    }
+
+    .emp-my-certs-card-row .emp-cert-main-details {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 2px !important;
+        flex: 1 1 auto !important;
+        min-width: 0 !important;
+    }
+
+    .emp-my-certs-card-row .emp-cert-title-text {
+        font-size: 13.5px !important;
+        font-weight: 600 !important;
+        color: #0F172A !important;
+        line-height: 18px !important;
+        white-space: normal !important;
+        word-break: break-word !important;
+        overflow-wrap: anywhere !important;
+    }
+
+    .emp-my-certs-card-row .emp-cert-category-text {
+        font-size: 11px !important;
+        color: #64748B !important;
+    }
+
+    /* Card Provider Row */
+    .emp-my-certs-card-row .emp-cert-col-provider {
+        display: flex !important;
+        align-items: center !important;
+        width: 100% !important;
+        padding-top: 6px !important;
+        border-top: 1px dashed #F1F5F9 !important;
+    }
+
+    .emp-my-certs-card-row .emp-cert-provider-info {
+        font-size: 12px !important;
+        color: #475569 !important;
+        display: flex !important;
+        align-items: center !important;
+        gap: 6px !important;
+        width: 100% !important;
+    }
+
+    /* Card Schedule Dates Row */
+    .emp-my-certs-card-row .emp-cert-col-schedule {
+        display: flex !important;
+        align-items: center !important;
+        width: 100% !important;
+    }
+
+    .emp-my-certs-card-row .emp-cert-status-info {
+        font-size: 12px !important;
+        display: flex !important;
+        align-items: center !important;
+        gap: 6px !important;
+        width: 100% !important;
+    }
+
+    /* Card Bottom Actions Row */
+    .emp-my-certs-card-row .emp-cert-col-action {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: flex-end !important;
+        gap: 8px !important;
+        width: 100% !important;
+        padding-top: 8px !important;
+        border-top: 1px solid #F1F5F9 !important;
+        margin-top: 2px !important;
+    }
+
+    .emp-my-certs-card-row .emp-icon-action-btn {
+        width: 32px !important;
+        height: 32px !important;
+        border-radius: 6px !important;
+        background: #F8FAFC !important;
+        border: 1px solid #E2E8F0 !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        cursor: pointer !important;
+    }
+
+    /* =========================================================
+       2. REQUESTS – RESPONSIVE CARD VIEW (MOBILE)
+       ========================================================= */
+    .emp-requests-table-wrapper {
+        width: 100% !important;
+        height: auto !important;
+        min-height: 0 !important;
+        flex: none !important;
+        overflow: visible !important;
+    }
+
+    .emp-requests-table-container {
+        background: transparent !important;
+        border: none !important;
+        box-shadow: none !important;
+        padding: 0 !important;
+        height: auto !important;
+        max-height: none !important;
+        overflow: visible !important;
+        flex: none !important;
+    }
+
+    .emp-requests-header-row {
+        display: none !important;
+    }
+
+    .emp-requests-cards-list {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 10px !important;
+        overflow-y: visible !important;
+        height: auto !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        flex: none !important;
+    }
+
+    .emp-requests-card-wrapper {
+        background: #FFFFFF !important;
+        border: 1px solid #E2E8F0 !important;
+        border-radius: 12px !important;
+        padding: 12px 14px !important;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04) !important;
+        height: auto !important;
+        min-height: auto !important;
+        flex: none !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+    }
+
+    .emp-requests-card-row {
+        display: flex !important;
+        flex-direction: column !important;
+        position: relative !important;
+        align-items: stretch !important;
+        gap: 8px !important;
+        width: 100% !important;
+        height: auto !important;
+        min-height: auto !important;
+    }
+
+    /* Request Card Name Header */
+    .emp-requests-card-row .emp-req-col-name {
+        display: flex !important;
+        align-items: flex-start !important;
+        gap: 10px !important;
+        width: 100% !important;
+    }
+
+    .emp-requests-card-row .emp-cert-type-icon-box {
+        width: 32px !important;
+        height: 32px !important;
+        flex-shrink: 0 !important;
+        border-radius: 8px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+
+    .emp-requests-card-row .emp-cert-type-icon-box img {
+        width: 18px !important;
+        height: 18px !important;
+    }
+
+    .emp-requests-card-row .emp-cert-main-details {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 2px !important;
+        flex: 1 1 auto !important;
+        min-width: 0 !important;
+    }
+
+    .emp-requests-card-row .emp-cert-title-text {
+        font-size: 13.5px !important;
+        font-weight: 600 !important;
+        color: #0F172A !important;
+        line-height: 18px !important;
+        white-space: normal !important;
+        word-break: break-word !important;
+        overflow-wrap: anywhere !important;
+    }
+
+    .emp-requests-card-row .emp-cert-category-text {
+        font-size: 11px !important;
+        color: #64748B !important;
+    }
+
+    /* Request Provider */
+    .emp-requests-card-row .emp-req-col-provider {
+        display: flex !important;
+        align-items: center !important;
+        width: 100% !important;
+        padding-top: 6px !important;
+        border-top: 1px dashed #F1F5F9 !important;
+    }
+
+    .emp-requests-card-row .emp-cert-provider-info {
+        font-size: 12px !important;
+        color: #475569 !important;
+        display: flex !important;
+        align-items: center !important;
+        gap: 6px !important;
+        width: 100% !important;
+    }
+
+    /* Request Exam Date */
+    .emp-requests-card-row .emp-req-col-exam-date {
+        display: flex !important;
+        align-items: center !important;
+        width: 100% !important;
+    }
+
+    .emp-requests-card-row .emp-cert-status-info {
+        font-size: 12px !important;
+        display: flex !important;
+        align-items: center !important;
+        gap: 6px !important;
+        width: 100% !important;
+    }
+
+    /* Request Status & Action Toggle Bottom Row */
+    .emp-requests-card-row .emp-req-col-status {
+        display: flex !important;
+        align-items: center !important;
+        width: 100% !important;
+        padding-top: 8px !important;
+        border-top: 1px solid #F1F5F9 !important;
+        margin-top: 2px !important;
+    }
+
+    .emp-requests-card-row .emp-req-col-action {
+        position: absolute !important;
+        bottom: 0 !important;
+        right: 0 !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: flex-end !important;
+    }
+
+    .emp-cert-req-arrow-btn {
+        width: 28px !important;
+        height: 28px !important;
+        border-radius: 6px !important;
+        background: #F1F5F9 !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+
+    .emp-cert-subtabs-bar,
+    .emp-my-certificates-wrapper .emp-reimb-subtabs-bar {
+        overflow-x: auto !important;
+        -webkit-overflow-scrolling: touch !important;
+        scrollbar-width: none !important;
+        gap: 18px !important;
+    }
+
+    .emp-cert-subtabs-bar::-webkit-scrollbar,
+    .emp-my-certificates-wrapper .emp-reimb-subtabs-bar::-webkit-scrollbar {
+        display: none !important;
+    }
+
+    .emp-cert-subtabs-bar .emp-reimb-subtab-btn,
+    .emp-my-certificates-wrapper .emp-reimb-subtab-btn {
+        white-space: nowrap !important;
+        flex-shrink: 0 !important;
+    }
+
+    .emp-icon-action-btn {
+        width: 28px !important;
+        height: 28px !important;
+        border-radius: 6px !important;
+        background: #F8FAFC !important;
+    }
+
+    .emp-icon-action-spacer,
+    .emp-icon-action-spacer-grad {
+        display: none !important;
+    }
+
+    .emp-icon-btn-grad {
+        width: 28px !important;
+        height: 28px !important;
+        margin-right: auto !important;
+    }
+
+    /* =========================================================
+       REIMBURSEMENT CLAIMS – CLEAN COMPACT MOBILE CARDS
+       ========================================================= */
+    .emp-reimb-claims-outer-container {
+        gap: 10px !important;
+        height: auto !important;
+        flex: 0 0 auto !important;
+    }
+
+    .emp-reimb-subtabs-bar {
+        overflow-x: auto !important;
+        gap: 16px !important;
+        padding-bottom: 4px !important;
+        width: 100% !important;
+        scrollbar-width: none !important;
+        flex-shrink: 0 !important;
+    }
+
+    .emp-reimb-subtabs-bar::-webkit-scrollbar {
+        display: none !important;
+    }
+
+    .emp-reimb-claims-container {
+        padding: 0 !important;
+        border: none !important;
+        background: transparent !important;
+        box-shadow: none !important;
+        border-radius: 0 !important;
+        height: auto !important;
+        max-height: none !important;
+        overflow: visible !important;
+        flex: 0 0 auto !important;
+    }
+
+    .emp-reimb-header-row {
+        display: none !important;
+    }
+
+    .emp-reimb-cards-list {
+        overflow-y: visible !important;
+        height: auto !important;
+        gap: 10px !important;
+        padding-right: 0 !important;
+        padding-bottom: 0 !important;
+        flex: 0 0 auto !important;
+    }
+
+    .emp-reimb-card-wrapper {
+        background: #FFFFFF !important;
+        border: 1px solid #E2E8F0 !important;
+        border-radius: 12px !important;
+        padding: 12px 14px !important;
+        gap: 0 !important;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04) !important;
+        height: auto !important;
+        min-height: auto !important;
+        flex: 0 0 auto !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+    }
+
+    .emp-reimb-card-row {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: stretch !important;
+        gap: 0 !important;
+        width: 100% !important;
+        height: auto !important;
+        min-height: auto !important;
+        flex: 0 0 auto !important;
+    }
+
+    /* Key-Value Mobile Card Rows */
+    .emp-reimb-mobile-label {
+        display: inline-block !important;
+        font-size: 12px !important;
+        font-weight: 500 !important;
+        color: #64748B !important;
+        flex-shrink: 0 !important;
+        text-align: left !important;
+    }
+
+    .emp-col-claim-id,
+    .emp-col-cert-title,
+    .emp-col-amount,
+    .emp-col-purchase-date,
+    .emp-col-submitted-on,
+    .emp-col-status,
+    .emp-col-action {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        width: 100% !important;
+        padding: 8px 0 !important;
+        border-bottom: 1px solid #F1F5F9 !important;
+        box-sizing: border-box !important;
+        height: auto !important;
+        min-height: 34px !important;
+        gap: 12px !important;
+    }
+
+    .emp-col-action {
+        border-bottom: none !important;
+        padding-bottom: 2px !important;
+        padding-top: 8px !important;
+    }
+
+    .emp-claim-id-text {
+        font-size: 12.5px !important;
+        font-weight: 600 !important;
+        color: #2563EB !important;
+        text-align: right !important;
+        display: inline-block !important;
+    }
+
+    .emp-claim-cert-value-wrap {
+        display: flex !important;
+        align-items: flex-start !important;
+        justify-content: flex-end !important;
+        margin-left: auto !important;
+        gap: 6px !important;
+        flex: 0 1 auto !important;
+        width: fit-content !important;
+        max-width: calc(100% - 115px) !important;
+        text-align: right !important;
+    }
+
+    .emp-cert-type-icon-box.mini {
+        width: 18px !important;
+        height: 18px !important;
+        border-radius: 5px !important;
+        flex-shrink: 0 !important;
+        margin-top: 1px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+
+    .emp-cert-type-icon-box.mini img {
+        width: 12px !important;
+        height: 12px !important;
+    }
+
+    .emp-claim-cert-name {
+        font-size: 12.5px !important;
+        font-weight: 600 !important;
+        color: #0F172A !important;
+        white-space: normal !important;
+        word-break: normal !important;
+        overflow: visible !important;
+        text-overflow: unset !important;
+        line-height: 16px !important;
+        text-align: right !important;
+        flex: 0 1 auto !important;
+    }
+
+    .emp-claim-amount-text {
+        font-size: 13.5px !important;
+        font-weight: 700 !important;
+        color: #0F172A !important;
+        text-align: right !important;
+        display: inline-block !important;
+    }
+
+    .emp-claim-date-text {
+        font-size: 12px !important;
+        color: #0F172A !important;
+        font-weight: 500 !important;
+        text-align: right !important;
+        display: inline-block !important;
+    }
+
+    .emp-claim-status-box {
+        display: flex !important;
+        justify-content: flex-end !important;
+        align-items: center !important;
+    }
+
+    .emp-icon-action-btn {
+        display: inline-flex !important;
+        align-items: center !important;
+        gap: 5px !important;
+        padding: 4px 10px !important;
+        background: #F8FAFC !important;
+        border: 1px solid #E2E8F0 !important;
+        border-radius: 6px !important;
+        cursor: pointer !important;
+    }
+
+    .emp-reimb-action-toggle-label {
+        display: inline !important;
+        font-size: 11.5px !important;
+        font-weight: 500 !important;
+        color: #475569 !important;
+    }
+
+    /* Expanded Stepper */
+    .emp-cert-timeline-expanded-container {
+        flex-direction: column !important;
+        align-items: stretch !important;
+        gap: 10px !important;
+        padding: 10px !important;
+        border-radius: 8px !important;
+        height: auto !important;
+        flex: 0 0 auto !important;
+    }
+
+    .emp-timeline-stepper-row {
+        overflow-x: auto !important;
+        padding-bottom: 6px !important;
+        justify-content: flex-start !important;
+        width: 100% !important;
+        -webkit-overflow-scrolling: touch !important;
+    }
+
+    .emp-timeline-step-item {
+        min-width: 65px !important;
+        flex-shrink: 0 !important;
+    }
+
+    .emp-step-label {
+        font-size: 12px !important;
+    }
+
+    .emp-step-date {
+        font-size: 11px !important;
+    }
+
+    .emp-tracker-timeline-connector,
+    .emp-timeline-dotline-img {
+        min-width: 12px !important;
+        max-width: 20px !important;
+        margin-top: 12px !important;
+        margin-bottom: 0 !important;
+    }
+
+    /* =========================================================
+       MODALS RESPONSIVE DESIGN (CENTERED MODAL DIALOG)
+       ========================================================= */
+    .emp-cert-modal-overlay {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        bottom: 0 !important;
+        padding: 16px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        background: rgba(0, 0, 0, 0.5) !important;
+        backdrop-filter: blur(4px) !important;
+        z-index: 9999 !important;
+        box-sizing: border-box !important;
+    }
+
+    .emp-cert-modal-container,
+    .cert-modal-card,
+    .emp-req-cert-modal,
+    .claim-modal-container {
+        width: 100% !important;
+        max-width: 440px !important;
+        border-radius: 16px !important;
+        max-height: 86vh !important;
+        overflow-y: auto !important;
+        padding: 20px 16px 20px 16px !important;
+        box-sizing: border-box !important;
+        margin: auto !important;
+        background: #FFFFFF !important;
+        animation: slideUpModalCenter 0.2s ease-out forwards !important;
+    }
+
+    @keyframes slideUpModalCenter {
+        from {
+            opacity: 0;
+            transform: scale(0.96);
+        }
+
+        to {
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
+
+    .emp-cert-modal-header {
+        position: relative !important;
+        display: flex !important;
+        align-items: flex-start !important;
+        justify-content: space-between !important;
+        gap: 12px !important;
+        padding-bottom: 10px !important;
+        margin-bottom: 12px !important;
+        border-bottom: 1px solid #F1F5F9 !important;
+    }
+
+    .emp-req-cert-title {
+        font-size: 18px !important;
+        line-height: 22px !important;
+        padding-right: 32px !important;
+        font-weight: 600 !important;
+    }
+
+    .req-cert-subtitle {
+        font-size: 12.5px !important;
+        line-height: 17px !important;
+        margin-top: 3px !important;
+        color: #64748B !important;
+    }
+
+    .emp-cert-modal-close {
+        position: absolute !important;
+        top: 0 !important;
+        right: 0 !important;
+        width: 32px !important;
+        height: 32px !important;
+        border-radius: 50% !important;
+        background: #F1F5F9 !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        border: none !important;
+    }
+
+    /* Modal Form Stack */
+    .emp-modal-scrollable-body-wrapper {
+        display: flex !important;
+        align-items: stretch !important;
+        flex: 1 !important;
+        min-height: 0 !important;
+        width: 100% !important;
+        position: relative !important;
+        padding: 0 !important;
+        box-sizing: border-box !important;
+        gap: 4px !important;
+    }
+
+    .emp-modal-scroll-track {
+        width: 5px !important;
+        height: 100% !important;
+        flex-shrink: 0 !important;
+        position: relative !important;
+        display: flex !important;
+        flex-direction: column !important;
+        overflow: hidden !important;
+    }
+
+    .emp-modal-scroll-thumb-wrapper,
+    .emp-modal-scroll-icon {
+        width: 5px !important;
+        height: 50px !important;
+    }
+
+    .emp-cert-modal-body,
+    .emp-cert-modal-form-wrapper {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 12px !important;
+        width: 100% !important;
+    }
+
+    .emp-cert-form-row,
+    .form-row,
+    .modal-form-grid,
+    .cert-form-two-col {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 12px !important;
+        width: 100% !important;
+    }
+
+    .emp-cert-form-row .emp-cert-form-group,
+    .emp-cert-form-row .emp-flex-1,
+    .form-row .emp-form-group {
+        width: 100% !important;
+        flex: 0 0 auto !important;
+        min-width: 0 !important;
+    }
+
+    .emp-cert-form-group {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 6px !important;
+        width: 100% !important;
+        margin-bottom: 0 !important;
+    }
+
+    .emp-cert-form-group label {
+        font-size: 13px !important;
+        font-weight: 500 !important;
+        color: #334155 !important;
+    }
+
+    .emp-cert-form-group input,
+    .emp-cert-form-group select,
+    .emp-select-wrapper select,
+    .emp-input-with-icon-left input,
+    .emp-input-with-icon-right input {
+        width: 100% !important;
+        height: 42px !important;
+        font-size: 13.5px !important;
+        box-sizing: border-box !important;
+        border-radius: 8px !important;
+    }
+
+    .emp-input-with-icon-right input {
+        padding-left: 12px !important;
+        padding-right: 44px !important;
+    }
+
+    .emp-input-with-rupee-box {
+        width: 100% !important;
+        height: 30px !important;
+    }
+
+    .emp-input-with-rupee-box input {
+        width: 100% !important;
+        height: 40px !important;
+        font-size: 13.5px !important;
+    }
+
+    .emp-file-dropzone-container {
+        width: 100% !important;
+        height: auto !important;
+        min-height: 64px !important;
+        padding: 14px 10px !important;
+        box-sizing: border-box !important;
+        border-radius: 8px !important;
+    }
+
+    .emp-textarea-wrapper textarea {
+        width: 100% !important;
+        font-size: 13.5px !important;
+    }
+
+    /* Modal Action Buttons - 2 Column Side-by-Side Grid */
+    .emp-cert-modal-footer,
+    .cert-modal-actions,
+    .modal-footer-actions {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        gap: 10px !important;
+        width: 100% !important;
+        margin-top: 14px !important;
+        padding-top: 10px !important;
+        border-top: 1px solid #F1F5F9 !important;
+        box-sizing: border-box !important;
+    }
+
+    .emp-btn-submit-blue,
+    .btn-submit-primary,
+    .btn-upload-submit,
+    .emp-btn-request-primary {
+        order: 1 !important;
+        width: 100% !important;
+        height: 40px !important;
+        border-radius: 8px !important;
+        font-size: 12.5px !important;
+        font-weight: 600 !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        box-sizing: border-box !important;
+        padding: 0 8px !important;
+        white-space: nowrap !important;
+    }
+
+    .emp-btn-cancel-gray {
+        order: 2 !important;
+        width: 100% !important;
+        height: 40px !important;
+        border-radius: 8px !important;
+        font-size: 12px !important;
+        font-weight: 500 !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        box-sizing: border-box !important;
+        padding: 0 8px !important;
+        white-space: nowrap !important;
+    }
+}
+
+/* ==========================================================================
+   4. EXTRA NARROW MOBILE (<= 400px)
+   ========================================================================== */
+@media (max-width: 400px) {
+    .emp-cert-stats-grid {
+        display: grid !important;
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 6px !important;
+        width: 100% !important;
+    }
+
+    .emp-cert-stat-card {
+        padding: 6px 8px !important;
+        gap: 6px !important;
+        min-height: 56px !important;
+    }
+
+    .emp-stat-card-icon-circle {
+        width: 30px !important;
+        height: 30px !important;
+        min-width: 30px !important;
+    }
+
+    .emp-stat-card-icon-circle img {
+        width: 16px !important;
+        height: 16px !important;
+    }
+
+    .emp-stat-value-text {
+        font-size: 15px !important;
+    }
+
+    .emp-stat-label-text {
+        font-size: 9.5px !important;
+        line-height: 12px !important;
+    }
+
+    /* Narrow mobile toolbar buttons */
+    .emp-btn-upload-outline-blue,
+    .emp-btn-primary-blue-pill {
+        font-size: 11px !important;
+        padding: 0 4px !important;
+        gap: 3px !important;
+    }
+
+    .emp-cert-tab-pill {
+        padding: 0 10px !important;
+        font-size: 11px !important;
+    }
+
+    .emp-btn-toolbar-outline {
+        padding: 0 8px !important;
+        font-size: 11px !important;
+        min-width: 60px !important;
+    }
+
+    /* Modal Action buttons narrow mobile */
+    .emp-cert-modal-footer,
+    .cert-modal-actions,
+    .modal-footer-actions {
+        gap: 8px !important;
+    }
+
+    .emp-btn-submit-blue,
+    .emp-btn-cancel-gray,
+    .btn-submit-primary,
+    .btn-upload-submit,
+    .emp-btn-request-primary {
+        font-size: 11px !important;
+        height: 38px !important;
+        padding: 0 4px !important;
+    }
+}
+
+/* ==========================================================================
+   5. GLOBAL DESKTOP — fixed header, scrollable content
+   ========================================================================== */
+@media (min-width: 1024px) {
+    .emp-cert-reimb-page {
+        height: 100vh !important;
+        max-height: 100vh !important;
+        overflow: hidden !important;
+    }
+
+    .emp-cert-scrollable-content {
+        overflow-y: auto !important;
+        scrollbar-width: none !important;
+        -ms-overflow-style: none !important;
+    }
+
+    .emp-cert-scrollable-content::-webkit-scrollbar {
+        display: none !important;
+        width: 0 !important;
+        height: 0 !important;
+    }
+}
+
+/* ==========================================================================
+   6. SHORT-SCREEN FIX (max-height: 700px on desktop)
+   Handles 1366×650 and similar short/zoomed viewports.
+   ========================================================================== */
+@media (min-height: 0px) and (max-height: 700px) and (min-width: 1024px) {
+    .emp-cert-reimb-page {
+        height: 100vh !important;
+        max-height: 100vh !important;
+        overflow: hidden !important;
+    }
+
+    .emp-cert-scrollable-content {
+        overflow-y: auto !important;
+    }
+
+    /* KPI stat cards shrink gracefully */
+    .emp-cert-stat-card {
+        height: auto !important;
+        min-height: 60px !important;
+        padding: 8px 12px !important;
+    }
+
+    /* Tabs bar compact */
+    .emp-cert-tabs-bar-row {
+        margin-bottom: 6px !important;
+    }
+}

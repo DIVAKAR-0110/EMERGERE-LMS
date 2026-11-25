@@ -1,0 +1,355 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700;800;900&display=swap');
+
+/* =========================================================
+   REPORTING MANAGER - DOWNLOAD REPORT MODAL
+   Matches employee/Leaderboard and hr/EmployeeRecords exactly
+   ========================================================= */
+
+.rm-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(15, 23, 42, 0.45);
+    backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+    padding: 16px;
+    box-sizing: border-box;
+    animation: rmModalFadeIn 200ms ease-out forwards;
+}
+
+.rm-modal-content {
+    background: #FFFFFF;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 565px;
+    box-shadow: 0 20px 40px rgba(15, 23, 42, 0.16);
+    padding: 15px 20px;
+    box-sizing: border-box;
+    position: relative;
+    font-family: 'Roboto', sans-serif;
+    animation: rmModalScaleUp 200ms ease-out forwards;
+}
+
+@keyframes rmModalFadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes rmModalScaleUp {
+    from {
+        opacity: 0;
+        transform: scale(0.96);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.rm-modal-close-btn {
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    width: 24px;
+    height: 24px;
+    border-radius: 6px;
+    background: transparent;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #64748B;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.rm-modal-header {
+    margin-bottom: 16px;
+    padding-right: 28px;
+}
+
+.rm-modal-title {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 700;
+    color: #215EF8;
+    line-height: 24px;
+}
+
+.rm-modal-subtitle {
+    margin: 3px 0 0 0;
+    font-size: 13px;
+    font-weight: 400;
+    color: #6B7280;
+    line-height: 16px;
+}
+
+/* Form Group */
+.rm-form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-bottom: 14px;
+}
+
+.rm-form-label {
+    font-size: 12px;
+    font-weight: 400;
+    color: #474747;
+}
+
+/* Custom Dropdown */
+.rm-custom-dropdown-container {
+    position: relative;
+    width: 100%;
+    border-radius: 4px;
+    border: 1px solid #DDE0EE;
+}
+
+.rm-custom-dropdown-trigger {
+    width: 100%;
+    height: 30px;
+    padding: 0 12px;
+    border-radius: 4px;
+    border: 1px solid #DDE0EE;
+    background: #FFFFFF;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    box-sizing: border-box;
+    outline: none;
+}
+
+.rm-custom-dropdown-trigger:hover {
+    border-color: #215EF8;
+}
+
+.rm-custom-dropdown-trigger.active {
+    border-color: #215EF8;
+    box-shadow: 0 0 0 3px rgba(33, 94, 248, 0.12);
+}
+
+.rm-dropdown-trigger-left {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.rm-select-icon {
+    width: 14px;
+    height: 14px;
+    object-fit: contain;
+}
+
+.rm-selected-value-text {
+    font-family: 'Roboto', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    color: #7F7F7F !important;
+}
+
+.rm-dropdown-chevron {
+    width: 9px;
+    height: 10px;
+    object-fit: contain;
+    transition: transform 0.2s ease;
+}
+
+.rm-dropdown-chevron.open {
+    transform: rotate(180deg);
+}
+
+.rm-custom-dropdown-menu {
+    position: absolute;
+    top: calc(100% + 5px);
+    left: 0;
+    right: 0;
+    background: #FFFFFF;
+    border: 1px solid #DDE0EE;
+    border-radius: 8px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    padding: 5px;
+    z-index: 999;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.rm-custom-dropdown-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    color: #000000;
+    cursor: pointer;
+    transition: all 0.12s ease;
+}
+
+.rm-custom-dropdown-item:hover {
+    background: #F1F5F9;
+    color: #215EF8;
+}
+
+.rm-custom-dropdown-item.selected {
+    background: #EFF6FF;
+    color: #215EF8;
+    font-weight: 400;
+}
+
+.rm-item-check {
+    color: #215EF8;
+}
+
+/* Radio Group */
+.rm-radio-group {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.rm-radio-label,
+.rm-radio-label span {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 400;
+    font-size: 13.5px;
+    color: #64748B !important;
+    cursor: pointer;
+    user-select: none;
+}
+
+.rm-radio-input {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 12px;
+    height: 12px;
+    border: 2px solid #BDBDBD;
+    border-radius: 50%;
+    background-color: #FFFFFF;
+    cursor: pointer;
+    position: relative;
+    outline: none;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    flex-shrink: 0;
+    transition: border-color 0.15s ease, border-width 0.1s ease;
+}
+
+.rm-radio-input:hover {
+    border-color: #215EF8;
+}
+
+.rm-radio-input:checked {
+    border: 3px solid #215EF8;
+    background-color: #FFFFFF;
+}
+
+.rm-radio-input:focus {
+    outline: none;
+}
+
+.rm-radio-input:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+/* Checkboxes Group */
+.rm-checkbox-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.rm-checkbox-label,
+.rm-checkbox-label span {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    font-weight: 400;
+    color: #7F7F7F !important;
+    cursor: pointer;
+}
+
+.rm-checkbox-input {
+    width: 12px;
+    height: 12px;
+    accent-color: #215EF8;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* Modal Actions */
+.rm-modal-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 8px;
+    margin-top: 20px;
+    height: 30px;
+}
+
+.rm-btn-cancel {
+    height: 30px;
+    padding: 0 16px;
+    border-radius: 6px;
+    border: 1px solid #DDE7FF;
+    background: #F3F4F8;
+    color: #000000;
+    font-family: 'Roboto', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.rm-btn-cancel:hover {
+    background: #F1F5F9;
+    border-color: #CBD5E1;
+}
+
+.rm-btn-download-action {
+    height: 30px;
+    padding: 0 18px;
+    border-radius: 6px;
+    border: none;
+    background: #215EF8;
+    color: #FFFFFF;
+    font-family: 'Roboto', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.rm-btn-download-action:hover {
+    background: #1D4ED8;
+}
+
+.rm-action-btn-icon {
+    width: 12px;
+    height: 12px;
+    object-fit: contain;
+}

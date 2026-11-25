@@ -1,0 +1,115 @@
+/* =========================================================
+   APP GLOBAL STYLES & RESET
+   ========================================================= */
+
+/* Central Responsive Styles */
+@import './styles/responsive/index.css';
+@import './styles/common/UnifiedStatCards.css';
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar,
+#root::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
+html,
+body {
+  width: 100%;
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  overflow-x: hidden;
+  font-family: 'Roboto', sans-serif;
+  background: #f8fafc;
+}
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Desktop 100vh static viewport fit */
+@media (min-width: 1024px) {
+  html, body {
+    width: 100vw;
+    height: 100vh;
+    max-width: 100vw;
+    max-height: 100vh;
+    overflow: hidden !important;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+
+  #root {
+    width: 100vw;
+    height: 100vh;
+    max-width: 100vw;
+    max-height: 100vh;
+    overflow: hidden !important;
+  }
+}
+
+/* Global button reset */
+button {
+  font-family: inherit;
+  outline: none;
+}
+
+/* Global input reset */
+input, select, textarea {
+  font-family: inherit;
+}
+
+/* =========================================================
+   AUTH-032 FIX: BROWSER PASSWORD/INPUT AUTOFILL & FLOATING LABELS
+   Ensures autofilled values elevate labels automatically in Firefox & WebKit
+   ========================================================= */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active,
+input:autofill,
+input:-moz-ui-autofill {
+  -webkit-box-shadow: 0 0 0 1000px #FFFFFF inset !important;
+  box-shadow: 0 0 0 1000px #FFFFFF inset !important;
+  -webkit-text-fill-color: #000000 !important;
+  caret-color: #000000 !important;
+  transition: background-color 5000s ease-in-out 0s;
+  background-color: #FFFFFF !important;
+}
+
+/* Automatically elevate floating labels when browser autofills input */
+input:autofill + label,
+input:autofill ~ label,
+input:-webkit-autofill + label,
+input:-webkit-autofill ~ label,
+input:-moz-ui-autofill + label,
+input:-moz-ui-autofill ~ label,
+input:not(:placeholder-shown) + label,
+input:not(:placeholder-shown) ~ label,
+.has-value label,
+.floating-label-group input:autofill ~ label,
+.floating-label-group input:-webkit-autofill ~ label,
+.floating-label-group input:not(:placeholder-shown) ~ label {
+  transform: translateY(-50%) scale(0.85);
+  top: 0;
+  opacity: 1;
+  pointer-events: none;
+}

@@ -1,0 +1,181 @@
+/* ============================================================
+   LMS REUSABLE ALERT DIALOG COMPONENT
+   ============================================================ */
+.lms-alert-dialog-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(15, 23, 42, 0.45);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999999;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    animation: fadeInAlertDialogOverlay 0.18s ease-out;
+}
+
+@keyframes fadeInAlertDialogOverlay {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.lms-alert-dialog-card {
+    position: relative;
+    width: min(420px, calc(100vw - 32px));
+    background: #FFFFFF;
+    border-radius: 14px;
+    padding: 28px 24px 22px 24px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(15, 23, 42, 0.06);
+    animation: scaleInAlertDialogCard 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes scaleInAlertDialogCard {
+    from {
+        transform: scale(0.94);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.lms-alert-dialog-close {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    border-radius: 6px;
+    transition: background 0.15s ease;
+}
+
+.lms-alert-dialog-close:hover {
+    background: #F1F5F9;
+}
+
+.lms-alert-dialog-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.lms-alert-dialog-icon-circle {
+    width: 54px;
+    height: 54px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 14px;
+}
+
+.lms-alert-dialog-icon-circle.error {
+    background-color: #FEF2F2;
+    color: #EF4444;
+}
+
+.lms-alert-dialog-icon-circle.warning {
+    background-color: #FFFBEB;
+    color: #F59E0B;
+}
+
+.lms-alert-dialog-icon-circle.info {
+    background-color: #EFF6FF;
+    color: #3B82F6;
+}
+
+.lms-alert-dialog-icon-circle.success {
+    background-color: #F0FDF4;
+    color: #10B981;
+}
+
+.lms-alert-dialog-title {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 700;
+    color: #0F172A;
+    line-height: 1.35;
+}
+
+.lms-alert-dialog-body {
+    width: 100%;
+    margin-bottom: 22px;
+}
+
+.lms-alert-dialog-message {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 500;
+    color: #475569;
+    line-height: 1.55;
+    word-break: break-word;
+}
+
+.lms-alert-dialog-footer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.lms-alert-dialog-btn {
+    min-width: 110px;
+    padding: 9px 24px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #FFFFFF;
+    background-color: #2563EB;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    transition: background-color 0.15s ease, transform 0.1s ease;
+}
+
+.lms-alert-dialog-btn:hover {
+    background-color: #1D4ED8;
+}
+
+.lms-alert-dialog-btn:active {
+    transform: scale(0.98);
+}
+
+.lms-alert-dialog-btn.error {
+    background-color: #f53232;
+}
+
+.lms-alert-dialog-btn.error:hover {
+    background-color: #dd0808;
+}
+
+.lms-alert-dialog-btn.warning {
+    background-color: #D97706;
+}
+
+.lms-alert-dialog-btn.warning:hover {
+    background-color: #B45309;
+}

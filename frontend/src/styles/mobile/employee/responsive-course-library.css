@@ -1,0 +1,253 @@
+/* ==========================================================================
+   ENTERPRISE EMPLOYEE MODULE – COURSE LIBRARY RESPONSIVE STYLES
+   src/styles/mobile/employee/responsive-course-library.css
+   Matches dynamic pagination in CourseLibrary.jsx:
+   - >= 1200px  → 5-col grid  → 10 courses / 9 materials per page
+   - 1024-1199px → 4-col grid → 8 courses / 8 materials per page
+   - 768-1023px  → 2-col grid → 8 courses / 6 materials per page
+   - <= 767px    → 1-col grid → 6 courses / 3 materials per page
+   ========================================================================== */
+
+/* ==========================================================================
+   1. LARGE DESKTOP (> 1280px) – 5 columns (10 materials max: 5 cols x 2 rows)
+   ========================================================================== */
+@media (min-width: 1281px) {
+    .emp-course-library-page {
+        padding: 20px 28px 24px 28px !important;
+    }
+
+    .emp-course-grid {
+        grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
+        gap: 10px !important;
+    }
+
+    .emp-materials-grid {
+        grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
+        gap: 12px !important;
+    }
+}
+
+/* ==========================================================================
+   2. STANDARD LAPTOP / DESKTOP (1200px - 1280px, e.g. 1280x800) – 4 columns (8 materials: 4 cols x 2 rows)
+   ========================================================================== */
+@media (min-width: 1200px) and (max-width: 1280px) {
+    .emp-course-library-page {
+        padding: 20px 24px 24px 24px !important;
+    }
+
+    .emp-course-grid {
+        grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
+        gap: 8px !important;
+    }
+
+    .emp-materials-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+        gap: 10px !important;
+    }
+}
+
+/* ==========================================================================
+   3. SMALL LAPTOP (1024px - 1199px) – 4 columns, 8 per page
+   ========================================================================== */
+@media (min-width: 1024px) and (max-width: 1199px) {
+    .emp-course-library-page {
+        padding: 16px 20px 24px 20px !important;
+    }
+
+    .emp-course-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+        gap: 10px !important;
+    }
+
+    .emp-materials-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+        gap: 10px !important;
+    }
+}
+
+/* ==========================================================================
+   4. TABLET (768px - 1023px) – 2 columns, 8 per page
+   ========================================================================== */
+@media (min-width: 768px) and (max-width: 1023px) {
+    .emp-course-library-page {
+        padding: 16px 18px 28px 18px !important;
+        height: auto !important;
+        min-height: calc(100vh - 60px) !important;
+        overflow-y: auto !important;
+    }
+
+    .emp-course-library-scrollable-content {
+        height: auto !important;
+        overflow-y: visible !important;
+        flex: none !important;
+    }
+
+    .emp-course-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 14px !important;
+        height: auto !important;
+    }
+
+    .emp-materials-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 14px !important;
+    }
+
+    .emp-course-pagination-bar,
+    .emp-materials-pagination-bar {
+        flex-wrap: wrap !important;
+        gap: 8px !important;
+        margin-top: 16px !important;
+    }
+}
+
+/* ==========================================================================
+   5. MOBILE (<= 767px) – 1 column, 6 per page
+   ========================================================================== */
+@media (max-width: 767px) {
+    .emp-course-library-page {
+        width: 100% !important;
+        height: auto !important;
+        min-height: calc(100vh - 56px) !important;
+        padding: 12px 14px 32px 14px !important;
+        overflow-y: auto !important;
+        overflow-x: hidden !important;
+        box-sizing: border-box !important;
+        gap: 10px !important;
+    }
+
+    .emp-course-library-fixed-header {
+        gap: 8px !important;
+    }
+
+    .emp-course-library-action-bar {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: stretch !important;
+        gap: 8px !important;
+    }
+
+    .emp-course-search-container {
+        width: 100% !important;
+    }
+
+    .emp-course-action-buttons {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        gap: 8px !important;
+        width: 100% !important;
+    }
+
+    .emp-btn-track-status,
+    .emp-btn-request-courses {
+        width: 100% !important;
+        height: 30px !important;
+        justify-content: center !important;
+        font-size: 12px !important;
+    }
+
+    .emp-course-filter-bar {
+        flex-direction: row !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        gap: 8px !important;
+    }
+
+    .emp-course-tabs {
+        display: flex !important;
+        gap: 6px !important;
+    }
+
+    .emp-tab-pill {
+        height: 32px !important;
+        padding: 0 12px !important;
+        font-size: 12px !important;
+    }
+
+    .emp-course-controls {
+        display: flex !important;
+        gap: 6px !important;
+    }
+
+    .emp-btn-filter-toggle,
+    .emp-sort-dropdown {
+        height: 30px !important;
+        font-size: 11.5px !important;
+    }
+
+    /* Sub-tabs scroll horizontally without wrap */
+    .emp-course-sub-tabs-bar {
+        display: flex !important;
+        overflow-x: auto !important;
+        -webkit-overflow-scrolling: touch !important;
+        scrollbar-width: none !important;
+        gap: 0 !important;
+        padding-bottom: 0 !important;
+    }
+
+    .emp-course-sub-tabs-bar::-webkit-scrollbar {
+        display: none !important;
+    }
+
+    .emp-course-sub-tab-btn {
+        white-space: nowrap !important;
+        flex-shrink: 0 !important;
+        padding: 0px 12px 5px 12px !important;
+    }
+
+    .emp-course-library-scrollable-content {
+        height: auto !important;
+        overflow-y: visible !important;
+        flex: none !important;
+        padding-right: 0 !important;
+    }
+
+    /* 1-column course grid on mobile */
+    .emp-course-grid {
+        grid-template-columns: 1fr !important;
+        gap: 12px !important;
+        width: 100% !important;
+    }
+
+    /* Study materials 1-column */
+    .emp-materials-grid {
+        grid-template-columns: 1fr !important;
+        gap: 12px !important;
+    }
+
+    /* Pagination: wrap and center on mobile */
+    .emp-course-pagination-bar,
+    .emp-materials-pagination-bar {
+        display: flex !important;
+        flex-wrap: wrap !important;
+        justify-content: center !important;
+        gap: 8px !important;
+        margin-top: 16px !important;
+        padding-bottom: 8px !important;
+    }
+
+    .emp-pagination-text {
+        width: 100% !important;
+        text-align: center !important;
+        font-size: 11px !important;
+        order: 2 !important;
+    }
+
+    .emp-pagination-controls {
+        order: 1 !important;
+    }
+}
+
+/* ==========================================================================
+   6. SMALL MOBILE (<= 480px)
+   ========================================================================== */
+@media (max-width: 480px) {
+    .emp-course-library-page {
+        padding: 10px 10px 32px 10px !important;
+        gap: 8px !important;
+    }
+
+    .emp-course-grid {
+        gap: 10px !important;
+    }
+}

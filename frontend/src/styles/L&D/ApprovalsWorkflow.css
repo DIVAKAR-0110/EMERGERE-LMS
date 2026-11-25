@@ -1,0 +1,2406 @@
+/* ==========================================================================
+   Approvals & Workflow Management CSS
+   ========================================================================== */
+
+.ld-approvals-workflow-page {
+    padding: 20px 24px 16px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    background: #ffffff00;
+    height: 100%;
+    max-height: 100vh;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+/* --------------------------------------------------------------------------
+   Top Stats Grid (4 KPI Cards)
+   -------------------------------------------------------------------------- */
+.ld-aw-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+}
+
+.ld-aw-stat-card {
+    position: relative;
+    background: #FFFFFF;
+    border-radius: 10px;
+    border: 1px solid #E2E8F0;
+    padding: 13px 16px 15px;
+    display: flex;
+    height: 70px;
+    align-items: center;
+    gap: 12px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02);
+    overflow: hidden;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.ld-aw-stat-bottom-line {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 4px;
+    display: block;
+    object-fit: fill;
+    pointer-events: none;
+}
+
+.ld-aw-stat-icon-wrap {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.ld-aw-stat-body {
+    display: flex;
+    flex-direction: column;
+}
+
+.ld-aw-stat-value {
+    font-size: 22px;
+    font-weight: 500;
+    color: #080808;
+    line-height: 1.1;
+}
+
+.ld-aw-stat-label {
+    font-size: 11px;
+    color: #656565;
+    font-weight: 500;
+    margin-top: 2px;
+    white-space: nowrap;
+}
+
+.ld-aw-stat-suffix {
+    font-size: 10px;
+    color: #656565;
+    font-weight: 400;
+    margin-left: 2px;
+}
+
+/* --------------------------------------------------------------------------
+   Controls Row (Pills & History Button)
+   -------------------------------------------------------------------------- */
+.ld-aw-controls-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    margin-top: 2px;
+}
+
+.ld-aw-type-pills {
+    display: flex;
+    align-items: center;
+    background: transparent;
+    padding: 0;
+    gap: 12px;
+}
+
+.ld-aw-type-pill {
+    background: #FFFFFF;
+    border: 1px solid #DDE0EE;
+    border-radius: 9999px;
+    padding: 7px 18px;
+    height: 30px;
+    font-size: 12px;
+    font-weight: 500;
+    color: #000000;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ld-aw-type-pill:hover:not(.active) {
+    background: #F8FAFC;
+    border-color: #CBD5E1;
+    color: #000000;
+}
+
+.ld-aw-type-pill.active {
+    background: #215EF8;
+    color: #FFFFFF;
+    border: 1px solid #215EF8;
+    font-weight: 500;
+    box-shadow: 0 1px 4px rgba(33, 94, 248, 0.25);
+}
+
+.ld-aw-btn-history {
+    background: #FFFFFF;
+    border: 1px solid #2563EB;
+    color: #2563EB;
+    border-radius: 6px;
+    padding: 6px 14px;
+    font-size: 12px;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    white-space: nowrap;
+}
+
+.ld-aw-btn-history:hover {
+    background: #EFF6FF;
+    border-color: #1D4ED8;
+    color: #1D4ED8;
+}
+
+/* --------------------------------------------------------------------------
+   Search Bar Row (Course & Certification Requests)
+   -------------------------------------------------------------------------- */
+.ld-aw-search-row {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.ld-aw-search-box {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background-color: #FFFFFF;
+    border: 1px solid #DDE0EE;
+    border-radius: 6px;
+    padding: 0 12px;
+    height: 30px;
+    width: 360px;
+    max-width: 100%;
+    transition: border-color 0.15s ease;
+    box-sizing: border-box;
+}
+
+.ld-aw-search-box:focus-within {
+    border-color: #215EF8;
+}
+
+.ld-aw-search-icon {
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+    opacity: 0.6;
+}
+
+.ld-aw-search-input {
+    border: none !important;
+    outline: none !important;
+    background: transparent !important;
+    font-size: 12px !important;
+    color: #000000 !important;
+    width: 100% !important;
+    font-family: inherit !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    box-shadow: none !important;
+}
+
+.ld-aw-search-input::placeholder {
+    color: #94A3B8;
+}
+
+.ld-aw-clear-search-btn {
+    border: none;
+    background: transparent;
+    color: #94A3B8;
+    cursor: pointer;
+    font-size: 16px;
+    line-height: 1;
+    padding: 2px 4px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.15s ease;
+    flex-shrink: 0;
+}
+
+/* --------------------------------------------------------------------------
+   Status Sub-Tabs
+   -------------------------------------------------------------------------- */
+.ld-aw-status-tabs-row {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    border-bottom: 1.3px solid #CBD1EA;
+}
+
+.ld-aw-status-tabs {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    border-bottom: 1.3px solid #CBD1EA;
+    padding-bottom: 0px;
+    margin-bottom: -1px;
+}
+
+.ld-aw-status-tabs-row .ld-aw-status-tabs {
+    border-bottom: none;
+    margin-bottom: -1px;
+}
+
+.ld-aw-status-filter-wrap {
+    display: flex;
+    align-items: center;
+    padding-bottom: 6px;
+}
+
+.ld-aw-status-tab {
+    background: transparent;
+    border: none;
+    padding: 6px 20px 10px 20px;
+    font-size: 12px;
+    font-weight: 500;
+    color: #6B6B6B;
+    cursor: pointer;
+    position: relative;
+    transition: color 0.15s ease;
+}
+
+.ld-aw-status-tab:hover {
+    color: #0F172A;
+}
+
+.ld-aw-status-tab.active {
+    color: #215EF8;
+    font-weight: 600;
+}
+
+.ld-aw-status-tab.active::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: #2563EB;
+    border-radius: 2px 2px 0 0;
+    z-index: 2;
+}
+
+/* --------------------------------------------------------------------------
+   Approvals Table Container
+   -------------------------------------------------------------------------- */
+.ld-aw-table-card {
+    background: #FFFFFF;
+    border-radius: 10px;
+    overflow: hidden;
+    flex: 1;
+    min-height: 0;
+    position: relative;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02);
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+}
+
+.ld-aw-reimb-card {
+    display: flex;
+    flex-direction: column;
+}
+
+.ld-aw-table-scroll-container {
+    flex: 1 1 0;
+    width: 100%;
+    margin-right: 0;
+    height: 100%;
+    overflow-y: auto !important;
+    overflow-x: auto;
+    min-height: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scrollbar-width: none !important;
+    -ms-overflow-style: none !important;
+}
+
+.ld-aw-table-scroll-container::-webkit-scrollbar {
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
+}
+
+/* When empty, fix in center without scrollability */
+.ld-aw-table-scroll-container:has(.ld-empty-table-row),
+.ld-aw-table-scroll-container.ld-table-container-empty {
+    overflow: hidden !important;
+    overflow-x: hidden !important;
+    overflow-y: hidden !important;
+}
+
+/* Custom scrollbar track/thumb removed per design */
+.ld-aw-table-scroll-track {
+    display: none !important;
+}
+
+.ld-aw-table-scroll-thumb {
+    width: 4.5px;
+    height: 65px;
+    background-color: #D9D9D9;
+    border-radius: 3.5px;
+    cursor: grab;
+    transition: background-color 0.15s ease;
+    will-change: transform;
+    flex-shrink: 0;
+}
+
+.ld-aw-table-scroll-thumb:hover,
+.ld-aw-table-scroll-thumb.dragging {
+    background-color: #BFBFBF;
+}
+
+.ld-aw-table-scroll-thumb.dragging {
+    cursor: grabbing !important;
+}
+
+.ld-aw-table {
+    width: 100%;
+    min-width: 660px;
+    table-layout: fixed;
+    border-collapse: separate;
+    border-spacing: 0;
+    text-align: left;
+    font-size: 12.5px;
+}
+
+/* Table Header - Modern Lavender (#EDE9FE) */
+.ld-aw-table thead {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: #EDE9FE;
+}
+
+.ld-aw-table th {
+    position: sticky;
+    top: 0;
+    background: #e0e7ff;
+    color: #3730a3;
+    font-size: 12px;
+    font-weight: 500;
+    padding: 12px 10px;
+    border-bottom: 1px solid #E0E5F0;
+    box-shadow: inset 0 -1px 0 #E0E5F0;
+    white-space: nowrap;
+    text-transform: capitalize;
+    z-index: 10;
+}
+
+.ld-aw-table th:first-child,
+.ld-approvals-workflow-page .ld-cm-table th:first-child {
+    padding-left: 24px;
+}
+
+.ld-aw-table th:last-child,
+.ld-approvals-workflow-page .ld-cm-table th:last-child {
+    padding-right: 24px;
+}
+
+.ld-aw-table th.ld-aw-th-sortable,
+.ld-approvals-workflow-page .ld-cm-table th.ld-aw-th-sortable {
+    display: table-cell !important;
+    cursor: pointer;
+    user-select: none;
+    transition: color 0.15s ease, background-color 0.15s ease;
+}
+
+.ld-aw-table .ld-aw-th-content,
+.ld-approvals-workflow-page .ld-cm-table .ld-aw-th-content {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    white-space: nowrap;
+}
+
+.ld-aw-table .ld-aw-sort-icon,
+.ld-approvals-workflow-page .ld-cm-table .ld-aw-sort-icon {
+    width: 12px !important;
+    height: 12px !important;
+    flex-shrink: 0;
+    transition: color 0.15s ease, opacity 0.15s ease, transform 0.15s ease;
+}
+
+.ld-aw-table .ld-aw-sort-icon.inactive,
+.ld-approvals-workflow-page .ld-cm-table .ld-aw-sort-icon.inactive {
+    color: #4f46e5;
+    opacity: 0.5;
+}
+
+.ld-aw-table th.ld-aw-th-sortable:hover .ld-aw-sort-icon.inactive,
+.ld-approvals-workflow-page .ld-cm-table th.ld-aw-th-sortable:hover .ld-aw-sort-icon.inactive {
+    opacity: 0.9;
+    color: #3730a3;
+}
+
+.ld-aw-table .ld-aw-sort-icon.active,
+.ld-approvals-workflow-page .ld-cm-table .ld-aw-sort-icon.active {
+    color: #1e1b4b;
+    opacity: 1;
+}
+
+.ld-aw-table td {
+    padding: 15px 12px;
+    border-bottom: 1px solid #DDE0EE;
+    color: #000000;
+    vertical-align: middle;
+}
+
+.ld-aw-table tbody td:first-child,
+.ld-approvals-workflow-page .ld-cm-table tbody td:first-child {
+    padding-left: 24px;
+}
+
+.ld-aw-table tbody td:last-child,
+.ld-approvals-workflow-page .ld-cm-table tbody td:last-child {
+    padding-right: 24px;
+}
+
+.ld-aw-table tbody tr {
+    transition: background 0.15s ease;
+}
+
+.ld-aw-table tbody tr:hover {
+    background: #F8FAFC;
+}
+
+.ld-aw-table tbody tr:last-child td,
+.ld-approvals-workflow-page .ld-cm-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.ld-aw-table th.ld-aw-th-right {
+    text-align: center;
+    padding-right: 28px !important;
+}
+
+.ld-aw-table th.ld-aw-th-center {
+    text-align: center;
+}
+
+.ld-aw-cell-action {
+    vertical-align: middle;
+    text-align: center !important;
+    padding-right: 28px !important;
+}
+
+.ld-aw-cell-action .ld-aw-history-action-group {
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 8px;
+}
+
+.ld-aw-parent-row-expanded td {
+    border-bottom: none !important;
+}
+
+.ld-aw-expanded-row {
+    background: #FFFFFF !important;
+}
+
+.ld-aw-expanded-row:hover {
+    background: #FFFFFF !important;
+}
+
+.ld-aw-expanded-row td {
+    padding: 0 16px 14px 16px !important;
+    background: #FFFFFF !important;
+    border-bottom: 1px solid #DDE0EE !important;
+}
+
+.ld-aw-cell-id {
+    font-weight: 400;
+    color: #7F7F7F;
+    font-size: 12px;
+    white-space: nowrap;
+}
+
+.ld-aw-request-id-text,
+.ld-aw-request-id-link {
+    background: transparent;
+    border: none;
+    padding: 0;
+    margin: 0;
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 400;
+    color: #000000;
+    cursor: default;
+    text-align: left;
+    text-decoration: none;
+}
+
+.ld-aw-request-id-link:hover {
+    color: #000000;
+    text-decoration: none;
+}
+
+.ld-aw-cell-amount {
+    font-size: 12px;
+    font-weight: 400;
+    color: #000000;
+    white-space: nowrap;
+}
+
+.ld-aw-cell-employee {
+    min-width: 0;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+.ld-aw-employee-cell {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-width: 0;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+.ld-aw-avatar-circle {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #FFFFFF;
+    font-size: 9px;
+    font-weight: 500;
+    flex-shrink: 0;
+}
+
+.ld-aw-employee-meta {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+.ld-aw-employee-name {
+    font-size: 12px;
+    font-weight: 400;
+    color: #000000;
+    line-height: 1.25;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+    width: 100%;
+    max-width: 100%;
+}
+
+.ld-aw-employee-title {
+    font-size: 11px;
+    color: #7F7F7F;
+    font-weight: 400;
+    margin-top: 2px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+    width: 100%;
+    max-width: 100%;
+}
+
+.ld-aw-role-badge {
+    background: #EFF6FF;
+    color: #2563EB;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 9999px;
+    display: inline-block;
+    white-space: nowrap;
+}
+
+.ld-aw-cell-department,
+.ld-aw-cell-course {
+    min-width: 0;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+.ld-aw-course-name {
+    font-size: 12px;
+    font-weight: 400;
+    color: #000000;
+    line-height: 1.35;
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+    max-width: 100%;
+}
+
+.ld-aw-cell-provider {
+    color: #000000;
+    font-size: 13px;
+    font-weight: 400;
+    white-space: nowrap;
+}
+
+.ld-aw-cell-date {
+    color: #000000;
+    font-weight: 400;
+    font-size: 12px;
+    white-space: nowrap;
+}
+
+/* --------------------------------------------------------------------------
+   Action Buttons & Badges
+   -------------------------------------------------------------------------- */
+.ld-aw-actions-wrap {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    white-space: nowrap;
+}
+
+.ld-aw-btn-approve {
+    background: #215EF8;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 6px;
+    padding: 5px 12px;
+    font-size: 11px;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    cursor: pointer;
+    transition: background 0.15s ease;
+    white-space: nowrap;
+}
+
+.ld-aw-btn-approve:hover {
+    background: #1D4ED8;
+}
+
+.ld-aw-btn-reject {
+    background: #F3F4F8;
+    color: #000000;
+    border: 1px solid #DDE7FF;
+    border-radius: 6px;
+    padding: 5px 12px;
+    font-size: 11px;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    white-space: nowrap;
+}
+
+.ld-aw-btn-reject:hover {
+    background: #F1F5F9;
+    color: #EF4444;
+    border-color: #CBD5E1;
+}
+
+.ld-aw-badge-pending,
+.ld-aw-badge-approved,
+.ld-aw-badge-rejected {
+    width: 68px;
+    height: 23px;
+    padding: 0 4px;
+    box-sizing: border-box;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.ld-aw-badge-approved {
+    background: #EEFBF5;
+    border: 0.5px solid #AEEDBE;
+    color: #0EAB62;
+}
+
+.ld-aw-badge-rejected {
+    background-color: #feebea;
+    border: 0.5px solid #ffc7c7;
+    color: #DC2626;
+}
+
+.ld-aw-badge-pending {
+    background: #FFFBEB;
+    border: 0.5px solid #FDE68A;
+    color: #D97706;
+    cursor: default;
+}
+
+.ld-aw-rejected-actions-wrap {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    white-space: nowrap;
+}
+
+.ld-aw-btn-undo {
+    background: #FFFFFF;
+    color: #000000;
+    border: 1px solid #DDE0EE;
+    border-radius: 6px;
+    width: 24px;
+    height: 24px;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+
+.ld-aw-btn-undo:hover {
+    background: #EFF6FF;
+    color: #215EF8;
+    border-color: #BFDBFE;
+    box-shadow: 0 2px 6px rgba(33, 94, 248, 0.15);
+}
+
+/* --------------------------------------------------------------------------
+   Reopen / Undo Confirmation Modal
+   -------------------------------------------------------------------------- */
+.ld-aw-reopen-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(15, 23, 42, 0.45);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 99999;
+    padding: 20px;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    animation: awFadeIn 0.15s ease-out;
+}
+
+@keyframes awFadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.ld-aw-reopen-modal-card {
+    position: relative;
+    background: #FFFFFF;
+    border-radius: 14px;
+    width: 525px;
+    max-width: 100%;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.14);
+    padding: 22px 24px 20px 24px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    animation: awSlideUp 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes awSlideUp {
+    from {
+        opacity: 0;
+        transform: translateY(12px) scale(0.98);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.ld-aw-reopen-close-btn {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    background: transparent;
+    border: none;
+    color: #94A3B8;
+    cursor: pointer;
+    padding: 4px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.15s ease;
+}
+
+.ld-aw-reopen-close-btn:hover {
+    background: #F1F5F9;
+    color: #0F172A;
+}
+
+.ld-aw-reopen-modal-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+}
+
+.ld-aw-reopen-icon-circle {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #EFF6FF;
+    color: #215EF8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.ld-aw-reopen-header-text {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding-right: 20px;
+}
+
+.ld-aw-reopen-title {
+    margin: 0;
+    font-size: 22px;
+    font-weight: 500;
+    color: #215EF8;
+    line-height: 1.3;
+}
+
+.ld-aw-reopen-message {
+    margin: 0;
+    font-size: 13px;
+    font-weight: 400;
+    color: #6B7280;
+}
+
+.ld-aw-reopen-info-box {
+    background: #F8FAFC;
+    border: 1px solid #E2E8F0;
+    border-radius: 8px;
+    padding: 10px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.ld-aw-reopen-info-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 12px;
+    gap: 10px;
+}
+
+.ld-aw-reopen-info-label {
+    color: #7F7F7F;
+    font-weight: 400;
+    flex-shrink: 0;
+}
+
+.ld-aw-reopen-info-val {
+    color: #4d4d4d;
+    font-weight: 500;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: right;
+}
+
+.ld-aw-reopen-reason-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-top: 2px;
+}
+
+.ld-aw-reopen-reason-label {
+    font-size: 12px;
+    font-weight: 500;
+    color: #000000;
+}
+
+.ld-aw-reopen-reason-required {
+    color: #EF4444;
+    margin-left: 2px;
+}
+
+.ld-aw-reopen-textarea-wrap {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #CBD5E1;
+    border-radius: 8px;
+    background: #FFFFFF;
+    overflow: hidden;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.ld-aw-reopen-textarea-wrap.has-error {
+    border-color: #EF4444 !important;
+    background-color: #FFFDFD !important;
+}
+
+.ld-aw-reopen-textarea-wrap:focus-within {
+    border-color: #215EF8;
+    box-shadow: 0 0 0 3px rgba(33, 94, 248, 0.12);
+}
+
+.ld-aw-reopen-textarea-wrap.has-error:focus-within {
+    border-color: #EF4444 !important;
+    box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.12) !important;
+}
+
+.ld-aw-reopen-reason-input {
+    width: 100%;
+    box-sizing: border-box;
+    border: none;
+    background: transparent;
+    padding: 9px 12px 4px 12px;
+    font-size: 12px;
+    font-weight: 400;
+    font-family: inherit;
+    color: #000000;
+    resize: none;
+    height: 74px;
+    overflow-y: auto;
+    outline: none;
+    line-height: 1.45;
+}
+
+.ld-aw-reopen-reason-input::-webkit-scrollbar {
+    width: 5px;
+}
+
+.ld-aw-reopen-reason-input::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.ld-aw-reopen-reason-input::-webkit-scrollbar-thumb {
+    background: #CBD5E1;
+    border-radius: 999px;
+}
+
+.ld-aw-reopen-reason-input::-webkit-scrollbar-thumb:hover {
+    background: #94A3B8;
+}
+
+.ld-aw-reopen-char-count {
+    text-align: right;
+    padding: 2px 10px 6px 10px;
+    font-size: 11px;
+    color: #7F7F7F;
+    font-weight: 500;
+    user-select: none;
+}
+
+.ld-aw-reopen-reason-error {
+    margin: 0;
+    font-size: 12px;
+    color: #EF4444;
+    font-weight: 400;
+}
+
+.ld-aw-reopen-modal-footer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 4px;
+}
+
+.ld-aw-reopen-btn-cancel {
+    background: #FFFFFF;
+    color: #000000;
+    border: 1px solid #CBD5E1;
+    border-radius: 6px;
+    padding: 7px 16px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.ld-aw-reopen-btn-cancel:hover:not(:disabled) {
+    background: #F8FAFC;
+    border-color: #94A3B8;
+    color: #0F172A;
+}
+
+.ld-aw-reopen-btn-confirm {
+    background: #215EF8;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 6px;
+    padding: 7px 18px;
+    font-size: 12px;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(33, 94, 248, 0.25);
+    transition: all 0.15s ease;
+}
+
+.ld-aw-reopen-btn-confirm:hover:not(:disabled) {
+    background: #1D4ED8;
+    box-shadow: 0 4px 10px rgba(33, 94, 248, 0.35);
+}
+
+.ld-aw-reopen-btn-confirm:disabled,
+.ld-aw-reopen-btn-cancel:disabled {
+    opacity: 0.65;
+    cursor: not-allowed;
+}
+
+/* --------------------------------------------------------------------------
+   Reject Request Modal Styles
+   -------------------------------------------------------------------------- */
+.ld-aw-reject-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(15, 23, 42, 0.45);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000005;
+    padding: 20px;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    animation: awFadeIn 0.15s ease-out;
+}
+
+.ld-aw-reject-modal-card {
+    position: relative;
+    background: #FFFFFF;
+    border-radius: 14px;
+    width: 525px;
+    max-width: 100%;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.14);
+    padding: 22px 24px 20px 24px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    animation: awSlideUp 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.ld-aw-reject-close-btn {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    background: transparent;
+    border: none;
+    color: #94A3B8;
+    cursor: pointer;
+    padding: 4px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.15s ease;
+}
+
+.ld-aw-reject-close-btn:hover {
+    background: #F1F5F9;
+    color: #0F172A;
+}
+
+.ld-aw-reject-modal-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+}
+
+.ld-aw-reject-icon-circle {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #FEE2E2;
+    color: #EF4444;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.ld-aw-reject-header-text {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding-right: 20px;
+}
+
+.ld-aw-reject-title {
+    margin: 0;
+    font-size: 22px;
+    font-weight: 500;
+    color: #215EF8;
+    line-height: 1.3;
+}
+
+.ld-aw-reject-message {
+    margin: 0;
+    font-size: 13px;
+    font-weight: 400;
+    color: #6B7280;
+}
+
+.ld-aw-reject-info-box {
+    background: #F8FAFC;
+    border: 1px solid #DDE0EE;
+    border-radius: 8px;
+    padding: 10px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.ld-aw-reject-info-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 12px;
+    gap: 10px;
+}
+
+.ld-aw-reject-info-label {
+    color: #7F7F7F;
+    font-weight: 400;
+    flex-shrink: 0;
+}
+
+.ld-aw-reject-info-val {
+    color: #4D4D4D;
+    font-weight: 500;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: right;
+}
+
+.ld-aw-reject-reason-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-top: 2px;
+}
+
+.ld-aw-reject-reason-label {
+    font-size: 12px;
+    font-weight: 500;
+    color: #000000;
+}
+
+.ld-aw-reject-reason-required {
+    color: #EF4444;
+    margin-left: 2px;
+}
+
+.ld-aw-reject-textarea-wrap {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #CBD5E1;
+    border-radius: 8px;
+    background: #FFFFFF;
+    overflow: hidden;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.ld-aw-reject-textarea-wrap.has-error {
+    border-color: #EF4444 !important;
+    background-color: #FFFDFD !important;
+}
+
+.ld-aw-reject-textarea-wrap:focus-within {
+    border-color: #EF4444;
+    box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.12);
+}
+
+.ld-aw-reject-textarea-wrap.has-error:focus-within {
+    border-color: #EF4444 !important;
+    box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.12) !important;
+}
+
+.ld-aw-reject-reason-input {
+    width: 100%;
+    box-sizing: border-box;
+    border: none;
+    background: transparent;
+    padding: 9px 12px 4px 12px;
+    font-size: 12px;
+    font-weight: 400;
+    font-family: inherit;
+    color: #000000;
+    resize: none;
+    height: 74px;
+    overflow-y: auto;
+    outline: none;
+    line-height: 1.45;
+}
+
+.ld-aw-reject-reason-input::-webkit-scrollbar {
+    width: 5px;
+}
+
+.ld-aw-reject-reason-input::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.ld-aw-reject-reason-input::-webkit-scrollbar-thumb {
+    background: #CBD5E1;
+    border-radius: 999px;
+}
+
+.ld-aw-reject-reason-input::-webkit-scrollbar-thumb:hover {
+    background: #94A3B8;
+}
+
+.ld-aw-reject-char-count {
+    text-align: right;
+    padding: 2px 10px 6px 10px;
+    font-size: 11px;
+    color: #7F7F7F;
+    font-weight: 500;
+    user-select: none;
+}
+
+.ld-aw-reject-reason-error {
+    margin: 0;
+    font-size: 12px;
+    color: #EF4444;
+    font-weight: 400;
+}
+
+.ld-aw-reject-modal-footer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 4px;
+}
+
+.ld-aw-reject-btn-cancel {
+    background: #FFFFFF;
+    color: #000000;
+    border: 1px solid #CBD5E1;
+    border-radius: 6px;
+    padding: 7px 16px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.ld-aw-reject-btn-cancel:hover:not(:disabled) {
+    background: #F8FAFC;
+    border-color: #94A3B8;
+    color: #0F172A;
+}
+
+.ld-aw-reject-btn-confirm {
+    background: #EF4444;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 6px;
+    padding: 7px 18px;
+    font-size: 12px;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(239, 68, 68, 0.25);
+    transition: all 0.15s ease;
+}
+
+.ld-aw-reject-btn-confirm:hover:not(:disabled) {
+    background: #DC2626;
+    box-shadow: 0 4px 10px rgba(239, 68, 68, 0.35);
+}
+
+.ld-aw-reject-btn-confirm:disabled,
+.ld-aw-reject-btn-cancel:disabled {
+    opacity: 0.65;
+    cursor: not-allowed;
+}
+
+/* --------------------------------------------------------------------------
+   History Modal Styles
+   -------------------------------------------------------------------------- */
+.ld-aw-history-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(15, 23, 42, 0.45);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 99999;
+    padding: 24px;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+}
+
+.ld-aw-history-modal-card {
+    position: relative;
+    background: #FFFFFF;
+    border-radius: 16px;
+    width: 900px;
+    max-width: calc(100vw - 48px);
+    height: 385px;
+    max-height: calc(100vh - 48px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    animation: cadScaleUp 0.15s ease;
+    overflow: hidden;
+}
+
+.ld-aw-history-modal-header {
+    padding: 24px 28px 14px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-shrink: 0;
+}
+
+.ld-aw-history-title {
+    margin: 0;
+    font-size: 22px;
+    font-weight: 500;
+    color: #215EF8;
+    line-height: 1.25;
+}
+
+.ld-aw-history-subtitle {
+    margin: 6px 0 0 0;
+    font-size: 13px;
+    color: #6B7280;
+    font-weight: 400;
+}
+
+.ld-aw-history-close-btn {
+    background: transparent;
+    border: none;
+    color: #64748B;
+    cursor: pointer;
+    padding: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    transition: background 0.15s ease, color 0.15s ease;
+}
+
+.ld-aw-history-close-btn:hover {
+    color: #0F172A;
+    background: #F1F5F9;
+}
+
+/* Table Header Row */
+.ld-aw-history-table-header {
+    display: grid;
+    grid-template-columns: 14% 27% 16% 17% 18% 8%;
+    padding: 8px 34px 8px 44px;
+    font-size: 12px;
+    font-weight: 500;
+    color: #7F7F7F;
+    user-select: none;
+    flex-shrink: 0;
+}
+
+.ld-aw-history-modal-body {
+    padding: 4px 18px 20px 28px;
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* Modern clean scrollbar */
+.ld-aw-history-modal-body::-webkit-scrollbar {
+    width: 6px;
+}
+
+.ld-aw-history-modal-body::-webkit-scrollbar-track {
+    background: #F1F5F9;
+    border-radius: 4px;
+}
+
+.ld-aw-history-modal-body::-webkit-scrollbar-thumb {
+    background: #CBD5E1;
+    border-radius: 4px;
+}
+
+.ld-aw-history-modal-body::-webkit-scrollbar-thumb:hover {
+    background: #94A3B8;
+}
+
+/* Accordion Card */
+.ld-aw-history-card-accordion {
+    border: 1px solid #E2E8F0;
+    border-radius: 12px;
+    background: #FFFFFF;
+    overflow: hidden;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+    flex-shrink: 0;
+}
+
+.ld-aw-history-card-accordion:hover {
+    border-color: #CBD5E1;
+}
+
+.ld-aw-history-row-header {
+    display: grid;
+    grid-template-columns: 14% 27% 16% 17% 18% 8%;
+    align-items: center;
+    padding: 14px 16px;
+}
+
+.ld-aw-history-id-text {
+    font-size: 12px;
+    font-weight: 400;
+    color: #000000;
+}
+
+.ld-aw-history-course-wrap {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 0;
+    padding-right: 8px;
+}
+
+.ld-aw-history-book-icon {
+    width: 28px;
+    height: 28px;
+    border-radius: 5px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.ld-aw-history-book-svg {
+    width: 15px;
+    height: 12px;
+    display: block;
+    object-fit: contain;
+}
+
+.ld-aw-history-course-name {
+    font-size: 12px;
+    font-weight: 500;
+    color: #000000;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.ld-aw-history-emp-text,
+.ld-aw-history-date-text {
+    font-size: 12px;
+    font-weight: 400;
+    color: #000000;
+    white-space: nowrap;
+}
+
+.ld-aw-history-amount-text {
+    font-size: 12px;
+    font-weight: 400;
+    color: #000000;
+    white-space: nowrap;
+}
+
+.ld-aw-history-action-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.ld-aw-history-eye-btn {
+    width: 26px;
+    height: 26px;
+    border: 1px solid #DDE0EE;
+    border-radius: 6px;
+    background: #FFFFFF;
+    color: #215EF8;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02);
+    transition: background 0.15s ease, border-color 0.15s ease;
+    padding: 0;
+}
+
+.ld-aw-history-eye-btn:hover {
+    border-color: #215EF8;
+    color: #215EF8;
+    background: #EFF6FF;
+}
+
+.ld-aw-history-chevron-btn {
+    background: transparent;
+    border: none;
+    color: #000000;
+    cursor: pointer;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.15s ease;
+}
+
+.ld-aw-history-chevron-btn:hover {
+    color: #2563EB;
+}
+
+/* Expanded Drawer */
+.ld-aw-history-drawer {
+    background: #F3F4F8;
+    border-radius: 10px;
+    margin: 0 16px 16px 16px;
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+}
+
+.ld-aw-history-subcard {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-shrink: 0;
+    max-width: 170px;
+}
+
+.ld-aw-history-subcard-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    background: #FFFFFF;
+    border: 1px solid #E2E8F0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.ld-aw-history-subcard-details {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 0;
+    overflow: hidden;
+}
+
+.ld-aw-history-subcard-name {
+    font-size: 11px;
+    font-weight: 500;
+    color: #000000;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.ld-aw-history-subcard-course {
+    font-size: 10px;
+    color: #7F7F7F;
+    font-weight: 400;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.ld-aw-history-subcard-date {
+    font-size: 10px;
+    color: #7F7F7F;
+}
+
+/* Stepper inside Drawer */
+.ld-aw-history-stepper {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex: 1;
+}
+
+.ld-aw-hstepper-node {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    min-width: 92px;
+}
+
+.ld-aw-hstepper-icon-wrapper {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 6px;
+    flex-shrink: 0;
+}
+
+.ld-aw-hstepper-icon-img {
+    width: 24px;
+    height: 24px;
+    display: block;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+.ld-aw-hstepper-circle {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #FFFFFF;
+    margin-bottom: 6px;
+}
+
+.ld-aw-hstepper-circle.blue {
+    background: #2563EB;
+}
+
+.ld-aw-hstepper-circle.green {
+    background: #16A34A;
+}
+
+.ld-aw-hstepper-circle.pending {
+    background: #F8FAFC;
+    border: 1.5px dashed #94A3B8;
+    color: #94A3B8;
+}
+
+.ld-aw-hstepper-circle.pending .ld-aw-hstepper-pending-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #94A3B8;
+}
+
+.ld-aw-hstepper-circle.rejected {
+    background-color: #EF4444;
+    border: 1.5px solid #DC2626;
+    color: #FFFFFF;
+}
+
+.ld-aw-hstepper-label {
+    font-size: 11px;
+    font-weight: 400;
+    color: #000000;
+    white-space: nowrap;
+}
+
+.ld-aw-hstepper-date {
+    font-size: 11px;
+    font-weight: 400;
+    color: #7F7F7F;
+    margin-top: 1px;
+    white-space: nowrap;
+}
+
+.ld-aw-hstepper-date.rejected {
+    color: #DC2626 !important;
+    font-weight: 500;
+}
+
+.ld-aw-hstepper-dotted-line {
+    flex: 1;
+    border-top: 2px dotted #b4b4b4;
+    margin: 0 4px;
+    position: relative;
+    top: -15px;
+}
+
+/* Footer */
+.ld-aw-history-modal-footer {
+    padding: 12px 28px;
+    display: flex;
+    justify-content: flex-end;
+    background: #FFFFFF;
+    border-top: 1px solid #F1F5F9;
+    flex-shrink: 0;
+}
+
+.ld-aw-history-ok-btn {
+    background: #2563EB;
+    color: #FFFFFF;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 8px 32px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    transition: background 0.15s ease;
+}
+
+.ld-aw-history-ok-btn:hover {
+    background: #1D4ED8;
+}
+
+/* ==========================================================================
+   APPROVAL HISTORY MODAL - MOBILE RESPONSIVE (Card Transformation)
+   ========================================================================== */
+@media (max-width: 768px) {
+    .ld-aw-history-modal-overlay {
+        padding: 14px 12px !important;
+        align-items: center !important;
+        justify-content: center !important;
+        overflow-y: auto !important;
+        box-sizing: border-box !important;
+    }
+
+    .ld-aw-history-modal-card {
+        width: 100% !important;
+        max-width: 440px !important;
+        height: auto !important;
+        max-height: calc(100dvh - 28px) !important;
+        border-radius: 14px !important;
+        margin: auto !important;
+        box-sizing: border-box !important;
+        display: flex !important;
+        flex-direction: column !important;
+        overflow: hidden !important;
+    }
+
+    .ld-aw-history-modal-header {
+        padding: 16px 16px 10px 16px !important;
+        flex-shrink: 0 !important;
+    }
+
+    .ld-aw-history-title {
+        font-size: 16px !important;
+        line-height: 1.25 !important;
+    }
+
+    .ld-aw-history-subtitle {
+        font-size: 11px !important;
+        line-height: 1.35 !important;
+        margin-top: 3px !important;
+    }
+
+    /* Hide 7-column table header on mobile */
+    .ld-aw-history-table-header {
+        display: none !important;
+    }
+
+    .ld-aw-history-modal-body {
+        padding: 6px 14px 14px 14px !important;
+        gap: 10px !important;
+        max-height: calc(100dvh - 165px) !important;
+        overflow-y: auto !important;
+        overflow-x: hidden !important;
+    }
+
+    /* Transform each row into a structured card */
+    .ld-aw-history-card-accordion {
+        border-radius: 10px !important;
+        box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04) !important;
+        border: 1px solid #E2E8F0 !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+    }
+
+    .ld-aw-history-row-header {
+        display: grid !important;
+        grid-template-columns: 1fr auto auto !important;
+        gap: 8px 8px !important;
+        padding: 12px 14px !important;
+        align-items: center !important;
+        box-sizing: border-box !important;
+        width: 100% !important;
+    }
+
+    /* Row 1: Claim ID (left), Status (middle-right), Actions (right) */
+    .ld-aw-hcol-id {
+        grid-column: 1 !important;
+        grid-row: 1 !important;
+        display: flex !important;
+        align-items: center !important;
+        min-width: 0 !important;
+    }
+
+    .ld-aw-history-id-text {
+        font-size: 11px !important;
+        font-weight: 600 !important;
+        color: #64748B !important;
+        background: #F1F5F9 !important;
+        padding: 2px 7px !important;
+        border-radius: 4px !important;
+        letter-spacing: 0.2px !important;
+    }
+
+    .ld-aw-hcol-status {
+        grid-column: 2 !important;
+        grid-row: 1 !important;
+        display: flex !important;
+        justify-content: flex-end !important;
+    }
+
+    .ld-aw-badge-approved {
+        font-size: 10px !important;
+        padding: 2px 8px !important;
+        border-radius: 99px !important;
+        white-space: nowrap !important;
+    }
+
+    .ld-aw-hcol-action {
+        grid-column: 3 !important;
+        grid-row: 1 !important;
+        display: flex !important;
+        justify-content: flex-end !important;
+    }
+
+    .ld-aw-history-action-group {
+        display: flex !important;
+        align-items: center !important;
+        gap: 6px !important;
+    }
+
+    .ld-aw-history-eye-btn {
+        width: 26px !important;
+        height: 26px !important;
+    }
+
+    /* Row 2: Course / Certification Name (Full width) */
+    .ld-aw-hcol-course {
+        grid-column: 1 / -1 !important;
+        grid-row: 2 !important;
+        width: 100% !important;
+        padding: 2px 0 !important;
+        box-sizing: border-box !important;
+        min-width: 0 !important;
+    }
+
+    .ld-aw-history-course-wrap {
+        display: flex !important;
+        align-items: center !important;
+        gap: 8px !important;
+        width: 100% !important;
+        min-width: 0 !important;
+        padding-right: 0 !important;
+    }
+
+    .ld-aw-history-book-icon {
+        width: 26px !important;
+        height: 26px !important;
+        border-radius: 6px !important;
+        flex-shrink: 0 !important;
+    }
+
+    .ld-aw-history-course-name {
+        font-size: 12.5px !important;
+        font-weight: 600 !important;
+        color: #0F172A !important;
+        white-space: nowrap !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+        flex: 1 !important;
+    }
+
+    /* Row 3: Employee Name (Full width) */
+    .ld-aw-hcol-emp {
+        grid-column: 1 / -1 !important;
+        grid-row: 3 !important;
+        display: flex !important;
+        align-items: center !important;
+        gap: 5px !important;
+        min-width: 0 !important;
+    }
+
+    .ld-aw-hcol-emp::before {
+        content: "Employee:";
+        font-size: 11px !important;
+        color: #64748B !important;
+        font-weight: 500 !important;
+        flex-shrink: 0 !important;
+    }
+
+    .ld-aw-history-emp-text {
+        font-size: 11.5px !important;
+        font-weight: 500 !important;
+        color: #1E293B !important;
+        white-space: nowrap !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+    }
+
+    /* Row 4: Amount & Date (Left & Right) */
+    .ld-aw-hcol-amount {
+        grid-column: 1 !important;
+        grid-row: 4 !important;
+        display: flex !important;
+        align-items: center !important;
+        gap: 5px !important;
+    }
+
+    .ld-aw-hcol-amount::before {
+        content: "Amount:";
+        font-size: 11px !important;
+        color: #64748B !important;
+        font-weight: 500 !important;
+        flex-shrink: 0 !important;
+    }
+
+    .ld-aw-history-amount-text {
+        font-size: 11.5px !important;
+        font-weight: 600 !important;
+        color: #0F172A !important;
+    }
+
+    .ld-aw-hcol-date {
+        grid-column: 2 / -1 !important;
+        grid-row: 4 !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: flex-end !important;
+        gap: 5px !important;
+    }
+
+    .ld-aw-hcol-date::before {
+        content: "Date:";
+        font-size: 11px !important;
+        color: #64748B !important;
+        font-weight: 500 !important;
+        flex-shrink: 0 !important;
+    }
+
+    .ld-aw-history-date-text {
+        font-size: 11px !important;
+        color: #64748B !important;
+    }
+
+    /* Expanded Drawer on Mobile */
+    .ld-aw-history-drawer {
+        flex-direction: column !important;
+        align-items: stretch !important;
+        margin: 0 10px 12px 10px !important;
+        padding: 12px 10px !important;
+        gap: 12px !important;
+        border-radius: 8px !important;
+    }
+
+    .ld-aw-history-subcard {
+        width: 100% !important;
+        gap: 10px !important;
+    }
+
+    .ld-aw-history-stepper {
+        width: 100% !important;
+        overflow-x: auto !important;
+        -webkit-overflow-scrolling: touch !important;
+        padding-bottom: 6px !important;
+        justify-content: flex-start !important;
+        scrollbar-width: thin !important;
+    }
+
+    .ld-aw-hstepper-node {
+        min-width: 76px !important;
+        flex-shrink: 0 !important;
+    }
+
+    .ld-aw-hstepper-label {
+        font-size: 9.5px !important;
+        line-height: 1.2 !important;
+    }
+
+    .ld-aw-hstepper-date {
+        font-size: 9px !important;
+    }
+
+    /* Modal Footer */
+    .ld-aw-history-modal-footer {
+        padding: 10px 16px 14px 16px !important;
+        flex-shrink: 0 !important;
+    }
+
+    .ld-aw-history-ok-btn {
+        height: 32px !important;
+        padding: 0 24px !important;
+        font-size: 12px !important;
+    }
+
+    /* Course & Certification Approval Details Modal (Always render above History Modal) */
+    .ld-cad-modal-overlay {
+        position: fixed !important;
+        inset: 0 !important;
+        background: rgba(15, 23, 42, 0.65) !important;
+        backdrop-filter: blur(5px) !important;
+        -webkit-backdrop-filter: blur(5px) !important;
+        z-index: 10000000 !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        padding: 14px 12px !important;
+        box-sizing: border-box !important;
+        overflow-y: auto !important;
+    }
+
+    .ld-cad-modal-card {
+        width: 100% !important;
+        max-width: 440px !important;
+        max-height: calc(100dvh - 28px) !important;
+        border-radius: 14px !important;
+        margin: auto !important;
+        padding: 18px 18px 16px 18px !important;
+        box-sizing: border-box !important;
+        overflow-y: auto !important;
+    }
+
+    .ld-cad-title {
+        font-size: 15px !important;
+    }
+
+    .ld-cad-subtitle {
+        font-size: 11px !important;
+    }
+}
+
+/* Approvals & Workflow Reimbursement Header Color */
+.ld-approvals-workflow-page .ld-cm-table thead,
+.ld-approvals-workflow-page .ld-cm-table th {
+    background: #e0e7ff !important;
+}
+
+/* =========================================================
+   Table Fill (Matching Course Management 1:1)
+   ========================================================= */
+.ld-aw-table.ld-table-fill,
+.ld-approvals-workflow-page .ld-cm-table.ld-table-fill {
+    height: 100%;
+    flex: 1;
+}
+
+.ld-aw-table.ld-table-fill tbody,
+.ld-approvals-workflow-page .ld-cm-table.ld-table-fill tbody {
+    height: 100%;
+}
+
+.ld-aw-table.ld-table-fill tbody tr,
+.ld-approvals-workflow-page .ld-cm-table.ld-table-fill tbody tr {
+    height: auto;
+}
+
+.ld-aw-table.ld-table-fill tbody tr:last-child td,
+.ld-approvals-workflow-page .ld-cm-table.ld-table-fill tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* =========================================================
+   Pagination Footer (matching Course Management 1:1)
+   ========================================================= */
+.ld-aw-table-card .ld-directory-footer {
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 12px;
+    font-weight: 400;
+    color: #7F7F7F;
+    flex-wrap: wrap;
+    gap: 10px;
+    flex-shrink: 0;
+    background: #FFFFFF;
+    box-sizing: border-box;
+}
+
+.ld-aw-table-card .ld-pagination-controls {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.ld-aw-table-card .ld-page-btn {
+    width: 30px;
+    height: 22px;
+    border-radius: 6px;
+    background: #FFFFFF;
+    border: 1px solid #E2E8F0;
+    color: #666666;
+    font-family: 'Roboto', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.15s ease, border-color 0.15s ease;
+    padding: 0;
+}
+
+.ld-aw-table-card .ld-page-btn:hover:not(:disabled) {
+    background: #F8FAFC;
+    border-color: #CBD5E1;
+    color: #000000;
+}
+
+.ld-aw-table-card .ld-page-btn.active {
+    background: #215EF8;
+    border-color: #215EF8;
+    color: #FFFFFF;
+    font-weight: 600;
+}
+
+.ld-aw-table-card .ld-page-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.ld-aw-table-card .ld-pagination-ellipsis {
+    font-size: 12px;
+    color: #94A3B8;
+    padding: 0 4px;
+    display: inline-flex;
+    align-items: center;
+}
+
+/* ==========================================================================
+   Approvals & Workflow — Card Grid on Tablet & 150% Scaling (<= 1024px)
+   Matching Employee Directory card design
+   ========================================================================== */
+@media (max-width: 1024px) {
+    .ld-approvals-workflow-page {
+        width: 100% !important;
+        height: 100% !important;
+        max-height: 100vh !important;
+        overflow: hidden !important;
+        display: flex !important;
+        flex-direction: column !important;
+        padding: 16px 20px 16px 20px !important;
+        gap: 10px !important;
+        box-sizing: border-box !important;
+    }
+
+    .ld-approvals-workflow-page>*:not(.ld-aw-table-card):not(.ld-aw-course-requests-tab):not(.ld-aw-cert-requests-tab):not(.ld-aw-reimb-tab) {
+        flex-shrink: 0 !important;
+    }
+
+    .ld-aw-course-requests-tab,
+    .ld-aw-cert-requests-tab,
+    .ld-aw-reimb-tab {
+        flex: 1 1 0 !important;
+        min-height: 0 !important;
+        overflow: hidden !important;
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 8px !important;
+    }
+
+    .ld-aw-search-filter-bar,
+    .ld-aw-reimb-filter-bar,
+    .ld-aw-status-tabs {
+        flex-shrink: 0 !important;
+    }
+
+    .ld-aw-table-card {
+        flex: 1 1 0 !important;
+        min-height: 0 !important;
+        height: auto !important;
+        max-height: none !important;
+        overflow: hidden !important;
+        display: flex !important;
+        flex-direction: column !important;
+        background: transparent !important;
+        box-shadow: none !important;
+        border: none !important;
+        padding: 0 !important;
+    }
+
+    .ld-aw-table-scroll-container {
+        flex: 1 1 0 !important;
+        min-height: 0 !important;
+        height: auto !important;
+        max-height: none !important;
+        overflow-y: auto !important;
+        overflow-x: hidden !important;
+        -webkit-overflow-scrolling: touch !important;
+        padding: 0 4px !important;
+        background: transparent !important;
+    }
+
+    .ld-aw-table,
+    .ld-approvals-workflow-page .ld-aw-table,
+    .ld-aw-table.ld-table-fill,
+    .ld-approvals-workflow-page .ld-aw-table.ld-table-fill,
+    .ld-approvals-workflow-page .ld-cm-table.ld-table-fill {
+        min-width: 0 !important;
+        width: 100% !important;
+        height: auto !important;
+        max-height: none !important;
+        flex: none !important;
+        border: none !important;
+    }
+
+    .ld-aw-table thead,
+    .ld-approvals-workflow-page .ld-aw-table thead {
+        display: none !important;
+    }
+
+    .ld-aw-table tbody,
+    .ld-approvals-workflow-page .ld-aw-table tbody,
+    .ld-aw-table.ld-table-fill tbody,
+    .ld-approvals-workflow-page .ld-aw-table.ld-table-fill tbody,
+    .ld-approvals-workflow-page .ld-cm-table.ld-table-fill tbody {
+        display: grid !important;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)) !important;
+        grid-auto-rows: max-content !important;
+        gap: 12px !important;
+        padding: 14px 0 !important;
+        width: 100% !important;
+        height: auto !important;
+        max-height: none !important;
+        min-height: 0 !important;
+        box-sizing: border-box !important;
+        flex: none !important;
+    }
+
+    .ld-aw-table tbody tr,
+    .ld-approvals-workflow-page .ld-aw-table tbody tr,
+    .ld-aw-table.ld-table-fill tbody tr,
+    .ld-approvals-workflow-page .ld-aw-table.ld-table-fill tbody tr,
+    .ld-approvals-workflow-page .ld-cm-table.ld-table-fill tbody tr,
+    .ld-aw-course-table tbody tr,
+    .ld-aw-cert-table tbody tr {
+        height: auto !important;
+        min-height: 0 !important;
+        max-height: none !important;
+        overflow: visible !important;
+        flex: none !important;
+        box-sizing: border-box !important;
+    }
+
+    .ld-aw-table td,
+    .ld-approvals-workflow-page .ld-aw-table td {
+        overflow: visible !important;
+        flex: none !important;
+        height: auto !important;
+        min-height: 28px !important;
+    }
+
+    /* Expanded Workflow Timeline Row in Card Grid */
+    .ld-aw-table tbody tr.ld-aw-expanded-row,
+    .ld-approvals-workflow-page .ld-aw-table tbody tr.ld-aw-expanded-row {
+        grid-column: 1 / -1 !important;
+        width: 100% !important;
+        background: transparent !important;
+        border: none !important;
+        box-shadow: none !important;
+        padding: 0 !important;
+        margin: -4px 0 6px 0 !important;
+        display: block !important;
+        height: auto !important;
+        min-height: 0 !important;
+        max-height: none !important;
+        overflow: visible !important;
+        transform: none !important;
+        cursor: default !important;
+    }
+
+    .ld-aw-table tbody tr.ld-aw-expanded-row:hover,
+    .ld-approvals-workflow-page .ld-aw-table tbody tr.ld-aw-expanded-row:hover {
+        border: none !important;
+        box-shadow: none !important;
+        transform: none !important;
+        background: transparent !important;
+    }
+
+    .ld-aw-table tbody tr.ld-aw-expanded-row td,
+    .ld-approvals-workflow-page .ld-aw-table tbody tr.ld-aw-expanded-row td {
+        display: block !important;
+        width: 100% !important;
+        padding: 0 !important;
+        border: none !important;
+        background: transparent !important;
+        min-height: 0 !important;
+        height: auto !important;
+        overflow: visible !important;
+    }
+
+    .ld-aw-table tbody tr.ld-aw-expanded-row td::before,
+    .ld-approvals-workflow-page .ld-aw-table tbody tr.ld-aw-expanded-row td::before {
+        display: none !important;
+        content: none !important;
+    }
+
+    .ld-aw-table tbody tr.ld-aw-expanded-row .ld-aw-history-drawer,
+    .ld-approvals-workflow-page .ld-aw-table tbody tr.ld-aw-expanded-row .ld-aw-history-drawer {
+        background: #F3F4F8 !important;
+        border: 1px solid #E2E8F0 !important;
+        border-radius: 12px !important;
+        margin: 0 !important;
+        padding: 14px 18px !important;
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        gap: 16px !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+        overflow-x: auto !important;
+        -webkit-overflow-scrolling: touch !important;
+        box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04) !important;
+    }
+
+    .ld-aw-table tbody tr.ld-aw-expanded-row .ld-aw-history-subcard {
+        flex-shrink: 0 !important;
+        min-width: 170px !important;
+    }
+
+    .ld-aw-table tbody tr.ld-aw-expanded-row .ld-aw-history-stepper {
+        flex: 1 1 auto !important;
+        min-width: 480px !important;
+        display: flex !important;
+        align-items: center !important;
+    }
+
+    .ld-aw-table tbody tr.ld-aw-parent-row-expanded {
+        border-color: #215EF8 !important;
+        box-shadow: 0 0 0 1px #215EF8, 0 4px 12px rgba(33, 94, 248, 0.08) !important;
+    }
+
+    .ld-aw-search-row {
+        width: 100% !important;
+    }
+
+    .ld-aw-search-box {
+        width: 100% !important;
+    }
+}

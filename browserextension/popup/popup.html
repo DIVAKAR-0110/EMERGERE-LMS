@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LMS Learning Tracker</title>
+    <link rel="stylesheet" href="popup.css">
+</head>
+
+<body>
+    <div class="popup-container">
+        <header class="popup-header">
+            <div class="header-brand">
+                <span class="brand-dot"></span>
+                <h1>Emergere LMS</h1>
+            </div>
+            <span class="version-badge">v1.0.0</span>
+        </header>
+
+        <main class="popup-body">
+            <!-- Active Session View -->
+            <div id="session-active-view" class="view-panel" style="display: none;">
+                <div class="status-indicator active">
+                    <span class="pulsing-dot"></span>
+                    <span>Session Active</span>
+                </div>
+
+                <div class="course-card-mini">
+                    <h2 id="course-title" class="course-title">Loading Course...</h2>
+                    <p id="account-email" class="account-email">user@domain.com</p>
+                </div>
+
+                <div class="stats-row">
+                    <div class="stat-box">
+                        <span class="stat-label">Active Time</span>
+                        <span id="timer-display" class="stat-value">00:00</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-label">Backend Status</span>
+                        <span id="sync-status" class="stat-value synced">Connected</span>
+                    </div>
+                </div>
+
+                <button id="btn-manual-sync" class="btn btn-primary">
+                    Sync Progress Now
+                </button>
+            </div>
+
+            <!-- Idle / No Session View -->
+            <div id="session-idle-view" class="view-panel">
+                <div class="idle-illustration">🎓</div>
+                <h2>Ready for Learning</h2>
+                <p>Click "Not Started" or "In Progress" on any course card in your LMS Course Library to launch
+                    automated login and tracking.</p>
+
+                <div class="test-account-box">
+                    <span class="test-label">Active Microsoft Account:</span>
+                    <span class="test-email">rdivakar0110@outlook.com</span>
+                </div>
+            </div>
+        </main>
+
+        <footer class="popup-footer">
+            <span id="backend-health-text">Backend: Connecting...</span>
+        </footer>
+    </div>
+
+    <script src="popup.js"></script>
+</body>
+
+</html>

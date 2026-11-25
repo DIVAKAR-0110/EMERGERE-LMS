@@ -1,0 +1,729 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;500;700&family=Roboto:wght@300;400;500;600;700;800;900&display=swap');
+
+/* =========================================================
+   COURSE REQUEST TRACKER MODAL (FIGMA: 1019px x 384px)
+   ========================================================= */
+
+.emp-custom-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(15, 23, 42, 0.45);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 99999;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    animation: fadeInTracker 0.2s ease-out;
+    padding: 16px;
+    box-sizing: border-box;
+}
+
+.emp-tracker-modal {
+    position: relative;
+    width: min(94vw, 1019px);
+    max-width: 1019px;
+    height: auto;
+    max-height: 86vh;
+    border-radius: 10px;
+    background: #FFFFFF;
+    opacity: 1;
+    padding: 15px 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.16);
+    font-family: 'Roboto', sans-serif;
+    animation: scaleInTracker 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    overflow: hidden;
+}
+
+@keyframes fadeInTracker {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes scaleInTracker {
+    from {
+        transform: scale(0.96);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* CLOSE BUTTON */
+.emp-tracker-modal .emp-modal-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+    background: transparent;
+    border: none;
+    outline: none;
+    box-shadow: none;
+    cursor: pointer;
+    z-index: 10;
+    border-radius: 50%;
+    transition: background 0.15s ease;
+}
+
+.emp-tracker-modal .emp-modal-close:hover {
+    background: rgba(0, 0, 0, 0.05);
+}
+
+.emp-tracker-modal .emp-modal-close img {
+    width: 12px;
+    height: 12px;
+    display: block;
+    object-fit: contain;
+}
+
+/* HEADER (TITLE + SUBTITLE) */
+.emp-tracker-modal-header {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    margin-bottom: 4px;
+    flex-shrink: 0;
+}
+
+.emp-tracker-modal-blue-title {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 1.2;
+    letter-spacing: 0%;
+    color: #215EF8;
+    display: flex;
+    align-items: center;
+}
+
+.emp-tracker-modal-header p {
+    margin: 8px 0 0 0;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 1.3;
+    letter-spacing: 0%;
+    color: #6B7280;
+    display: flex;
+    align-items: center;
+}
+
+/* TRACKER LIST */
+.emp-tracker-list {
+    margin-top: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    width: 100%;
+    flex: 1 1 auto;
+    min-height: 0;
+    height: auto;
+    box-sizing: border-box;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-right: 2px;
+}
+
+/* EMPTY STATE */
+.emp-tracker-empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 48px 20px;
+    text-align: center;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.emp-tracker-empty-icon {
+    width: 72px;
+    height: 54px;
+    object-fit: contain;
+    margin-bottom: 12px;
+    opacity: 0.85;
+}
+
+.emp-tracker-empty-text {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 400;
+    color: #7F7F7F;
+    font-family: 'Roboto', sans-serif;
+}
+
+/* INDIVIDUAL COURSE CARD */
+.emp-tracker-card {
+    width: 100%;
+    height: auto;
+    min-height: 88px;
+    border-radius: 10px;
+    background: #F3F4F8;
+    opacity: 1;
+    padding: 14px 20px 14px 17px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-shrink: 0;
+    overflow: visible;
+}
+
+/* LEFT SIDE INFO */
+.emp-tracker-info-side {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    width: 220px;
+    min-width: 185px;
+    max-width: 220px;
+    flex: 0 1 220px;
+}
+
+.emp-tracker-icon-box {
+    width: 30px;
+    height: 30px;
+    border-radius: 5px;
+    background: rgba(33, 94, 248, 1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.emp-tracker-badge-icon {
+    width: 15px;
+    height: 21px;
+    object-fit: contain;
+    display: block;
+}
+
+.emp-tracker-text-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-width: 0;
+    gap: 5px;
+    flex: 1;
+}
+
+.emp-tracker-employee-name {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 1.3;
+    color: #000000;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.emp-tracker-course-title {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    font-size: 11px;
+    line-height: 1.3;
+    color: #7f7f7f;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-top: 2px;
+}
+
+.emp-tracker-request-date {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 11px;
+    line-height: 1.3;
+    color: #7f7f7f;
+    white-space: nowrap;
+    margin-top: 2px;
+}
+
+/* RIGHT SIDE: 5-STEP HORIZONTAL TIMELINE */
+.emp-tracker-timeline {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex: 1 1 auto;
+    min-width: 0;
+    gap: 0;
+    overflow: visible;
+}
+
+.emp-tracker-timeline-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: auto;
+    min-width: 72px;
+    max-width: 130px;
+    flex: 1 1 0;
+    overflow: visible;
+}
+
+/* STEP ICON (28px x 28px) */
+.emp-tracker-step-icon-wrapper {
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.emp-tracker-step-svg {
+    width: 28px;
+    height: 28px;
+    display: block;
+    object-fit: contain;
+}
+
+/* CIRCULAR STEP BADGE (MATCHING CERTIFICATION & REIMBURSEMENT REJECTION UI) */
+.emp-tracker-step-circle {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #FFFFFF;
+    flex-shrink: 0;
+    box-sizing: border-box;
+}
+
+.emp-tracker-step-circle.red {
+    background-color: #EF4444;
+    border: 1.5px solid #DC2626;
+    box-shadow: 0 1px 3px rgba(239, 68, 68, 0.25);
+}
+
+/* STEP LABEL */
+.emp-tracker-step-label {
+    font-family: 'Lato', sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 1.25;
+    letter-spacing: 0%;
+    text-align: center;
+    color: #000000;
+    margin-top: 6px;
+    white-space: normal;
+    overflow-wrap: break-word;
+    display: block;
+    width: 100%;
+}
+
+/* STEP SUBTEXT */
+.emp-tracker-step-sub {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 11px;
+    line-height: 1.25;
+    letter-spacing: 0%;
+    text-align: center;
+    color: #7F7F7F;
+    white-space: normal;
+    overflow-wrap: break-word;
+    margin-top: 2px;
+    display: block;
+    width: 100%;
+}
+
+.emp-tracker-step-sub.emp-pending-text {
+    color: #7f7f7f;
+}
+
+.emp-tracker-step-sub.emp-rejected-text {
+    color: #DC2626 !important;
+    font-weight: 400;
+}
+
+.emp-tracker-step-sub.emp-empty-sub {
+    visibility: hidden;
+}
+
+/* DASHED CONNECTOR LINE (FLEXIBLE SHRINK & GROW) */
+.emp-tracker-timeline-connector {
+    flex: 0.45 1 10px;
+    min-width: 8px;
+    max-width: 48px;
+    height: 0;
+    border-top: 1.5px dashed #B0B7C3;
+    margin-top: 14px;
+}
+
+/* FOOTER ACTIONS */
+.emp-tracker-footer-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 100%;
+    height: 39px;
+    margin-top: 14px;
+    flex-shrink: 0;
+}
+
+.emp-btn-tracker-ok {
+    width: 60px;
+    height: 30px;
+    border-radius: 9px;
+    border: 1px solid #dde7ff;
+    background: #215EF8;
+    color: #ffffff;
+    font-family: 'Roboto', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 20px;
+    letter-spacing: 0%;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    transition: background 0.15s ease;
+}
+
+.emp-btn-tracker-ok:hover {
+    background: #1d4ed8;
+}
+
+/* =========================================================
+   RESPONSIVE MEDIA QUERIES (TABLET & MOBILE)
+   ========================================================= */
+
+/* 1. TABLET & ZOOMED LAPTOP (768px - 1023px): keep Info Left + Timeline Right */
+@media (max-width: 1023px) {
+    .emp-tracker-modal {
+        width: min(94vw, 920px) !important;
+        max-width: 94vw !important;
+        padding: 16px 18px !important;
+        max-height: 86vh !important;
+    }
+
+    .emp-tracker-card {
+        flex-direction: row !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        height: auto !important;
+        min-height: 88px !important;
+        max-height: none !important;
+        padding: 14px 16px !important;
+        gap: 12px !important;
+        overflow: visible !important;
+    }
+
+    .emp-tracker-info-side {
+        width: 185px !important;
+        min-width: 165px !important;
+        max-width: 185px !important;
+        flex: 0 0 185px !important;
+        gap: 10px !important;
+    }
+
+    .emp-tracker-timeline {
+        flex: 1 1 auto !important;
+        min-width: 0 !important;
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: flex-start !important;
+        padding: 0 !important;
+        overflow: visible !important;
+    }
+
+    .emp-tracker-timeline-step {
+        width: auto !important;
+        min-width: 0 !important;
+        max-width: none !important;
+        flex: 1 1 0 !important;
+    }
+
+    .emp-tracker-step-label {
+        font-size: 11px !important;
+        white-space: normal !important;
+    }
+
+    .emp-tracker-step-sub {
+        font-size: 10px !important;
+        white-space: normal !important;
+    }
+
+    .emp-tracker-timeline-connector {
+        flex: 0.35 1 6px !important;
+        min-width: 6px !important;
+        max-width: 28px !important;
+    }
+}
+
+/* 2. NARROW TABLET / LARGE PHONE (640px - 767px) */
+@media (max-width: 767px) {
+    .emp-tracker-card {
+        flex-direction: column !important;
+        align-items: stretch !important;
+        padding: 14px 14px !important;
+        gap: 12px !important;
+    }
+
+    .emp-tracker-info-side {
+        width: 100% !important;
+        min-width: 0 !important;
+        max-width: 100% !important;
+        flex: none !important;
+    }
+
+    .emp-tracker-timeline {
+        width: 100% !important;
+        padding: 4px 0 2px 0 !important;
+    }
+}
+
+/* 2. MOBILE PHONES (< 640px down to 360px) */
+@media (max-width: 639px) {
+    .emp-tracker-modal {
+        width: calc(100vw - 20px) !important;
+        max-width: calc(100vw - 20px) !important;
+        max-height: 90vh !important;
+        padding: 16px 12px !important;
+        border-radius: 10px !important;
+    }
+
+    .emp-tracker-modal-blue-title {
+        font-size: 19px !important;
+    }
+
+    .emp-tracker-modal-header p {
+        font-size: 13px !important;
+        margin-top: 4px !important;
+    }
+
+    .emp-tracker-list {
+        gap: 10px !important;
+        margin-top: 10px !important;
+        max-height: none !important;
+    }
+
+    .emp-tracker-card {
+        flex-direction: column !important;
+        align-items: stretch !important;
+        height: auto !important;
+        min-height: auto !important;
+        max-height: none !important;
+        padding: 12px 10px !important;
+        gap: 10px !important;
+    }
+
+    .emp-tracker-info-side {
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
+        gap: 10px !important;
+    }
+
+    .emp-tracker-icon-box {
+        width: 30px !important;
+        height: 30px !important;
+        min-width: 30px !important;
+    }
+
+    .emp-tracker-badge-icon {
+        width: 13px !important;
+        height: 18px !important;
+    }
+
+    .emp-tracker-employee-name {
+        font-size: 13px !important;
+    }
+
+    .emp-tracker-course-title {
+        font-size: 11.5px !important;
+        white-space: normal !important;
+        word-break: break-word !important;
+    }
+
+    .emp-tracker-request-date {
+        font-size: 10.5px !important;
+    }
+
+    /* 5-Step Timeline perfectly distributed on mobile without clipping */
+    .emp-tracker-timeline {
+        width: 100% !important;
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: flex-start !important;
+        padding: 4px 0 2px 0 !important;
+        min-width: 0 !important;
+        gap: 0 !important;
+    }
+
+    .emp-tracker-timeline-step {
+        width: auto !important;
+        min-width: 42px !important;
+        max-width: none !important;
+        flex: 1 1 0 !important;
+    }
+
+    .emp-tracker-step-icon-wrapper {
+        width: 22px !important;
+        height: 22px !important;
+    }
+
+    .emp-tracker-step-svg {
+        width: 22px !important;
+        height: 22px !important;
+    }
+
+    .emp-tracker-step-circle {
+        width: 22px !important;
+        height: 22px !important;
+    }
+
+    .emp-tracker-step-circle svg {
+        width: 11px !important;
+        height: 11px !important;
+    }
+
+    .emp-tracker-step-label {
+        font-size: 10px !important;
+        line-height: 1.15 !important;
+        margin-top: 4px !important;
+        max-width: none !important;
+    }
+
+    .emp-tracker-step-sub {
+        font-size: 8.5px !important;
+        line-height: 1.15 !important;
+        margin-top: 2px !important;
+        max-width: none !important;
+    }
+
+    .emp-tracker-timeline-connector {
+        flex: 1 1 6px !important;
+        min-width: 5px !important;
+        max-width: 22px !important;
+        margin-top: 10px !important;
+    }
+
+    .emp-tracker-footer-actions {
+        margin-top: 10px !important;
+    }
+
+    .emp-btn-tracker-ok {
+        width: 74px !important;
+        height: 34px !important;
+        font-size: 13px !important;
+    }
+}
+
+/* =========================================================
+   SKELETON LOADING STATE FOR COURSE REQUEST TRACKER
+   ========================================================= */
+
+@keyframes emp-tracker-shimmer {
+    0% {
+        background-position: -200% 0;
+    }
+    100% {
+        background-position: 200% 0;
+    }
+}
+
+.emp-tracker-skeleton-shimmer {
+    background: linear-gradient(
+        90deg,
+        #E2E8F0 25%,
+        #EDF2F7 50%,
+        #E2E8F0 75%
+    ) !important;
+    background-size: 200% 100% !important;
+    animation: emp-tracker-shimmer 1.5s ease-in-out infinite !important;
+}
+
+.emp-tracker-skeleton-list {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.emp-tracker-card-skeleton {
+    pointer-events: none;
+    user-select: none;
+}
+
+.emp-tracker-card-skeleton .emp-tracker-icon-box {
+    background: #E2E8F0;
+    border-radius: 5px;
+}
+
+.emp-tracker-skeleton-line {
+    display: block;
+    height: 12px;
+    border-radius: 4px;
+}
+
+.emp-tracker-skel-code {
+    width: 85px;
+    height: 13px;
+}
+
+.emp-tracker-skel-title {
+    width: 155px;
+    height: 11px;
+    margin-top: 2px;
+}
+
+.emp-tracker-skel-date {
+    width: 65px;
+    height: 10px;
+    margin-top: 2px;
+}
+
+.emp-tracker-skeleton-circle {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.emp-tracker-skel-label {
+    width: 52px;
+    height: 11px;
+    margin-top: 8px;
+}
+
+.emp-tracker-skel-sub {
+    width: 62px;
+    height: 10px;
+    margin-top: 5px;
+}
+
+.emp-tracker-skel-connector {
+    opacity: 0.45;
+}

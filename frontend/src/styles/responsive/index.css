@@ -1,0 +1,14 @@
+/* =========================================================
+   CENTRAL RESPONSIVE STYLES AGGREGATOR
+   src/styles/responsive/index.css
+   ========================================================= */
+
+@import './responsive-layout.css';
+@import './responsive-common.css';
+@import './responsive-employee.css';
+@import './responsive-daily-learning.css';
+@import './responsive-certification.css';
+@import './responsive-reportingmanager.css';
+@import './responsive-ld-dashboard.css';
+@import url('./responsive-Learning Records.css');
+@import './responsive-hr.css';

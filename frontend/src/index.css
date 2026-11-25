@@ -1,0 +1,273 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700;800;900&display=swap');
+
+:root {
+  --primary-blue: #2563eb;
+  --primary-hover: #1d4ed8;
+  --bg-gradient: linear-gradient(180deg, #f8fafc 0%, #eef2f6 100%);
+  --text-primary: #111827;
+  --text-secondary: #4b5563;
+  --text-muted: #6b7280;
+  --border-color: #e2e8f0;
+}
+
+* {
+  box-sizing: border-box;
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+}
+
+*::-webkit-scrollbar,
+::-webkit-scrollbar,
+*::-webkit-scrollbar-thumb,
+*::-webkit-scrollbar-track,
+*::-webkit-scrollbar-button,
+*::-webkit-scrollbar-corner {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  background: transparent !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+}
+
+input[list]::-webkit-calendar-picker-indicator {
+  display: none !important;
+  opacity: 0 !important;
+  -webkit-appearance: none !important;
+}
+
+html,
+body,
+#root {
+  width: 100vw;
+  height: 100vh;
+  max-width: 100vw;
+  max-height: 100vh;
+  margin: 0;
+  padding: 0;
+  overflow: hidden !important;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overscroll-behavior: none;
+  font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* Figma Ellipse 683: subtle light-blue ambient glow */
+  background-color: #F3F4F8;
+  background-image:
+    radial-gradient(ellipse 1619px 853px at -64px -97px,
+      rgba(15, 83, 232, 0.90) 2%,
+      transparent 70%),
+    radial-gradient(ellipse 850px 850px at 100% 100%,
+      rgba(70, 112, 226, 0.7) 2%,
+      transparent 70%);
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  color: var(--text-primary);
+}
+
+button,
+input,
+select,
+textarea {
+  font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+/* =============================================================
+   GLOBAL SKELETON LOADING & EMPTY STATES (CEO/L&D PARITY)
+   ============================================================= */
+
+@keyframes ld-skeleton-pulse {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.4;
+  }
+}
+
+.ld-skeleton-block,
+.ld-skeleton-pulse {
+  display: inline-block;
+  background: #E8EDF5;
+  border-radius: 4px;
+  animation: ld-skeleton-pulse 1.4s ease-in-out infinite;
+  min-height: 8px;
+  vertical-align: middle;
+}
+
+.ld-skeleton-circle {
+  display: inline-block;
+  background: #E8EDF5;
+  border-radius: 50%;
+  animation: ld-skeleton-pulse 1.4s ease-in-out infinite;
+  flex-shrink: 0;
+}
+
+.ld-table-skeleton-row {
+  pointer-events: none;
+}
+
+.ld-table-skeleton-cell {
+  padding: 12px 14px;
+  vertical-align: middle;
+  border-bottom: 1px solid #E0E5F0;
+}
+
+.ld-table-skeleton-row:last-child .ld-table-skeleton-cell {
+  border-bottom: none;
+}
+
+.ld-table-skeleton-cell::after,
+.ld-table-skeleton-cell::before {
+  display: none !important;
+}
+
+/* Empty State Card Container */
+.ld-empty-state-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 36px 20px;
+  text-align: center;
+  color: #7f7f7f;
+  font-size: 13px;
+  font-weight: 500;
+  min-height: 140px;
+}
+
+/* Empty State Table Containers & Icons (Centered in Table View) */
+.ld-empty-table-row,
+.ceo-empty-table-row,
+.hr-empty-table-row {
+  height: 100% !important;
+}
+
+.ld-empty-table-row:hover td,
+.ld-empty-table-row td:hover,
+.ceo-empty-table-row:hover td,
+.ceo-empty-table-row td:hover,
+.hr-empty-table-row:hover td,
+.hr-empty-table-row td:hover {
+  background-color: transparent !important;
+}
+
+.ld-empty-table-cell,
+.ceo-empty-table-cell,
+.hr-empty-table-cell {
+  height: 100% !important;
+  vertical-align: middle !important;
+  text-align: center !important;
+  border-bottom: none !important;
+  padding: 0 !important;
+  background: transparent !important;
+}
+
+.ld-empty-table-state,
+.ceo-empty-table-state,
+.hr-empty-table-state {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 12px !important;
+  height: 100% !important;
+  min-height: 280px !important;
+  padding: 36px 20px !important;
+  text-align: center !important;
+  margin: auto !important;
+  box-sizing: border-box !important;
+}
+
+.ld-empty-table-icon,
+.ceo-empty-table-icon,
+.hr-empty-table-icon {
+  width: 56px !important;
+  height: 56px !important;
+  object-fit: contain !important;
+  opacity: 0.85 !important;
+  margin-bottom: 2px !important;
+  flex-shrink: 0 !important;
+}
+
+/* =============================================================
+   UNIFIED TABLE ACTION VIEW BUTTON SYSTEM (CROSS-APP PARITY)
+   ============================================================= */
+
+.budget-view-btn,
+.ld-btn-action-view,
+.ld-action-view-btn,
+.ld-cm-eye-btn,
+.ld-cm-view-btn,
+.ld-aw-history-eye-btn,
+.ceo-aw-history-eye-btn,
+.hr-aw-history-eye-btn,
+.ld-action-icon-btn.view,
+.rm-btn-table-action {
+  width: 26px !important;
+  height: 26px !important;
+  min-width: 26px !important;
+  min-height: 26px !important;
+  border-radius: 6px !important;
+  background: #FFFFFF !important;
+  border: 1px solid #DDE0EE !important;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02) !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: pointer !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  flex-shrink: 0 !important;
+  box-sizing: border-box !important;
+  transition: background 0.15s ease, border-color 0.15s ease !important;
+}
+
+.budget-view-btn:hover,
+.ld-btn-action-view:hover,
+.ld-action-view-btn:hover,
+.ld-cm-eye-btn:hover,
+.ld-cm-view-btn:hover,
+.ld-aw-history-eye-btn:hover,
+.ceo-aw-history-eye-btn:hover,
+.hr-aw-history-eye-btn:hover,
+.ld-action-icon-btn.view:hover,
+.rm-btn-table-action:hover {
+  background: #EFF6FF !important;
+  border-color: #215EF8 !important;
+}
+
+.budget-view-btn img,
+.budget-view-btn .budget-eye-icon,
+.ld-btn-action-view img,
+.ld-action-view-btn img,
+.ld-action-view-icon,
+.ld-cm-eye-btn img,
+.ld-cm-view-btn img,
+.ld-cm-view-btn .ld-cm-eye-icon,
+.ld-aw-history-eye-btn img,
+.ceo-aw-history-eye-btn img,
+.hr-aw-history-eye-btn img,
+.ld-action-icon-btn.view img,
+.ld-action-icon-btn.view .ld-action-icon-img,
+.rm-btn-table-action img {
+  width: 13px !important;
+  height: 9px !important;
+  display: block !important;
+  object-fit: contain !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}

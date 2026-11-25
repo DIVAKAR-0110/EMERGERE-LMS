@@ -1,0 +1,106 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700;800;900&display=swap');
+
+/* =========================================================
+   STUDY MATERIALS — SUPPLEMENTAL STYLES
+   Core .material-* rules live in CourseLibrary.css.
+   This file adds icon-colour variants and hover polish
+   that are specific to the Study Materials section.
+========================================================= */
+
+.emp-materials-grid,
+.emp-material-card,
+.emp-material-card * {
+    font-family: 'Roboto', sans-serif;
+}
+
+
+/* =========================================================
+   FILE-BOX COLOUR VARIANTS
+   Applied via item.iconColor class on .emp-material-file-box
+========================================================= */
+
+/* PDF — red/rose */
+.emp-material-file-box.emp-pdf-icon,
+.emp-material-file-box.emp-file-box-pdf {
+    background: #FEF1F4 !important;
+    color: #e53e6a;
+}
+
+/* Slide / Presentation / PPT — orange */
+.emp-material-file-box.emp-slide-icon,
+.emp-material-file-box.emp-file-box-ppt {
+    background: #FFF4EE !important;
+    color: #ea6c00;
+}
+
+/* E-Book — green */
+.emp-material-file-box.emp-file-box-ebook {
+    background: #E9F6ED !important;
+    color: #16a34a;
+}
+
+/* Research Paper — cyan / teal */
+.emp-material-file-box.emp-file-box-research {
+    background: #EDFCF8 !important;
+    color: #0d9488;
+}
+
+/* Case Study — soft blue */
+.emp-material-file-box.emp-file-box-casestudy {
+    background: #EFF6FF !important;
+    color: #2563eb;
+}
+
+/* Whitepaper — violet / purple */
+.emp-material-file-box.emp-file-box-whitepaper {
+    background: #F5F3FF !important;
+    color: #7c3aed;
+}
+
+/* Spreadsheet / Excel — emerald */
+.emp-material-file-box.emp-file-box-sheet {
+    background: #ECFDF5 !important;
+    color: #059669;
+}
+
+/* Video — purple */
+.emp-material-file-box.emp-video-icon,
+.emp-material-file-box.emp-file-box-video {
+    background: #f3f0ff !important;
+    color: #7c3aed;
+}
+
+/* Link / URL — teal */
+.emp-material-file-box.emp-link-icon {
+    background: #edfcf8 !important;
+    color: #0d9488;
+}
+
+/* Other / Generic — slate */
+.emp-material-file-box.emp-file-box-other {
+    background: #F1F5F9 !important;
+    color: #475569;
+}
+
+
+/* =========================================================
+   CARD HOVER — lift + shadow
+========================================================= */
+
+.emp-material-card {
+    transition:
+        box-shadow 0.18s ease;
+}
+
+
+
+/* =========================================================
+   DOWNLOAD BUTTON — transition
+========================================================= */
+
+.emp-btn-material-download {
+    transition:
+        background 0.18s ease,
+        border-color 0.18s ease,
+        color 0.18s ease;
+}

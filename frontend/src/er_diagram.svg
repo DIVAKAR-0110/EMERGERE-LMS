@@ -1,0 +1,1138 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="2150" height="1880" viewBox="0 0 2150 1880"
+     xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+     font-family="Helvetica,sans-Serif">
+
+<rect width="2150" height="1880" fill="#ffffff"/>
+
+<!-- ============================================================
+     TITLE
+============================================================ -->
+<text x="1075" y="38" text-anchor="middle" font-size="20" font-weight="bold" fill="#1a1a2e">LMS Frontend — Entity Relationship Diagram</text>
+<text x="1075" y="60" text-anchor="middle" font-size="11" fill="#666">Source: e:\newLMS\LMS\frontend\src\   |   PK = Primary Key  ·  FK = Foreign Key  ·  UQ = Unique</text>
+
+<!-- ============================================================
+     CLUSTER BACKGROUNDS
+============================================================ -->
+<!-- Auth Cluster -->
+<rect x="30" y="80" width="380" height="240" rx="8" fill="#eaf2fb" stroke="#cccccc" stroke-width="1.5"/>
+<text x="220" y="100" text-anchor="middle" font-size="13" font-weight="bold" fill="#333">Authentication</text>
+
+<!-- Employee / Profile Cluster -->
+<rect x="30" y="340" width="380" height="620" rx="8" fill="#eaf7ee" stroke="#cccccc" stroke-width="1.5"/>
+<text x="220" y="360" text-anchor="middle" font-size="13" font-weight="bold" fill="#333">Employee / Profile</text>
+
+<!-- Learning Cluster -->
+<rect x="440" y="80" width="380" height="880" rx="8" fill="#fff6e5" stroke="#cccccc" stroke-width="1.5"/>
+<text x="630" y="100" text-anchor="middle" font-size="13" font-weight="bold" fill="#333">Learning &amp; Courses</text>
+
+<!-- Certification Cluster -->
+<rect x="850" y="80" width="380" height="660" rx="8" fill="#f5eafb" stroke="#cccccc" stroke-width="1.5"/>
+<text x="1040" y="100" text-anchor="middle" font-size="13" font-weight="bold" fill="#333">Certifications &amp; Reimbursements</text>
+
+<!-- Approvals Cluster -->
+<rect x="1260" y="80" width="380" height="500" rx="8" fill="#fdeaea" stroke="#cccccc" stroke-width="1.5"/>
+<text x="1450" y="100" text-anchor="middle" font-size="13" font-weight="bold" fill="#333">Approvals &amp; Workflow</text>
+
+<!-- Budget Cluster -->
+<rect x="1670" y="80" width="380" height="620" rx="8" fill="#e8f4fd" stroke="#cccccc" stroke-width="1.5"/>
+<text x="1860" y="100" text-anchor="middle" font-size="13" font-weight="bold" fill="#333">Budget &amp; Analytics</text>
+
+<!-- Engagement Cluster -->
+<rect x="440" y="980" width="780" height="520" rx="8" fill="#fff8e1" stroke="#cccccc" stroke-width="1.5"/>
+<text x="830" y="1000" text-anchor="middle" font-size="13" font-weight="bold" fill="#333">Engagement &amp; Tracking</text>
+
+<!-- ============================================================
+     HELPER MACROS — Table drawing function (inline per table)
+     Each table: header rect + rows, two cells each row
+     Col widths: name=170, type=60, total=230
+============================================================ -->
+
+<!-- ============================================================
+     TABLE: USER  (x=50, y=110)
+============================================================ -->
+<g id="user">
+  <!-- Header -->
+  <rect x="50" y="110" width="340" height="26" fill="#4a79b0" stroke="#000" stroke-width="0.5"/>
+  <text x="220" y="127" text-anchor="middle" font-size="13" font-weight="bold" fill="white">user</text>
+  <!-- Rows -->
+  <!-- user_id PK -->
+  <rect x="50" y="136" width="270" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="58" y="151" font-size="11" fill="#000">user_id</text>
+  <text x="175" y="151" font-size="13" fill="#000"> </text><text x="180" y="151" font-size="13" font-weight="bold" fill="#b8860b">PK</text>
+  <rect x="320" y="136" width="70" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="325" y="151" font-size="10" font-style="italic" fill="#555">varchar</text>
+  <!-- employee_id UQ -->
+  <rect x="50" y="158" width="270" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="58" y="173" font-size="11" fill="#000">employee_id</text>
+  <text x="175" y="173" font-size="13" font-weight="bold" fill="#2e7d32">UQ</text>
+  <rect x="320" y="158" width="70" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="325" y="173" font-size="10" font-style="italic" fill="#555">varchar</text>
+  <!-- full_name -->
+  <rect x="50" y="180" width="270" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="58" y="195" font-size="11" fill="#000">full_name</text>
+  <rect x="320" y="180" width="70" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="325" y="195" font-size="10" font-style="italic" fill="#555">varchar</text>
+  <!-- work_email UQ -->
+  <rect x="50" y="202" width="270" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="58" y="217" font-size="11" fill="#000">work_email</text>
+  <text x="175" y="217" font-size="13" font-weight="bold" fill="#2e7d32">UQ</text>
+  <rect x="320" y="202" width="70" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="325" y="217" font-size="10" font-style="italic" fill="#555">varchar</text>
+  <!-- role -->
+  <rect x="50" y="224" width="270" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="58" y="239" font-size="11" fill="#000">role</text>
+  <rect x="320" y="224" width="70" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="325" y="239" font-size="10" font-style="italic" fill="#555">enum</text>
+  <!-- token -->
+  <rect x="50" y="246" width="270" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="58" y="261" font-size="11" fill="#000">token</text>
+  <rect x="320" y="246" width="70" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="325" y="261" font-size="10" font-style="italic" fill="#555">varchar</text>
+  <!-- primary_portal -->
+  <rect x="50" y="268" width="270" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="58" y="283" font-size="11" fill="#000">primary_portal</text>
+  <rect x="320" y="268" width="70" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="325" y="283" font-size="10" font-style="italic" fill="#555">enum</text>
+</g>
+
+<!-- ============================================================
+     TABLE: EMPLOYEE  (x=50, y=370)
+============================================================ -->
+<g id="employee">
+  <rect x="50" y="370" width="340" height="26" fill="#3f9142" stroke="#000" stroke-width="0.5"/>
+  <text x="220" y="387" text-anchor="middle" font-size="13" font-weight="bold" fill="white">employee</text>
+  <!-- employee_id PK -->
+  <rect x="50" y="396" width="270" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="58" y="411" font-size="11" fill="#000">employee_id</text>
+  <text x="175" y="411" font-size="13" font-weight="bold" fill="#b8860b">PK</text>
+  <rect x="320" y="396" width="70" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="325" y="411" font-size="10" font-style="italic" fill="#555">varchar</text>
+  <!-- user_id FK -->
+  <rect x="50" y="418" width="270" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="58" y="433" font-size="11" fill="#000">user_id</text>
+  <text x="175" y="433" font-size="13" font-weight="bold" fill="#2e6da4">FK</text>
+  <rect x="320" y="418" width="70" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="325" y="433" font-size="10" font-style="italic" fill="#555">varchar</text>
+  <!-- full_name -->
+  <rect x="50" y="440" width="270" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="58" y="455" font-size="11" fill="#000">full_name</text>
+  <rect x="320" y="440" width="70" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="325" y="455" font-size="10" font-style="italic" fill="#555">varchar</text>
+  <!-- email UQ -->
+  <rect x="50" y="462" width="270" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="58" y="477" font-size="11" fill="#000">email</text>
+  <text x="175" y="477" font-size="13" font-weight="bold" fill="#2e7d32">UQ</text>
+  <rect x="320" y="462" width="70" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="325" y="477" font-size="10" font-style="italic" fill="#555">varchar</text>
+  <!-- department -->
+  <rect x="50" y="484" width="270" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="58" y="499" font-size="11" fill="#000">department</text>
+  <rect x="320" y="484" width="70" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="325" y="499" font-size="10" font-style="italic" fill="#555">varchar</text>
+  <!-- designation -->
+  <rect x="50" y="506" width="270" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="58" y="521" font-size="11" fill="#000">designation</text>
+  <rect x="320" y="506" width="70" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="325" y="521" font-size="10" font-style="italic" fill="#555">varchar</text>
+  <!-- job_location -->
+  <rect x="50" y="528" width="270" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="58" y="543" font-size="11" fill="#000">job_location</text>
+  <rect x="320" y="528" width="70" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="325" y="543" font-size="10" font-style="italic" fill="#555">varchar</text>
+  <!-- mobile_number -->
+  <rect x="50" y="550" width="270" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="58" y="565" font-size="11" fill="#000">mobile_number</text>
+  <rect x="320" y="550" width="70" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="325" y="565" font-size="10" font-style="italic" fill="#555">varchar</text>
+  <!-- reporting_manager FK -->
+  <rect x="50" y="572" width="270" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="58" y="587" font-size="11" fill="#000">reporting_manager_id</text>
+  <text x="215" y="587" font-size="13" font-weight="bold" fill="#2e6da4">FK</text>
+  <rect x="320" y="572" width="70" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="325" y="587" font-size="10" font-style="italic" fill="#555">varchar</text>
+  <!-- date_of_joining -->
+  <rect x="50" y="594" width="270" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="58" y="609" font-size="11" fill="#000">date_of_joining</text>
+  <rect x="320" y="594" width="70" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="325" y="609" font-size="10" font-style="italic" fill="#555">date</text>
+  <!-- learning_status -->
+  <rect x="50" y="616" width="270" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="58" y="631" font-size="11" fill="#000">learning_status</text>
+  <rect x="320" y="616" width="70" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="325" y="631" font-size="10" font-style="italic" fill="#555">enum</text>
+  <!-- about_me -->
+  <rect x="50" y="638" width="270" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="58" y="653" font-size="11" fill="#000">about_me</text>
+  <rect x="320" y="638" width="70" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="325" y="653" font-size="10" font-style="italic" fill="#555">text</text>
+  <!-- technical_skills -->
+  <rect x="50" y="660" width="270" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="58" y="675" font-size="11" fill="#000">technical_skills</text>
+  <rect x="320" y="660" width="70" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="325" y="675" font-size="10" font-style="italic" fill="#555">json</text>
+  <!-- professional_skills -->
+  <rect x="50" y="682" width="270" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="58" y="697" font-size="11" fill="#000">professional_skills</text>
+  <rect x="320" y="682" width="70" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="325" y="697" font-size="10" font-style="italic" fill="#555">json</text>
+  <!-- learning_interests -->
+  <rect x="50" y="704" width="270" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="58" y="719" font-size="11" fill="#000">learning_interests</text>
+  <rect x="320" y="704" width="70" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="325" y="719" font-size="10" font-style="italic" fill="#555">json</text>
+  <!-- avatar_bg -->
+  <rect x="50" y="726" width="270" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="58" y="741" font-size="11" fill="#000">avatar_bg</text>
+  <rect x="320" y="726" width="70" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="325" y="741" font-size="10" font-style="italic" fill="#555">varchar</text>
+  <!-- linkedin_url -->
+  <rect x="50" y="748" width="270" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="58" y="763" font-size="11" fill="#000">linkedin_url</text>
+  <rect x="320" y="748" width="70" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="325" y="763" font-size="10" font-style="italic" fill="#555">varchar</text>
+</g>
+
+<!-- ============================================================
+     TABLE: COURSE  (x=460, y=110)
+============================================================ -->
+<g id="course">
+  <rect x="460" y="110" width="340" height="26" fill="#c0392b" stroke="#000" stroke-width="0.5"/>
+  <text x="630" y="127" text-anchor="middle" font-size="13" font-weight="bold" fill="white">course</text>
+  <!-- course_id PK -->
+  <rect x="460" y="136" width="270" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="468" y="151" font-size="11" fill="#000">course_id</text>
+  <text x="585" y="151" font-size="13" font-weight="bold" fill="#b8860b">PK</text>
+  <rect x="730" y="136" width="70" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="735" y="151" font-size="10" font-style="italic" fill="#555">varchar</text>
+  <!-- title -->
+  <rect x="460" y="158" width="270" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="468" y="173" font-size="11" fill="#000">title</text>
+  <rect x="730" y="158" width="70" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="735" y="173" font-size="10" font-style="italic" fill="#555">varchar</text>
+  <!-- category -->
+  <rect x="460" y="180" width="270" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="468" y="195" font-size="11" fill="#000">category</text>
+  <rect x="730" y="180" width="70" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="735" y="195" font-size="10" font-style="italic" fill="#555">varchar</text>
+  <!-- provider -->
+  <rect x="460" y="202" width="270" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="468" y="217" font-size="11" fill="#000">provider</text>
+  <rect x="730" y="202" width="70" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="735" y="217" font-size="10" font-style="italic" fill="#555">varchar</text>
+  <!-- course_link -->
+  <rect x="460" y="224" width="270" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="468" y="239" font-size="11" fill="#000">course_link</text>
+  <rect x="730" y="224" width="70" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="735" y="239" font-size="10" font-style="italic" fill="#555">varchar</text>
+  <!-- duration -->
+  <rect x="460" y="246" width="270" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="468" y="261" font-size="11" fill="#000">duration</text>
+  <rect x="730" y="246" width="70" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="735" y="261" font-size="10" font-style="italic" fill="#555">varchar</text>
+  <!-- price -->
+  <rect x="460" y="268" width="270" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="468" y="283" font-size="11" fill="#000">price</text>
+  <rect x="730" y="268" width="70" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="735" y="283" font-size="10" font-style="italic" fill="#555">varchar</text>
+  <!-- raw_price -->
+  <rect x="460" y="290" width="270" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="468" y="305" font-size="11" fill="#000">raw_price</text>
+  <rect x="730" y="290" width="70" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="735" y="305" font-size="10" font-style="italic" fill="#555">decimal</text>
+  <!-- icon_type -->
+  <rect x="460" y="312" width="270" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="468" y="327" font-size="11" fill="#000">icon_type</text>
+  <rect x="730" y="312" width="70" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="735" y="327" font-size="10" font-style="italic" fill="#555">varchar</text>
+  <!-- has_crown -->
+  <rect x="460" y="334" width="270" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="468" y="349" font-size="11" fill="#000">has_crown</text>
+  <rect x="730" y="334" width="70" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="735" y="349" font-size="10" font-style="italic" fill="#555">boolean</text>
+  <!-- status -->
+  <rect x="460" y="356" width="270" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="468" y="371" font-size="11" fill="#000">status</text>
+  <rect x="730" y="356" width="70" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="735" y="371" font-size="10" font-style="italic" fill="#555">enum</text>
+</g>
+
+<!-- ============================================================
+     TABLE: COURSE_ENROLLMENT  (x=460, y=400)
+============================================================ -->
+<g id="course_enrollment">
+  <rect x="460" y="400" width="340" height="26" fill="#e67e22" stroke="#000" stroke-width="0.5"/>
+  <text x="630" y="417" text-anchor="middle" font-size="13" font-weight="bold" fill="white">course_enrollment</text>
+  <rect x="460" y="426" width="270" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="468" y="441" font-size="11" fill="#000">enrollment_id</text>
+  <text x="585" y="441" font-size="13" font-weight="bold" fill="#b8860b">PK</text>
+  <rect x="730" y="426" width="70" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="735" y="441" font-size="10" font-style="italic" fill="#555">varchar</text>
+  <rect x="460" y="448" width="270" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="468" y="463" font-size="11" fill="#000">employee_id</text>
+  <text x="585" y="463" font-size="13" font-weight="bold" fill="#2e6da4">FK</text>
+  <rect x="730" y="448" width="70" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="735" y="463" font-size="10" font-style="italic" fill="#555">varchar</text>
+  <rect x="460" y="470" width="270" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="468" y="485" font-size="11" fill="#000">course_id</text>
+  <text x="585" y="485" font-size="13" font-weight="bold" fill="#2e6da4">FK</text>
+  <rect x="730" y="470" width="70" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="735" y="485" font-size="10" font-style="italic" fill="#555">varchar</text>
+  <rect x="460" y="492" width="270" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="468" y="507" font-size="11" fill="#000">enrollment_date</text>
+  <rect x="730" y="492" width="70" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="735" y="507" font-size="10" font-style="italic" fill="#555">date</text>
+  <rect x="460" y="514" width="270" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="468" y="529" font-size="11" fill="#000">progress</text>
+  <rect x="730" y="514" width="70" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="735" y="529" font-size="10" font-style="italic" fill="#555">integer</text>
+  <rect x="460" y="536" width="270" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="468" y="551" font-size="11" fill="#000">last_accessed</text>
+  <rect x="730" y="536" width="70" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="735" y="551" font-size="10" font-style="italic" fill="#555">date</text>
+  <rect x="460" y="558" width="270" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="468" y="573" font-size="11" fill="#000">hours_logged</text>
+  <rect x="730" y="558" width="70" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="735" y="573" font-size="10" font-style="italic" fill="#555">varchar</text>
+  <rect x="460" y="580" width="270" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="468" y="595" font-size="11" fill="#000">status</text>
+  <rect x="730" y="580" width="70" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="735" y="595" font-size="10" font-style="italic" fill="#555">enum</text>
+</g>
+
+<!-- ============================================================
+     TABLE: COURSE_REQUEST  (x=460, y=620)
+============================================================ -->
+<g id="course_request">
+  <rect x="460" y="620" width="340" height="26" fill="#d35400" stroke="#000" stroke-width="0.5"/>
+  <text x="630" y="637" text-anchor="middle" font-size="13" font-weight="bold" fill="white">course_request</text>
+  <rect x="460" y="646" width="270" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="468" y="661" font-size="11" fill="#000">request_id</text>
+  <text x="585" y="661" font-size="13" font-weight="bold" fill="#b8860b">PK</text>
+  <rect x="730" y="646" width="70" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="735" y="661" font-size="10" font-style="italic" fill="#555">varchar</text>
+  <rect x="460" y="668" width="270" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="468" y="683" font-size="11" fill="#000">employee_id</text>
+  <text x="585" y="683" font-size="13" font-weight="bold" fill="#2e6da4">FK</text>
+  <rect x="730" y="668" width="70" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="735" y="683" font-size="10" font-style="italic" fill="#555">varchar</text>
+  <rect x="460" y="690" width="270" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="468" y="705" font-size="11" fill="#000">course_name</text>
+  <rect x="730" y="690" width="70" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="735" y="705" font-size="10" font-style="italic" fill="#555">varchar</text>
+  <rect x="460" y="712" width="270" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="468" y="727" font-size="11" fill="#000">provider</text>
+  <rect x="730" y="712" width="70" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="735" y="727" font-size="10" font-style="italic" fill="#555">varchar</text>
+  <rect x="460" y="734" width="270" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="468" y="749" font-size="11" fill="#000">category</text>
+  <rect x="730" y="734" width="70" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="735" y="749" font-size="10" font-style="italic" fill="#555">varchar</text>
+  <rect x="460" y="756" width="270" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="468" y="771" font-size="11" fill="#000">reason</text>
+  <rect x="730" y="756" width="70" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="735" y="771" font-size="10" font-style="italic" fill="#555">text</text>
+  <rect x="460" y="778" width="270" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="468" y="793" font-size="11" fill="#000">request_date</text>
+  <rect x="730" y="778" width="70" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="735" y="793" font-size="10" font-style="italic" fill="#555">date</text>
+  <rect x="460" y="800" width="270" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="468" y="815" font-size="11" fill="#000">status</text>
+  <rect x="730" y="800" width="70" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="735" y="815" font-size="10" font-style="italic" fill="#555">enum</text>
+  <rect x="460" y="822" width="270" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="468" y="837" font-size="11" fill="#000">amount</text>
+  <rect x="730" y="822" width="70" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="735" y="837" font-size="10" font-style="italic" fill="#555">varchar</text>
+  <rect x="460" y="844" width="270" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="468" y="859" font-size="11" fill="#000">platform</text>
+  <rect x="730" y="844" width="70" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="735" y="859" font-size="10" font-style="italic" fill="#555">varchar</text>
+  <rect x="460" y="866" width="270" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="468" y="881" font-size="11" fill="#000">claim_id</text>
+  <rect x="730" y="866" width="70" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="735" y="881" font-size="10" font-style="italic" fill="#555">varchar</text>
+</g>
+
+<!-- ============================================================
+     TABLE: STUDY_MATERIAL  (x=460, y=910)
+============================================================ -->
+<g id="study_material">
+  <rect x="460" y="910" width="340" height="26" fill="#7f8c8d" stroke="#000" stroke-width="0.5"/>
+  <text x="630" y="927" text-anchor="middle" font-size="13" font-weight="bold" fill="white">study_material</text>
+  <rect x="460" y="936" width="270" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="468" y="951" font-size="11" fill="#000">material_id</text>
+  <text x="585" y="951" font-size="13" font-weight="bold" fill="#b8860b">PK</text>
+  <rect x="730" y="936" width="70" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="735" y="951" font-size="10" font-style="italic" fill="#555">integer</text>
+  <rect x="460" y="958" width="270" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="468" y="973" font-size="11" fill="#000">title</text>
+  <rect x="730" y="958" width="70" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="735" y="973" font-size="10" font-style="italic" fill="#555">varchar</text>
+  <rect x="460" y="980" width="270" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="468" y="995" font-size="11" fill="#000">description</text>
+  <rect x="730" y="980" width="70" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="735" y="995" font-size="10" font-style="italic" fill="#555">varchar</text>
+  <rect x="460" y="1002" width="270" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="468" y="1017" font-size="11" fill="#000">file_type</text>
+  <rect x="730" y="1002" width="70" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="735" y="1017" font-size="10" font-style="italic" fill="#555">varchar</text>
+</g>
+
+<!-- ============================================================
+     TABLE: CERTIFICATE  (x=870, y=110)
+============================================================ -->
+<g id="certificate">
+  <rect x="870" y="110" width="340" height="26" fill="#8e44ad" stroke="#000" stroke-width="0.5"/>
+  <text x="1040" y="127" text-anchor="middle" font-size="13" font-weight="bold" fill="white">certificate</text>
+  <rect x="870" y="136" width="270" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="878" y="151" font-size="11" fill="#000">cert_id</text>
+  <text x="995" y="151" font-size="13" font-weight="bold" fill="#b8860b">PK</text>
+  <rect x="1140" y="136" width="70" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="1145" y="151" font-size="10" font-style="italic" fill="#555">varchar</text>
+  <rect x="870" y="158" width="270" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="878" y="173" font-size="11" fill="#000">employee_id</text>
+  <text x="995" y="173" font-size="13" font-weight="bold" fill="#2e6da4">FK</text>
+  <rect x="1140" y="158" width="70" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="1145" y="173" font-size="10" font-style="italic" fill="#555">varchar</text>
+  <rect x="870" y="180" width="270" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="878" y="195" font-size="11" fill="#000">title</text>
+  <rect x="1140" y="180" width="70" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="1145" y="195" font-size="10" font-style="italic" fill="#555">varchar</text>
+  <rect x="870" y="202" width="270" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="878" y="217" font-size="11" fill="#000">type</text>
+  <rect x="1140" y="202" width="70" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="1145" y="217" font-size="10" font-style="italic" fill="#555">enum</text>
+  <rect x="870" y="224" width="270" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="878" y="239" font-size="11" fill="#000">provider</text>
+  <rect x="1140" y="224" width="70" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="1145" y="239" font-size="10" font-style="italic" fill="#555">varchar</text>
+  <rect x="870" y="246" width="270" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="878" y="261" font-size="11" fill="#000">status</text>
+  <rect x="1140" y="246" width="70" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="1145" y="261" font-size="10" font-style="italic" fill="#555">enum</text>
+  <rect x="870" y="268" width="270" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="878" y="283" font-size="11" fill="#000">issue_date</text>
+  <rect x="1140" y="268" width="70" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="1145" y="283" font-size="10" font-style="italic" fill="#555">date</text>
+  <rect x="870" y="290" width="270" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="878" y="305" font-size="11" fill="#000">expiry_date</text>
+  <rect x="1140" y="290" width="70" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="1145" y="305" font-size="10" font-style="italic" fill="#555">date</text>
+  <rect x="870" y="312" width="270" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="878" y="327" font-size="11" fill="#000">validity_text</text>
+  <rect x="1140" y="312" width="70" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="1145" y="327" font-size="10" font-style="italic" fill="#555">varchar</text>
+  <rect x="870" y="334" width="270" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="878" y="349" font-size="11" fill="#000">credential_id</text>
+  <text x="995" y="349" font-size="13" font-weight="bold" fill="#2e7d32">UQ</text>
+  <rect x="1140" y="334" width="70" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="1145" y="349" font-size="10" font-style="italic" fill="#555">varchar</text>
+  <rect x="870" y="356" width="270" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="878" y="371" font-size="11" fill="#000">has_reimbursement</text>
+  <rect x="1140" y="356" width="70" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="1145" y="371" font-size="10" font-style="italic" fill="#555">boolean</text>
+  <rect x="870" y="378" width="270" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="878" y="393" font-size="11" fill="#000">icon_style</text>
+  <rect x="1140" y="378" width="70" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="1145" y="393" font-size="10" font-style="italic" fill="#555">varchar</text>
+</g>
+
+<!-- ============================================================
+     TABLE: REIMBURSEMENT_CLAIM  (x=870, y=430)
+============================================================ -->
+<g id="reimbursement_claim">
+  <rect x="870" y="430" width="340" height="26" fill="#6c3483" stroke="#000" stroke-width="0.5"/>
+  <text x="1040" y="447" text-anchor="middle" font-size="13" font-weight="bold" fill="white">reimbursement_claim</text>
+  <rect x="870" y="456" width="270" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="878" y="471" font-size="11" fill="#000">claim_id</text>
+  <text x="995" y="471" font-size="13" font-weight="bold" fill="#b8860b">PK</text>
+  <rect x="1140" y="456" width="70" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="1145" y="471" font-size="10" font-style="italic" fill="#555">varchar</text>
+  <rect x="870" y="478" width="270" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="878" y="493" font-size="11" fill="#000">employee_id</text>
+  <text x="995" y="493" font-size="13" font-weight="bold" fill="#2e6da4">FK</text>
+  <rect x="1140" y="478" width="70" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="1145" y="493" font-size="10" font-style="italic" fill="#555">varchar</text>
+  <rect x="870" y="500" width="270" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="878" y="515" font-size="11" fill="#000">cert_id</text>
+  <text x="995" y="515" font-size="13" font-weight="bold" fill="#2e6da4">FK</text>
+  <rect x="1140" y="500" width="70" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="1145" y="515" font-size="10" font-style="italic" fill="#555">varchar</text>
+  <rect x="870" y="522" width="270" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="878" y="537" font-size="11" fill="#000">certificate_title</text>
+  <rect x="1140" y="522" width="70" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="1145" y="537" font-size="10" font-style="italic" fill="#555">varchar</text>
+  <rect x="870" y="544" width="270" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="878" y="559" font-size="11" fill="#000">category</text>
+  <rect x="1140" y="544" width="70" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="1145" y="559" font-size="10" font-style="italic" fill="#555">enum</text>
+  <rect x="870" y="566" width="270" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="878" y="581" font-size="11" fill="#000">provider</text>
+  <rect x="1140" y="566" width="70" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="1145" y="581" font-size="10" font-style="italic" fill="#555">varchar</text>
+  <rect x="870" y="588" width="270" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="878" y="603" font-size="11" fill="#000">amount</text>
+  <rect x="1140" y="588" width="70" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="1145" y="603" font-size="10" font-style="italic" fill="#555">decimal</text>
+  <rect x="870" y="610" width="270" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="878" y="625" font-size="11" fill="#000">purchase_date</text>
+  <rect x="1140" y="610" width="70" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="1145" y="625" font-size="10" font-style="italic" fill="#555">date</text>
+  <rect x="870" y="632" width="270" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="878" y="647" font-size="11" fill="#000">submitted_on</text>
+  <rect x="1140" y="632" width="70" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="1145" y="647" font-size="10" font-style="italic" fill="#555">date</text>
+  <rect x="870" y="654" width="270" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="878" y="669" font-size="11" fill="#000">status</text>
+  <rect x="1140" y="654" width="70" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="1145" y="669" font-size="10" font-style="italic" fill="#555">enum</text>
+  <rect x="870" y="676" width="270" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="878" y="691" font-size="11" fill="#000">invoice_number</text>
+  <text x="995" y="691" font-size="13" font-weight="bold" fill="#2e7d32">UQ</text>
+  <rect x="1140" y="676" width="70" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="1145" y="691" font-size="10" font-style="italic" fill="#555">varchar</text>
+  <rect x="870" y="698" width="270" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="878" y="713" font-size="11" fill="#000">comments</text>
+  <rect x="1140" y="698" width="70" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="1145" y="713" font-size="10" font-style="italic" fill="#555">text</text>
+</g>
+
+<!-- ============================================================
+     TABLE: APPROVAL_WORKFLOW  (x=1280, y=110)
+============================================================ -->
+<g id="approval_workflow">
+  <rect x="1280" y="110" width="340" height="26" fill="#c0392b" stroke="#000" stroke-width="0.5"/>
+  <text x="1450" y="127" text-anchor="middle" font-size="13" font-weight="bold" fill="white">approval_workflow</text>
+  <rect x="1280" y="136" width="270" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="1288" y="151" font-size="11" fill="#000">workflow_id</text>
+  <text x="1405" y="151" font-size="13" font-weight="bold" fill="#b8860b">PK</text>
+  <rect x="1550" y="136" width="70" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="1555" y="151" font-size="10" font-style="italic" fill="#555">varchar</text>
+  <rect x="1280" y="158" width="270" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="1288" y="173" font-size="11" fill="#000">request_id</text>
+  <text x="1405" y="173" font-size="13" font-weight="bold" fill="#2e6da4">FK</text>
+  <rect x="1550" y="158" width="70" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="1555" y="173" font-size="10" font-style="italic" fill="#555">varchar</text>
+  <rect x="1280" y="180" width="270" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="1288" y="195" font-size="11" fill="#000">claim_id</text>
+  <text x="1405" y="195" font-size="13" font-weight="bold" fill="#2e6da4">FK</text>
+  <rect x="1550" y="180" width="70" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="1555" y="195" font-size="10" font-style="italic" fill="#555">varchar</text>
+  <rect x="1280" y="202" width="270" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="1288" y="217" font-size="11" fill="#000">employee_name</text>
+  <rect x="1550" y="202" width="70" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="1555" y="217" font-size="10" font-style="italic" fill="#555">varchar</text>
+  <rect x="1280" y="224" width="270" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="1288" y="239" font-size="11" fill="#000">course_name</text>
+  <rect x="1550" y="224" width="70" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="1555" y="239" font-size="10" font-style="italic" fill="#555">varchar</text>
+  <rect x="1280" y="246" width="270" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="1288" y="261" font-size="11" fill="#000">request_type</text>
+  <rect x="1550" y="246" width="70" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="1555" y="261" font-size="10" font-style="italic" fill="#555">enum</text>
+  <rect x="1280" y="268" width="270" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="1288" y="283" font-size="11" fill="#000">status</text>
+  <rect x="1550" y="268" width="70" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="1555" y="283" font-size="10" font-style="italic" fill="#555">enum</text>
+  <rect x="1280" y="290" width="270" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="1288" y="305" font-size="11" fill="#000">request_date</text>
+  <rect x="1550" y="290" width="70" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="1555" y="305" font-size="10" font-style="italic" fill="#555">date</text>
+  <rect x="1280" y="312" width="270" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="1288" y="327" font-size="11" fill="#000">amount</text>
+  <rect x="1550" y="312" width="70" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="1555" y="327" font-size="10" font-style="italic" fill="#555">varchar</text>
+  <rect x="1280" y="334" width="270" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="1288" y="349" font-size="11" fill="#000">step_employee_request</text>
+  <rect x="1550" y="334" width="70" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="1555" y="349" font-size="10" font-style="italic" fill="#555">boolean</text>
+  <rect x="1280" y="356" width="270" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="1288" y="371" font-size="11" fill="#000">step_ld_approval</text>
+  <rect x="1550" y="356" width="70" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="1555" y="371" font-size="10" font-style="italic" fill="#555">boolean</text>
+  <rect x="1280" y="378" width="270" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="1288" y="393" font-size="11" fill="#000">step_ceo_status</text>
+  <rect x="1550" y="378" width="70" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="1555" y="393" font-size="10" font-style="italic" fill="#555">boolean</text>
+  <rect x="1280" y="400" width="270" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="1288" y="415" font-size="11" fill="#000">step_hr_review</text>
+  <rect x="1550" y="400" width="70" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="1555" y="415" font-size="10" font-style="italic" fill="#555">boolean</text>
+  <rect x="1280" y="422" width="270" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="1288" y="437" font-size="11" fill="#000">step_final</text>
+  <rect x="1550" y="422" width="70" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="1555" y="437" font-size="10" font-style="italic" fill="#555">boolean</text>
+</g>
+
+<!-- ============================================================
+     TABLE: ASSIGNMENT  (x=1280, y=490)
+============================================================ -->
+<g id="assignment">
+  <rect x="1280" y="490" width="340" height="26" fill="#16a085" stroke="#000" stroke-width="0.5"/>
+  <text x="1450" y="507" text-anchor="middle" font-size="13" font-weight="bold" fill="white">assignment</text>
+  <rect x="1280" y="516" width="270" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="1288" y="531" font-size="11" fill="#000">assignment_id</text>
+  <text x="1405" y="531" font-size="13" font-weight="bold" fill="#b8860b">PK</text>
+  <rect x="1550" y="516" width="70" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="1555" y="531" font-size="10" font-style="italic" fill="#555">varchar</text>
+  <rect x="1280" y="538" width="270" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="1288" y="553" font-size="11" fill="#000">course_id</text>
+  <text x="1405" y="553" font-size="13" font-weight="bold" fill="#2e6da4">FK</text>
+  <rect x="1550" y="538" width="70" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="1555" y="553" font-size="10" font-style="italic" fill="#555">varchar</text>
+  <rect x="1280" y="560" width="270" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="1288" y="575" font-size="11" fill="#000">employee_id</text>
+  <text x="1405" y="575" font-size="13" font-weight="bold" fill="#2e6da4">FK</text>
+  <rect x="1550" y="560" width="70" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="1555" y="575" font-size="10" font-style="italic" fill="#555">varchar</text>
+  <rect x="1280" y="582" width="270" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="1288" y="597" font-size="11" fill="#000">assigned_by</text>
+  <rect x="1550" y="582" width="70" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="1555" y="597" font-size="10" font-style="italic" fill="#555">varchar</text>
+  <rect x="1280" y="604" width="270" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="1288" y="619" font-size="11" fill="#000">assigned_on</text>
+  <rect x="1550" y="604" width="70" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="1555" y="619" font-size="10" font-style="italic" fill="#555">date</text>
+  <rect x="1280" y="626" width="270" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="1288" y="641" font-size="11" fill="#000">course_type</text>
+  <rect x="1550" y="626" width="70" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="1555" y="641" font-size="10" font-style="italic" fill="#555">varchar</text>
+  <rect x="1280" y="648" width="270" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="1288" y="663" font-size="11" fill="#000">status</text>
+  <rect x="1550" y="648" width="70" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="1555" y="663" font-size="10" font-style="italic" fill="#555">enum</text>
+  <rect x="1280" y="670" width="270" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="1288" y="685" font-size="11" fill="#000">progress</text>
+  <rect x="1550" y="670" width="70" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="1555" y="685" font-size="10" font-style="italic" fill="#555">integer</text>
+</g>
+
+<!-- ============================================================
+     TABLE: BUDGET_STATS  (x=1690, y=110)
+============================================================ -->
+<g id="budget_stats">
+  <rect x="1690" y="110" width="340" height="26" fill="#2980b9" stroke="#000" stroke-width="0.5"/>
+  <text x="1860" y="127" text-anchor="middle" font-size="13" font-weight="bold" fill="white">budget_stats</text>
+  <rect x="1690" y="136" width="270" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="1698" y="151" font-size="11" fill="#000">stat_key</text>
+  <text x="1815" y="151" font-size="13" font-weight="bold" fill="#b8860b">PK</text>
+  <rect x="1960" y="136" width="70" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="1965" y="151" font-size="10" font-style="italic" fill="#555">varchar</text>
+  <rect x="1690" y="158" width="270" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="1698" y="173" font-size="11" fill="#000">label</text>
+  <rect x="1960" y="158" width="70" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="1965" y="173" font-size="10" font-style="italic" fill="#555">varchar</text>
+  <rect x="1690" y="180" width="270" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="1698" y="195" font-size="11" fill="#000">value</text>
+  <rect x="1960" y="180" width="70" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="1965" y="195" font-size="10" font-style="italic" fill="#555">varchar</text>
+  <rect x="1690" y="202" width="270" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="1698" y="217" font-size="11" fill="#000">tint</text>
+  <rect x="1960" y="202" width="70" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="1965" y="217" font-size="10" font-style="italic" fill="#555">enum</text>
+  <rect x="1690" y="224" width="270" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="1698" y="239" font-size="11" fill="#000">icon</text>
+  <rect x="1960" y="224" width="70" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="1965" y="239" font-size="10" font-style="italic" fill="#555">varchar</text>
+</g>
+
+<!-- ============================================================
+     TABLE: DEPARTMENT  (x=1690, y=280)
+============================================================ -->
+<g id="department">
+  <rect x="1690" y="280" width="340" height="26" fill="#1a5276" stroke="#000" stroke-width="0.5"/>
+  <text x="1860" y="297" text-anchor="middle" font-size="13" font-weight="bold" fill="white">department</text>
+  <rect x="1690" y="306" width="270" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="1698" y="321" font-size="11" fill="#000">department_id</text>
+  <text x="1815" y="321" font-size="13" font-weight="bold" fill="#b8860b">PK</text>
+  <rect x="1960" y="306" width="70" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="1965" y="321" font-size="10" font-style="italic" fill="#555">integer</text>
+  <rect x="1690" y="328" width="270" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="1698" y="343" font-size="11" fill="#000">department_name</text>
+  <text x="1815" y="343" font-size="13" font-weight="bold" fill="#2e7d32">UQ</text>
+  <rect x="1960" y="328" width="70" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="1965" y="343" font-size="10" font-style="italic" fill="#555">varchar</text>
+  <rect x="1690" y="350" width="270" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="1698" y="365" font-size="11" fill="#000">amount_spend</text>
+  <rect x="1960" y="350" width="70" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="1965" y="365" font-size="10" font-style="italic" fill="#555">varchar</text>
+  <rect x="1690" y="372" width="270" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="1698" y="387" font-size="11" fill="#000">percentage</text>
+  <rect x="1960" y="372" width="70" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="1965" y="387" font-size="10" font-style="italic" fill="#555">decimal</text>
+  <rect x="1690" y="394" width="270" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="1698" y="409" font-size="11" fill="#000">budget_utilization</text>
+  <rect x="1960" y="394" width="70" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="1965" y="409" font-size="10" font-style="italic" fill="#555">decimal</text>
+</g>
+
+<!-- ============================================================
+     TABLE: BUDGET_CATEGORY  (x=1690, y=450)
+============================================================ -->
+<g id="budget_category">
+  <rect x="1690" y="450" width="340" height="26" fill="#154360" stroke="#000" stroke-width="0.5"/>
+  <text x="1860" y="467" text-anchor="middle" font-size="13" font-weight="bold" fill="white">budget_category</text>
+  <rect x="1690" y="476" width="270" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="1698" y="491" font-size="11" fill="#000">category_id</text>
+  <text x="1815" y="491" font-size="13" font-weight="bold" fill="#b8860b">PK</text>
+  <rect x="1960" y="476" width="70" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="1965" y="491" font-size="10" font-style="italic" fill="#555">integer</text>
+  <rect x="1690" y="498" width="270" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="1698" y="513" font-size="11" fill="#000">label</text>
+  <text x="1815" y="513" font-size="13" font-weight="bold" fill="#2e7d32">UQ</text>
+  <rect x="1960" y="498" width="70" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="1965" y="513" font-size="10" font-style="italic" fill="#555">varchar</text>
+  <rect x="1690" y="520" width="270" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="1698" y="535" font-size="11" fill="#000">amount</text>
+  <rect x="1960" y="520" width="70" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="1965" y="535" font-size="10" font-style="italic" fill="#555">varchar</text>
+  <rect x="1690" y="542" width="270" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="1698" y="557" font-size="11" fill="#000">percentage</text>
+  <rect x="1960" y="542" width="70" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="1965" y="557" font-size="10" font-style="italic" fill="#555">decimal</text>
+  <rect x="1690" y="564" width="270" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="1698" y="579" font-size="11" fill="#000">color</text>
+  <rect x="1960" y="564" width="70" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="1965" y="579" font-size="10" font-style="italic" fill="#555">varchar</text>
+</g>
+
+<!-- ============================================================
+     TABLE: LEADERBOARD  (x=460, y=1030)
+============================================================ -->
+<g id="leaderboard">
+  <rect x="460" y="1030" width="340" height="26" fill="#f39c12" stroke="#000" stroke-width="0.5"/>
+  <text x="630" y="1047" text-anchor="middle" font-size="13" font-weight="bold" fill="white">leaderboard</text>
+  <rect x="460" y="1056" width="270" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="468" y="1071" font-size="11" fill="#000">leaderboard_id</text>
+  <text x="585" y="1071" font-size="13" font-weight="bold" fill="#b8860b">PK</text>
+  <rect x="730" y="1056" width="70" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="735" y="1071" font-size="10" font-style="italic" fill="#555">integer</text>
+  <rect x="460" y="1078" width="270" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="468" y="1093" font-size="11" fill="#000">employee_id</text>
+  <text x="585" y="1093" font-size="13" font-weight="bold" fill="#2e6da4">FK</text>
+  <rect x="730" y="1078" width="70" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="735" y="1093" font-size="10" font-style="italic" fill="#555">varchar</text>
+  <rect x="460" y="1100" width="270" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="468" y="1115" font-size="11" fill="#000">period</text>
+  <rect x="730" y="1100" width="70" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="735" y="1115" font-size="10" font-style="italic" fill="#555">enum</text>
+  <rect x="460" y="1122" width="270" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="468" y="1137" font-size="11" fill="#000">rank</text>
+  <rect x="730" y="1122" width="70" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="735" y="1137" font-size="10" font-style="italic" fill="#555">integer</text>
+  <rect x="460" y="1144" width="270" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="468" y="1159" font-size="11" fill="#000">hours_learned</text>
+  <rect x="730" y="1144" width="70" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="735" y="1159" font-size="10" font-style="italic" fill="#555">varchar</text>
+  <rect x="460" y="1166" width="270" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="468" y="1181" font-size="11" fill="#000">department</text>
+  <rect x="730" y="1166" width="70" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="735" y="1181" font-size="10" font-style="italic" fill="#555">varchar</text>
+</g>
+
+<!-- ============================================================
+     TABLE: LEARNING_LOG  (x=870, y="1030")
+============================================================ -->
+<g id="learning_log">
+  <rect x="870" y="1030" width="340" height="26" fill="#27ae60" stroke="#000" stroke-width="0.5"/>
+  <text x="1040" y="1047" text-anchor="middle" font-size="13" font-weight="bold" fill="white">learning_log</text>
+  <rect x="870" y="1056" width="270" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="878" y="1071" font-size="11" fill="#000">log_id</text>
+  <text x="995" y="1071" font-size="13" font-weight="bold" fill="#b8860b">PK</text>
+  <rect x="1140" y="1056" width="70" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="1145" y="1071" font-size="10" font-style="italic" fill="#555">integer</text>
+  <rect x="870" y="1078" width="270" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="878" y="1093" font-size="11" fill="#000">employee_id</text>
+  <text x="995" y="1093" font-size="13" font-weight="bold" fill="#2e6da4">FK</text>
+  <rect x="1140" y="1078" width="70" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="1145" y="1093" font-size="10" font-style="italic" fill="#555">varchar</text>
+  <rect x="870" y="1100" width="270" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="878" y="1115" font-size="11" fill="#000">course_id</text>
+  <text x="995" y="1115" font-size="13" font-weight="bold" fill="#2e6da4">FK</text>
+  <rect x="1140" y="1100" width="70" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="1145" y="1115" font-size="10" font-style="italic" fill="#555">varchar</text>
+  <rect x="870" y="1122" width="270" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="878" y="1137" font-size="11" fill="#000">date</text>
+  <rect x="1140" y="1122" width="70" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="1145" y="1137" font-size="10" font-style="italic" fill="#555">date</text>
+  <rect x="870" y="1144" width="270" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="878" y="1159" font-size="11" fill="#000">hours_logged</text>
+  <rect x="1140" y="1144" width="70" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="1145" y="1159" font-size="10" font-style="italic" fill="#555">decimal</text>
+  <rect x="870" y="1166" width="270" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="878" y="1181" font-size="11" fill="#000">notes</text>
+  <rect x="1140" y="1166" width="70" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="1145" y="1181" font-size="10" font-style="italic" fill="#555">text</text>
+</g>
+
+<!-- ============================================================
+     TABLE: TEAM_MANAGEMENT  (x=870, y=1230)
+============================================================ -->
+<g id="team_management">
+  <rect x="870" y="1230" width="340" height="26" fill="#1abc9c" stroke="#000" stroke-width="0.5"/>
+  <text x="1040" y="1247" text-anchor="middle" font-size="13" font-weight="bold" fill="white">team_management</text>
+  <rect x="870" y="1256" width="270" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="878" y="1271" font-size="11" fill="#000">team_id</text>
+  <text x="995" y="1271" font-size="13" font-weight="bold" fill="#b8860b">PK</text>
+  <rect x="1140" y="1256" width="70" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="1145" y="1271" font-size="10" font-style="italic" fill="#555">integer</text>
+  <rect x="870" y="1278" width="270" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="878" y="1293" font-size="11" fill="#000">manager_id</text>
+  <text x="995" y="1293" font-size="13" font-weight="bold" fill="#2e6da4">FK</text>
+  <rect x="1140" y="1278" width="70" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="1145" y="1293" font-size="10" font-style="italic" fill="#555">varchar</text>
+  <rect x="870" y="1300" width="270" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="878" y="1315" font-size="11" fill="#000">employee_id</text>
+  <text x="995" y="1315" font-size="13" font-weight="bold" fill="#2e6da4">FK</text>
+  <rect x="1140" y="1300" width="70" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="1145" y="1315" font-size="10" font-style="italic" fill="#555">varchar</text>
+  <rect x="870" y="1322" width="270" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="878" y="1337" font-size="11" fill="#000">role</text>
+  <rect x="1140" y="1322" width="70" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="1145" y="1337" font-size="10" font-style="italic" fill="#555">varchar</text>
+</g>
+
+<!-- ============================================================
+     TABLE: COURSE_REQUEST_TRACKER  (x=460, y=1230)
+============================================================ -->
+<g id="course_request_tracker">
+  <rect x="460" y="1230" width="340" height="26" fill="#95a5a6" stroke="#000" stroke-width="0.5"/>
+  <text x="630" y="1247" text-anchor="middle" font-size="13" font-weight="bold" fill="white">course_request_tracker</text>
+  <rect x="460" y="1256" width="270" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="468" y="1271" font-size="11" fill="#000">tracker_id</text>
+  <text x="585" y="1271" font-size="13" font-weight="bold" fill="#b8860b">PK</text>
+  <rect x="730" y="1256" width="70" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="735" y="1271" font-size="10" font-style="italic" fill="#555">integer</text>
+  <rect x="460" y="1278" width="270" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="468" y="1293" font-size="11" fill="#000">request_id</text>
+  <text x="585" y="1293" font-size="13" font-weight="bold" fill="#2e6da4">FK</text>
+  <rect x="730" y="1278" width="70" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="735" y="1293" font-size="10" font-style="italic" fill="#555">varchar</text>
+  <rect x="460" y="1300" width="270" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="468" y="1315" font-size="11" fill="#000">employee_id</text>
+  <text x="585" y="1315" font-size="13" font-weight="bold" fill="#2e6da4">FK</text>
+  <rect x="730" y="1300" width="70" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="735" y="1315" font-size="10" font-style="italic" fill="#555">varchar</text>
+  <rect x="460" y="1322" width="270" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="468" y="1337" font-size="11" fill="#000">course_name</text>
+  <rect x="730" y="1322" width="70" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="735" y="1337" font-size="10" font-style="italic" fill="#555">varchar</text>
+  <rect x="460" y="1344" width="270" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="468" y="1359" font-size="11" fill="#000">status</text>
+  <rect x="730" y="1344" width="70" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="735" y="1359" font-size="10" font-style="italic" fill="#555">enum</text>
+  <rect x="460" y="1366" width="270" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="468" y="1381" font-size="11" fill="#000">submitted_date</text>
+  <rect x="730" y="1366" width="70" height="22" fill="white" stroke="#000" stroke-width="0.5"/>
+  <text x="735" y="1381" font-size="10" font-style="italic" fill="#555">date</text>
+</g>
+
+<!-- ============================================================
+     RELATIONSHIP ARROWS & CONNECTION LINES (Categorized by Domain Colors)
+============================================================ -->
+<defs>
+  <!-- Sharp, professional arrow markers for each relationship category -->
+  <marker id="arrow-blue" markerWidth="8" markerHeight="8" refX="7" refY="3.5" orient="auto">
+    <polygon points="0 0, 8 3.5, 0 7, 1.5 3.5" fill="#2563eb"/>
+  </marker>
+  <marker id="arrow-green" markerWidth="8" markerHeight="8" refX="7" refY="3.5" orient="auto">
+    <polygon points="0 0, 8 3.5, 0 7, 1.5 3.5" fill="#059669"/>
+  </marker>
+  <marker id="arrow-purple" markerWidth="8" markerHeight="8" refX="7" refY="3.5" orient="auto">
+    <polygon points="0 0, 8 3.5, 0 7, 1.5 3.5" fill="#7c3aed"/>
+  </marker>
+  <marker id="arrow-amber" markerWidth="8" markerHeight="8" refX="7" refY="3.5" orient="auto">
+    <polygon points="0 0, 8 3.5, 0 7, 1.5 3.5" fill="#d97706"/>
+  </marker>
+  <marker id="arrow-orange" markerWidth="8" markerHeight="8" refX="7" refY="3.5" orient="auto">
+    <polygon points="0 0, 8 3.5, 0 7, 1.5 3.5" fill="#ea580c"/>
+  </marker>
+  <marker id="arrow-fuchsia" markerWidth="8" markerHeight="8" refX="7" refY="3.5" orient="auto">
+    <polygon points="0 0, 8 3.5, 0 7, 1.5 3.5" fill="#c026d3"/>
+  </marker>
+  <marker id="arrow-sky" markerWidth="8" markerHeight="8" refX="7" refY="3.5" orient="auto">
+    <polygon points="0 0, 8 3.5, 0 7, 1.5 3.5" fill="#0284c7"/>
+  </marker>
+  <marker id="arrow-emerald" markerWidth="8" markerHeight="8" refX="7" refY="3.5" orient="auto">
+    <polygon points="0 0, 8 3.5, 0 7, 1.5 3.5" fill="#10b981"/>
+  </marker>
+  <marker id="arrow-gold" markerWidth="8" markerHeight="8" refX="7" refY="3.5" orient="auto">
+    <polygon points="0 0, 8 3.5, 0 7, 1.5 3.5" fill="#ca8a04"/>
+  </marker>
+  <marker id="arrow-teal" markerWidth="8" markerHeight="8" refX="7" refY="3.5" orient="auto">
+    <polygon points="0 0, 8 3.5, 0 7, 1.5 3.5" fill="#0d9488"/>
+  </marker>
+  <marker id="arrow-indigo" markerWidth="8" markerHeight="8" refX="7" refY="3.5" orient="auto">
+    <polygon points="0 0, 8 3.5, 0 7, 1.5 3.5" fill="#4f46e5"/>
+  </marker>
+  <marker id="arrow-violet" markerWidth="8" markerHeight="8" refX="7" refY="3.5" orient="auto">
+    <polygon points="0 0, 8 3.5, 0 7, 1.5 3.5" fill="#9333ea"/>
+  </marker>
+  <marker id="arrow-red" markerWidth="8" markerHeight="8" refX="7" refY="3.5" orient="auto">
+    <polygon points="0 0, 8 3.5, 0 7, 1.5 3.5" fill="#dc2626"/>
+  </marker>
+  <marker id="arrow-slate" markerWidth="8" markerHeight="8" refX="7" refY="3.5" orient="auto">
+    <polygon points="0 0, 8 3.5, 0 7, 1.5 3.5" fill="#4b5563"/>
+  </marker>
+</defs>
+
+<g id="relationship-lines">
+
+  <!-- 1. USER (user_id PK) -> EMPLOYEE (user_id FK) [1:1 Blue] -->
+  <path d="M 390 147 C 425 147, 425 429, 390 429" fill="none" stroke="#2563eb" stroke-width="2" marker-end="url(#arrow-blue)"/>
+  <rect x="410" y="278" width="56" height="18" rx="4" fill="#eff6ff" stroke="#2563eb" stroke-width="0.8"/>
+  <text x="438" y="291" text-anchor="middle" font-size="10" font-weight="bold" fill="#2563eb">1:1 user_id</text>
+
+  <!-- 2. EMPLOYEE (employee_id PK) -> EMPLOYEE (reporting_manager FK) [Self-ref Gray Dashed] -->
+  <path d="M 50 407 C 12 407, 12 583, 50 583" fill="none" stroke="#4b5563" stroke-width="1.8" stroke-dasharray="5,3" marker-end="url(#arrow-slate)"/>
+  <rect x="0" y="485" width="46" height="18" rx="4" fill="#f3f4f6" stroke="#4b5563" stroke-width="0.8"/>
+  <text x="23" y="498" text-anchor="middle" font-size="9" font-weight="bold" fill="#374151">manager</text>
+
+  <!-- 3. EMPLOYEE (employee_id PK) -> COURSE_ENROLLMENT (employee_id FK) [1:N Green] -->
+  <path d="M 390 407 C 420 407, 430 459, 460 459" fill="none" stroke="#059669" stroke-width="2" marker-end="url(#arrow-green)"/>
+  <rect x="412" y="425" width="26" height="15" rx="3" fill="#ecfdf5" stroke="#059669" stroke-width="0.8"/>
+  <text x="425" y="436" text-anchor="middle" font-size="9" font-weight="bold" fill="#059669">1:N</text>
+
+  <!-- 4. COURSE (course_id PK) -> COURSE_ENROLLMENT (course_id FK) [1:N Green] -->
+  <path d="M 800 147 C 835 147, 835 481, 800 481" fill="none" stroke="#059669" stroke-width="2" marker-end="url(#arrow-green)"/>
+  <rect x="822" y="305" width="26" height="15" rx="3" fill="#ecfdf5" stroke="#059669" stroke-width="0.8"/>
+  <text x="835" y="316" text-anchor="middle" font-size="9" font-weight="bold" fill="#059669">1:N</text>
+
+  <!-- 5. EMPLOYEE (employee_id PK) -> COURSE_REQUEST (employee_id FK) [1:N Purple] -->
+  <path d="M 390 407 C 435 407, 415 679, 460 679" fill="none" stroke="#7c3aed" stroke-width="2" marker-end="url(#arrow-purple)"/>
+  <rect x="412" y="535" width="26" height="15" rx="3" fill="#f5f3ff" stroke="#7c3aed" stroke-width="0.8"/>
+  <text x="425" y="546" text-anchor="middle" font-size="9" font-weight="bold" fill="#7c3aed">1:N</text>
+
+  <!-- 6. COURSE_REQUEST (request_id PK) -> APPROVAL_WORKFLOW (request_id FK) [1:1 Purple] -->
+  <path d="M 800 657 C 845 657, 850 632, 870 632 L 1230 632 C 1260 632, 1250 169, 1280 169" fill="none" stroke="#7c3aed" stroke-width="2" marker-end="url(#arrow-purple)"/>
+  <rect x="1025" y="623" width="70" height="18" rx="4" fill="#f5f3ff" stroke="#7c3aed" stroke-width="0.8"/>
+  <text x="1060" y="636" text-anchor="middle" font-size="10" font-weight="bold" fill="#7c3aed">1:1 request_id</text>
+
+  <!-- 7. EMPLOYEE (employee_id PK) -> CERTIFICATE (employee_id FK) [1:N Amber] -->
+  <path d="M 390 407 C 425 407, 430 388, 460 388 L 830 388 C 855 388, 850 169, 870 169" fill="none" stroke="#d97706" stroke-width="2" marker-end="url(#arrow-amber)"/>
+  <rect x="525" y="379" width="50" height="18" rx="4" fill="#fffbeb" stroke="#d97706" stroke-width="0.8"/>
+  <text x="550" y="392" text-anchor="middle" font-size="10" font-weight="bold" fill="#d97706">1:N certs</text>
+
+  <!-- 8. EMPLOYEE (employee_id PK) -> REIMBURSEMENT_CLAIM (employee_id FK) [1:N Orange] -->
+  <path d="M 390 407 C 430 407, 435 611, 460 611 L 830 611 C 855 611, 850 489, 870 489" fill="none" stroke="#ea580c" stroke-width="2" marker-end="url(#arrow-orange)"/>
+  <rect x="525" y="602" width="56" height="18" rx="4" fill="#fff7ed" stroke="#ea580c" stroke-width="0.8"/>
+  <text x="553" y="615" text-anchor="middle" font-size="10" font-weight="bold" fill="#ea580c">1:N claims</text>
+
+  <!-- 9. CERTIFICATE (cert_id PK) -> REIMBURSEMENT_CLAIM (cert_id FK) [1:N Amber] -->
+  <path d="M 1210 147 C 1245 147, 1245 511, 1210 511" fill="none" stroke="#d97706" stroke-width="2" marker-end="url(#arrow-amber)"/>
+  <rect x="1232" y="320" width="26" height="15" rx="3" fill="#fffbeb" stroke="#d97706" stroke-width="0.8"/>
+  <text x="1245" y="331" text-anchor="middle" font-size="9" font-weight="bold" fill="#d97706">1:N</text>
+
+  <!-- 10. REIMBURSEMENT_CLAIM (claim_id PK) -> APPROVAL_WORKFLOW (claim_id FK) [1:1 Fuchsia] -->
+  <path d="M 1210 467 C 1255 467, 1235 191, 1280 191" fill="none" stroke="#c026d3" stroke-width="2" marker-end="url(#arrow-fuchsia)"/>
+  <rect x="1232" y="240" width="58" height="18" rx="4" fill="#fdf4ff" stroke="#c026d3" stroke-width="0.8"/>
+  <text x="1261" y="253" text-anchor="middle" font-size="10" font-weight="bold" fill="#c026d3">1:1 claim_id</text>
+
+  <!-- 11. COURSE (course_id PK) -> ASSIGNMENT (course_id FK) [1:N Sky Blue] -->
+  <path d="M 800 147 C 840 147, 850 415, 870 415 L 1230 415 C 1260 415, 1250 549, 1280 549" fill="none" stroke="#0284c7" stroke-width="2" marker-end="url(#arrow-sky)"/>
+  <rect x="1030" y="406" width="60" height="18" rx="4" fill="#f0f9ff" stroke="#0284c7" stroke-width="0.8"/>
+  <text x="1060" y="419" text-anchor="middle" font-size="10" font-weight="bold" fill="#0284c7">1:N course</text>
+
+  <!-- 12. EMPLOYEE (employee_id PK) -> ASSIGNMENT (employee_id FK) [1:N Sky Blue] -->
+  <path d="M 390 407 C 430 407, 430 710, 460 710 L 830 710 C 855 710, 855 650, 870 650 L 1230 650 C 1260 650, 1250 571, 1280 571" fill="none" stroke="#0284c7" stroke-width="1.8" marker-end="url(#arrow-sky)"/>
+  <rect x="1030" y="641" width="62" height="18" rx="4" fill="#f0f9ff" stroke="#0284c7" stroke-width="0.8"/>
+  <text x="1061" y="654" text-anchor="middle" font-size="10" font-weight="bold" fill="#0284c7">assigned_to</text>
+
+  <!-- 13. COURSE (course_id PK) -> STUDY_MATERIAL [1:N Emerald] -->
+  <path d="M 800 147 C 845 147, 845 947, 800 947" fill="none" stroke="#10b981" stroke-width="1.8" marker-end="url(#arrow-emerald)"/>
+  <rect x="832" y="540" width="26" height="15" rx="3" fill="#ecfdf5" stroke="#10b981" stroke-width="0.8"/>
+  <text x="845" y="551" text-anchor="middle" font-size="9" font-weight="bold" fill="#10b981">1:N</text>
+
+  <!-- 14. EMPLOYEE (employee_id PK) -> LEADERBOARD (employee_id FK) [1:N Gold] -->
+  <path d="M 390 407 C 420 407, 420 1089, 460 1089" fill="none" stroke="#ca8a04" stroke-width="2" marker-end="url(#arrow-gold)"/>
+  <rect x="412" y="850" width="26" height="15" rx="3" fill="#fefce8" stroke="#ca8a04" stroke-width="0.8"/>
+  <text x="425" y="861" text-anchor="middle" font-size="9" font-weight="bold" fill="#ca8a04">1:N</text>
+
+  <!-- 15. EMPLOYEE (employee_id PK) -> LEARNING_LOG (employee_id FK) [1:N Teal] -->
+  <path d="M 390 407 C 425 407, 430 898, 460 898 L 830 898 C 855 898, 850 1089, 870 1089" fill="none" stroke="#0d9488" stroke-width="2" marker-end="url(#arrow-teal)"/>
+  <rect x="525" y="889" width="60" height="18" rx="4" fill="#f0fdfa" stroke="#0d9488" stroke-width="0.8"/>
+  <text x="555" y="902" text-anchor="middle" font-size="10" font-weight="bold" fill="#0d9488">1:N user_log</text>
+
+  <!-- 16. COURSE (course_id PK) -> LEARNING_LOG (course_id FK) [1:N Teal] -->
+  <path d="M 800 147 C 855 147, 855 1111, 870 1111" fill="none" stroke="#0d9488" stroke-width="1.8" marker-end="url(#arrow-teal)"/>
+  <rect x="842" y="720" width="26" height="15" rx="3" fill="#f0fdfa" stroke="#0d9488" stroke-width="0.8"/>
+  <text x="855" y="731" text-anchor="middle" font-size="9" font-weight="bold" fill="#0d9488">1:N</text>
+
+  <!-- 17. EMPLOYEE (employee_id PK) -> TEAM_MANAGEMENT (manager_id FK) [1:N Indigo] -->
+  <path d="M 390 407 C 435 407, 435 1205, 460 1205 L 830 1205 C 855 1205, 850 1289, 870 1289" fill="none" stroke="#4f46e5" stroke-width="2" marker-end="url(#arrow-indigo)"/>
+  <rect x="620" y="1196" width="68" height="18" rx="4" fill="#eef2ff" stroke="#4f46e5" stroke-width="0.8"/>
+  <text x="654" y="1209" text-anchor="middle" font-size="10" font-weight="bold" fill="#4f46e5">manager_id</text>
+
+  <!-- 18. EMPLOYEE (employee_id PK) -> TEAM_MANAGEMENT (employee_id FK) [1:N Indigo Dashed] -->
+  <path d="M 390 407 C 440 407, 440 1215, 460 1215 L 825 1215 C 855 1215, 855 1311, 870 1311" fill="none" stroke="#6366f1" stroke-width="1.8" stroke-dasharray="4,2" marker-end="url(#arrow-indigo)"/>
+  <rect x="710" y="1206" width="64" height="18" rx="4" fill="#eef2ff" stroke="#6366f1" stroke-width="0.8"/>
+  <text x="742" y="1219" text-anchor="middle" font-size="10" font-weight="bold" fill="#6366f1">member_id</text>
+
+  <!-- 19. COURSE_REQUEST (request_id PK) -> COURSE_REQUEST_TRACKER (request_id FK) [1:1 Violet] -->
+  <path d="M 460 657 C 430 657, 430 1289, 460 1289" fill="none" stroke="#9333ea" stroke-width="2" marker-end="url(#arrow-violet)"/>
+  <rect x="405" y="970" width="46" height="18" rx="4" fill="#faf5ff" stroke="#9333ea" stroke-width="0.8"/>
+  <text x="428" y="983" text-anchor="middle" font-size="10" font-weight="bold" fill="#9333ea">tracker</text>
+
+  <!-- 20. EMPLOYEE (employee_id PK) -> COURSE_REQUEST_TRACKER (employee_id FK) [1:N Violet] -->
+  <path d="M 390 407 C 415 407, 415 1311, 460 1311" fill="none" stroke="#9333ea" stroke-width="1.8" marker-end="url(#arrow-violet)"/>
+  <rect x="412" y="1190" width="26" height="15" rx="3" fill="#faf5ff" stroke="#9333ea" stroke-width="0.8"/>
+  <text x="425" y="1201" text-anchor="middle" font-size="9" font-weight="bold" fill="#9333ea">1:N</text>
+
+  <!-- 21. DEPARTMENT (department_id PK) -> EMPLOYEE (department FK) [1:N Crimson Dashed via top highway] -->
+  <path d="M 1690 317 C 1650 317, 1650 72, 1620 72 L 430 72 C 415 72, 415 495, 390 495" fill="none" stroke="#ef4444" stroke-width="1.8" stroke-dasharray="6,3" marker-end="url(#arrow-red)"/>
+  <rect x="1380" y="63" width="90" height="18" rx="4" fill="#fef2f2" stroke="#ef4444" stroke-width="0.8"/>
+  <text x="1425" y="76" text-anchor="middle" font-size="10" font-weight="bold" fill="#ef4444">1:N department</text>
+
+  <!-- 22. DEPARTMENT (department_id PK) -> BUDGET_CATEGORY (department ref) [1:N Red] -->
+  <path d="M 2030 317 C 2060 317, 2060 487, 2030 487" fill="none" stroke="#dc2626" stroke-width="2" marker-end="url(#arrow-red)"/>
+  <rect x="2046" y="395" width="26" height="15" rx="3" fill="#fef2f2" stroke="#dc2626" stroke-width="0.8"/>
+  <text x="2059" y="406" text-anchor="middle" font-size="9" font-weight="bold" fill="#dc2626">1:N</text>
+
+</g>
+<!-- ============================================================
+     LEGEND & COLOR-CODED DOMAIN GUIDE
+============================================================ -->
+<rect x="40" y="1440" width="820" height="390" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+<rect x="40" y="1440" width="820" height="34" rx="8" fill="#1e293b"/>
+<text x="450" y="1462" text-anchor="middle" font-size="13" font-weight="bold" fill="white">ER Diagram Legend &amp; Relationship Notation</text>
+
+<!-- Constraints Section -->
+<text x="60" y="1498" font-size="12" font-weight="bold" fill="#334155">1. Column Constraints</text>
+
+<rect x="60" y="1510" width="38" height="20" rx="3" fill="#fefce8" stroke="#b8860b" stroke-width="1"/>
+<text x="79" y="1524" text-anchor="middle" font-size="11" font-weight="bold" fill="#b8860b">PK</text>
+<text x="110" y="1524" font-size="11" fill="#334155"><tspan font-weight="bold">Primary Key</tspan> — Unique identifier for each entity row</text>
+
+<rect x="60" y="1538" width="38" height="20" rx="3" fill="#eff6ff" stroke="#2e6da4" stroke-width="1"/>
+<text x="79" y="1552" text-anchor="middle" font-size="11" font-weight="bold" fill="#2e6da4">FK</text>
+<text x="110" y="1552" font-size="11" fill="#334155"><tspan font-weight="bold">Foreign Key</tspan> — References parent entity Primary Key</text>
+
+<rect x="60" y="1566" width="38" height="20" rx="3" fill="#f0fdf4" stroke="#2e7d32" stroke-width="1"/>
+<text x="79" y="1580" text-anchor="middle" font-size="11" font-weight="bold" fill="#2e7d32">UQ</text>
+<text x="110" y="1580" font-size="11" fill="#334155"><tspan font-weight="bold">Unique Constraint</tspan> — Strict uniqueness across all rows</text>
+
+<!-- Relationship Line Colors Section -->
+<text x="60" y="1615" font-size="12" font-weight="bold" fill="#334155">2. Domain-Specific Relationship Connection Lines</text>
+
+<!-- Blue -->
+<line x1="60" y1="1635" x2="110" y2="1635" stroke="#2563eb" stroke-width="2.5" marker-end="url(#arrow-blue)"/>
+<text x="125" y="1639" font-size="11" fill="#1e293b"><tspan font-weight="bold" fill="#2563eb">Auth &amp; User</tspan> (USER &#x2192; EMPLOYEE 1:1)</text>
+
+<!-- Green -->
+<line x1="60" y1="1660" x2="110" y2="1660" stroke="#059669" stroke-width="2.5" marker-end="url(#arrow-green)"/>
+<text x="125" y="1664" font-size="11" fill="#1e293b"><tspan font-weight="bold" fill="#059669">Courses &amp; Enrollment</tspan> (EMPLOYEE, COURSE &#x2192; ENROLLMENT 1:N)</text>
+
+<!-- Purple -->
+<line x1="60" y1="1685" x2="110" y2="1685" stroke="#7c3aed" stroke-width="2.5" marker-end="url(#arrow-purple)"/>
+<text x="125" y="1689" font-size="11" fill="#1e293b"><tspan font-weight="bold" fill="#7c3aed">Requests &amp; Workflow</tspan> (REQUEST &#x2192; WORKFLOW 1:1)</text>
+
+<!-- Amber & Orange -->
+<line x1="60" y1="1710" x2="110" y2="1710" stroke="#d97706" stroke-width="2.5" marker-end="url(#arrow-amber)"/>
+<text x="125" y="1714" font-size="11" fill="#1e293b"><tspan font-weight="bold" fill="#d97706">Certifications &amp; Claims</tspan> (CERTIFICATE &#x2192; REIMBURSEMENT 1:N)</text>
+
+<!-- Sky Blue -->
+<line x1="460" y1="1635" x2="510" y2="1635" stroke="#0284c7" stroke-width="2.5" marker-end="url(#arrow-sky)"/>
+<text x="525" y="1639" font-size="11" fill="#1e293b"><tspan font-weight="bold" fill="#0284c7">Assignments</tspan> (COURSE, EMPLOYEE &#x2192; ASSIGNMENT 1:N)</text>
+
+<!-- Teal -->
+<line x1="460" y1="1660" x2="510" y2="1660" stroke="#0d9488" stroke-width="2.5" marker-end="url(#arrow-teal)"/>
+<text x="525" y="1664" font-size="11" fill="#1e293b"><tspan font-weight="bold" fill="#0d9488">Learning Logs &amp; Engagement</tspan> (EMPLOYEE &#x2192; LOG 1:N)</text>
+
+<!-- Indigo -->
+<line x1="460" y1="1685" x2="510" y2="1685" stroke="#4f46e5" stroke-width="2.5" marker-end="url(#arrow-indigo)"/>
+<text x="525" y="1689" font-size="11" fill="#1e293b"><tspan font-weight="bold" fill="#4f46e5">Team Management</tspan> (EMPLOYEE &#x2192; TEAM 1:N)</text>
+
+<!-- Red / Crimson -->
+<line x1="460" y1="1710" x2="510" y2="1710" stroke="#dc2626" stroke-width="2.5" marker-end="url(#arrow-red)"/>
+<text x="525" y="1714" font-size="11" fill="#1e293b"><tspan font-weight="bold" fill="#dc2626">Budget &amp; Org Hierarchy</tspan> (DEPARTMENT &#x2192; EMPLOYEE/BUDGET)</text>
+
+<!-- Dashed Gray -->
+<line x1="60" y1="1745" x2="110" y2="1745" stroke="#4b5563" stroke-width="2" stroke-dasharray="5,3" marker-end="url(#arrow-slate)"/>
+<text x="125" y="1749" font-size="11" fill="#4b5563"><tspan font-weight="bold">Self-Referencing / Hierarchical Link</tspan> (EMPLOYEE reporting_manager &#x2192; employee_id)</text>
+
+<!-- Cardinality indicators -->
+<text x="60" y="1785" font-size="11" fill="#64748b">&#x2022; Arrowheads indicate Foreign Key target reference direction (FK child references PK parent)</text>
+<text x="60" y="1805" font-size="11" fill="#64748b">&#x2022; Badges indicate Cardinality (1:1 = One-to-One, 1:N = One-to-Many)</text>
+
+<!-- ============================================================
+     PORTAL MAPPING TABLE
+============================================================ -->
+<rect x="890" y="1440" width="1210" height="390" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+<rect x="890" y="1440" width="1210" height="34" rx="8" fill="#1e293b"/>
+<text x="1495" y="1462" text-anchor="middle" font-size="13" font-weight="bold" fill="white">Portal &#x2192; Frontend Entity Usage Matrix</text>
+
+<!-- Header row -->
+<rect x="905" y="1485" width="220" height="24" fill="#3b82f6"/>
+<text x="1015" y="1501" text-anchor="middle" font-size="11" font-weight="bold" fill="white">Portal / Page Domain</text>
+<rect x="1125" y="1485" width="960" height="24" fill="#1d4ed8"/>
+<text x="1605" y="1501" text-anchor="middle" font-size="11" font-weight="bold" fill="white">Frontend Entities Used &amp; Key Attribute Interactions</text>
+
+<!-- Rows -->
+<g font-size="10">
+  <rect x="905" y="1509" width="220" height="22" fill="#f8fafc" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="915" y="1524" font-weight="bold" fill="#1e293b">Authentication &amp; Login</text>
+  <rect x="1125" y="1509" width="960" height="22" fill="#f8fafc" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="1135" y="1524" fill="#334155">USER (user_id, role, primary_portal, token, work_email)</text>
+
+  <rect x="905" y="1531" width="220" height="22" fill="#ffffff" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="915" y="1546" font-weight="bold" fill="#1e293b">Employee: Dashboard</text>
+  <rect x="1125" y="1531" width="960" height="22" fill="#ffffff" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="1135" y="1546" fill="#334155">EMPLOYEE, COURSE_ENROLLMENT (progress, hours_logged), LEARNING_LOG, LEADERBOARD (rank)</text>
+
+  <rect x="905" y="1553" width="220" height="22" fill="#f8fafc" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="915" y="1568" font-weight="bold" fill="#1e293b">Employee: Course Library</text>
+  <rect x="1125" y="1553" width="960" height="22" fill="#f8fafc" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="1135" y="1568" fill="#334155">COURSE (title, provider, category, price), STUDY_MATERIAL, COURSE_REQUEST, COURSE_REQUEST_TRACKER</text>
+
+  <rect x="905" y="1575" width="220" height="22" fill="#ffffff" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="915" y="1590" font-weight="bold" fill="#1e293b">Employee: Certifications &amp; Claims</text>
+  <rect x="1125" y="1575" width="960" height="22" fill="#ffffff" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="1135" y="1590" fill="#334155">CERTIFICATE (title, issue_date, expiry_date, credential_id), REIMBURSEMENT_CLAIM (amount, status)</text>
+
+  <rect x="905" y="1597" width="220" height="22" fill="#f8fafc" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="915" y="1612" font-weight="bold" fill="#1e293b">Reporting Manager Portal</text>
+  <rect x="1125" y="1597" width="960" height="22" fill="#f8fafc" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="1135" y="1612" fill="#334155">TEAM_MANAGEMENT (manager_id, employee_id), COURSE_ENROLLMENT, CERTIFICATE, COURSE_REQUEST</text>
+
+  <rect x="905" y="1619" width="220" height="22" fill="#ffffff" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="915" y="1634" font-weight="bold" fill="#1e293b">L&amp;D: Course Management</text>
+  <rect x="1125" y="1619" width="960" height="22" fill="#ffffff" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="1135" y="1634" fill="#334155">COURSE, ASSIGNMENT (assigned_by, course_type), COURSE_REQUEST, APPROVAL_WORKFLOW</text>
+
+  <rect x="905" y="1641" width="220" height="22" fill="#f8fafc" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="915" y="1656" font-weight="bold" fill="#1e293b">L&amp;D / HR: Approvals Flow</text>
+  <rect x="1125" y="1641" width="960" height="22" fill="#f8fafc" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="1135" y="1656" fill="#334155">COURSE_REQUEST, REIMBURSEMENT_CLAIM, APPROVAL_WORKFLOW (5-step approval pipeline)</text>
+
+  <rect x="905" y="1663" width="220" height="22" fill="#ffffff" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="915" y="1678" font-weight="bold" fill="#1e293b">L&amp;D / HR / CEO: Budget &amp; Spend</text>
+  <rect x="1125" y="1663" width="960" height="22" fill="#ffffff" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="1135" y="1678" fill="#334155">BUDGET_STATS (stat_key, value, tint), BUDGET_CATEGORY (amount, percentage), DEPARTMENT (budget_utilization)</text>
+
+  <rect x="905" y="1685" width="220" height="22" fill="#f8fafc" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="915" y="1700" font-weight="bold" fill="#1e293b">L&amp;D: Employee Directory</text>
+  <rect x="1125" y="1685" width="960" height="22" fill="#f8fafc" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="1135" y="1700" fill="#334155">EMPLOYEE (skills, interests, department, avatar), COURSE_ENROLLMENT, CERTIFICATE</text>
+
+  <rect x="905" y="1707" width="220" height="22" fill="#ffffff" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="915" y="1722" font-weight="bold" fill="#1e293b">Profile (All Portals)</text>
+  <rect x="1125" y="1707" width="960" height="22" fill="#ffffff" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="1135" y="1722" fill="#334155">EMPLOYEE (basicInfo, skillsExpertise, learningCertifications), USER (role, email)</text>
+
+  <rect x="905" y="1729" width="220" height="22" fill="#f8fafc" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="915" y="1744" font-weight="bold" fill="#1e293b">HR: Employee Records</text>
+  <rect x="1125" y="1729" width="960" height="22" fill="#f8fafc" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="1135" y="1744" fill="#334155">EMPLOYEE, COURSE_ENROLLMENT, CERTIFICATE, DEPARTMENT</text>
+
+  <rect x="905" y="1751" width="220" height="22" fill="#ffffff" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="915" y="1766" font-weight="bold" fill="#1e293b">CEO: Analytics &amp; Approvals</text>
+  <rect x="1125" y="1751" width="960" height="22" fill="#ffffff" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="1135" y="1766" fill="#334155">COURSE_REQUEST, APPROVAL_WORKFLOW, BUDGET_STATS, BUDGET_CATEGORY, DEPARTMENT</text>
+</g>
+
+<!-- Diagram Footer -->
+<text x="1075" y="1855" text-anchor="middle" font-size="11" font-weight="bold" fill="#64748b">Generated for LMS Frontend &#x2022; 17 Normalized Entities &#x2022; 22 Domain Relationship Connections &#x2022; Valid SVG XML</text>
+
+</svg>

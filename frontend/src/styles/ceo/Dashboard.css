@@ -1,0 +1,1179 @@
+/* =============================================================
+   CEO MODULE - DASHBOARD STYLES
+   Single-page, pixel-perfect Figma UI/UX with ceo- prefix
+   ============================================================= */
+
+.ceo-dashboard-page {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    max-height: 100%;
+    overflow: hidden !important;
+    padding: 20px 24px 16px 24px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-family: Roboto, sans-serif;
+    background: transparent;
+}
+
+.ceo-dashboard-page>* {
+    min-height: 0;
+    flex-shrink: 0;
+}
+
+/* Page Header */
+.ceo-dashboard-page .common-page-header {
+    min-height: 40px;
+    margin: 0;
+    padding: 0;
+}
+
+.ceo-dashboard-page .common-page-header-title-section h1 {
+    font-size: 20px;
+    line-height: 22px;
+    font-weight: 600;
+    color: #080808;
+}
+
+.ceo-dashboard-page .common-page-header-title-section p {
+    font-size: 12px;
+    line-height: 15px;
+    color: #787676;
+    margin-top: 1px;
+}
+
+/* =============================================================
+   1. TOP KPI METRIC CARDS (4 CARDS)
+   ============================================================= */
+
+.ceo-metric-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    width: 100%;
+    height: 70px;
+    flex-shrink: 0;
+}
+
+.ceo-metric-card {
+    background: #FFFFFF;
+    border-radius: 10px;
+    border: 1px solid #ffffff;
+    border-bottom: 3.5px solid #C1D2FF !important;
+    padding: 0 16px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04);
+    box-sizing: border-box;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+
+.ceo-metric-icon-wrapper {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: url("../../assets/hr/Dashboard/background.svg") no-repeat center center;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.ceo-metric-icon {
+    object-fit: contain;
+}
+
+.ceo-metric-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-width: 0;
+}
+
+.ceo-metric-value {
+    font-size: 22px;
+    font-weight: 500;
+    color: #272727;
+    line-height: 1.1;
+    font-family: Roboto, sans-serif;
+}
+
+.ceo-metric-title {
+    font-size: 11px;
+    font-weight: 500;
+    color: #656565;
+    white-space: nowrap;
+    margin-top: 2px;
+}
+
+/* =============================================================
+   2. MAIN 2-COLUMN GRID (FILLS REMAINING HEIGHT)
+   ============================================================= */
+
+.ceo-dashboard-main-grid {
+    flex: 1 1 0;
+    min-height: 0;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    overflow: hidden;
+}
+
+.ceo-dashboard-column {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    height: 100%;
+    min-height: 0;
+    overflow: hidden;
+}
+
+.ceo-dashboard-card {
+    flex: 1 1 0;
+    min-height: 0;
+    background: #FFFFFF;
+    border-radius: 10px;
+    border: 1px solid #EAEFF5;
+    padding: 10px 16px;
+    box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04);
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.ceo-card-title {
+    font-size: 13.5px;
+    font-weight: 600;
+    color: #060606;
+    margin: 0 0 6px 0;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    line-height: 1.4;
+}
+
+.ceo-card-title .ld-title-count {
+    font-size: 13px;
+    font-weight: 500;
+    color: #215EF8;
+}
+
+.ceo-card-header-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 0 4px 0;
+    flex-shrink: 0;
+}
+
+.ceo-card-header-row .ceo-card-title {
+    margin: 0;
+}
+
+.ceo-performers-view-all-btn {
+    display: none;
+    background: transparent;
+    border: none;
+    padding: 0;
+    font-size: 11px;
+    font-weight: 500;
+    color: #2563EB;
+    cursor: pointer;
+    text-decoration: underline;
+    font-family: inherit;
+}
+
+.ceo-performers-view-all-btn:hover {
+    color: #1D4ED8;
+}
+
+/* =============================================================
+   3. LEARNING BY DEPARTMENT
+   ============================================================= */
+
+.ceo-learning-dept-card {
+    /* Inherits flex 1 */
+}
+
+.ceo-learning-dept-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    flex: 1 1 0;
+    min-height: 0;
+    gap: 4px;
+    padding-right: 4px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    scrollbar-width: thin;
+    scrollbar-color: #CBD5E1 transparent;
+}
+
+.ceo-learning-dept-list::-webkit-scrollbar {
+    width: 4px;
+}
+
+.ceo-learning-dept-list::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.ceo-learning-dept-list::-webkit-scrollbar-thumb {
+    background: #CBD5E1;
+    border-radius: 4px;
+}
+
+.ceo-learning-dept-list::-webkit-scrollbar-thumb:hover {
+    background: #94A3B8;
+}
+
+.ceo-learning-dept-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    height: 27px;
+    min-height: 22px;
+    flex-shrink: 0;
+    box-sizing: border-box;
+}
+
+.ceo-learning-dept-name {
+    width: clamp(140px, 18vw, 175px);
+    font-size: 12px;
+    font-weight: 400;
+    color: #000000;
+    flex-shrink: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.ceo-learning-bar-track {
+    flex: 1;
+    height: 6px;
+    background: #EEF2F6;
+    border-radius: 999px;
+    overflow: hidden;
+}
+
+.ceo-learning-bar-fill {
+    height: 100%;
+    border-radius: 999px;
+    transition: width 0.3s ease;
+}
+
+.ceo-learning-dept-stat {
+    font-size: 12px;
+    font-weight: 500;
+    color: #000000;
+    text-align: right;
+    white-space: nowrap;
+    width: 34px;
+    flex-shrink: 0;
+}
+
+/* Skeleton loading blocks */
+@keyframes ceo-skeleton-pulse {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.4;
+    }
+}
+
+.ceo-skeleton-block {
+    display: inline-block;
+    background: #E8EDF5;
+    border-radius: 4px;
+    animation: ceo-skeleton-pulse 1.4s ease-in-out infinite;
+    min-height: 8px;
+}
+
+.ceo-learning-dept-skeleton {
+    pointer-events: none;
+}
+
+/* Empty state */
+.ceo-learning-dept-empty {
+    align-items: center;
+    justify-content: center;
+}
+
+.ceo-learning-dept-empty-msg {
+    font-size: 12px;
+    color: #9CA3AF;
+    font-style: italic;
+}
+
+/* =============================================================
+   4. EMPLOYEE DISTRIBUTION
+   ============================================================= */
+
+.ceo-distribution-card {
+    /* Inherits flex 1 */
+}
+
+.ceo-distribution-content {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    flex: 1 1 0;
+    min-height: 0;
+}
+
+.ceo-donut-container {
+    background: #F3F4F8;
+    background-image: url("../../assets/hr/backgroundcircle.svg");
+    background-size: 100% 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 10px;
+    padding: 6px 6px 8px 6px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 165px;
+    height: 180px;
+    flex-shrink: 0;
+    box-sizing: border-box;
+}
+
+.ceo-donut-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    min-height: 0;
+}
+
+.ceo-donut-svg {
+    display: block;
+    width: 110px;
+    height: 110px;
+    max-width: 110px;
+    max-height: 110px;
+}
+
+.ceo-donut-total-text {
+    margin-top: 4px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    line-height: 25px;
+    letter-spacing: 0%;
+    color: #000000;
+    text-align: center;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.ceo-distribution-legend {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    flex: 1 1 0;
+    min-height: 0;
+    max-height: 168px;
+    height: auto;
+    gap: 2px;
+    padding-left: 6px;
+    padding-right: 4px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    scrollbar-width: thin;
+    scrollbar-color: #CBD5E1 transparent;
+}
+
+.ceo-distribution-legend::-webkit-scrollbar {
+    width: 4px;
+}
+
+.ceo-distribution-legend::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.ceo-distribution-legend::-webkit-scrollbar-thumb {
+    background: #CBD5E1;
+    border-radius: 4px;
+}
+
+.ceo-distribution-legend::-webkit-scrollbar-thumb:hover {
+    background: #94A3B8;
+}
+
+.ceo-legend-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    padding: 0 2px;
+    border-bottom: 1px solid #DDE0EE;
+    height: 27px;
+    min-height: 27px;
+    flex-shrink: 0;
+    box-sizing: border-box;
+}
+
+.ceo-legend-row:last-child {
+    border-bottom: none;
+}
+
+.ceo-legend-left {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-width: 0;
+}
+
+.ceo-legend-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.ceo-legend-name {
+    font-family: 'Roboto', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 25px;
+    letter-spacing: 0%;
+    color: #000000;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.ceo-legend-pct {
+    font-family: 'Roboto', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 22.75px;
+    letter-spacing: 0%;
+    color: #080808;
+    flex-shrink: 0;
+}
+
+/* =============================================================
+   5. TOP PERFORMERS (RIGHT COLUMN)
+   ============================================================= */
+
+.ceo-top-performers-card {
+    height: 100%;
+}
+
+.ceo-performers-body {
+    display: flex;
+    align-items: stretch;
+    flex: 1 1 0;
+    min-height: 0;
+    width: 100%;
+    position: relative;
+    gap: 6px;
+}
+
+.ceo-performers-list {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 0;
+    min-height: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    gap: 0;
+    padding-right: 4px;
+    box-sizing: border-box;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.ceo-performers-list::-webkit-scrollbar {
+    display: none;
+    width: 0;
+    height: 0;
+}
+
+.ceo-performers-list.is-empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    flex: 1 1 0;
+}
+
+.ceo-empty-performers-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 36px 16px;
+    color: #7F7F7F;
+    font-size: 13px;
+    font-weight: 500;
+    text-align: center;
+    margin: auto;
+    height: 100%;
+    flex: 1 1 0;
+    box-sizing: border-box;
+}
+
+.ceo-empty-performers-icon {
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+    opacity: 0.85;
+}
+
+/* Custom 7px width, 80px height, #D9D9D9 scrollbar */
+.ceo-performers-scroll-track {
+    width: 7px;
+    height: 100%;
+    min-height: 0;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    cursor: pointer;
+    background: transparent;
+    user-select: none;
+}
+
+.ceo-performers-scroll-thumb {
+    width: 7px;
+    height: 80px;
+    background-color: #D9D9D9;
+    border-radius: 10px;
+    cursor: grab;
+    transition: background-color 0.15s ease;
+    will-change: transform;
+    flex-shrink: 0;
+}
+
+.ceo-performers-scroll-thumb:hover,
+.ceo-performers-scroll-thumb:active {
+    background-color: #BFBFBF;
+}
+
+.ceo-performer-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 7px 4px;
+    border-radius: 6px;
+    transition: background 0.12s ease;
+    border-bottom: 1px solid #DDE0EE;
+    flex-shrink: 0;
+    min-height: 38px;
+    box-sizing: border-box;
+}
+
+.ceo-performer-row:last-child {
+    border-bottom: none;
+}
+
+.ceo-performer-row:hover {
+    background: #F8FAFF;
+}
+
+.ceo-performer-rank {
+    width: 16px;
+    font-size: 11px;
+    font-weight: 500;
+    color: #000000;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+.ceo-performer-avatar {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 9px;
+    font-weight: 500;
+    color: #FFFFFF;
+    flex-shrink: 0;
+}
+
+.ceo-performer-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.ceo-performer-name {
+    font-size: 11px;
+    font-weight: 500;
+    color: #000000;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.ceo-performer-role {
+    font-size: 10px;
+    font-weight: 400;
+    color: #7F7F7F;
+    margin-top: 1px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.ceo-performer-hours {
+    font-size: 11px;
+    font-weight: 600;
+    color: #7F7F7F;
+    flex-shrink: 0;
+    width: 32px;
+    text-align: right;
+}
+
+.ceo-performer-pts {
+    font-size: 11px;
+    font-weight: 600;
+    color: #0E3BAD;
+    flex-shrink: 0;
+    width: 58px;
+    text-align: right;
+}
+
+/* =============================================================
+   RESPONSIVE BREAKPOINTS FOR CEO DASHBOARD
+   ============================================================= */
+
+/* LAPTOP & WORKSTATION SCREENS (768px - 1440px with sidebar) */
+@media (max-width: 1440px) and (min-width: 768px) {
+    .ceo-dashboard-page {
+        padding: 20px 24px 16px 24px !important;
+        gap: 8px !important;
+        height: 100% !important;
+        max-height: 100% !important;
+        overflow: hidden !important;
+    }
+
+    .ceo-metric-cards-grid {
+        grid-template-columns: repeat(4, 1fr) !important;
+        height: 70px !important;
+        gap: 10px !important;
+    }
+
+    .ceo-metric-value {
+        font-size: 22px !important;
+        font-weight: 500;
+    }
+
+    .ceo-metric-card {
+        padding: 0 16px !important;
+        gap: 20px !important;
+    }
+
+    .ceo-metric-icon-wrapper {
+        width: 34px !important;
+        height: 34px !important;
+    }
+
+    .ceo-dashboard-main-grid {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        gap: 10px !important;
+        flex: 1 1 0 !important;
+        height: 100% !important;
+        min-height: 0 !important;
+        overflow: hidden !important;
+    }
+
+    .ceo-dashboard-column {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 8px !important;
+        height: 100% !important;
+        min-height: 0 !important;
+        overflow: hidden !important;
+    }
+
+    .ceo-dashboard-card {
+        padding: 8px 14px !important;
+        flex: 1 1 0 !important;
+        min-height: 0 !important;
+        height: auto !important;
+        overflow: hidden !important;
+    }
+
+    .ceo-performers-view-all-btn {
+        display: none !important;
+    }
+
+    .ceo-performers-body {
+        display: flex !important;
+        align-items: stretch !important;
+        flex: 1 1 0 !important;
+        min-height: 0 !important;
+        width: 100% !important;
+        gap: 4px !important;
+    }
+
+    .ceo-performers-list {
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: flex-start !important;
+        flex: 1 1 0 !important;
+        min-height: 0 !important;
+        overflow-y: auto !important;
+        overflow-x: hidden !important;
+        gap: 0 !important;
+        padding-right: 4px !important;
+        scrollbar-width: none !important;
+        -ms-overflow-style: none !important;
+    }
+
+    .ceo-performers-list::-webkit-scrollbar {
+        display: none !important;
+        width: 0 !important;
+        height: 0 !important;
+    }
+
+    .ceo-performers-scroll-track {
+        width: 7px !important;
+        height: 100% !important;
+        min-height: 0 !important;
+        display: flex !important;
+        flex-direction: column !important;
+        flex-shrink: 0 !important;
+        background: transparent !important;
+    }
+
+    .ceo-performers-scroll-thumb {
+        width: 5.4px !important;
+        height: 65px !important;
+        background-color: #D9D9D9 !important;
+        border-radius: 10px !important;
+        flex-shrink: 0 !important;
+    }
+
+    .ceo-performer-row {
+        flex: none !important;
+        flex-shrink: 0 !important;
+        min-height: 43px !important;
+        padding: 5px 4px !important;
+        border-bottom: 1px solid #DDE0EE !important;
+    }
+
+    .ceo-performer-row:last-child {
+        border-bottom: none !important;
+    }
+}
+
+/* MOBILE (<= 767px) - PINNED HEADER & METRIC CARDS, SCROLLABLE MAIN CONTENT */
+@media (max-width: 767px) {
+    .ceo-dashboard-page {
+        position: fixed !important;
+        top: 56px !important;
+        left: 0 !important;
+        right: 0 !important;
+        bottom: 0 !important;
+        width: 100% !important;
+        max-width: 100vw !important;
+        height: calc(100vh - 56px) !important;
+        height: calc(100dvh - 56px) !important;
+        max-height: calc(100vh - 56px) !important;
+        max-height: calc(100dvh - 56px) !important;
+        overflow: hidden !important;
+        display: flex !important;
+        flex-direction: column !important;
+        padding: 10px 10px 10px 10px !important;
+        gap: 10px !important;
+        box-sizing: border-box !important;
+        background: #F3F4F8 !important;
+        z-index: 10 !important;
+    }
+
+    .ceo-dashboard-page>.common-page-header,
+    .ceo-dashboard-page>.page-header {
+        flex-shrink: 0 !important;
+        width: 100% !important;
+    }
+
+    .ceo-metric-cards-grid {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        height: auto !important;
+        gap: 8px !important;
+        flex-shrink: 0 !important;
+        width: 100% !important;
+    }
+
+    .ceo-metric-card {
+        min-height: 56px !important;
+        height: 56px !important;
+        padding: 8px 10px !important;
+        gap: 8px !important;
+        flex-shrink: 0 !important;
+    }
+
+    .ceo-metric-icon-wrapper {
+        width: 32px !important;
+        height: 32px !important;
+    }
+
+    .ceo-metric-icon {
+        width: 16px !important;
+        height: 16px !important;
+    }
+
+    .ceo-metric-value {
+        font-size: 18px !important;
+    }
+
+    .ceo-metric-title {
+        font-size: 10.5px !important;
+        white-space: normal !important;
+        line-height: 1.2 !important;
+    }
+
+    .ceo-dashboard-main-grid {
+        flex: 1 1 0 !important;
+        min-height: 0 !important;
+        width: 100% !important;
+        overflow-y: auto !important;
+        overflow-x: hidden !important;
+        -webkit-overflow-scrolling: touch !important;
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 12px !important;
+        padding-bottom: 24px !important;
+        scrollbar-width: thin !important;
+    }
+
+    .ceo-dashboard-column {
+        display: flex !important;
+        flex-direction: column !important;
+        height: auto !important;
+        overflow: visible !important;
+        flex: none !important;
+        gap: 12px !important;
+    }
+
+    .ceo-dashboard-card {
+        height: auto !important;
+        min-height: fit-content !important;
+        overflow: visible !important;
+        flex: none !important;
+        padding: 12px 12px !important;
+    }
+
+    .ceo-learning-dept-list {
+        height: auto !important;
+        flex: none !important;
+        gap: 8px !important;
+    }
+
+    .ceo-learning-dept-row {
+        height: auto !important;
+        min-height: 24px !important;
+        gap: 8px !important;
+    }
+
+    .ceo-learning-dept-name {
+        width: clamp(120px, 20vw, 150px) !important;
+        font-size: 11px !important;
+    }
+
+    .ceo-learning-dept-stat {
+        width: 34px !important;
+        font-size: 11px !important;
+    }
+
+    .ceo-distribution-content {
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: stretch !important;
+        height: auto !important;
+        flex: none !important;
+        gap: 12px !important;
+    }
+
+    .ceo-donut-container {
+        width: 116px !important;
+        height: auto !important;
+        min-height: 140px !important;
+        padding: 8px 6px !important;
+        flex-shrink: 0 !important;
+        align-self: stretch !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+
+    .ceo-donut-wrapper {
+        flex: 1 !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+
+    .ceo-donut-svg {
+        width: 78px !important;
+        height: 78px !important;
+        max-width: 78px !important;
+        max-height: 78px !important;
+    }
+
+    .ceo-donut-total-text {
+        font-size: 11px !important;
+        line-height: 1.3 !important;
+        margin-top: 4px !important;
+        white-space: normal !important;
+        text-align: center !important;
+    }
+
+    .ceo-distribution-legend {
+        height: auto !important;
+        flex: 1 1 0 !important;
+        min-width: 0 !important;
+        padding-left: 0 !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: space-between !important;
+        gap: 0 !important;
+        align-self: stretch !important;
+    }
+
+    .ceo-legend-row {
+        flex: 1 1 auto !important;
+        height: auto !important;
+        min-height: 26px !important;
+        padding: 4px 0 !important;
+        border-bottom: 1px solid #DDE0EE !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        gap: 6px !important;
+    }
+
+    .ceo-legend-row:last-child {
+        border-bottom: none !important;
+    }
+
+    .ceo-legend-left {
+        display: flex !important;
+        align-items: center !important;
+        gap: 6px !important;
+        min-width: 0 !important;
+        flex: 1 1 0 !important;
+    }
+
+    .ceo-legend-dot {
+        width: 6px !important;
+        height: 6px !important;
+        border-radius: 50% !important;
+        flex-shrink: 0 !important;
+    }
+
+    .ceo-legend-name {
+        font-size: 11px !important;
+        line-height: 1.3 !important;
+        white-space: nowrap !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+        flex: 1 1 0 !important;
+        min-width: 0 !important;
+    }
+
+    .ceo-legend-pct {
+        font-size: 11px !important;
+        line-height: 1.3 !important;
+        flex-shrink: 0 !important;
+        margin-left: 4px !important;
+    }
+
+    .ceo-performers-view-all-btn {
+        display: inline-block !important;
+    }
+
+    .ceo-performers-list {
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: flex-start !important;
+        height: auto !important;
+        overflow: visible !important;
+        flex: none !important;
+        gap: 2px !important;
+    }
+
+    .ceo-performers-list:not(.show-all) .ceo-performer-row-extra {
+        display: none !important;
+    }
+
+    .ceo-performer-row {
+        padding: 6px 2px !important;
+        gap: 8px !important;
+        flex: none !important;
+        min-height: 36px !important;
+    }
+}
+
+/* SMALL MOBILE (320 × 568) */
+@media (max-width: 360px) {
+    .ceo-dashboard-page {
+        padding: 10px 8px 40px 8px !important;
+        gap: 10px !important;
+    }
+
+    .ceo-metric-cards-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 6px !important;
+    }
+
+    .ceo-metric-card {
+        min-height: 52px !important;
+        padding: 6px 6px !important;
+        gap: 6px !important;
+    }
+
+    .ceo-metric-icon-wrapper {
+        width: 28px !important;
+        height: 28px !important;
+    }
+
+    .ceo-metric-icon {
+        width: 14px !important;
+        height: 14px !important;
+    }
+
+    .ceo-metric-value {
+        font-size: 16px !important;
+    }
+
+    .ceo-metric-title {
+        font-size: 9px !important;
+    }
+
+    .ceo-learning-dept-name {
+        width: 82px !important;
+        font-size: 10px !important;
+    }
+
+    .ceo-learning-dept-stat {
+        width: 65px !important;
+        font-size: 9.5px !important;
+    }
+
+    .ceo-distribution-content {
+        gap: 8px !important;
+    }
+
+    .ceo-donut-container {
+        width: 96px !important;
+        min-height: 125px !important;
+        padding: 6px 4px !important;
+    }
+
+    .ceo-donut-svg {
+        width: 65px !important;
+        height: 65px !important;
+        max-width: 65px !important;
+        max-height: 65px !important;
+    }
+
+    .ceo-donut-total-text {
+        font-size: 11px !important;
+        line-height: 1.2 !important;
+    }
+
+    .ceo-legend-row {
+        min-height: 22px !important;
+        padding: 3px 0 !important;
+        gap: 4px !important;
+    }
+
+    .ceo-legend-left {
+        gap: 4px !important;
+    }
+
+    .ceo-legend-dot {
+        width: 5px !important;
+        height: 5px !important;
+    }
+
+    .ceo-legend-name,
+    .ceo-legend-pct {
+        font-size: 9.5px !important;
+        line-height: 1.2 !important;
+    }
+
+    .ceo-performer-row {
+        gap: 5px !important;
+        padding: 4px 0 !important;
+    }
+
+    .ceo-performer-name {
+        font-size: 11px !important;
+    }
+
+    .ceo-performer-hours {
+        font-size: 10px !important;
+        width: 25px !important;
+    }
+
+    .ceo-performer-pts {
+        font-size: 10px !important;
+        width: 46px !important;
+    }
+}
+
+/* EXTRA SMALL MOBILE (<= 480px) */
+@media (max-width: 480px) {
+    .ceo-dashboard-page {
+        top: 52px !important;
+        height: calc(100vh - 52px) !important;
+        height: calc(100dvh - 52px) !important;
+        max-height: calc(100vh - 52px) !important;
+        max-height: calc(100dvh - 52px) !important;
+    }
+}
+
+/* MOBILE LANDSCAPE */
+@media (max-height: 500px) and (orientation: landscape) {
+    .ceo-dashboard-page {
+        height: auto !important;
+        min-height: 100% !important;
+        overflow-y: auto !important;
+        padding: 10px 14px 20px 14px !important;
+    }
+
+    .ceo-dashboard-main-grid {
+        display: flex !important;
+        flex-direction: column !important;
+        height: auto !important;
+        overflow: visible !important;
+        flex: none !important;
+    }
+
+    .ceo-dashboard-column {
+        height: auto !important;
+        overflow: visible !important;
+        flex: none !important;
+    }
+
+    .ceo-dashboard-card {
+        height: auto !important;
+        overflow: visible !important;
+        flex: none !important;
+    }
+}

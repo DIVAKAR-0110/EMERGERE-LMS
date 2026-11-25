@@ -1,0 +1,4381 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700;800;900&display=swap');
+
+/* =========================================================
+   EMPLOYEE DASHBOARD – 100% PIXEL-PERFECT FIGMA IMPLEMENTATION
+   src/styles/employee/Dashboard.css
+   ========================================================= */
+
+.emp-employee-dashboard-page,
+.emp-employee-dashboard-page *,
+.emp-employee-dashboard-page button,
+.emp-employee-dashboard-page input {
+    font-family: 'Roboto', sans-serif;
+    box-sizing: border-box;
+}
+
+/* Base Desktop Page Container (≥ 1024px) - FIXED 100vh SINGLE SCREEN, NO PAGE SCROLL */
+.emp-employee-dashboard-page {
+    width: 100%;
+    height: 100vh;
+    max-height: 100vh;
+    padding: 14px 24px 12px 24px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden !important;
+    background: transparent;
+}
+
+/* Fixed Header (PageHeader + 4 Stats Cards) */
+.emp-dashboard-fixed-header {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex-shrink: 0;
+    margin-bottom: clamp(14px, 1.6vh, 20px);
+    z-index: 10;
+}
+
+/* Main Content below Fixed Header */
+.emp-dashboard-scrollable-content {
+    flex: 1 1 0;
+    min-height: 0;
+    width: 100%;
+    height: auto;
+    overflow: hidden !important;
+    display: flex;
+    flex-direction: column;
+}
+
+.emp-dashboard-scrollable-content::-webkit-scrollbar {
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
+}
+
+/* =========================================================
+   1. TOP STATS ROW - 4 CARDS IN 1 ROW
+   ========================================================= */
+
+.emp-dashboard-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    width: 100%;
+    height: clamp(60px, 7.5vh, 72px);
+    min-height: 58px;
+    flex-shrink: 0;
+}
+
+.emp-stat-card-container {
+    width: 100%;
+    height: 100%;
+    min-height: 58px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.03);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.emp-dashboard-stat-card {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    flex: 1;
+    background: #FFFFFF;
+    border-radius: 10px 10px 0 0;
+    border-bottom: none;
+    display: flex;
+    align-items: center;
+    padding: 0 14px;
+    gap: 12px;
+    box-sizing: border-box;
+    min-width: 0;
+}
+
+.emp-stat-icon-circle {
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    border-radius: 50%;
+    background: linear-gradient(306.06deg, #0D3BAE 5.34%, #0145EE 82.65%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.emp-stat-svg-icon {
+    display: block;
+    max-width: 20px;
+    max-height: 20px;
+    object-fit: contain;
+}
+
+.emp-stat-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 2px;
+    gap: 1px;
+    min-width: 0;
+    flex: 1;
+}
+
+.emp-stat-value {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 1.1;
+    letter-spacing: -0.3px;
+    color: #080808;
+    margin: 0;
+}
+
+.emp-stat-label {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    font-size: 11px;
+    line-height: 1.2;
+    color: #656565;
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.emp-stat-card-bottom-bar {
+    width: 100%;
+    height: 5px;
+    background: #C1D2FF;
+    border-radius: 0 0 10px 10px;
+    border: 1px solid #DDE0EE;
+    border-top: none;
+    flex-shrink: 0;
+}
+
+/* =========================================================
+   COMMON CARD STYLES
+   ========================================================= */
+
+.emp-dashboard-card {
+    background: #FFFFFF;
+    border-radius: 10px;
+    box-shadow: 0 1px 3px rgba(15, 23, 42, 0.03), 0 1px 2px rgba(15, 23, 42, 0.02);
+    padding: 12px 14px;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    height: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+    justify-content: space-between;
+}
+
+.emp-dashboard-card-title {
+    font-family: 'Roboto', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 16px;
+    color: #060606;
+    margin: 0;
+}
+
+.emp-dashboard-card-header-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 4px;
+    flex-shrink: 0;
+}
+
+/* =========================================================
+   2. MAIN CONTENT GRID (LEFT: LEADERBOARD, RIGHT: PROGRESS & LOG)
+   ========================================================= */
+
+.emp-dashboard-main-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 14px;
+    width: 100%;
+    flex: 1;
+    min-height: 0;
+    height: 100%;
+    align-items: stretch;
+}
+
+.emp-dashboard-left-col {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    min-height: 0;
+    min-width: 0;
+    width: 100%;
+}
+
+.emp-dashboard-right-col {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    height: 100%;
+    min-height: 0;
+    min-width: 0;
+    width: 100%;
+}
+
+/* --- Recent Activity Feed --- */
+.emp-recent-activity-card {
+    background: #FFFFFF;
+    border-radius: 10px;
+    border: 1px solid #DDE0EE;
+    box-shadow: 0 1px 3px rgba(15, 23, 42, 0.03);
+    padding: 14px 13px 14px 13px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    box-sizing: border-box;
+    justify-content: flex-start;
+}
+
+.emp-recent-activity-card .emp-dashboard-card-title {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 16px;
+    color: #060606;
+    margin: 0 0 10px 4px;
+    flex-shrink: 0;
+}
+
+.emp-activity-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex: 1;
+    width: 100%;
+    min-height: 0;
+}
+
+.emp-activity-item {
+    width: 100%;
+    min-height: 52px;
+    height: auto;
+    background: #FFFFFF;
+    border: 1px solid #DDE0EE;
+    border-radius: 10px;
+    padding: 7px 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    box-sizing: border-box;
+    flex-shrink: 0;
+    transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+.emp-activity-item:hover {
+    background: #FAFAFA;
+}
+
+.emp-activity-icon-box {
+    width: 32px;
+    height: 32px;
+    min-width: 32px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.emp-activity-icon-img {
+    display: block;
+    max-width: 18px;
+    max-height: 18px;
+}
+
+.emp-activity-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.emp-activity-text {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    font-size: clamp(11.5px, 0.95vw, 13px);
+    line-height: 1.35;
+    color: #474747;
+    word-break: break-word;
+}
+
+.emp-activity-title {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    color: #000000;
+}
+
+.emp-activity-desc {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    color: #474747;
+}
+
+.emp-activity-time {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 11.5px;
+    line-height: 1.2;
+    color: #7F7F7F;
+    white-space: nowrap;
+    margin-left: auto;
+    flex-shrink: 0;
+    padding-left: 6px;
+}
+
+/* --- Overall Progress --- */
+.emp-overall-progress-card {
+    background: #FFFFFF;
+    border-radius: 10px;
+    box-shadow: 0 1px 3px rgba(15, 23, 42, 0.03);
+    padding: clamp(10px, 1.1vw, 14px);
+    display: flex;
+    flex-direction: column;
+    flex: 1.15;
+    height: 100%;
+    min-height: 220px;
+    box-sizing: border-box;
+    justify-content: space-between;
+}
+
+.emp-overall-progress-card .emp-dashboard-card-title {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 16px;
+    color: #060606;
+    margin: 0;
+}
+
+.emp-progress-pill-filters {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: nowrap;
+    flex-shrink: 0;
+}
+
+.emp-progress-pill-btn {
+    height: 20px;
+    background: #FFFFFF;
+    border: 1px solid #D2D2D2;
+    border-radius: 5px;
+    padding: 0 8px;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    cursor: pointer;
+    box-sizing: border-box;
+    white-space: nowrap;
+    flex-shrink: 0;
+    transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.emp-progress-pill-btn:hover {
+    border-color: #215EF8;
+}
+
+.emp-progress-pill-badge {
+    cursor: default;
+    user-select: none;
+}
+
+.emp-progress-pill-badge:hover {
+    border-color: #D2D2D2;
+}
+
+.emp-pill-btn-text {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 11px;
+    line-height: 1;
+    color: #000000;
+    white-space: nowrap;
+}
+
+.emp-pill-btn-number {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    font-size: 11px;
+    line-height: 1;
+    color: #215EF8;
+    white-space: nowrap;
+}
+
+.emp-overall-progress-body {
+    display: flex;
+    align-items: center;
+    gap: clamp(10px, 1.2vw, 18px);
+    flex: 1;
+    min-height: 0;
+    min-width: 0;
+    margin-top: 4px;
+}
+
+/* Gauge section */
+.emp-progress-gauge-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 114px;
+    gap: 2.5px;
+}
+
+.emp-donut-chart-wrapper {
+    position: relative;
+    width: 102px;
+    height: 102px;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 6px 22px rgba(0, 0, 0, 0.15);
+    border-radius: 50%;
+}
+
+.emp-donut-shadow-circle {
+    position: absolute;
+    width: 76px;
+    height: 76px;
+    border-radius: 50%;
+    background: #FFFFFF;
+    -webkit-box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.22) !important;
+    box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.22) !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+}
+
+.emp-donut-svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 102px;
+    height: 102px;
+    transform: rotate(0deg);
+    z-index: 2;
+    pointer-events: none;
+}
+
+.emp-donut-outer-ring {
+    stroke: #ffffff;
+    opacity: 1;
+}
+
+.emp-donut-track {
+    stroke: #c5c5c5;
+}
+
+.emp-donut-progress {
+    stroke: #ffad0e;
+    transition: stroke-dashoffset 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.emp-donut-center-text {
+    position: relative;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    pointer-events: none;
+}
+
+.emp-donut-percentage {
+    font-family: 'Roboto', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: #030244;
+    line-height: 1;
+}
+
+.emp-donut-subtext {
+    font-family: 'Roboto', sans-serif;
+    font-size: 12px;
+    color: #606060;
+    font-weight: 600;
+    margin-top: 2px;
+    line-height: 1;
+}
+
+.emp-gauge-bottom-label {
+    font-family: 'Roboto', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    color: #707070;
+    margin-top: 10px;
+    text-align: center;
+    white-space: nowrap;
+    line-height: 1;
+}
+
+/* Course Progress Bars List (Right side of Overall Progress) */
+.emp-course-progress-list {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    flex: 1;
+    min-width: 0;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.emp-course-progress-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2px;
+    width: 100%;
+    flex: 1;
+}
+
+.emp-course-header-row {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 8px;
+    width: 100%;
+}
+
+.emp-course-title-provider {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    flex: 1;
+}
+
+.emp-course-name {
+    font-family: 'Roboto', sans-serif;
+    font-size: 11px;
+    font-weight: 400;
+    color: #000000;
+    margin: 0;
+    line-height: 16px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.emp-course-provider-name {
+    font-family: 'Roboto', sans-serif;
+    font-size: 10px;
+    font-weight: 400;
+    color: #7F7F7F;
+    margin-top: 2px;
+    line-height: 8px;
+}
+
+.emp-course-category-badge {
+    background: #F1F2F8;
+    color: #215EF8;
+    font-family: 'Roboto', sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    padding: 2px 6px;
+    border-radius: 140px;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.emp-course-bar-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    margin-top: 2px;
+}
+
+.emp-progress-track-bg {
+    flex: 1;
+    height: 6px;
+    background: #F1F2F8;
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.emp-progress-fill-bar {
+    height: 100%;
+    background: #0E3BAD;
+    border-radius: 25px;
+    transition: width 0.6s ease;
+}
+
+.emp-progress-percent-label {
+    font-family: 'Roboto', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    color: #080808;
+    min-width: 28px;
+    text-align: right;
+}
+
+/* =========================================================
+   3. BOTTOM ROW (RECENT LEARNING LOG + TEAM LEADERBOARD)
+   ========================================================= */
+
+.emp-dashboard-bottom-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    flex: 1;
+    min-height: 0;
+}
+
+/* --- Recent Learning Log --- */
+.emp-recent-learning-log-card {
+    background: #FFFFFF;
+    border-radius: 10px;
+    box-shadow: 0 1px 3px rgba(15, 23, 42, 0.03);
+    padding: clamp(10px, 1.1vw, 14px);
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    height: 100%;
+    min-height: 175px;
+    min-width: 0;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+    justify-content: flex-start;
+}
+
+.emp-recent-learning-log-card .emp-dashboard-card-title {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 16px;
+    color: #060606;
+    margin: 0;
+}
+
+.emp-view-more-action-btn {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    color: #215EF8;
+    font-family: 'Roboto', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    padding: 2px 4px;
+    border-radius: 4px;
+    transition: background 0.15s ease;
+}
+
+.emp-view-more-action-btn:hover {
+    background: #F0F4FE;
+}
+
+.emp-view-more-eye-icon {
+    width: 13px;
+    height: 8px;
+    object-fit: contain;
+}
+
+.emp-learning-log-items-list {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    flex: 1 1 0;
+    min-height: 0;
+    min-width: 0;
+    max-width: 100%;
+    margin-top: 2px;
+    overflow: hidden;
+}
+
+.emp-learning-log-item-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1px 4px;
+    border-radius: 1px;
+    border-bottom: 1px solid #DDE0EE;
+    box-sizing: border-box;
+    padding-bottom: 8px;
+    transition: background 0.15s ease;
+    min-width: 0;
+    max-width: 100%;
+    width: 100%;
+    flex: 1 1 auto;
+    min-height: 28px;
+    max-height: 38px;
+}
+
+.emp-learning-log-item-row:last-child {
+    border-bottom: none;
+}
+
+.emp-log-left-part {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+}
+
+.emp-log-bullet-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.emp-log-text-snippet {
+    font-family: 'Roboto', sans-serif;
+    font-size: 11px;
+    line-height: 18px;
+    color: #474747;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+    flex: 1;
+    min-width: 0;
+}
+
+.emp-log-subject {
+    font-weight: 500;
+    color: #000000;
+}
+
+.emp-log-sep {
+    color: #000000;
+}
+
+.emp-log-desc {
+    font-weight: 400;
+    color: #474747;
+}
+
+.emp-log-duration-badge-wrapper {
+    margin-left: 8px;
+    flex-shrink: 0;
+}
+
+.emp-log-duration-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 55px;
+    height: 19px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    color: #215EF8;
+    background: #f1f2f8;
+    border-radius: 140px;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+/* --- Team Leaderboard --- */
+.emp-team-leaderboard-card {
+    background: #FFFFFF;
+    border-radius: 10px;
+    border: 1px solid #DDE0EE;
+    box-shadow: 0 1px 3px rgba(15, 23, 42, 0.03);
+    padding: clamp(10px, 1.1vw, 14px) clamp(12px, 1.2vw, 16px);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    flex: 1;
+    min-height: 0;
+    box-sizing: border-box;
+    justify-content: flex-start;
+}
+
+.emp-team-leaderboard-card .emp-dashboard-card-title {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 16px;
+    color: #060606;
+    margin: 0 0 6px 0;
+}
+
+.emp-team-leaderboard-rows-list {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 0;
+    height: 0;
+    min-height: 0;
+    margin-top: 2px;
+    gap: 0;
+    overflow-y: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    justify-content: flex-start;
+}
+
+.emp-team-leaderboard-rows-list::-webkit-scrollbar {
+    display: none;
+}
+
+.emp-leaderboard-entry-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-shrink: 0;
+    padding: 5px 6px;
+    border-radius: 0;
+    gap: 8px;
+    border-bottom: 1px solid #DDE0EE;
+    box-sizing: border-box;
+    transition: background 0.15s ease;
+    width: 100%;
+}
+
+.emp-leaderboard-entry-row:last-child,
+.emp-leaderboard-entry-row:has(+ .is-current-user) {
+    border-bottom: none;
+}
+
+.emp-leaderboard-entry-row.is-current-user {
+    background: #F3F4F8;
+    border: 1px solid #DDE0EE !important;
+    border-radius: 10px;
+    padding: 4px 8px;
+    margin: 2px 0;
+}
+
+@media (min-width: 1024px) {
+    .emp-team-leaderboard-rows-list {
+        scroll-snap-type: y proximity;
+    }
+
+    .emp-leaderboard-entry-row {
+        height: var(--lb-row-height, auto);
+        min-height: 36px;
+        padding: 0 6px;
+        scroll-snap-align: start;
+    }
+
+    .emp-leaderboard-entry-row.is-current-user {
+        height: var(--lb-current-row-height, auto);
+        min-height: 30px;
+        padding: 0 8px;
+        margin: 2px 0;
+    }
+}
+
+.emp-entry-left-group {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex: 1;
+    min-width: 0;
+}
+
+.emp-entry-rank {
+    width: 14px;
+    min-width: 14px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    font-size: 11px;
+    color: #000000;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+.emp-entry-avatar {
+    width: 24px;
+    height: 24px;
+    min-width: 24px;
+    border-radius: 50%;
+    display: flex;
+    border: 1px solid #ffffff;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Roboto', sans-serif;
+    font-size: 8px;
+    font-weight: 500;
+    color: #FFFFFF;
+    flex-shrink: 0;
+}
+
+.emp-entry-user-info {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    flex: 1;
+    gap: 1px;
+}
+
+.emp-entry-name {
+    font-family: 'Roboto', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    color: #000000;
+    line-height: 1.2;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.emp-entry-role {
+    font-family: 'Roboto', sans-serif;
+    font-size: 10px;
+    font-weight: 400;
+    color: #7F7F7F;
+    line-height: 1.1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.emp-entry-stats {
+    display: flex;
+    align-items: center;
+    gap: 26px;
+    flex-shrink: 0;
+    margin-left: auto;
+}
+
+.emp-entry-hours {
+    font-family: 'Roboto', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    color: #7F7F7F;
+    text-align: right;
+    white-space: nowrap;
+    min-width: 30px;
+}
+
+.emp-entry-points {
+    font-family: 'Roboto', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    color: #0E3BAD;
+    text-align: right;
+    white-space: nowrap;
+    min-width: 65px;
+}
+
+/* ==========================================================================
+   RESPONSIVE BREAKPOINTS (DESKTOP -> TABLET -> MOBILE)
+   Supported viewports: 1920px, 1440px, 1280px, 1024px, 768px, 480px, 390px, 360px
+   ========================================================================== */
+
+/* --- 1. SMALL DESKTOP / LAPTOP (1024px – 1280px) --- */
+@media (min-width: 1024px) and (max-width: 1280px) {
+    .emp-employee-dashboard-page {
+        height: 100vh !important;
+        max-height: 100vh !important;
+        overflow: hidden !important;
+        padding: 14px 24px 12px 24px !important;
+    }
+
+    .emp-dashboard-main-grid {
+        gap: 10px !important;
+    }
+
+    .emp-dashboard-right-col {
+        gap: 10px !important;
+    }
+
+    .emp-overall-progress-card {
+        min-height: 185px;
+    }
+
+    .emp-recent-learning-log-card {
+        min-height: 150px;
+    }
+
+    .emp-stat-value {
+        font-size: 22px !important;
+    }
+
+    .emp-stat-label {
+        font-size: 11px !important;
+    }
+}
+
+/* --- 2. TABLET LANDSCAPE & PORTRAIT (768px – 1023px) --- */
+@media (min-width: 768px) and (max-width: 1023px) {
+    .emp-employee-dashboard-page {
+        height: auto !important;
+        max-height: none !important;
+        overflow: visible !important;
+        min-height: 100% !important;
+        padding: 14px 16px 28px 16px !important;
+    }
+
+    .emp-dashboard-scrollable-content {
+        flex: none !important;
+        height: auto !important;
+        min-height: auto !important;
+        overflow: visible !important;
+    }
+
+    /* 4 Columns in 1 Row for Stat Cards on Tablet (768px - 1023px) */
+    .emp-dashboard-stats-grid {
+        display: grid !important;
+        grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+        gap: 8px !important;
+        height: 66px !important;
+        min-height: 66px !important;
+        flex-shrink: 0 !important;
+    }
+
+    .emp-stat-card-container {
+        height: 66px !important;
+        min-height: 66px !important;
+    }
+
+    .emp-dashboard-stat-card {
+        height: 61px !important;
+        padding: 0 8px !important;
+        gap: 6px !important;
+    }
+
+    .emp-stat-icon-circle {
+        width: 30px !important;
+        height: 30px !important;
+        min-width: 30px !important;
+    }
+
+    .emp-stat-svg-icon {
+        max-width: 15px !important;
+        max-height: 15px !important;
+    }
+
+    .emp-stat-value {
+        font-size: 18px !important;
+    }
+
+    .emp-stat-label {
+        font-size: 10px !important;
+    }
+
+    /* Stack main grid to 1 column on Tablet */
+    .emp-dashboard-main-grid {
+        display: grid !important;
+        grid-template-columns: 1fr !important;
+        gap: 14px !important;
+        height: auto !important;
+        max-height: none !important;
+        flex: none !important;
+    }
+
+    .emp-dashboard-left-col {
+        height: auto !important;
+        min-height: auto !important;
+        width: 100% !important;
+        flex: none !important;
+    }
+
+    /* Put Overall Progress & Recent Learning Log side-by-side on Tablet */
+    .emp-dashboard-right-col {
+        display: grid !important;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
+        gap: 12px !important;
+        height: auto !important;
+        min-height: auto !important;
+        width: 100% !important;
+        flex: none !important;
+        align-items: stretch !important;
+    }
+
+    .emp-dashboard-card,
+    .emp-team-leaderboard-card {
+        height: auto !important;
+        min-height: auto !important;
+        max-height: none !important;
+        overflow: visible !important;
+        padding: 14px !important;
+        flex: none !important;
+    }
+
+    .emp-overall-progress-card,
+    .emp-recent-learning-log-card {
+        height: 100% !important;
+        min-height: auto !important;
+        max-height: none !important;
+        overflow: hidden !important;
+        padding: 12px 14px !important;
+        flex: none !important;
+    }
+
+    .emp-overall-progress-card .emp-dashboard-card-header-row {
+        flex-wrap: wrap !important;
+        gap: 6px !important;
+    }
+
+    .emp-progress-pill-btn {
+        padding: 0 6px !important;
+    }
+
+    .emp-pill-btn-text,
+    .emp-pill-btn-number {
+        font-size: 10px !important;
+    }
+
+    .emp-overall-progress-body {
+        gap: 10px !important;
+    }
+
+    .emp-progress-gauge-section {
+        width: 92px !important;
+    }
+
+    .emp-donut-chart-wrapper,
+    .emp-donut-svg {
+        width: 84px !important;
+        height: 84px !important;
+    }
+
+    .emp-donut-shadow-circle {
+        width: 62px !important;
+        height: 62px !important;
+    }
+
+    .emp-donut-percentage {
+        font-size: 19px !important;
+    }
+
+    .emp-donut-subtext {
+        font-size: 11px !important;
+    }
+
+    .emp-gauge-bottom-label {
+        font-size: 10.5px !important;
+        margin-top: 6px !important;
+    }
+
+    .emp-learning-log-items-list {
+        flex: none !important;
+        height: auto !important;
+        max-height: none !important;
+        overflow: visible !important;
+        gap: 5px !important;
+    }
+
+    .emp-team-leaderboard-rows-list {
+        flex: none !important;
+        height: auto !important;
+        max-height: none !important;
+        overflow: visible !important;
+        gap: 0 !important;
+    }
+
+    .emp-course-progress-list {
+        height: auto !important;
+        gap: 8px !important;
+    }
+}
+
+/* --- 3. MOBILE (< 768px: 480px, 390px, 360px) --- */
+@media (max-width: 767px) {
+    .emp-employee-dashboard-page {
+        width: 100% !important;
+        height: auto !important;
+        min-height: calc(100vh - 56px) !important;
+        max-height: none !important;
+        padding: 10px 12px 30px 12px !important;
+        overflow-y: auto !important;
+        overflow-x: hidden !important;
+        display: flex !important;
+        flex-direction: column !important;
+        box-sizing: border-box !important;
+    }
+
+    .emp-dashboard-scrollable-content {
+        flex: none !important;
+        height: auto !important;
+        min-height: auto !important;
+        overflow: visible !important;
+    }
+
+    /* 4 Stat Cards in Compact 2x2 Grid */
+    .emp-dashboard-stats-grid {
+        display: grid !important;
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 8px !important;
+        height: auto !important;
+        min-height: auto !important;
+        flex-shrink: 0 !important;
+        width: 100% !important;
+    }
+
+    .emp-stat-card-container {
+        height: 56px !important;
+        min-height: 56px !important;
+        padding: 0 10px !important;
+        gap: 8px !important;
+        border-radius: 8px !important;
+        border-bottom-width: 3px !important;
+        border-bottom-left-radius: 8px !important;
+        border-bottom-right-radius: 8px !important;
+    }
+
+    .emp-dashboard-stat-card {
+        height: 52px !important;
+        padding: 0 !important;
+        gap: 8px !important;
+        border-radius: 8px 8px 0 0 !important;
+    }
+
+    .emp-stat-icon-circle {
+        width: 30px !important;
+        height: 30px !important;
+        min-width: 30px !important;
+        min-height: 30px !important;
+    }
+
+    .emp-stat-svg-icon {
+        width: 14px !important;
+        height: 14px !important;
+        max-width: 14px !important;
+        max-height: 14px !important;
+    }
+
+    .emp-stat-value {
+        font-size: 17px !important;
+        line-height: 1.1 !important;
+        font-weight: 600 !important;
+    }
+
+    .emp-stat-label {
+        font-size: 10px !important;
+        line-height: 1.15 !important;
+        letter-spacing: -0.15px !important;
+        margin-top: 1px !important;
+        white-space: nowrap !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+    }
+
+    .emp-stat-card-bottom-bar {
+        height: 3px !important;
+        border-radius: 0 0 8px 8px !important;
+    }
+
+    /* Single-Column Stack for Main Cards */
+    .emp-dashboard-main-grid {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 10px !important;
+        width: 100% !important;
+        height: auto !important;
+        max-height: none !important;
+        flex: none !important;
+    }
+
+    .emp-dashboard-left-col,
+    .emp-dashboard-right-col {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 10px !important;
+        width: 100% !important;
+        height: auto !important;
+        min-height: auto !important;
+        flex: none !important;
+    }
+
+    .emp-dashboard-card,
+    .emp-overall-progress-card,
+    .emp-recent-learning-log-card,
+    .emp-team-leaderboard-card {
+        width: 100% !important;
+        height: auto !important;
+        min-height: auto !important;
+        max-height: none !important;
+        overflow: visible !important;
+        padding: 12px 10px !important;
+        flex: none !important;
+        box-sizing: border-box !important;
+    }
+
+    /* Team Leaderboard Mobile Styles */
+    .emp-team-leaderboard-rows-list {
+        flex: none !important;
+        height: auto !important;
+        max-height: none !important;
+        overflow: visible !important;
+        gap: 4px !important;
+        display: flex !important;
+        flex-direction: column !important;
+    }
+
+    .emp-leaderboard-entry-row {
+        padding: 5px 4px !important;
+        gap: 6px !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+    }
+
+    .emp-leaderboard-entry-row.is-current-user {
+        padding: 5px 6px !important;
+        border-radius: 8px !important;
+    }
+
+    .emp-entry-left-group {
+        gap: 8px !important;
+        flex: 1 !important;
+        min-width: 0 !important;
+    }
+
+    .emp-entry-rank {
+        width: 14px !important;
+        min-width: 14px !important;
+        font-size: 13px !important;
+    }
+
+    .emp-entry-avatar {
+        width: 28px !important;
+        height: 28px !important;
+        min-width: 28px !important;
+        font-size: 10.5px !important;
+    }
+
+    .emp-entry-name {
+        font-size: 12.5px !important;
+        line-height: 1.2 !important;
+    }
+
+    .emp-entry-role {
+        font-size: 10px !important;
+    }
+
+    .emp-entry-stats {
+        gap: 10px !important;
+        margin-left: auto !important;
+        flex-shrink: 0 !important;
+    }
+
+    .emp-entry-hours {
+        font-size: 12.5px !important;
+        min-width: 24px !important;
+    }
+
+    .emp-entry-points {
+        font-size: 13px !important;
+        min-width: 54px !important;
+    }
+
+    /* Overall Progress Mobile Stacking */
+    .emp-overall-progress-card .emp-dashboard-card-header-row {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 6px !important;
+    }
+
+    .emp-progress-pill-filters {
+        flex-wrap: wrap !important;
+        gap: 6px !important;
+        width: 100% !important;
+    }
+
+    .emp-overall-progress-body {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 12px !important;
+        height: auto !important;
+        width: 100% !important;
+        margin-top: 6px !important;
+    }
+
+    .emp-progress-gauge-section {
+        width: 100% !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+    }
+
+    .emp-course-progress-list {
+        width: 100% !important;
+        height: auto !important;
+        gap: 8px !important;
+    }
+
+    .emp-course-name {
+        font-size: 12.5px !important;
+    }
+
+    .emp-course-provider-name {
+        font-size: 10.5px !important;
+    }
+
+    .emp-course-category-badge {
+        font-size: 10px !important;
+        padding: 2px 5px !important;
+    }
+
+    .emp-progress-percent-label {
+        font-size: 11px !important;
+        min-width: 24px !important;
+    }
+
+    /* Recent Learning Log Mobile Styles */
+    .emp-learning-log-items-list {
+        flex: none !important;
+        height: auto !important;
+        max-height: none !important;
+        overflow: visible !important;
+        gap: 4px !important;
+        display: flex !important;
+        flex-direction: column !important;
+        margin-top: 4px !important;
+    }
+
+    .emp-learning-log-item-row {
+        padding: 4px 4px !important;
+        gap: 6px !important;
+    }
+
+    .emp-log-text-snippet {
+        font-size: 12px !important;
+        line-height: 1.3 !important;
+    }
+
+    .emp-log-duration-badge {
+        font-size: 11px !important;
+        width: 55px !important;
+        height: 19px !important;
+        padding: 0 !important;
+    }
+}
+
+/* --- 4. SMALL MOBILE (< 360px) --- */
+@media (max-width: 359px) {
+    .emp-employee-dashboard-page {
+        padding: 8px 8px 24px 8px !important;
+    }
+
+    .emp-dashboard-stats-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 6px !important;
+        height: auto !important;
+        min-height: auto !important;
+    }
+
+    .emp-stat-card-container {
+        height: 56px !important;
+        min-height: 56px !important;
+        padding: 0 8px !important;
+        gap: 6px !important;
+        border-radius: 8px !important;
+        border-bottom-width: 3px !important;
+    }
+
+    .emp-dashboard-stat-card {
+        height: 52px !important;
+        padding: 0 !important;
+        gap: 6px !important;
+    }
+
+    .emp-stat-icon-circle {
+        width: 28px !important;
+        height: 28px !important;
+        min-width: 28px !important;
+        min-height: 28px !important;
+    }
+
+    .emp-stat-svg-icon {
+        width: 13px !important;
+        height: 13px !important;
+        max-width: 13px !important;
+        max-height: 13px !important;
+    }
+
+    .emp-stat-value {
+        font-size: 16px !important;
+        line-height: 1.1 !important;
+        font-weight: 600 !important;
+    }
+
+    .emp-stat-label {
+        font-size: 9.5px !important;
+        line-height: 1.15 !important;
+        letter-spacing: -0.2px !important;
+        white-space: nowrap !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+    }
+
+    .emp-entry-stats {
+        gap: 6px !important;
+    }
+
+    .emp-entry-hours {
+        font-size: 11.5px !important;
+    }
+
+    .emp-entry-points {
+        font-size: 12px !important;
+        min-width: 48px !important;
+    }
+
+    .emp-donut-chart-wrapper {
+        width: 110px !important;
+        height: 110px !important;
+    }
+
+    .emp-donut-shadow-circle {
+        width: 82px !important;
+        height: 82px !important;
+    }
+
+    .emp-donut-svg {
+        width: 110px !important;
+        height: 110px !important;
+    }
+
+    .emp-donut-percentage {
+        font-size: 20px !important;
+    }
+}
+
+/* =========================================================
+   EMPLOYEE DAILY LEARNING LOG – CONSOLIDATED STYLES
+   ========================================================= */
+
+/* ==========================================================================
+   DAILY LEARNING LOG - COMPONENT STYLESHEET (CLEAN & MODULAR)
+   Modules:
+   1. Global Page Layout & 2-Column Grid Container
+   2. Section 1: Log Today's Learning (Form & Duration Inputs)
+   3. Section 2: Learning Calendar (Grid, Dots & Legend)
+   4. Section 3: This Month's Summary (4 Metric Cards)
+   5. Section 4: Recent Learning Log (List, Badges & Custom Scroll)
+   6. Section 5: Modals & Popups (Day Activities, Month History, Edit Log)
+   ========================================================================== */
+
+
+/* ==========================================================================
+   1. GLOBAL PAGE LAYOUT & 2-COLUMN GRID CONTAINER - FIGMA PARITY
+   ========================================================================== */
+
+.emp-daily-learning-page {
+    width: 100%;
+    min-height: 100%;
+    height: 100%;
+    padding: 20px 24px 18px 24px;
+    color: #000000;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    background: transparent;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    font-family: 'Roboto', sans-serif;
+}
+
+.emp-daily-learning-fixed-header {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    margin-bottom: clamp(8px, 1.2vh, 14px);
+    z-index: 10;
+}
+
+.emp-daily-learning-scrollable-content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    flex: 1;
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+/* 2-Column Desktop Grid (Left ~61%, Right ~39%) - Exact Figma Proportions */
+.emp-daily-learning-grid,
+.emp-daily-learning-container {
+    display: grid;
+    grid-template-columns: minmax(0, 1.55fr) minmax(320px, 1fr);
+    grid-template-rows: 1fr;
+    gap: clamp(12px, 1.2vw, 16px);
+    align-items: stretch;
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+    flex: 1;
+    box-sizing: border-box;
+}
+
+.emp-daily-learning-grid>*,
+.emp-daily-learning-container>* {
+    min-width: 0;
+    max-width: 100%;
+}
+
+.emp-daily-learning-col-left {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(8px, 1vw, 12px);
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+    flex: 1;
+}
+
+.emp-daily-learning-col-right {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(8px, 1vw, 12px);
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+    flex: 1;
+}
+
+.emp-daily-learning-card-form {
+    width: 100%;
+    flex: 1;
+    min-height: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.emp-daily-learning-card-summary {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    height: auto;
+    min-height: 110px;
+}
+
+.emp-daily-learning-card-calendar {
+    width: 100%;
+    flex-shrink: 0;
+}
+
+.emp-daily-learning-card-recent {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-height: 0;
+    height: 100%;
+}
+
+/* Base Card Container */
+.emp-learning-card {
+    background: #ffffff;
+    border-radius: 10px;
+    padding: 7px 12px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-width: 0;
+    box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04);
+    transition: box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.emp-learning-card:hover {
+    box-shadow: 0 3px 10px rgba(15, 23, 42, 0.06);
+    border-color: #cbd5e1;
+}
+
+.emp-card-title {
+    margin: 0 0 10px 0;
+    font-size: 13px;
+    font-weight: 500;
+    color: #060606;
+    letter-spacing: -0.1px;
+    flex-shrink: 0;
+}
+
+
+/* ==========================================================================
+   2. SECTION 1: LOG TODAY'S LEARNING (FORM & DURATION INPUTS)
+   ========================================================================== */
+
+.emp-learning-form-card {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 0;
+    min-height: 0;
+    overflow: hidden;
+    width: 100%;
+    min-width: 0;
+    border-radius: 10px;
+    border: 1px solid #DDE0EE;
+    box-shadow: 0 1px 3px rgba(15, 23, 42, 0.03);
+    background: #ffffff;
+    padding: clamp(12px, 1.2vw, 16px);
+    box-sizing: border-box;
+}
+
+.emp-learning-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    flex: 1;
+    min-height: 0;
+    height: 100%;
+    gap: clamp(8px, 1vh, 12px);
+    width: 100%;
+}
+
+.emp-form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    width: 100%;
+    flex-shrink: 0;
+}
+
+.emp-form-field label {
+    color: #474747;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 16px;
+}
+
+.emp-form-field label span,
+.emp-form-field label .emp-req-star {
+    color: #ff5c5c;
+    font-size: 11px;
+    font-weight: 400;
+    line-height: 16px;
+}
+
+.emp-form-field input,
+.emp-form-field select {
+    width: 100%;
+    height: 30px;
+    padding: 0 32px 0 12px;
+    box-sizing: border-box;
+    border: 1px solid #DDE0EE;
+    border-radius: 6px;
+    background: #ffffff;
+    color: #000000;
+    font-size: 11px;
+    font-weight: 400;
+    line-height: 20px;
+    outline: none;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.emp-form-field input:focus,
+.emp-form-field textarea:focus {
+    border-color: #215EF8 !important;
+    box-shadow: 0 0 0 2px rgba(33, 94, 248, 0.12) !important;
+}
+
+/* Course Search & Dropdown */
+.emp-course-dropdown-container {
+    position: relative;
+    width: 100%;
+}
+
+.emp-course-input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.emp-course-dropdown-toggle-btn {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.emp-course-dropdown-arrow {
+    width: 8px;
+    height: 10px;
+    object-fit: contain;
+}
+
+.emp-course-dropdown-menu {
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 0;
+    right: 0;
+    background: #ffffff;
+    border: 1px solid #DDE0EE;
+    border-radius: 8px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+    z-index: 100;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.emp-course-dropdown-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.emp-course-dropdown-item {
+    padding: 8px 12px;
+    border: none;
+    background: transparent;
+    text-align: left;
+    font-size: 12px;
+    font-weight: 400;
+    color: #080808;
+    cursor: pointer;
+    transition: background 0.15s ease;
+}
+
+.emp-course-dropdown-item:hover,
+.emp-course-dropdown-item.active {
+    background: #eff6ff;
+    color: #2563eb;
+}
+
+.emp-course-dropdown-empty {
+    padding: 10px 12px;
+    font-size: 13px;
+    color: #6b7280;
+    text-align: center;
+}
+
+/* Live Course Status Strip (Duration, Completed, Remaining, Progress) */
+.emp-course-status-strip {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-top: 10px;
+    margin-bottom: 4px;
+    font-size: 12px;
+    line-height: 1.4;
+    color: #64748B;
+    user-select: none;
+    flex-wrap: wrap;
+}
+
+.emp-course-status-strip .strip-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    color: #64748B;
+    font-weight: 400;
+}
+
+.emp-course-status-strip .strip-item strong {
+    color: #0F172A;
+    font-weight: 700;
+}
+
+.emp-course-status-strip .strip-divider {
+    color: #CBD5E1;
+    font-weight: 300;
+}
+
+.emp-course-status-strip .strip-item.progress-item,
+.emp-course-status-strip .strip-item.progress-item strong {
+    color: #2563EB;
+    font-weight: 700;
+}
+
+/* Dual Duration Row */
+.emp-dual-duration-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    width: 100%;
+    flex-shrink: 0;
+}
+
+.emp-duration-block {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    min-width: 0;
+}
+
+.emp-duration-block-label {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 16px;
+    color: #474747;
+    white-space: nowrap;
+}
+
+.emp-duration-block-label .emp-req-star {
+    color: #ff5c5c;
+    font-size: 11px;
+    font-weight: 400;
+}
+
+.emp-info-icon,
+.emp-info-icon-img {
+    width: 10px;
+    height: 10px;
+    cursor: pointer;
+    vertical-align: middle;
+    object-fit: contain;
+}
+
+.emp-duration-inputs-grid {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+}
+
+.emp-time-subfield {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 0;
+}
+
+.emp-subfield-label {
+    font-size: 11px;
+    font-weight: 400;
+    line-height: 15px;
+    color: #474747;
+    text-transform: none;
+}
+
+.emp-minutes-input-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    width: 100%;
+    min-width: 0;
+}
+
+.emp-time-input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    min-width: 0;
+}
+
+.emp-time-input-box {
+    width: 100% !important;
+    height: 30px;
+    padding: 0 22px 0 10px !important;
+    border: 1px solid #DDE0EE !important;
+    border-radius: 6px !important;
+    background: #ffffff !important;
+    font-size: 12px !important;
+    font-weight: 400 !important;
+    color: #000000 !important;
+    text-align: left !important;
+    outline: none !important;
+    box-sizing: border-box !important;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease !important;
+    appearance: textfield;
+    -moz-appearance: textfield;
+}
+
+.emp-time-input-box::-webkit-inner-spin-button,
+.emp-time-input-box::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.emp-time-input-box:focus {
+    border-color: #215EF8 !important;
+    box-shadow: 0 0 0 2px rgba(33, 94, 248, 0.12) !important;
+}
+
+.emp-up-down-controls {
+    position: absolute;
+    right: 6px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 8px;
+    height: 14px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.emp-up-down-icon-img {
+    width: 8px;
+    height: 12px;
+    object-fit: contain;
+    pointer-events: none;
+}
+
+.emp-up-down-btn {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+    opacity: 0;
+    z-index: 2;
+}
+
+.emp-up-down-btn.emp-up-btn {
+    top: 0;
+}
+
+.emp-up-down-btn.emp-down-btn {
+    bottom: 0;
+}
+
+.emp-outside-suffix {
+    font-size: 11px;
+    font-weight: 400;
+    line-height: 16px;
+    color: #474747;
+    user-select: none;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+/* Duration validation warning message */
+.emp-duration-warning-text {
+    margin-top: 4px;
+    margin-bottom: 6px;
+    font-size: 10px;
+    color: #EF4444;
+    display: flex;
+    align-items: flex-start;
+    gap: 6px;
+    font-weight: 500;
+    line-height: 1.4;
+    width: 100%;
+    box-sizing: border-box;
+    white-space: normal;
+    word-break: break-word;
+}
+
+.emp-duration-warning-icon {
+    flex-shrink: 0;
+    font-size: 13px;
+    line-height: 1.2;
+}
+
+.emp-duration-warning-msg {
+    flex: 1;
+    min-width: 0;
+}
+
+@media (min-width: 1024px) {
+    .emp-duration-warning-text {
+        white-space: nowrap;
+        align-items: center;
+    }
+}
+
+@media (max-width: 767px) {
+    .emp-duration-warning-text {
+        font-size: 11px;
+        line-height: 1.35;
+        white-space: normal;
+    }
+}
+
+/* Total Duration Banner */
+.emp-total-duration-banner {
+    background: #F1F2F8;
+    border-radius: 6px;
+    padding: 8px 12px;
+    display: flex;
+    height: 38px;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: #215EF8;
+    margin: 2px 0;
+    box-sizing: border-box;
+    flex-shrink: 0;
+}
+
+.emp-total-duration-clock-icon {
+    color: #215EF8;
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+}
+
+.emp-total-duration-main-text {
+    font-weight: 600;
+    font-size: 11px;
+    line-height: 16px;
+    color: #215EF8;
+}
+
+.emp-total-duration-sub-text {
+    color: #215EF8;
+    font-size: 11px;
+    font-weight: 400;
+    line-height: 16px;
+}
+
+/* Textarea & Counter */
+.emp-form-field.emp-textarea-field {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 0;
+    min-height: 0;
+    gap: 4px;
+}
+
+.emp-daily-learning-page .emp-textarea-wrapper {
+    position: relative;
+    width: 100%;
+    flex: 1 1 0;
+    min-height: 68px;
+    display: flex;
+    flex-direction: column;
+}
+
+.emp-daily-learning-page .emp-form-field .emp-textarea-wrapper textarea,
+.emp-form-field textarea {
+    width: 100%;
+    height: 100% !important;
+    min-height: 0;
+    padding: 8px 12px 20px 12px;
+    box-sizing: border-box;
+    border: 1px solid #DDE0EE;
+    border-radius: 6px;
+    background: #ffffff;
+    color: #000000;
+    font-size: 12px;
+    line-height: 16.5px;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    font-family: inherit;
+    outline: none;
+    resize: none;
+    transition: height 0.2s ease, border-color 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease;
+}
+
+/* When error is active, style borders without breaking height or counter position */
+.emp-textarea-field.has-error textarea,
+.emp-form-field textarea.emp-form-textarea-error {
+    border-color: #EF4444 !important;
+    background-color: #FFFDFD !important;
+}
+
+.emp-textarea-field.has-error .emp-char-count {
+    position: absolute !important;
+    right: 12px !important;
+    bottom: 5px !important;
+    top: auto !important;
+    transform: none !important;
+}
+
+.emp-textarea-field .emp-form-error-text {
+    color: #EF4444;
+    font-size: 11px;
+    line-height: 14px;
+    margin-top: 2px;
+    display: block;
+    font-family: 'Roboto', sans-serif;
+    flex-shrink: 0;
+}
+
+.emp-form-field textarea::placeholder {
+    color: #7F7F7F;
+    font-size: 13px;
+    line-height: 18px;
+}
+
+.emp-textarea-wrapper .emp-char-count {
+    position: absolute;
+    right: 12px;
+    bottom: 5px;
+    font-size: 11px;
+    font-weight: 400;
+    line-height: 15px;
+    color: #7F7F7F;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.emp-save-learning-button {
+    width: 100%;
+    height: 36px;
+    border: none;
+    border-radius: 6px;
+    background: #0E3BAD;
+    color: #ffffff;
+    font-size: 12.5px;
+    font-weight: 500;
+    line-height: 18px;
+    cursor: pointer;
+    margin-top: 10px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.15s ease, box-shadow 0.15s ease;
+    flex-shrink: 0;
+}
+
+.emp-save-learning-button:hover {
+    background: #092c87;
+    box-shadow: 0 2px 8px rgba(14, 59, 173, 0.30);
+}
+
+
+/* ==========================================================================
+   3. SECTION 2: LEARNING CALENDAR (GRID, DOTS & LEGEND)
+   ========================================================================== */
+
+.emp-calendar-card {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-width: 0;
+    border-radius: 10px;
+    border: 1px solid #DDE0EE;
+    box-shadow: 0 1px 3px rgba(15, 23, 42, 0.03);
+    background: #ffffff;
+    padding: clamp(12px, 1.3vw, 18px);
+    box-sizing: border-box;
+    gap: clamp(8px, 1vh, 12px);
+}
+
+.emp-calendar-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 2px;
+    flex-shrink: 0;
+    height: 24px;
+}
+
+.emp-calendar-header .emp-card-title {
+    margin: 0;
+    font-size: 13px;
+    font-weight: 500;
+    color: #060606;
+    line-height: 1.2;
+}
+
+.emp-calendar-navigation {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 140px;
+    flex-shrink: 0;
+}
+
+.emp-calendar-nav-btn {
+    width: 18px;
+    height: 18px;
+    padding: 0;
+    border: none;
+    border-radius: 3px;
+    background: transparent;
+    color: #215EF8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: background 0.15s ease;
+}
+
+.emp-calendar-nav-btn:hover {
+    background: #f0f4ff;
+}
+
+.emp-calendar-nav-btn.disabled,
+.emp-calendar-nav-btn:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+.emp-nav-arrow-icon {
+    width: 12px;
+    height: 12px;
+    object-fit: contain;
+}
+
+.emp-calendar-month-text {
+    color: #215EF8;
+    font-size: 13px;
+    font-weight: 600;
+    flex: 1;
+    min-width: 0;
+    text-align: center;
+    line-height: 22px;
+}
+
+.emp-calendar-month-text-btn {
+    border: none;
+    background: transparent;
+    color: #215EF8;
+    font-size: 11px;
+    font-weight: 500;
+    flex: 1;
+    min-width: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    cursor: pointer;
+    padding: 1px 2px;
+    border-radius: 4px;
+    line-height: 20px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    transition: background 0.15s ease;
+}
+
+.emp-calendar-month-text-btn:hover {
+    background: #f0f4ff;
+}
+
+.emp-calendar-weekdays {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    margin-bottom: 2px;
+    flex-shrink: 0;
+    height: 18px;
+    align-items: center;
+}
+
+.emp-calendar-weekdays span {
+    text-align: center;
+    color: #898989;
+    font-size: 10px;
+    font-weight: 600;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.emp-calendar-days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: repeat(5, clamp(30px, 4vh, 42px));
+    row-gap: clamp(5px, 0.8vh, 8px);
+    column-gap: clamp(4px, 0.5vw, 6px);
+    width: 100%;
+    flex-shrink: 0;
+}
+
+.emp-calendar-day {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-height: 26px;
+    border: none;
+    border-radius: 6px;
+    background: transparent;
+    color: #818181;
+    font-size: clamp(10.5px, 0.85vw, 12px);
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    padding: 0;
+    box-sizing: border-box;
+    transition: background 0.15s ease, color 0.15s ease;
+}
+
+.emp-calendar-day:hover:not(.today):not(.emp-muted) {
+    background: #e4ebfd;
+    color: #215EF8;
+}
+
+.emp-calendar-day.logged {
+    background: #e4ebfd;
+    color: #215EF8;
+    font-weight: 500;
+    border-radius: 6px;
+}
+
+.emp-calendar-day.today {
+    background: #215EF8;
+    color: #ffffff;
+    font-size: 9px;
+    font-weight: 500;
+    border-radius: 6px;
+    box-shadow: 0 2px 6px rgba(33, 94, 248, 0.30);
+}
+
+.emp-calendar-day.emp-muted {
+    background: transparent;
+    color: transparent;
+    cursor: default;
+    pointer-events: none;
+}
+
+.emp-calendar-day.future-day,
+.emp-calendar-day:disabled {
+    background: transparent !important;
+    color: #818181 !important;
+    cursor: default !important;
+    pointer-events: none !important;
+    box-shadow: none !important;
+}
+
+.emp-logged-dot {
+    display: block;
+    width: 3.5px;
+    height: 3.5px;
+    border-radius: 50%;
+    background: #215EF8;
+    flex-shrink: 0;
+}
+
+.emp-today-yellow-dot {
+    display: block;
+    width: 3.5px;
+    height: 3.5px;
+    border-radius: 50%;
+    background: #ffaf0e;
+    flex-shrink: 0;
+}
+
+.emp-calendar-legend {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 12px;
+    color: #7f7f7f;
+    font-size: 12px;
+    font-weight: 400;
+    margin-top: 2px;
+    padding-top: 2px;
+    height: 20px;
+    flex-shrink: 0;
+}
+
+.emp-legend-item {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.emp-legend-box-img {
+    width: 11px;
+    height: 11px;
+    border-radius: 2px;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+
+/* ==========================================================================
+   4. SECTION 3: THIS MONTH'S SUMMARY (4 METRIC CARDS)
+   ========================================================================== */
+
+.emp-monthly-summary-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 100%;
+    height: clamp(128px, 16.5vh, 250px);
+    min-height: 116px;
+    min-width: 0;
+    border-radius: 10px;
+    border: 1px solid #DDE0EE;
+    box-shadow: 0 1px 3px rgba(15, 23, 42, 0.03);
+    background: #ffffff;
+    padding: clamp(10px, 1.1vh, 14px) clamp(14px, 1.4vw, 18px);
+    box-sizing: border-box;
+    gap: clamp(6px, 0.8vh, 10px);
+    flex-shrink: 0;
+}
+
+.emp-monthly-summary-card .emp-card-title {
+    margin-bottom: 0px;
+    flex-shrink: 0;
+}
+
+.emp-summary-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 8px;
+    width: 100%;
+    align-items: center;
+    box-sizing: border-box;
+    flex: none;
+}
+
+.emp-summary-item {
+    height: clamp(76px, 9.8vh, 180px);
+    min-height: 72px;
+    max-height: 185px;
+    border: none;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+    padding: clamp(8px, 1vh, 12px) 12px;
+    box-sizing: border-box;
+    min-width: 0;
+    flex: none;
+    transition: box-shadow 0.15s ease;
+}
+
+.emp-summary-item:hover {
+    box-shadow: 0 3px 10px rgba(15, 23, 42, 0.07);
+}
+
+.emp-summary-item[data-color="blue"] {
+    background: #F2F7FE;
+}
+
+.emp-summary-item[data-color="green"] {
+    background: #EDFCF5;
+}
+
+.emp-summary-item[data-color="orange"] {
+    background: #FEF9EF;
+}
+
+.emp-summary-item[data-color="purple"] {
+    background: #F9F4FE;
+}
+
+.emp-summary-svg-icon {
+    flex-shrink: 0;
+    width: 36px !important;
+    height: 36px !important;
+    min-width: 32px !important;
+    min-height: 32px !important;
+    max-width: 40px !important;
+    max-height: 40px !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent !important;
+}
+
+.emp-summary-icon-img {
+    width: 100% !important;
+    height: 100% !important;
+    min-width: 100% !important;
+    min-height: 100% !important;
+    display: block;
+    object-fit: contain;
+}
+
+.emp-summary-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1px;
+    min-width: 0;
+    overflow: hidden;
+}
+
+.emp-summary-content strong {
+    color: #000000;
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 1.15;
+    letter-spacing: 0;
+    white-space: nowrap;
+    margin: 0;
+}
+
+.emp-summary-content span {
+    color: #7F7F7F;
+    font-family: 'Roboto', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    line-height: 1.2;
+    letter-spacing: 0;
+    white-space: nowrap;
+    margin: 0;
+}
+
+/* Smooth resize transitions for warning mode in Daily Learning Log */
+.emp-daily-learning-card-summary,
+.emp-monthly-summary-card,
+.emp-summary-item,
+.emp-summary-svg-icon,
+.emp-summary-content strong,
+.emp-summary-content span {
+    transition: all 0.25s ease;
+}
+
+
+/* ==========================================================================
+   5. SECTION 4: RECENT LEARNING LOG (LIST, BADGES & CUSTOM SCROLL)
+   ========================================================================== */
+
+.emp-recent-log-card {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+    min-width: 0;
+    border-radius: 10px;
+    border: 1px solid #DDE0EE;
+    box-shadow: 0 1px 3px rgba(15, 23, 42, 0.03);
+    background: #ffffff;
+    padding: clamp(10px, 1.1vw, 14px) clamp(12px, 1.2vw, 16px);
+    box-sizing: border-box;
+    gap: 4px;
+    flex: 1;
+}
+
+.emp-recent-log-empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(8px, 1vh, 14px);
+    flex: 1;
+    min-height: 120px;
+    padding: clamp(16px, 2vh, 32px) 16px;
+    text-align: center;
+    color: #7f7f7f;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.emp-recent-log-empty-icon {
+    width: clamp(60px, 9vh, 100px);
+    height: clamp(60px, 9vh, 100px);
+    object-fit: contain;
+    opacity: 0.8;
+    flex-shrink: 0;
+}
+
+.emp-recent-log-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 4px;
+    flex-shrink: 0;
+}
+
+.emp-recent-log-header .emp-card-title {
+    margin: 0;
+    font-size: 13px;
+    font-weight: 500;
+    color: #060606;
+}
+
+.emp-show-all-logs-btn {
+    border: none;
+    background: transparent;
+    color: #2563eb;
+    font-size: 11px;
+    font-weight: 500;
+    cursor: pointer;
+    padding: 2px 4px;
+    border-radius: 4px;
+    transition: background 0.15s ease, color 0.15s ease;
+}
+
+.emp-show-all-logs-btn:hover {
+    background: #eff6ff;
+    color: #1d4ed8;
+}
+
+.emp-recent-log-body {
+    display: flex;
+    align-items: stretch;
+    flex: 1;
+    min-height: 0;
+    width: 100%;
+    gap: 6px;
+    position: relative;
+    overflow: hidden;
+}
+
+.emp-recent-log-list {
+    --visible-rows: 4;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    flex: 1;
+    min-height: 0;
+    height: 100%;
+    max-height: none;
+    overflow: hidden !important;
+    overflow-y: hidden !important;
+    overflow-x: hidden !important;
+    gap: 0;
+    padding-right: 0;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.emp-recent-log-list::-webkit-scrollbar {
+    display: none;
+    width: 0;
+    height: 0;
+}
+
+.emp-recent-log-list::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.emp-recent-log-list::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 4px;
+}
+
+.emp-recent-log-list::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+}
+
+.emp-recent-log-scroll-track {
+    display: none;
+}
+
+.emp-learning-log-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 4px 2px;
+    border-bottom: 1px solid #DDE0EE;
+    flex: 0 0 calc(100% / var(--visible-rows, 4));
+    height: calc(100% / var(--visible-rows, 4));
+    box-sizing: border-box;
+    scroll-snap-align: start;
+}
+
+.emp-learning-log-row:last-child {
+    border-bottom: none;
+}
+
+.emp-log-date {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    min-width: 52px;
+    flex-shrink: 0;
+}
+
+.emp-log-date strong {
+    color: #000000;
+    font-size: 11px;
+    font-weight: 500;
+    line-height: 1.2;
+}
+
+.emp-log-date span {
+    color: #7f7f7f;
+    font-size: 10px;
+    font-weight: 400;
+    line-height: 1.2;
+}
+
+.emp-log-information {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.emp-log-information h3 {
+    margin: 0;
+    color: #000000;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1.25;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.emp-log-information p {
+    margin: 0;
+    color: #7f7f7f;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1.25;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.emp-log-action-side {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+}
+
+.emp-log-duration {
+    width: 60px;
+    height: 25px;
+    padding: 0;
+    box-sizing: border-box;
+    border-radius: 140px;
+    background: #EEF4FF;
+    color: #215EF8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 500;
+    text-align: center;
+    flex-shrink: 0;
+    white-space: nowrap;
+}
+
+.emp-edit-log-button {
+    border: none;
+    background: transparent;
+    color: #2563eb;
+    padding: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background 0.15s ease;
+}
+
+.emp-edit-log-button:hover:not(:disabled):not(.disabled) {
+    background: #eff6ff;
+}
+
+.emp-edit-log-button:disabled,
+.emp-edit-log-button.disabled {
+    cursor: not-allowed !important;
+    opacity: 0.35;
+    background: transparent !important;
+    filter: grayscale(1);
+}
+
+.emp-edit-icon-img {
+    width: 12px;
+    height: 12px;
+    object-fit: contain;
+    display: block;
+}
+
+
+/* ==========================================================================
+   6. SECTION 5: MODALS & POPUPS (DAY ACTIVITIES, MONTH HISTORY, EDIT LOG)
+   ========================================================================== */
+
+.emp-modal-backdrop-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(15, 23, 42, 0.45);
+    backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    padding: 20px;
+    animation: modalFadeIn 0.2s ease-out;
+}
+
+@keyframes modalFadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.97);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Edit Modal */
+.emp-edit-learning-modal-card {
+    position: relative;
+    background: #ffffff;
+    box-shadow: 0 20px 40px rgba(15, 23, 42, 0.18);
+    width: 565px;
+    height: auto;
+    max-height: 90vh;
+    border-radius: 8px;
+    padding: 15px 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    overflow-y: auto;
+}
+
+.emp-modal-header-row {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    padding-right: 28px;
+}
+
+.emp-modal-blue-title {
+    margin: 0;
+    font-size: 22px;
+    font-weight: 500;
+    color: #215EF8;
+    letter-spacing: -0.3px;
+}
+
+.emp-modal-subtitle {
+    margin: 4px 0 0 0;
+    font-size: 13px;
+    font-weight: 400;
+    color: #7f7f7f;
+    line-height: 20px;
+}
+
+.emp-modal-close-button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 24px;
+    height: 24px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.15s ease;
+}
+
+.emp-modal-close-button:hover {
+    opacity: 0.75;
+}
+
+.emp-modal-close-icon-img {
+    width: 12px;
+    height: 12px;
+    object-fit: contain;
+    display: block;
+}
+
+.emp-modal-form-content {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.emp-modal-form-content .emp-form-field input,
+.emp-modal-form-content .emp-form-field select {
+    height: 30px;
+    font-size: 12px;
+    font-weight: 400;
+    border-radius: 8px;
+    border: 1px solid #d1d5db;
+}
+
+.emp-modal-form-content .emp-form-field textarea {
+    height: 60px;
+    font-size: 12px;
+    border-radius: 8px;
+    border: 1px solid #d1d5db;
+}
+
+.emp-modal-footer-row {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 8px;
+}
+
+.emp-modal-save-button {
+    background: #215EF8;
+    color: #ffffff;
+    border: none;
+    height: 30px;
+    border-radius: 8px;
+    padding: 7px 28px;
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.15s ease, box-shadow 0.15s ease;
+}
+
+.emp-modal-save-button:hover {
+    background: #1b4ed8;
+    box-shadow: 0 4px 12px rgba(33, 94, 248, 0.3);
+}
+
+/* Day Activities Modal */
+.emp-day-activities-modal-card {
+    position: relative;
+    background: #ffffff;
+    box-shadow: 0 20px 40px rgba(15, 23, 42, 0.14);
+    width: 565px;
+    height: 459px;
+    border-radius: 8px;
+    padding: 15px 20px;
+    box-sizing: border-box;
+    gap: 5px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.emp-day-modal-blue-title {
+    margin: 0;
+    font-size: 22px;
+    font-weight: 500;
+    color: #215EF8;
+    letter-spacing: -0.3px;
+}
+
+.emp-activities-section-title {
+    margin: 14px 0 0px 0;
+    font-size: 14px;
+    font-weight: 500;
+    color: #060606;
+}
+
+.emp-day-activities-scroll-container {
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+    position: relative;
+    padding-right: 4px;
+    scrollbar-width: thin;
+    scroll-behavior: smooth;
+}
+
+.emp-day-activities-scroll-container::-webkit-scrollbar {
+    width: 5px;
+}
+
+.emp-day-activities-scroll-container::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 4px;
+}
+
+.emp-day-activities-scroll-container::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.emp-activities-scroll-down-btn {
+    position: absolute;
+    bottom: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: #ffffff;
+    border: 1px solid #cbd5e1;
+    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.16);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 15;
+    transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+}
+
+.emp-activities-scroll-down-btn:hover {
+    background: #f8fafc;
+    transform: translateX(-50%) scale(1.1);
+    box-shadow: 0 6px 16px rgba(15, 23, 42, 0.24);
+}
+
+.emp-activities-scroll-down-btn .emp-scroll-down-arrow-img {
+    width: 11px;
+    height: 6px;
+    display: block;
+    opacity: 0.8;
+}
+
+.emp-activities-scroll-down-btn:hover .emp-scroll-down-arrow-img {
+    opacity: 1;
+}
+
+.emp-activities-list {
+    display: flex;
+    flex-direction: column;
+    padding: 0px 0px 4px 0px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.emp-activity-item-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 12px 0;
+    border-bottom: 1px solid #DDE0EE;
+}
+
+.emp-activity-item-row:last-child {
+    border-bottom: none;
+}
+
+.emp-activity-left {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    min-width: 0;
+    gap: 12px;
+    margin-left: 15px;
+}
+
+.emp-activity-datetime-col {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    width: auto;
+    min-width: unset;
+    flex-shrink: 0;
+}
+
+.emp-activity-date-str {
+    font-size: 11px;
+    font-weight: 500;
+    color: #000000;
+    white-space: nowrap;
+}
+
+.emp-activity-time-str {
+    font-size: 9px;
+    font-weight: 500;
+    color: #666666;
+    white-space: nowrap;
+}
+
+.emp-activity-info-col {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    flex: 1;
+    min-width: 0;
+}
+
+.emp-activity-item-row .emp-activity-title {
+    margin: 0;
+    font-size: 12px;
+    font-weight: 500;
+    color: #000000;
+}
+
+.emp-activity-item-row .emp-activity-desc {
+    margin: 0;
+    font-size: 12px;
+    font-weight: 400;
+    color: #737373;
+}
+
+.emp-activity-duration-badge {
+    background: #f1f2f8;
+    color: #215EF8;
+    width: 50px;
+    height: 25px;
+    padding: 0;
+    box-sizing: border-box;
+    border-radius: 140px;
+    font-size: 12px;
+    font-weight: 500;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.emp-day-modal-footer-row {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 6px;
+}
+
+/* Monthly History Modal */
+.emp-monthly-history-modal-card {
+    position: relative;
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 20px 40px rgba(15, 23, 42, 0.14);
+    width: 814px;
+    height: 470px;
+    padding: 15px 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+}
+
+.emp-full-month-header {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    width: 100%;
+    padding-right: 0 !important;
+    box-sizing: border-box;
+}
+
+.emp-full-month-header-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.emp-full-month-header-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    width: 100%;
+}
+
+.emp-month-modal-blue-title {
+    margin: 0;
+    font-size: 22px;
+    font-weight: 500;
+    color: #215EF8;
+    letter-spacing: -0.3px;
+}
+
+.emp-month-modal-nav {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.emp-month-modal-nav-text {
+    color: #215EF8;
+    font-size: 12px;
+    font-weight: 500;
+    min-width: 80px;
+    text-align: center;
+}
+
+.emp-monthly-history-scroll-body {
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+    margin-top: 16px;
+    margin-bottom: 12px;
+    padding-right: 8px;
+    scrollbar-width: thin;
+}
+
+.emp-monthly-history-scroll-body::-webkit-scrollbar {
+    width: 5px;
+}
+
+.emp-monthly-history-scroll-body::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 4px;
+}
+
+.emp-month-activity-group {
+    margin-bottom: 2px;
+}
+
+.emp-month-group-banner {
+    background: #f3f4f8;
+    border-radius: 6px;
+    padding: 10px 16px;
+    height: 46px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.emp-group-date-header {
+    font-size: 13px;
+    font-weight: 500;
+    color: #060606;
+}
+
+.emp-group-day-of-week {
+    font-size: 12px;
+    font-weight: 400;
+    color: #737373;
+}
+
+.emp-month-modal-close {
+    position: static !important;
+    left: auto !important;
+    right: auto !important;
+}
+
+/* ==========================================================================
+   RESPONSIVE BREAKPOINTS (DESKTOP, TABLET, MOBILE)
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. SMALL DESKTOP / LAPTOP (992px to 1199px)
+   -------------------------------------------------------------------------- */
+@media (min-width: 992px) and (max-width: 1199px) {
+    .emp-daily-learning-page {
+        padding: 14px 18px !important;
+        gap: 12px !important;
+    }
+
+    .emp-daily-learning-grid,
+    .emp-daily-learning-container {
+        grid-template-columns: minmax(0, 1.45fr) minmax(300px, 1fr) !important;
+        gap: 12px !important;
+    }
+
+    .emp-learning-form-card,
+    .emp-calendar-card,
+    .emp-recent-log-card,
+    .emp-monthly-summary-card {
+        padding: 12px 14px !important;
+    }
+
+    .emp-summary-item {
+        height: 60px !important;
+        min-height: 60px !important;
+        padding: 6px 8px !important;
+        gap: 8px !important;
+    }
+
+    .emp-summary-content strong {
+        font-size: 16px !important;
+    }
+}
+
+/* --------------------------------------------------------------------------
+   2. TABLET (768px to 991px)
+   -------------------------------------------------------------------------- */
+@media (min-width: 768px) and (max-width: 991px) {
+    .emp-daily-learning-page {
+        width: 100%;
+        height: auto;
+        min-height: 100%;
+        padding: 14px 16px 28px 16px;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+        overflow-x: hidden;
+        overflow-y: auto;
+    }
+
+    .emp-daily-learning-grid,
+    .emp-daily-learning-container {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+        width: 100%;
+    }
+
+    .emp-daily-learning-col-left,
+    .emp-daily-learning-col-right {
+        width: 100%;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+    }
+
+    .emp-summary-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 8px;
+    }
+
+    .emp-dual-duration-row {
+        gap: 12px;
+    }
+
+    .emp-learning-form-card,
+    .emp-recent-log-card,
+    .emp-calendar-card,
+    .emp-monthly-summary-card {
+        width: 100%;
+        height: auto;
+    }
+
+    .emp-recent-log-list {
+        max-height: 300px !important;
+        scroll-snap-type: none !important;
+    }
+
+    .emp-learning-log-row {
+        flex: none !important;
+        height: auto !important;
+        min-height: 38px !important;
+    }
+}
+
+/* --------------------------------------------------------------------------
+   3. MOBILE (< 767px)
+   -------------------------------------------------------------------------- */
+@media (max-width: 767px) {
+    .emp-daily-learning-page {
+        width: 100% !important;
+        max-width: 100vw !important;
+        height: auto !important;
+        min-height: 100% !important;
+        padding: 10px 12px 20px 12px !important;
+        box-sizing: border-box !important;
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 12px !important;
+        overflow-x: hidden !important;
+        overflow-y: auto !important;
+    }
+
+    .emp-daily-learning-grid,
+    .emp-daily-learning-container {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 12px !important;
+        width: 100% !important;
+        height: auto !important;
+    }
+
+    /* Flatten columns so direct children take explicit mobile stacking order */
+    .emp-daily-learning-col-left,
+    .emp-daily-learning-col-right {
+        display: contents !important;
+    }
+
+    /* Order 1: Log Today's Learning */
+    .emp-daily-learning-card-form {
+        order: 1 !important;
+        width: 100% !important;
+        height: auto !important;
+    }
+
+    /* Order 2: Learning Calendar */
+    .emp-daily-learning-card-calendar {
+        order: 2 !important;
+        width: 100% !important;
+        height: auto !important;
+    }
+
+    /* Order 3: Recent Learning Log */
+    .emp-daily-learning-card-recent {
+        order: 3 !important;
+        width: 100% !important;
+        height: auto !important;
+    }
+
+    /* Order 4: This Month's Summary */
+    .emp-daily-learning-card-summary {
+        order: 4 !important;
+        width: 100% !important;
+        height: auto !important;
+    }
+
+    .emp-learning-card,
+    .emp-learning-form-card,
+    .emp-calendar-card,
+    .emp-recent-log-card,
+    .emp-monthly-summary-card {
+        width: 100% !important;
+        height: auto !important;
+        padding: 12px 14px !important;
+        box-sizing: border-box !important;
+    }
+
+    /* Form Fields & Dual Duration Row Stacking */
+    .emp-dual-duration-row {
+        flex-direction: column !important;
+        gap: 12px !important;
+        width: 100% !important;
+    }
+
+    .emp-duration-block {
+        width: 100% !important;
+    }
+
+    .emp-duration-inputs-grid {
+        gap: 8px !important;
+    }
+
+    .emp-total-duration-banner {
+        height: auto !important;
+        flex-wrap: wrap !important;
+        padding: 8px 10px !important;
+        gap: 4px !important;
+    }
+
+    .emp-save-learning-button {
+        width: 100% !important;
+        height: 42px !important;
+    }
+
+    /* Recent Learning Log wrapping & readability */
+    .emp-recent-log-list {
+        max-height: 280px !important;
+    }
+
+    .emp-learning-log-row {
+        flex-wrap: wrap !important;
+        gap: 8px !important;
+        padding: 8px 0 !important;
+    }
+
+    .emp-log-information h3,
+    .emp-log-information p {
+        white-space: normal !important;
+        word-break: break-word !important;
+        overflow-wrap: break-word !important;
+        text-overflow: unset !important;
+    }
+
+    /* Monthly Summary: 2-column responsive layout on mobile */
+    .emp-summary-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 8px !important;
+    }
+
+    .emp-summary-item {
+        height: auto !important;
+        min-height: 50px !important;
+        padding: 6px 8px !important;
+    }
+
+    .emp-summary-content strong {
+        font-size: 18px !important;
+        line-height: 1.2 !important;
+    }
+
+    .emp-summary-content span {
+        font-size: 11px !important;
+        line-height: 1.2 !important;
+    }
+}
+
+/* =========================================================
+   EMP-DASH-032 FIX: FLAME STREAK HARDWARE ACCELERATION & BATTERY SAVER
+   ========================================================= */
+@keyframes flameFlicker {
+
+    0%,
+    100% {
+        transform: translateZ(0) scale(1);
+        filter: drop-shadow(0 0 2px rgba(249, 115, 22, 0.3));
+    }
+
+    50% {
+        transform: translateZ(0) scale(1.06) rotate(-1.5deg);
+        filter: drop-shadow(0 0 5px rgba(249, 115, 22, 0.6));
+    }
+}
+
+.flame-streak-icon,
+.emp-flame-streak,
+.streak-icon-animated,
+[data-streak-icon] {
+    transform: translateZ(0);
+    will-change: transform, filter;
+    backface-visibility: hidden;
+}
+
+/* Pause animations during battery saver / reduced motion mode to eliminate thread usage and frame drops */
+@media (prefers-reduced-motion: reduce),
+(update: slow) {
+
+    .flame-streak-icon,
+    .emp-flame-streak,
+    .streak-icon-animated,
+    [data-streak-icon] {
+        animation: none !important;
+        transform: translateZ(0) !important;
+    }
+}
+
+/* =========================================================
+   ENR-YYYY-025: MANDATORY COURSE DUE DATE ALERT BANNER
+   ========================================================= */
+.emp-mandatory-course-banner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 16px;
+    background: linear-gradient(90deg, #EFF6FF 0%, #F0F9FF 100%);
+    border: 1px solid #BFDBFE;
+    border-left: 4px solid #2563EB;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    flex-shrink: 0;
+    box-shadow: 0 1px 3px rgba(37, 99, 235, 0.08);
+}
+
+.emp-mandatory-banner-content {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.emp-mandatory-tag {
+    background: #DBEAFE;
+    color: #1D4ED8;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 3px 8px;
+    border-radius: 4px;
+}
+
+.emp-mandatory-title {
+    font-size: 13px;
+    font-weight: 600;
+    color: #1E293B;
+}
+
+.emp-mandatory-due {
+    font-size: 12px;
+    color: #64748B;
+}
+
+.emp-mandatory-countdown {
+    display: flex;
+    align-items: center;
+}
+
+.emp-mandatory-days-badge {
+    background: #FEF3C7;
+    color: #B45309;
+    border: 1px solid #FDE68A;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 12px;
+    white-space: nowrap;
+}
+
+
+/* =========================================================
+   ALL LEARNING LOGS FULL PAGE VIEW (SIDEBAR PRESERVED)
+   ========================================================= */
+.emp-daily-learning-page.is-all-logs-active,
+.emp-daily-learning-page:has(.all-learning-logs-view) {
+    overflow-y: auto !important;
+    height: 100%;
+}
+
+.all-learning-logs-view {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-height: 100%;
+    height: auto;
+    box-sizing: border-box;
+    overflow-y: visible;
+    background: transparent;
+    gap: 16px;
+}
+
+.all-logs-top-header {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex-shrink: 0;
+}
+
+.all-logs-header-title-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.all-logs-title-left-group {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+}
+
+.all-logs-title-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.all-logs-back-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    background: #ffffff;
+    border: 1px solid #dde0ee;
+    border-radius: 8px;
+    color: #000000;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.all-logs-back-btn:hover {
+    background: #eff6ff;
+    border-color: #215ef8;
+    color: #215ef8;
+}
+
+.all-logs-main-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: #060606;
+    margin: 0 0 4px 0;
+    letter-spacing: -0.02em;
+}
+
+.all-logs-subtitle {
+    font-size: 12px;
+    font-weight: 400;
+    color: #64748B;
+    margin: 0;
+}
+
+.all-logs-stats-badges {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.all-logs-stat-badge {
+    display: flex;
+    height: 30px;
+    align-items: center;
+    gap: 8px;
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 7px 14px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+}
+
+.all-logs-stat-icon {
+    color: #7f7f7f;
+}
+
+.all-logs-stat-value {
+    font-size: 13px;
+    font-weight: 600;
+    color: #000000;
+}
+
+.all-logs-stat-label {
+    font-size: 12px;
+    font-weight: 400;
+    color: #7f7f7f;
+    font-weight: 500;
+}
+
+.all-logs-stat-badge.highlight {
+    background: #ffffff;
+    border-color: #bfdbfe;
+}
+
+.all-logs-stat-badge.highlight .all-logs-stat-icon {
+    color: #2563eb;
+}
+
+.all-logs-stat-badge.highlight .all-logs-stat-value {
+    color: #1e40af;
+}
+
+.all-logs-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    flex-wrap: wrap;
+    background: #ffffff;
+    padding: 10px 16px;
+    border-radius: 10px;
+    border: 1px solid #e2e8f0;
+    flex-shrink: 0;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02);
+}
+
+.all-logs-search-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex: 1;
+    max-width: 460px;
+    min-width: 240px;
+}
+
+.all-logs-search-icon {
+    position: absolute;
+    left: 12px;
+    color: #94a3b8;
+    pointer-events: none;
+}
+
+.all-logs-search-input {
+    width: 100%;
+    height: 30px;
+    padding: 0 32px 0 36px;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 400;
+    color: #000000;
+    background: #ffffff;
+    outline: none;
+    transition: all 0.15s ease;
+}
+
+.all-logs-search-input:focus {
+    border-color: #3b82f6;
+    background: #ffffff;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.all-logs-search-clear {
+    position: absolute;
+    right: 10px;
+    background: transparent;
+    border: none;
+    font-size: 16px;
+    color: #94a3b8;
+    cursor: pointer;
+    line-height: 1;
+}
+
+.all-logs-search-clear:hover {
+    color: #475569;
+}
+
+.all-logs-date-range-row {
+    display: flex;
+    align-items: flex-end;
+    gap: 8px;
+}
+
+.all-logs-date-field {
+    display: flex;
+    flex-direction: column;
+    min-width: 135px;
+    gap: 4px;
+}
+
+.all-logs-date-sublabel {
+    font-size: 11px;
+    font-weight: 500;
+    color: #64748b;
+    line-height: 1.2;
+    white-space: nowrap;
+}
+
+.all-logs-date-separator {
+    font-size: 11px;
+    font-weight: 500;
+    color: #94a3b8;
+    margin-bottom: 8px;
+    flex-shrink: 0;
+}
+
+.all-logs-date-field .emp-datepicker-wrapper {
+    width: 100%;
+}
+
+.all-logs-date-field .emp-datepicker-trigger {
+    height: 30px;
+    border: 1px solid #dde0ee;
+    border-radius: 6px;
+    background: #ffffff;
+    box-sizing: border-box;
+    transition: all 0.15s ease;
+}
+
+.all-logs-date-field .emp-datepicker-trigger:hover {
+    border-color: #cbd5e1;
+}
+
+.all-logs-date-field .emp-datepicker-trigger.is-open,
+.all-logs-date-field .emp-datepicker-trigger:focus-within {
+    border-color: #215ef8;
+    box-shadow: 0 0 0 2px rgba(33, 94, 248, 0.1);
+}
+
+.all-logs-date-clear-btn {
+    height: 34px;
+    padding: 0 10px;
+    border: 1px solid #dde0ee;
+    background: #ffffff;
+    color: #475569;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    margin-bottom: 0px;
+}
+
+.all-logs-date-clear-btn:hover {
+    background: #eff6ff;
+    color: #215ef8;
+    border-color: #215ef8;
+}
+
+.all-logs-table-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+    overflow: hidden;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 320px;
+}
+
+.all-logs-table-wrapper {
+    overflow-x: auto;
+    overflow-y: auto;
+    flex: 1;
+}
+
+.all-logs-table-card .emp-course-pagination-bar {
+    margin-top: auto;
+    padding: 16px 20px;
+    background: #ffffff;
+    flex-shrink: 0;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.all-logs-table {
+    width: 100%;
+    min-width: 820px;
+    border-collapse: collapse;
+    text-align: left;
+    font-size: 13px;
+    table-layout: fixed;
+}
+
+.all-logs-table thead th {
+    position: sticky;
+    top: 0;
+    background: #E0E7FF;
+    padding: 12px 16px;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    color: #3730A3;
+    border-bottom: 1px solid #e2e8f0;
+    z-index: 1;
+    white-space: nowrap;
+}
+
+.all-logs-sortable-header {
+    cursor: pointer;
+    user-select: none;
+    transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.all-logs-sortable-header:hover {
+    background: #d5e0fc;
+}
+
+.all-logs-sortable-header-inner {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.all-logs-sortable-header-inner.center {
+    justify-content: center;
+    width: 100%;
+}
+
+.all-logs-sort-icon {
+    flex-shrink: 0;
+    transition: color 0.15s ease, opacity 0.15s ease;
+}
+
+.all-logs-sort-icon.inactive {
+    color: #818cf8;
+    opacity: 0.7;
+}
+
+.all-logs-sortable-header:hover .all-logs-sort-icon.inactive {
+    opacity: 1;
+    color: #4338ca;
+}
+
+.all-logs-sort-icon.active {
+    color: #312e81;
+    stroke-width: 2.5;
+}
+
+.all-logs-table tbody tr {
+    border-bottom: 1px solid #f1f5f9;
+    transition: background 0.15s ease;
+}
+
+.all-logs-table tbody tr:hover {
+    background: #f8fafc;
+}
+
+.all-logs-table tbody td {
+    padding: 12px 16px;
+    vertical-align: middle;
+    color: #000000;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.all-logs-cell-datetime {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.all-logs-date-text {
+    font-weight: 400;
+    color: #000000;
+    font-size: 12px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.all-logs-time-text {
+    font-size: 11px;
+    color: #7f7f7f;
+    margin-top: 2px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.all-logs-cell-course,
+.all-logs-cell-description,
+.all-logs-cell-breakdown {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.all-logs-course-title {
+    font-weight: 400;
+    color: #000000;
+    font-size: 12px;
+    line-height: 1.4;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+    width: 100%;
+}
+
+.all-logs-desc-text {
+    color: #000000;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1.4;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+    width: 100%;
+}
+
+.all-logs-breakdown-tag {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 400;
+    color: #000000;
+    padding: 2px 0;
+    border-radius: 4px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+    vertical-align: middle;
+}
+
+.all-logs-cell-duration {
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.all-logs-cell-action {
+    text-align: center;
+}
+
+/* =========================================================
+   TABLET & MOBILE RESPONSIVE CARD VIEW (HIDDEN ON DESKTOP)
+   ========================================================= */
+.all-logs-card-list {
+    display: none;
+    flex-direction: column;
+    gap: 12px;
+    padding: 14px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.all-logs-mobile-sort-bar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    margin-bottom: 4px;
+}
+
+.all-logs-mobile-sort-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: #475569;
+    flex-shrink: 0;
+}
+
+.all-logs-mobile-sort-select-wrap {
+    flex: 1;
+}
+
+.all-logs-mobile-sort-select {
+    width: 100%;
+    height: 32px;
+    padding: 0 8px;
+    font-size: 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    background: #ffffff;
+    color: #1e293b;
+    outline: none;
+}
+
+.all-logs-mobile-sort-dir-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    height: 32px;
+    padding: 0 10px;
+    background: #ffffff;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 500;
+    color: #334155;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.all-logs-mobile-sort-dir-btn:hover {
+    background: #eff6ff;
+    border-color: #3b82f6;
+    color: #2563eb;
+}
+
+.all-logs-card-item {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    padding: 14px 16px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.all-logs-card-item:hover {
+    border-color: #cbd5e1;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+}
+
+.all-logs-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    border-bottom: 1px solid #f1f5f9;
+    padding-bottom: 8px;
+}
+
+.all-logs-card-datetime {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+}
+
+.all-logs-card-date {
+    font-weight: 600;
+    color: #1e293b;
+}
+
+.all-logs-card-time {
+    color: #64748b;
+    font-size: 11px;
+}
+
+.all-logs-card-header-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.all-logs-card-body {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.all-logs-card-course-title {
+    font-size: 13px;
+    font-weight: 600;
+    color: #0f172a;
+    line-height: 1.4;
+}
+
+.all-logs-card-desc-text {
+    font-size: 12px;
+    color: #475569;
+    line-height: 1.45;
+    background: #f8fafc;
+    padding: 8px 10px;
+    border-radius: 6px;
+    border-left: 3px solid #6366f1;
+}
+
+.all-logs-card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding-top: 4px;
+}
+
+.all-logs-card-footer .all-logs-breakdown-tag {
+    font-size: 11px;
+    color: #334155;
+    background: #f1f5f9;
+    padding: 3px 8px;
+    border-radius: 4px;
+}
+
+.all-logs-card-points {
+    font-size: 11px;
+    font-weight: 600;
+    color: #16a34a;
+    background: #dcfce7;
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+
+.all-logs-reset-filters-btn {
+    margin-top: 12px;
+    padding: 6px 14px;
+    font-size: 12px;
+    font-weight: 500;
+    color: #2563eb;
+    background: #eff6ff;
+    border: 1px solid #bfdbfe;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.all-logs-reset-filters-btn:hover {
+    background: #dbeafe;
+    border-color: #93c5fd;
+}
+
+.all-logs-empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 48px 24px;
+    text-align: center;
+    color: #64748b;
+    flex: 1;
+}
+
+.all-logs-empty-icon {
+    color: #cbd5e1;
+    margin-bottom: 12px;
+}
+
+.all-logs-empty-state h3 {
+    font-size: 12px;
+    font-weight: 500;
+    color: #7f7f7f;
+    margin: 0 0 6px 0;
+}
+
+.all-logs-empty-state p {
+    font-size: 13px;
+    max-width: 400px;
+    line-height: 1.5;
+    margin: 0;
+}
+
+.all-logs-loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 48px 24px;
+    color: #64748b;
+    font-size: 13px;
+    flex: 1;
+}
+
+.all-logs-spinner {
+    width: 28px;
+    height: 28px;
+    border: 3px solid #e2e8f0;
+    border-top-color: #2563eb;
+    border-radius: 50%;
+    animation: allLogsSpin 0.8s linear infinite;
+}
+
+@keyframes allLogsSpin {
+    to {
+        transform: rotate(360deg);
+    }
+}

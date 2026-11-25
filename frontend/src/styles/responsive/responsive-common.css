@@ -1,0 +1,255 @@
+/* =========================================================
+   ENTERPRISE ERP COMMON RESPONSIVE STYLES
+   src/styles/responsive/responsive-common.css
+   ========================================================= */
+
+/* ── Global ERP Card System & Elevations ── */
+.erp-card,
+.dashboard-card,
+.tm-card,
+.learning-form-card,
+.monthly-history-card,
+.overview-card,
+.your-stats-card,
+.team-leaderboard-card,
+.department-learning-card,
+.domains-card,
+.chat-interface-card,
+.records-table-container-card {
+    background: #FFFFFF !important;
+    border: 1px solid #E2E8F0 !important;
+    border-radius: 14px !important;
+    box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04), 0 2px 6px rgba(15, 23, 42, 0.02) !important;
+    transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease !important;
+    box-sizing: border-box;
+}
+
+.erp-card:hover {
+    box-shadow: 0 4px 14px rgba(33, 94, 248, 0.08), 0 2px 6px rgba(15, 23, 42, 0.04) !important;
+    border-color: #CBD5E1 !important;
+}
+
+/* ── ERP Status Badges ── */
+.erp-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3px 10px;
+    border-radius: 9999px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    line-height: 14px;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    box-sizing: border-box;
+}
+
+.erp-badge-success {
+    background: #ECFDF5;
+    color: #059669;
+    border: 1px solid #A7F3D0;
+}
+
+.erp-badge-warning {
+    background: #FFFBEB;
+    color: #D97706;
+    border: 1px solid #FDE68A;
+}
+
+.erp-badge-info {
+    background: #EFF6FF;
+    color: #2563EB;
+    border: 1px solid #BFDBFE;
+}
+
+.erp-badge-danger {
+    background: #FEF2F2;
+    color: #DC2626;
+    border: 1px solid #FECACA;
+}
+
+/* ── ERP Metric / Stat Cards ── */
+.erp-metric-card,
+.dashboard-stat-card,
+.metric-card,
+.stat-card {
+    background: #FFFFFF;
+    border: 1px solid #E2E8F0;
+    border-radius: 12px;
+    padding: 14px 18px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    box-shadow: 0 1px 3px rgba(15, 23, 42, 0.03);
+    box-sizing: border-box;
+    transition: all 0.15s ease;
+}
+
+.erp-metric-card:hover,
+.dashboard-stat-card:hover {
+    border-color: #CBD5E1;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.06);
+}
+
+/* ── Common Modals & Dialogs (ERP Style) ── */
+.custom-modal-overlay {
+    padding: 16px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(15, 23, 42, 0.45);
+    backdrop-filter: blur(3px);
+}
+
+.custom-modal,
+.request-course-modal,
+.recommend-team-modal,
+.edit-log-modal-box,
+.download-report-modal,
+.approval-status-modal,
+.members-learning-log-modal,
+.cert-detail-modal,
+.request-success-modal,
+.success-modal {
+    background: #FFFFFF !important;
+    border-radius: 14px !important;
+    border: 1px solid #E2E8F0 !important;
+    box-shadow: 0 20px 40px -15px rgba(15, 23, 42, 0.2), 0 0 1px rgba(15, 23, 42, 0.1) !important;
+}
+
+/* ── Table Responsive Wrappers with Custom ERP Scrollbars ── */
+.table-responsive-wrapper,
+.records-table-container-card,
+.monthly-history-table-container,
+.team-table-container,
+.tm-table-container {
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    scrollbar-width: thin;
+    scrollbar-color: #CBD5E1 #F8FAFC;
+    box-sizing: border-box;
+}
+
+.table-responsive-wrapper::-webkit-scrollbar,
+.records-table-container-card::-webkit-scrollbar,
+.monthly-history-table-container::-webkit-scrollbar,
+.team-table-container::-webkit-scrollbar,
+.tm-table-container::-webkit-scrollbar {
+    height: 7px !important;
+    width: 7px !important;
+    display: block !important;
+}
+
+.table-responsive-wrapper::-webkit-scrollbar-track,
+.records-table-container-card::-webkit-scrollbar-track,
+.monthly-history-table-container::-webkit-scrollbar-track,
+.team-table-container::-webkit-scrollbar-track,
+.tm-table-container::-webkit-scrollbar-track {
+    background: #F8FAFC !important;
+    border-radius: 4px !important;
+}
+
+.table-responsive-wrapper::-webkit-scrollbar-thumb,
+.records-table-container-card::-webkit-scrollbar-thumb,
+.monthly-history-table-container::-webkit-scrollbar-thumb,
+.team-table-container::-webkit-scrollbar-thumb,
+.tm-table-container::-webkit-scrollbar-thumb {
+    background: #CBD5E1 !important;
+    border-radius: 4px !important;
+}
+
+.table-responsive-wrapper::-webkit-scrollbar-thumb:hover,
+.records-table-container-card::-webkit-scrollbar-thumb:hover,
+.monthly-history-table-container::-webkit-scrollbar-thumb:hover,
+.team-table-container::-webkit-scrollbar-thumb:hover,
+.tm-table-container::-webkit-scrollbar-thumb:hover {
+    background: #94A3B8 !important;
+}
+
+/* =========================================================
+   BREAKPOINT OVERRIDES FOR MODALS & FORMS
+   ========================================================= */
+@media (max-width: 768px) {
+    .custom-modal,
+    .request-course-modal,
+    .recommend-team-modal,
+    .edit-log-modal-box,
+    .download-report-modal,
+    .approval-status-modal,
+    .members-learning-log-modal,
+    .cert-detail-modal,
+    .request-success-modal,
+    .success-modal {
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
+        max-height: calc(100vh - 32px) !important;
+        overflow-y: auto !important;
+        padding: 20px 16px 18px 16px !important;
+        border-radius: 12px !important;
+    }
+
+    .form-row,
+    .request-form-row {
+        flex-direction: column !important;
+        gap: 12px !important;
+    }
+
+    .form-group,
+    .request-form-group {
+        width: 100% !important;
+        min-width: 0 !important;
+    }
+
+    .recommend-team-form {
+        width: 100% !important;
+    }
+
+    .recommend-select-box,
+    .recommend-text-input {
+        width: 100% !important;
+    }
+
+    .recommend-course-dropdown-menu {
+        width: 100% !important;
+    }
+
+    .choose-employee-dropdown {
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+
+    .modal-btn-group,
+    .request-modal-footer,
+    .recommend-modal-footer {
+        flex-direction: row;
+        justify-content: flex-end;
+        gap: 10px;
+        width: 100% !important;
+        margin-top: 16px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .modal-btn-group,
+    .request-modal-footer,
+    .recommend-modal-footer {
+        flex-direction: column-reverse;
+        gap: 8px;
+    }
+
+    .btn-recommend-cancel,
+    .btn-recommend-send,
+    .btn-cancel,
+    .btn-submit {
+        width: 100% !important;
+        height: 40px !important;
+    }
+}
+
+

@@ -1,0 +1,995 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700;800;900&display=swap');
+
+/* =========================================================
+   DOWNLOAD REPORT MODAL (FIGMA: 565px x 482px, RESPONSIVE)
+   ========================================================= */
+
+/* =========================================================
+   MODAL SHELL — matches hr-modal-overlay / hr-modal-content exactly
+   ========================================================= */
+
+.emp-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(15, 23, 42, 0.45);
+    backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+    padding: 16px;
+    box-sizing: border-box;
+    animation: empModalFadeIn 200ms ease-out forwards;
+}
+
+.emp-modal-content {
+    background: #FFFFFF;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 565px;
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(15, 23, 42, 0.16);
+    padding: 0;
+    box-sizing: border-box;
+    position: relative;
+    font-family: 'Roboto', sans-serif;
+    animation: empModalScaleUp 200ms ease-out forwards;
+}
+
+@keyframes empModalFadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes empModalScaleUp {
+    from {
+        opacity: 0;
+        transform: scale(0.96);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.emp-modal-close-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 24px;
+    height: 24px;
+    border-radius: 6px;
+    background: transparent;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #64748B;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    z-index: 2;
+}
+
+.emp-modal-header {
+    position: relative;
+    flex-shrink: 0;
+    padding: 15px 20px;
+    padding-right: 48px;
+    margin-bottom: 0;
+    background: #FFFFFF;
+}
+
+.emp-modal-title {
+    margin: 0;
+    font-size: 22px;
+    font-weight: 500;
+    color: #215EF8;
+    line-height: 24px;
+}
+
+.emp-modal-subtitle {
+    margin: 3px 0 0 0;
+    font-size: 13px;
+    font-weight: 400;
+    color: #7f7f7f;
+    line-height: 16px;
+}
+
+.emp-form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.emp-form-label {
+    font-size: 12px;
+    font-weight: 400;
+    color: #474747;
+}
+
+.emp-custom-dropdown-container {
+    position: relative;
+    width: 100%;
+    border-radius: 4px;
+    border: 1px solid #DDE0EE;
+}
+
+.emp-custom-dropdown-trigger {
+    width: 100%;
+    height: 30px;
+    padding: 0 12px;
+    border-radius: 4px;
+    border: 1px solid #DDE0EE;
+    background: #FFFFFF;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    box-sizing: border-box;
+    outline: none;
+}
+
+.emp-custom-dropdown-trigger:disabled,
+.emp-custom-dropdown-trigger.disabled {
+    background: #F8FAFC;
+    border-color: #E2E8F0;
+    cursor: not-allowed;
+    opacity: 0.85;
+}
+
+.emp-custom-dropdown-trigger:disabled .emp-dropdown-chevron,
+.emp-custom-dropdown-trigger.disabled .emp-dropdown-chevron {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+
+.emp-dropdown-trigger-left {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.emp-select-icon {
+    width: 14px;
+    height: 14px;
+    object-fit: contain;
+}
+
+.emp-selected-value-text {
+    font-family: 'Roboto', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    color: #7F7F7F !important;
+}
+
+.emp-dropdown-chevron {
+    width: 10px;
+    height: 10px;
+    object-fit: contain;
+    transition: transform 0.2s ease;
+}
+
+.emp-dropdown-chevron.open {
+    transform: rotate(180deg);
+}
+
+.emp-custom-dropdown-container .emp-custom-dropdown-menu {
+    position: absolute;
+    top: calc(100% + 5px);
+    left: 0;
+    right: 0;
+    background: #FFFFFF;
+    border: 1px solid #DDE0EE;
+    border-radius: 8px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    padding: 5px;
+    z-index: 999;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.emp-custom-dropdown-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    color: #000000;
+    cursor: pointer;
+    transition: all 0.12s ease;
+}
+
+.emp-custom-dropdown-item:hover {
+    background: #F1F5F9;
+    color: #215EF8;
+}
+
+.emp-custom-dropdown-item.selected {
+    background: #EFF6FF;
+    color: #215EF8;
+    font-weight: 400;
+}
+
+.emp-item-check {
+    color: #215EF8;
+}
+
+/* Radio Group */
+.emp-radio-group {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.emp-radio-label,
+.emp-radio-label span {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 400;
+    font-size: 14px;
+    color: #7f7f7f !important;
+    cursor: pointer;
+    user-select: none;
+}
+
+.emp-radio-input {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 12px;
+    height: 12px;
+    border: 2px solid #BDBDBD;
+    border-radius: 50%;
+    background-color: #FFFFFF;
+    cursor: pointer;
+    position: relative;
+    outline: none;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    flex-shrink: 0;
+    transition: border-color 0.15s ease, border-width 0.1s ease;
+}
+
+.emp-radio-input:hover {
+    border-color: #215EF8;
+}
+
+.emp-radio-input:checked {
+    border: 3px solid #215EF8;
+    background-color: #FFFFFF;
+}
+
+.emp-radio-input:focus {
+    outline: none;
+}
+
+/* Checkboxes Group */
+.emp-checkbox-header-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.emp-select-all-btn {
+    background: none;
+    border: none;
+    color: #215EF8;
+    font-family: 'Roboto', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    padding: 0;
+    transition: color 0.15s ease;
+}
+
+.emp-checkbox-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.emp-checkbox-label,
+.emp-checkbox-label span {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    font-weight: 400;
+    color: #7F7F7F !important;
+    cursor: pointer;
+}
+
+.emp-checkbox-input {
+    width: 12px;
+    height: 12px;
+    accent-color: #215EF8;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.emp-checkbox-subgroup {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-left: 20px;
+    padding-left: 10px;
+    margin-top: 2px;
+    margin-bottom: 4px;
+}
+
+.emp-checkbox-subgroup .emp-checkbox-label,
+.emp-checkbox-subgroup .emp-checkbox-label span {
+    font-size: 12px;
+    color: #7F7F7F !important;
+}
+
+.emp-download-error-msg {
+    font-size: 11.5px;
+    color: #EF4444;
+    margin-top: 4px;
+    margin-bottom: 0;
+}
+
+.emp-btn-download-action:disabled {
+    opacity: 0.65;
+    cursor: not-allowed;
+}
+
+.emp-spinner {
+    width: 12px;
+    height: 12px;
+    border: 2px solid #FFFFFF;
+    border-top-color: transparent;
+    border-radius: 50%;
+    animation: empSpin 0.6s linear infinite;
+}
+
+@keyframes empSpin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.emp-modal-scroll-body {
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+    padding: 0px 20px 0px 20px;
+}
+
+.emp-modal-scroll-body::-webkit-scrollbar {
+    width: 5px;
+}
+
+.emp-modal-scroll-body::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.emp-modal-scroll-body::-webkit-scrollbar-thumb {
+    background: #CBD5E1;
+    border-radius: 4px;
+}
+
+.emp-modal-scroll-body::-webkit-scrollbar-thumb:hover {
+    background: #94A3B8;
+}
+
+/* Modal Actions */
+.emp-modal-actions {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 8px;
+    padding: 15px 20px;
+    margin-top: 0;
+}
+
+.emp-btn-cancel {
+    height: 30px;
+    padding: 0 16px;
+    border-radius: 6px;
+    border: 1px solid #DDE7FF;
+    background: #F3F4F8;
+    color: #000000;
+    font-family: 'Roboto', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.emp-btn-cancel:hover {
+    background: #F1F5F9;
+    border-color: #CBD5E1;
+}
+
+.emp-btn-download-action {
+    height: 30px;
+    padding: 0 18px;
+    border-radius: 6px;
+    border: none;
+    background: #215EF8;
+    color: #FFFFFF;
+    font-family: 'Roboto', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.emp-btn-download-action:hover {
+    background: #1D4ED8;
+}
+
+.emp-action-btn-icon {
+    width: 12px;
+    height: 12px;
+    object-fit: contain;
+}
+
+/* Success Modal (Image 3) */
+.emp-success-modal-content {
+    background: #FFFFFF;
+    border-radius: 12px;
+    width: 380px;
+    max-width: min(90vw, 380px);
+    padding: 32px 24px;
+    text-align: center;
+    box-shadow: 0 20px 40px rgba(15, 23, 42, 0.16);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Roboto', sans-serif;
+    box-sizing: border-box;
+    animation: hrScaleUp 200ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.emp-success-icon-circle {
+    width: 54px;
+    height: 54px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 12px;
+}
+
+.emp-success-icon-img {
+    width: 54px;
+    height: 54px;
+    object-fit: contain;
+}
+
+.emp-success-title {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 500;
+    color: #000000;
+    line-height: 1.35;
+    text-align: center;
+}
+
+
+.emp-download-report-modal {
+    position: relative;
+    width: 100%;
+    max-width: 440px;
+    background: #FFFFFF;
+    border-radius: 8px;
+    padding: 15px 20px;
+    box-sizing: border-box;
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.16);
+    font-family: 'Roboto', sans-serif;
+    animation: scaleInReportModal 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+    overflow-y: auto;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+@keyframes scaleInReportModal {
+    from {
+        transform: scale(0.96);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* CLOSE BUTTON (FIGMA: 12px x 12px, TOP: 23px, RIGHT: 24px) */
+.emp-download-report-modal .emp-modal-close {
+    position: absolute;
+    top: 23px;
+    right: 24px;
+    width: 16px;
+    height: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+    background: transparent;
+    border: none;
+    outline: none;
+    box-shadow: none;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.emp-download-report-modal .emp-modal-close img {
+    width: 10px;
+    height: 10px;
+    display: block;
+    object-fit: contain;
+}
+
+/* HEADER (TITLE + SUBTITLE) */
+.emp-download-modal-header {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    margin-bottom: 0;
+    width: 100%;
+    padding-right: 24px;
+    box-sizing: border-box;
+}
+
+.emp-download-modal-title {
+    margin: 0;
+    width: 100%;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 1.25;
+    letter-spacing: 0%;
+    color: #215EF8;
+    display: flex;
+    align-items: center;
+}
+
+.emp-download-modal-subtitle {
+    margin: 4px 0 0 0;
+    width: 100%;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 1.35;
+    letter-spacing: 0%;
+    color: #7F7F7F;
+    display: flex;
+    align-items: center;
+}
+
+.emp-download-modal-form {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+    width: 100%;
+    flex: 1;
+    gap: 12px;
+}
+
+.emp-download-form-group {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.emp-download-form-label {
+    height: 24px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 24px;
+    letter-spacing: 0%;
+    color: #474747;
+    display: flex;
+    align-items: center;
+}
+
+/* DATE RANGE SECTION */
+.emp-download-select-box {
+    position: relative;
+    width: 100%;
+    height: 30px;
+    border: 1px solid #DDE0EE;
+    border-radius: 4px;
+    padding: 0 12px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    background: #FFFFFF;
+    user-select: none;
+    margin-top: 2px;
+}
+
+.emp-select-left {
+    display: flex;
+    align-items: center;
+}
+
+.emp-calendar-icon {
+    width: 14px;
+    height: 16px;
+    object-fit: contain;
+    display: block;
+}
+
+.emp-select-val-text {
+    margin-left: 10px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+    color: #7f7f7f;
+    display: flex;
+    align-items: center;
+}
+
+.emp-select-arrow-icon {
+    width: 8px;
+    height: 10px;
+    object-fit: contain;
+    display: block;
+}
+
+.emp-download-dropdown-menu {
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 0;
+    width: 100%;
+    background: #FFFFFF;
+    border: 1px solid #DDE0EE;
+    border-radius: 4px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+    z-index: 100;
+    overflow: hidden;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.emp-download-dropdown-item {
+    padding: 8px 12px;
+    font-size: 12px;
+    font-weight: 400;
+    font-family: 'Roboto', sans-serif;
+    color: #7F7F7F;
+    cursor: pointer;
+    transition: background-color 0.12s;
+}
+
+.emp-download-dropdown-item:hover {
+    background-color: #F1F5F9;
+}
+
+.emp-download-dropdown-item.selected {
+    background-color: #EFF6FF;
+    color: #215EF8;
+    font-weight: 400;
+}
+
+/* EXPORT FORMAT */
+.emp-export-format-options {
+    display: flex;
+    align-items: center;
+    gap: clamp(16px, 4vw, 32px);
+    margin-top: 5px;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.emp-format-radio-label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+}
+
+.emp-custom-radio-circle {
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    border: 1px solid #B2AEAE;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+.emp-custom-radio-circle.checked {
+    border: 2px solid #215EF8;
+}
+
+.emp-format-name-text {
+    margin-left: 7px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+    color: #7F7F7F;
+    display: flex;
+    align-items: center;
+}
+
+/* INCLUDE CHECKBOXES */
+.emp-include-checkbox-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 4px;
+    width: 100%;
+}
+
+.emp-include-checkbox-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    user-select: none;
+    height: 22px;
+}
+
+.emp-custom-checkbox-box {
+    width: 12px;
+    height: 12px;
+    border-radius: 4px;
+    background-color: #215EF8;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    flex-shrink: 0;
+}
+
+.emp-checkbox-text {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+    color: #7F7F7F;
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+}
+
+/* FOOTER ACTIONS */
+.emp-download-modal-footer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px;
+    width: 100%;
+    margin-top: 20px;
+}
+
+/* CANCEL BUTTON */
+.emp-btn-download-cancel {
+    width: 84px;
+    height: 30px;
+    border-radius: 9px;
+    border: 1px solid #DDE7FF;
+    background: #F3F4F8;
+    color: #000000;
+    font-family: 'Roboto', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    line-height: 20px;
+    letter-spacing: 0%;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    transition: background-color 0.15s;
+}
+
+.emp-btn-download-cancel:hover {
+    background: #E2E8F0;
+}
+
+/* DOWNLOAD BUTTON */
+.emp-btn-download-confirm {
+    width: 100px;
+    height: 30px;
+    border-radius: 9px;
+    background: #215EF8;
+    border: none;
+    color: #FFFFFF;
+    font-family: 'Roboto', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    line-height: 20px;
+    letter-spacing: 0%;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    box-sizing: border-box;
+    box-shadow: 0 2px 8px rgba(33, 94, 248, 0.28);
+    transition: background-color 0.15s;
+}
+
+.emp-btn-download-confirm:hover {
+    background: #1D4ED8;
+}
+
+.emp-download-btn-icon {
+    width: 16px;
+    height: 16px;
+    display: block;
+    object-fit: contain;
+}
+
+/* =========================================================
+   REPORT DOWNLOADED SUCCESSFULLY MODAL (FIGMA: 377px x 201px, RESPONSIVE)
+   ========================================================= */
+
+.emp-custom-modal.emp-success-modal.emp-download-success-modal {
+    position: relative;
+    width: 377px;
+    max-width: min(90vw, 377px);
+    min-width: 0;
+    height: auto;
+    min-height: 190px;
+    max-height: calc(100vh - 32px);
+    border-radius: 10px;
+    border: 1px solid #FFFFFF;
+    background: #FFFFFF;
+    opacity: 1;
+    padding: 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    font-family: 'Roboto', sans-serif;
+    overflow: hidden;
+    animation: scaleInSuccessModal 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes scaleInSuccessModal {
+    from {
+        transform: scale(0.96);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* CLOSE BUTTON */
+.emp-download-success-modal .emp-modal-close {
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    width: 14px;
+    height: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+    background: transparent;
+    border: none;
+    outline: none;
+    box-shadow: none;
+    cursor: pointer;
+    z-index: 10;
+    transition: opacity 0.15s ease;
+}
+
+.emp-download-success-modal .emp-modal-close:hover {
+    opacity: 0.75;
+}
+
+.emp-download-success-modal .emp-modal-close img {
+    width: 10px;
+    height: 10px;
+    display: block;
+    object-fit: contain;
+}
+
+/* GREEN TICK ICON */
+.emp-download-success-modal .emp-success-icon-wrapper {
+    width: 53px;
+    height: 53px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 4px;
+}
+
+.emp-download-success-modal .emp-success-icon-img {
+    width: 53px;
+    height: 53px;
+    display: block;
+    object-fit: contain;
+}
+
+/* SUCCESS TITLE */
+.emp-download-success-modal .emp-success-modal-title {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    margin: 14px 0 0 0;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 28px;
+    letter-spacing: -0.2px;
+    text-align: center;
+    color: #000000;
+    display: block;
+}
+
+/* =========================================================
+   MOBILE RESPONSIVE OVERRIDES (< 600px & < 400px)
+   ========================================================= */
+@media (max-width: 600px) {
+    .emp-download-report-modal {
+        width: 100% !important;
+        max-width: calc(100vw - 28px) !important;
+        padding: 20px 16px 18px 16px !important;
+        border-radius: 12px !important;
+        min-height: 0 !important;
+    }
+
+    .emp-download-report-modal .emp-modal-close {
+        top: 18px !important;
+        right: 16px !important;
+    }
+
+    .emp-download-modal-footer {
+        margin-top: 18px !important;
+        gap: 8px !important;
+    }
+
+    .emp-btn-download-cancel {
+        flex: 1 !important;
+        height: 38px !important;
+        width: auto !important;
+    }
+
+    .emp-btn-download-confirm {
+        flex: 1.3 !important;
+        height: 38px !important;
+        width: auto !important;
+    }
+
+    .emp-custom-modal.emp-success-modal.emp-download-success-modal {
+        width: 100% !important;
+        max-width: calc(100vw - 32px) !important;
+        padding: 20px !important;
+        border-radius: 12px !important;
+    }
+}

@@ -1,0 +1,102 @@
+/* Typing Suggestions Dropdown / Floating Pills */
+.typing-suggestions-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.typing-suggestions-popup {
+    position: absolute;
+    bottom: calc(100% + 8px);
+    left: 0;
+    right: 0;
+    background: rgba(18, 24, 38, 0.95);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(99, 102, 241, 0.25);
+    border-radius: 12px;
+    padding: 8px 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(99, 102, 241, 0.2);
+    z-index: 30;
+    animation: typingSlideUp 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes typingSlideUp {
+    from {
+        opacity: 0;
+        transform: translateY(6px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.typing-suggestions-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #94a3b8;
+    padding: 2px 6px 4px 6px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.typing-suggestions-header .hint {
+    font-size: 0.68rem;
+    color: #64748b;
+    font-weight: 400;
+}
+
+.typing-suggestion-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    padding: 7px 10px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 8px;
+    color: #e2e8f0;
+    font-size: 0.84rem;
+    text-align: left;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.typing-suggestion-btn:hover,
+.typing-suggestion-btn:focus {
+    background: rgba(99, 102, 241, 0.18);
+    border-color: rgba(99, 102, 241, 0.45);
+    color: #ffffff;
+    transform: translateX(2px);
+    outline: none;
+}
+
+.typing-suggestion-icon {
+    font-size: 0.9rem;
+    opacity: 0.85;
+}
+
+.typing-suggestion-text {
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.typing-suggestion-arrow {
+    font-size: 0.75rem;
+    color: #818cf8;
+    opacity: 0;
+    transition: opacity 0.15s ease;
+}
+
+.typing-suggestion-btn:hover .typing-suggestion-arrow {
+    opacity: 1;
+}

@@ -1,0 +1,3309 @@
+/* ==========================================================================
+   Approvals & Workflow Management CSS
+   ========================================================================== */
+
+.hr-approvals-workflow-page {
+    padding: 20px 24px 16px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    background: #ffffff00;
+    height: 100%;
+    max-height: 100vh;
+    box-sizing: border-box;
+    overflow: hidden;
+    flex: 1;
+    min-height: 0;
+}
+
+/* --------------------------------------------------------------------------
+   Top Stats Grid (4 KPI Cards)
+   -------------------------------------------------------------------------- */
+.hr-aw-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    flex-shrink: 0;
+}
+
+.hr-aw-stat-card {
+    position: relative;
+    background: #FFFFFF;
+    border-radius: 10px;
+    border: 1px solid #E2E8F0;
+    padding: 12px 10px 14px 12px;
+    display: flex;
+    align-items: center;
+    height: 70px;
+    gap: 10px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02);
+    overflow: hidden;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    min-width: 0;
+}
+
+.hr-aw-stat-bottom-line {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 4px;
+    display: block;
+    object-fit: fill;
+    pointer-events: none;
+}
+
+
+
+.hr-aw-stat-icon-wrap {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.hr-aw-stat-body {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    flex: 1;
+}
+
+.hr-aw-stat-value {
+    font-size: 22px;
+    font-weight: 500;
+    color: #080808;
+    line-height: 1.1;
+}
+
+.hr-aw-stat-label {
+    font-size: 11px;
+    color: #656565;
+    font-weight: 500;
+    margin-top: 2px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    letter-spacing: -0.01em;
+}
+
+.hr-aw-stat-suffix {
+    font-size: 10px;
+    color: #656565;
+    font-weight: 400;
+    margin-left: 2px;
+}
+
+/* --------------------------------------------------------------------------
+   Controls Row (Pills & History Button)
+   -------------------------------------------------------------------------- */
+.hr-aw-controls-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    margin-top: 2px;
+    flex-shrink: 0;
+}
+
+.hr-aw-type-pills {
+    display: flex;
+    align-items: center;
+    background: transparent;
+    padding: 0;
+    gap: 12px;
+}
+
+.hr-aw-type-pill {
+    background: #FFFFFF;
+    border: 1px solid #DDE0EE;
+    border-radius: 9999px;
+    padding: 7px 18px;
+    height: 30px;
+    font-size: 12px;
+    font-weight: 500;
+    color: #000000;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hr-aw-type-pill:hover:not(.active) {
+    background: #F8FAFC;
+    border-color: #CBD5E1;
+    color: #000000;
+}
+
+.hr-aw-type-pill.active {
+    background: #215EF8;
+    color: #FFFFFF;
+    border: 1px solid #215EF8;
+    font-weight: 500;
+    box-shadow: 0 1px 4px rgba(33, 94, 248, 0.25);
+}
+
+.hr-aw-btn-history {
+    background: #FFFFFF;
+    border: 1px solid #215EF8;
+    color: #215EF8;
+    border-radius: 9px;
+    padding: 6px 14px;
+    font-size: 12px;
+    height: 30px;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    white-space: nowrap;
+}
+
+
+
+/* --------------------------------------------------------------------------
+   Search Bar Row (Below Course / Certification Reimbursement Pills)
+   -------------------------------------------------------------------------- */
+.hr-aw-search-row {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.hr-aw-search-box {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background-color: #FFFFFF;
+    border: 1px solid #DDE0EE;
+    border-radius: 6px;
+    padding: 0 12px;
+    height: 32px;
+    width: 380px;
+    max-width: 100%;
+    box-sizing: border-box;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.hr-aw-search-box:focus-within {
+    border-color: #215EF8;
+    box-shadow: 0 0 0 2px rgba(33, 94, 248, 0.1);
+}
+
+.hr-aw-search-icon {
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+    opacity: 0.55;
+}
+
+.hr-aw-search-input {
+    border: none !important;
+    outline: none !important;
+    background: transparent !important;
+    font-size: 12px !important;
+    color: #000000 !important;
+    width: 100% !important;
+    font-family: inherit !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    box-shadow: none !important;
+}
+
+.hr-aw-search-input::placeholder {
+    color: #7f7f7f;
+    font-size: 12px;
+}
+
+.hr-aw-clear-search-btn {
+    border: none;
+    background: transparent;
+    color: #94A3B8;
+    cursor: pointer;
+    font-size: 16px;
+    line-height: 1;
+    padding: 2px 4px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.15s ease;
+    flex-shrink: 0;
+}
+
+.hr-aw-clear-search-btn:hover {
+    color: #475569;
+    background-color: #F1F5F9;
+}
+
+/* --------------------------------------------------------------------------
+   Status Sub-Tabs Row with Filters Button
+   -------------------------------------------------------------------------- */
+.hr-aw-status-tabs-row {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    border-bottom: 1.3px solid #CBD1EA;
+    gap: 16px;
+    flex-shrink: 0;
+    margin-bottom: 12px;
+}
+
+.hr-aw-status-tabs {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    border-bottom: 1.3px solid #CBD1EA;
+    padding-bottom: 0px;
+    flex-shrink: 0;
+    margin-bottom: 10px;
+}
+
+.hr-aw-status-tabs-row .hr-aw-status-tabs {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+.hr-aw-status-filter-wrap {
+    display: flex;
+    align-items: center;
+    margin-bottom: 6px;
+}
+
+.hr-filter-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background-color: #FFFFFF;
+    border: 1px solid #DDE0EE;
+    border-radius: 6px;
+    height: 30px;
+    padding: 0 14px;
+    font-size: 12px;
+    font-weight: 400;
+    color: #000000;
+    cursor: pointer;
+    position: relative;
+    user-select: none;
+    transition: all 0.15s ease;
+}
+
+.hr-filter-btn:hover {
+    border-color: #CBD5E1;
+}
+
+.hr-filter-btn.filtered {
+    border-color: #215EF8 !important;
+    background-color: #EEF2FF !important;
+    color: #215EF8 !important;
+}
+
+.hr-filter-btn.filtered span:not(.hr-clear-cross) {
+    font-weight: 500;
+}
+
+.hr-filter-btn .hr-clear-cross {
+    margin-left: 5px;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 1;
+    color: #EF4444 !important;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 1px;
+    transition: transform 0.15s ease, color 0.15s ease;
+}
+
+.hr-filter-btn .hr-clear-cross:hover {
+    color: #DC2626 !important;
+    transform: scale(1.2);
+}
+
+.hr-aw-status-tab {
+    background: transparent;
+    border: none;
+    padding: 6px 20px 10px 20px;
+    font-size: 12px;
+    font-weight: 500;
+    color: #6B6B6B;
+    cursor: pointer;
+    position: relative;
+    transition: color 0.15s ease;
+}
+
+.hr-aw-status-tab:hover {
+    color: #0F172A;
+}
+
+.hr-aw-status-tab.active {
+    color: #215EF8;
+    font-weight: 500;
+}
+
+.hr-aw-status-tab.active::after {
+    content: "";
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: #2563EB;
+    border-radius: 2px 2px 0 0;
+}
+
+/* --------------------------------------------------------------------------
+   Approvals Requests Container & Table Card
+   -------------------------------------------------------------------------- */
+.hr-aw-requests-container {
+    flex: 1 1 0;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.hr-aw-table-card {
+    background: #FFFFFF;
+    border-radius: 10px;
+    overflow: hidden;
+    flex: 1 1 0;
+    min-height: 0;
+    max-height: none;
+    position: relative;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02);
+    display: flex;
+    flex-direction: column;
+}
+
+.hr-aw-table-scroll-container {
+    flex: 1 1 0;
+    width: 100%;
+    height: 100%;
+    overflow-x: auto;
+    overflow-y: auto;
+    min-height: 0;
+}
+
+/* Clean modern scrollbar for table container */
+.hr-aw-table-scroll-container::-webkit-scrollbar,
+.hr-aw-table-card::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+.hr-aw-table-scroll-container::-webkit-scrollbar-track,
+.hr-aw-table-card::-webkit-scrollbar-track {
+    background: #F8FAFC;
+    border-radius: 4px;
+}
+
+.hr-aw-table-scroll-container::-webkit-scrollbar-thumb,
+.hr-aw-table-card::-webkit-scrollbar-thumb {
+    background: #CBD5E1;
+    border-radius: 4px;
+}
+
+.hr-aw-table-scroll-container::-webkit-scrollbar-thumb:hover,
+.hr-aw-table-card::-webkit-scrollbar-thumb:hover {
+    background: #94A3B8;
+}
+
+/* Bottom Pagination Footer (matching L&D Approvals Workflow 1:1) */
+.hr-aw-pagination-footer {
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 12px;
+    font-weight: 400;
+    color: #7F7F7F;
+    flex-wrap: wrap;
+    gap: 10px;
+    flex-shrink: 0;
+    background: #FFFFFF;
+    box-sizing: border-box;
+}
+
+.hr-aw-pagination-controls {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.hr-aw-page-btn {
+    width: 30px;
+    height: 22px;
+    border-radius: 6px;
+    background: #FFFFFF;
+    border: 1px solid #E2E8F0;
+    color: #666666;
+    font-family: 'Roboto', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.15s ease, border-color 0.15s ease;
+    padding: 0;
+}
+
+.hr-aw-page-btn:hover:not(:disabled) {
+    background: #F8FAFC;
+    border-color: #CBD5E1;
+    color: #000000;
+}
+
+.hr-aw-page-btn.active {
+    background: #215EF8;
+    border-color: #215EF8;
+    color: #FFFFFF;
+    font-weight: 600;
+}
+
+.hr-aw-page-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.hr-aw-pagination-ellipsis {
+    font-size: 12px;
+    color: #94A3B8;
+    padding: 0 4px;
+}
+
+.hr-aw-cards-pagination {
+    display: none;
+    border-radius: 10px;
+    margin-top: 10px;
+    border: 1px solid #E2E8F0;
+}
+
+.hr-aw-th-sortable {
+    cursor: pointer;
+    user-select: none;
+    transition: background 0.15s ease, color 0.15s ease;
+}
+
+.hr-aw-th-content {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    white-space: nowrap;
+}
+
+.hr-aw-sort-icon {
+    flex-shrink: 0;
+    transition: color 0.15s ease, opacity 0.15s ease;
+}
+
+.hr-aw-sort-icon.inactive {
+    color: #4f46e5;
+    opacity: 0.5;
+}
+
+.hr-aw-sort-icon.inactive:hover {
+    opacity: 0.95;
+    color: #3730A3;
+}
+
+.hr-aw-table {
+    width: 100%;
+    min-width: 660px;
+    table-layout: fixed;
+    border-collapse: separate;
+    border-spacing: 0;
+    text-align: left;
+    font-size: 12.5px;
+}
+
+.hr-aw-table thead {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: #FFFFFF;
+}
+
+.hr-aw-table th {
+    position: sticky;
+    top: 0;
+    background: #e0e7ff;
+    color: #3730a3;
+    font-size: 12px;
+    font-weight: 500;
+    padding: 12px 10px;
+    border-bottom: 1px solid #E0E5F0;
+    box-shadow: inset 0 -1px 0 #E0E5F0;
+    white-space: nowrap;
+    text-transform: capitalize;
+    z-index: 10;
+}
+
+.hr-aw-table th:first-child {
+    border-top-left-radius: 10px;
+}
+
+.hr-aw-table th:last-child {
+    border-top-right-radius: 10px;
+}
+
+.hr-aw-table th:first-child,
+.hr-aw-table td:first-child {
+    padding-left: 16px;
+}
+
+.hr-aw-table th:last-child,
+.hr-aw-table td:last-child {
+    padding-right: 20px;
+}
+
+.hr-aw-table td {
+    padding: 13px 12px;
+    border-bottom: 1px solid #E0E5F0;
+    color: #000000;
+    vertical-align: middle;
+}
+
+.hr-aw-table tbody tr {
+    transition: background 0.15s ease;
+}
+
+.hr-aw-table tbody tr:hover {
+    background: #F8FAFC;
+}
+
+.hr-aw-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.hr-aw-cell-id {
+    font-weight: 400;
+    color: #7F7F7F;
+    font-size: 12px;
+    white-space: nowrap;
+}
+
+.hr-aw-request-id-text,
+.hr-aw-request-id-link {
+    background: transparent;
+    border: none;
+    padding: 0;
+    margin: 0;
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 400;
+    color: #000000;
+    cursor: default;
+    text-align: left;
+}
+
+.hr-aw-cell-amount {
+    font-size: 12px;
+    font-weight: 400;
+    color: #000000;
+    white-space: nowrap;
+}
+
+.hr-aw-employee-cell {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.hr-aw-avatar-circle {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #FFFFFF;
+    font-size: 10px;
+    font-weight: 500;
+    flex-shrink: 0;
+}
+
+.hr-aw-employee-meta {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.hr-aw-employee-name {
+    font-size: 12px;
+    font-weight: 400;
+    color: #000000;
+    line-height: 1.25;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.hr-aw-employee-title {
+    font-size: 11px;
+    font-weight: 400;
+    color: #7F7F7F;
+    margin-top: 2px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.hr-aw-role-badge {
+    background: #EFF6FF;
+    color: #2563EB;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 9999px;
+    display: inline-block;
+    white-space: nowrap;
+}
+
+.hr-aw-course-name {
+    font-size: 12px;
+    font-weight: 400;
+    color: #000000;
+    line-height: 1.35;
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.hr-aw-cell-provider {
+    color: #000000;
+    font-size: 12px;
+    font-weight: 400;
+    white-space: nowrap;
+}
+
+.hr-aw-cell-date {
+    color: #000000;
+    font-weight: 400;
+    font-size: 12px;
+    white-space: nowrap;
+}
+
+/* --------------------------------------------------------------------------
+   Action Buttons & Badges
+   -------------------------------------------------------------------------- */
+.hr-aw-actions-wrap {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    white-space: nowrap;
+}
+
+.hr-aw-btn-approve {
+    background: #215EF8;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 6px;
+    padding: 5px 12px;
+    font-size: 11px;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    cursor: pointer;
+    transition: background 0.15s ease;
+    white-space: nowrap;
+}
+
+.hr-aw-btn-approve:hover {
+    background: #1D4ED8;
+}
+
+.hr-aw-btn-reject {
+    background: #F3F4F8;
+    color: #000000;
+    border: 1px solid #DDE7FF;
+    border-radius: 6px;
+    padding: 5px 12px;
+    font-size: 11px;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    white-space: nowrap;
+}
+
+.hr-aw-btn-reject:hover {
+    background: #F1F5F9;
+    color: #EF4444;
+    border-color: #CBD5E1;
+}
+
+.hr-aw-badge-pending,
+.hr-aw-badge-approved,
+.hr-aw-badge-rejected,
+.hr-aw-badge-paid {
+    width: 72px;
+    min-width: 72px;
+    height: 24px;
+    padding: 0 4px;
+    box-sizing: border-box;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.hr-aw-badge-approved,
+.hr-aw-badge-paid {
+    background: #EEFBF5;
+    border: 1px solid #AEEDBE;
+    color: #0EAB62;
+}
+
+.hr-aw-badge-rejected {
+    background: #feebea;
+    border: 0.5px solid #ffc7c7;
+    color: #DC2626;
+}
+
+.hr-aw-badge-pending {
+    background: #FFFBEB;
+    border: 0.5px solid #FDE68A;
+    color: #D97706;
+    font-weight: 600;
+}
+
+.hr-aw-cell-action {
+    vertical-align: middle;
+    text-align: center !important;
+}
+
+.hr-aw-eye-btn {
+    width: 26px;
+    height: 26px;
+    border: 1px solid #DDE0EE;
+    border-radius: 6px;
+    background: #FFFFFF;
+    color: #215EF8;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02);
+    transition: background 0.15s ease, border-color 0.15s ease;
+    padding: 0;
+}
+
+.hr-aw-eye-btn:hover {
+    border-color: #215EF8;
+    color: #215EF8;
+    background: #EFF6FF;
+}
+
+.hr-aw-action-btns-wrap {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.hr-aw-expand-btn {
+    width: 26px;
+    height: 26px;
+    border: 1px solid #DDE0EE;
+    border-radius: 6px;
+    background: #FFFFFF;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02);
+    transition: background 0.15s ease, border-color 0.15s ease;
+    padding: 0;
+}
+
+.hr-aw-expand-btn:hover {
+    border-color: #215EF8;
+    background: #EFF6FF;
+}
+
+.hr-aw-expand-btn.expanded {
+    background: #F0F4FF;
+    border-color: #215EF8;
+}
+
+/* Timeline Expandable Row */
+.hr-aw-row-expanded {
+    background: #ffffff !important;
+}
+
+.hr-aw-row-expanded td {
+    border-bottom: none !important;
+    padding-bottom: 8px !important;
+}
+
+.hr-aw-timeline-row {
+    background: #ffffff !important;
+}
+
+.hr-aw-timeline-row:hover {
+    background: #ffffff !important;
+}
+
+.hr-aw-timeline-cell {
+    padding: 0 18px 14px 18px !important;
+    border-top: none !important;
+    border-bottom: 1px solid #E8EBF5 !important;
+    background: #ffffff !important;
+}
+
+.hr-aw-timeline-expanded-container {
+    background: #F3F4F8;
+    border-radius: 10px;
+    padding: 10px 18px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    overflow: hidden;
+}
+
+@keyframes fadeInTimeline {
+    from {
+        opacity: 0;
+        transform: translateY(-4px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hr-timeline-header-box {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+}
+
+.hr-corner-icon-square {
+    width: 32px;
+    height: 32px;
+    background: #ffffff;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hr-timeline-title-text {
+    font-size: 12px;
+    font-weight: 500;
+    color: #000000;
+    white-space: nowrap;
+}
+
+.hr-timeline-stepper-row {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    flex: 1;
+    min-width: 0;
+    justify-content: flex-end;
+}
+
+.hr-timeline-step-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    flex: 1 1 auto;
+    min-width: 0;
+}
+
+.hr-timeline-step-icon {
+    width: 24px;
+    height: 24px;
+    margin-bottom: 6px;
+    object-fit: contain;
+}
+
+.hr-step-label {
+    font-size: 11px;
+    font-weight: 400;
+    color: #000000;
+    white-space: nowrap;
+}
+
+.hr-step-date {
+    font-size: 11px;
+    font-weight: 400;
+    color: #7F7F7F;
+    margin-top: 2px;
+    white-space: nowrap;
+}
+
+.hr-step-date.rejected {
+    color: #DC2626;
+    font-weight: 400;
+}
+
+.hr-timeline-dotted-line,
+.hr-timeline-dotline-img {
+    flex: 1;
+    border-top: 2px dotted #b4b4b4;
+    margin: 0 4px;
+    position: relative;
+    top: -15px;
+}
+
+.hr-step-circle-red {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #FFFFFF;
+    background-color: #EF4444;
+    border: 1.5px solid #DC2626;
+    margin-bottom: 6px;
+}
+
+.hr-aw-card-timeline-wrap {
+    margin-top: 10px;
+    border-top: 1px dashed #E2E8F0;
+    padding-top: 10px;
+}
+
+.hr-aw-card-timeline-wrap .hr-aw-timeline-expanded-container {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+.hr-aw-card-timeline-wrap .hr-timeline-stepper-row {
+    width: 100%;
+    justify-content: space-between;
+    overflow-x: auto;
+    padding-bottom: 4px;
+}
+
+/* --------------------------------------------------------------------------
+   History Modal Styles
+   -------------------------------------------------------------------------- */
+.hr-aw-history-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(15, 23, 42, 0.45);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 99999;
+    padding: 24px;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+}
+
+.hr-aw-history-modal-card {
+    position: relative;
+    background: #FFFFFF;
+    border-radius: 16px;
+    width: 900px;
+    max-width: calc(100vw - 48px);
+    height: 385px;
+    max-height: calc(100vh - 48px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    animation: cadScaleUp 0.15s ease;
+    overflow: hidden;
+}
+
+.hr-aw-history-modal-header {
+    padding: 15px 20px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-shrink: 0;
+}
+
+.hr-aw-history-title {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 700;
+    color: #215EF8;
+    line-height: 1.25;
+}
+
+.hr-aw-history-subtitle {
+    margin: 6px 0 0 0;
+    font-size: 13px;
+    color: #6B7280;
+    font-weight: 400;
+}
+
+.hr-aw-history-close-btn {
+    background: transparent;
+    border: none;
+    color: #64748B;
+    cursor: pointer;
+    padding: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    transition: background 0.15s ease, color 0.15s ease;
+}
+
+.hr-aw-history-close-btn:hover {
+    color: #0F172A;
+    background: #F1F5F9;
+}
+
+/* Table Header Row */
+.hr-aw-history-table-header {
+    display: grid;
+    grid-template-columns: 14% 27% 17% 12% 14% 10% 8%;
+    padding: 8px 34px 8px 44px;
+    font-size: 12px;
+    font-weight: 500;
+    color: #7F7F7F;
+    border-bottom: 1px solid #E3E7F7;
+    margin-left: 15px;
+    margin-right: 20px;
+    user-select: none;
+    flex-shrink: 0;
+}
+
+.hr-aw-history-modal-body {
+    padding: 4px 18px 20px 28px;
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* Modern clean scrollbar */
+.hr-aw-history-modal-body::-webkit-scrollbar {
+    width: 6px;
+}
+
+.hr-aw-history-modal-body::-webkit-scrollbar-track {
+    background: #F1F5F9;
+    border-radius: 4px;
+}
+
+.hr-aw-history-modal-body::-webkit-scrollbar-thumb {
+    background: #CBD5E1;
+    border-radius: 4px;
+}
+
+.hr-aw-history-modal-body::-webkit-scrollbar-thumb:hover {
+    background: #94A3B8;
+}
+
+/* Accordion Card */
+.hr-aw-history-card-accordion {
+    border: 1.5px solid #E3E7F7;
+    border-radius: 10px;
+    background: #FFFFFF;
+    overflow: hidden;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+    flex-shrink: 0;
+}
+
+.hr-aw-history-card-accordion:hover {
+    border-color: #CBD5E1;
+}
+
+.hr-aw-history-row-header {
+    display: grid;
+    grid-template-columns: 14% 28% 16% 11% 11% 12% 8%;
+    align-items: center;
+    padding: 16px 14px;
+}
+
+.hr-aw-history-id-text {
+    font-size: 12px;
+    font-weight: 400;
+    color: #000000;
+}
+
+.hr-aw-history-course-wrap {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 0;
+    padding-right: 8px;
+}
+
+.hr-aw-history-book-icon {
+    width: 28px;
+    height: 28px;
+    border-radius: 5px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.hr-aw-history-book-svg {
+    width: 15px;
+    height: 12px;
+    display: block;
+    object-fit: contain;
+}
+
+.hr-aw-history-course-name {
+    font-size: 12px;
+    font-weight: 500;
+    color: #000000;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.hr-aw-history-emp-text,
+.hr-aw-history-date-text {
+    font-size: 12px;
+    font-weight: 400;
+    color: #000000;
+    white-space: nowrap;
+}
+
+.hr-aw-history-amount-text {
+    font-size: 12px;
+    font-weight: 400;
+    color: #000000;
+    white-space: nowrap;
+}
+
+.hr-aw-history-action-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.hr-aw-history-eye-btn {
+    width: 26px;
+    height: 20px;
+    border: 1px solid #D3D3D3;
+    border-radius: 4px;
+    background: #FFFFFF;
+    color: #D3D3D3;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    padding: 0;
+}
+
+.hr-aw-history-eye-btn:hover {
+    border-color: #2563EB;
+    color: #2563EB;
+    background: #EFF6FF;
+}
+
+.hr-aw-history-chevron-btn {
+    background: transparent;
+    border: none;
+    color: #000000;
+    cursor: pointer;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.15s ease;
+}
+
+.hr-aw-history-chevron-btn:hover {
+    color: #2563EB;
+}
+
+/* Expanded Drawer */
+.hr-aw-history-drawer {
+    background: #F3F4F8;
+    border-radius: 10px;
+    margin: 0 16px 16px 16px;
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 17px;
+}
+
+.hr-aw-history-subcard {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-shrink: 0;
+}
+
+.hr-aw-history-subcard-icon {
+    width: 26px;
+    height: 26px;
+    border-radius: 5px;
+    background: #FFFFFF;
+    border: 1px solid #E2E8F0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.hr-aw-history-subcard-details {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    width: 100px;
+}
+
+.hr-aw-history-subcard-name {
+    font-size: 12px;
+    font-weight: 500;
+    color: #000000;
+}
+
+.hr-aw-history-subcard-course {
+    font-size: 10px;
+    color: #7F7F7F;
+    font-weight: 500;
+}
+
+.hr-aw-history-subcard-date {
+    font-size: 10px;
+    font-weight: 400;
+    color: #7F7F7F;
+}
+
+/* Stepper inside Drawer */
+.hr-aw-history-stepper {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex: 1;
+}
+
+.hr-aw-hstepper-node {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    min-width: 92px;
+}
+
+.hr-aw-hstepper-circle {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #FFFFFF;
+    margin-bottom: 6px;
+}
+
+.hr-aw-hstepper-circle.blue {
+    background: #215EF8;
+}
+
+.hr-aw-hstepper-circle.green {
+    background: #0EAB61;
+}
+
+.hr-aw-hstepper-circle.pending {
+    background: #F8FAFC;
+    border: 1.5px dashed #94A3B8;
+    color: #94A3B8;
+}
+
+.hr-aw-hstepper-circle.pending .hr-aw-hstepper-pending-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #94A3B8;
+}
+
+.hr-aw-hstepper-circle.rejected {
+    background: #EF4444;
+    color: #FFFFFF;
+}
+
+.hr-aw-hstepper-label {
+    font-size: 11px;
+    font-weight: 500;
+    color: #000000;
+    white-space: nowrap;
+}
+
+.hr-aw-hstepper-date {
+    font-size: 10px;
+    color: #7F7F7F;
+    margin-top: 1px;
+    font-weight: 400;
+    white-space: nowrap;
+}
+
+.hr-aw-hstepper-dotted-line {
+    width: 20px;
+    height: 1px;
+    background: repeating-linear-gradient(to right,
+            #B4B4B4 0,
+            #B4B4B4 3px,
+            transparent 3px,
+            transparent 6px);
+    margin: 0 4px;
+    position: relative;
+    top: -15px;
+    flex: none;
+}
+
+
+/* Footer */
+.hr-aw-history-modal-footer {
+    padding: 12px 28px;
+    display: flex;
+    justify-content: flex-end;
+    background: #FFFFFF;
+    border-top: 1px solid #F1F5F9;
+    flex-shrink: 0;
+}
+
+.hr-aw-history-ok-btn {
+    background: #215EF8;
+    color: #FFFFFF;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 8px 32px;
+    border-radius: 9px;
+    border: 1px solid #DDE7FF;
+    height: 30px;
+    cursor: pointer;
+    transition: background 0.15s ease;
+}
+
+.hr-aw-history-ok-btn:hover {
+    background: #215EF8;
+}
+
+/* ==========================================================================
+   Course Approval Details Modal (HR)
+   ========================================================================== */
+.hr-cad-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(15, 23, 42, 0.45);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100000;
+    padding: 20px;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+}
+
+.hr-cad-modal-card {
+    position: relative;
+    background: #FFFFFF;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 699px;
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    box-shadow: 0 16px 36px -4px rgba(0, 0, 0, 0.12), 0 6px 12px -4px rgba(0, 0, 0, 0.06);
+    padding: 0;
+    box-sizing: border-box;
+    animation: hrCadScaleUp 0.15s ease;
+}
+
+@keyframes hrCadScaleUp {
+    from {
+        opacity: 0;
+        transform: scale(0.96);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.hr-cad-close-btn {
+    position: absolute;
+    top: 18px;
+    right: 20px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: #64748B;
+    padding: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    transition: color 0.15s ease, background-color 0.15s ease;
+    z-index: 10;
+}
+
+.hr-cad-close-btn:hover {
+    color: #0F172A;
+    background-color: #F1F5F9;
+}
+
+.hr-cad-header {
+    flex-shrink: 0;
+    padding: 20px 48px 14px 24px;
+    margin-bottom: 0;
+    background: #FFFFFF;
+}
+
+.hr-cad-scroll-body {
+    flex: 1;
+    overflow-y: auto;
+    padding: 0 24px 20px 24px;
+    min-height: 0;
+}
+
+.hr-cad-scroll-body::-webkit-scrollbar {
+    width: 6px;
+}
+
+.hr-cad-scroll-body::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.hr-cad-scroll-body::-webkit-scrollbar-thumb {
+    background: #CBD5E1;
+    border-radius: 3px;
+}
+
+.hr-cad-scroll-body::-webkit-scrollbar-thumb:hover {
+    background: #94A3B8;
+}
+
+.hr-cad-title {
+    margin: 0;
+    font-size: 22px;
+    font-weight: 500;
+    color: #215EF8;
+    line-height: 1.25;
+}
+
+.hr-cad-subtitle {
+    margin: 3px 0 0 0;
+    font-size: 13px;
+    color: #6B7280;
+    line-height: 1.4;
+    font-weight: 400;
+}
+
+.hr-cad-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 16px;
+    border: 1px solid #DDE0EE;
+    border-radius: 8px;
+    padding: 14px 16px;
+    background: #FFFFFF;
+}
+
+.hr-cad-grid:last-child {
+    margin-bottom: 0;
+}
+
+.hr-cad-row {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 12px;
+    align-items: flex-start;
+}
+
+.hr-cad-label {
+    font-size: 11.5px;
+    color: #7F7F7F;
+    font-weight: 400;
+    line-height: 1.4;
+}
+
+.hr-cad-value {
+    font-size: 12px;
+    color: #4D4D4D;
+    font-weight: 500;
+    line-height: 1.4;
+}
+
+.hr-cad-link {
+    font-size: 11.5px;
+    color: #215EF8;
+    font-weight: 500;
+    line-height: 1.4;
+    word-break: break-all;
+    overflow-wrap: anywhere;
+    text-decoration: none;
+    transition: color 0.15s ease;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    font-family: inherit;
+    text-align: left;
+}
+
+.hr-cad-link:hover {
+    color: #1D4ED8;
+    text-decoration: underline;
+}
+
+/* --- Paid Two-Column Split & Payment Information Panel --- */
+.hr-cad-modal-card.is-paid-layout {
+    max-width: 800px;
+}
+
+.hr-cad-grid-paid {
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 18px;
+    align-items: start;
+}
+
+.hr-cad-left-col {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.hr-cad-payment-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    background: #F8FAFC;
+    border: 1px solid #E2E8F0;
+    border-radius: 8px;
+    padding: 14px 16px;
+    box-sizing: border-box;
+}
+
+.hr-cad-pay-panel-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #E2E8F0;
+}
+
+.hr-cad-pay-panel-title {
+    font-size: 13px;
+    font-weight: 500;
+    color: #000000;
+}
+
+.hr-cad-pay-code-pill {
+    display: inline-flex;
+    align-items: center;
+    font-size: 12px;
+    font-weight: 500;
+    color: #0EAB62;
+    background: #EEFBF5;
+    border: 1px solid #EEFBF5;
+    padding: 2px 8px;
+    border-radius: 4px;
+    letter-spacing: 0.2px;
+}
+
+.hr-cad-pay-meta-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 11.5px;
+}
+
+.hr-cad-pay-meta-label {
+    color: #7f7f7f;
+    font-weight: 500;
+}
+
+.hr-cad-pay-meta-value {
+    color: #4D4D4D;
+    font-weight: 600;
+}
+
+.hr-cad-pay-block {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.hr-cad-pay-block-label {
+    font-size: 12px;
+    font-weight: 500;
+    color: #7f7f7f;
+}
+
+.hr-cad-receipt-card {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #FFFFFF;
+    border: 1px solid #CBD5E1;
+    border-radius: 6px;
+    padding: 10px 12px;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.hr-cad-receipt-card:hover {
+    border-color: #94A3B8;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.hr-cad-receipt-icon-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 6px;
+    background: #EFF6FF;
+    color: #2563EB;
+    flex-shrink: 0;
+}
+
+.hr-cad-receipt-details {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    min-width: 0;
+    flex: 1;
+}
+
+.hr-cad-receipt-filename {
+    font-size: 12px;
+    font-weight: 500;
+    color: #000000;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.hr-cad-receipt-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 11.5px;
+    font-weight: 500;
+    color: #2563EB;
+    text-decoration: none;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    font-family: inherit;
+    text-align: left;
+}
+
+.hr-cad-receipt-link:hover {
+    text-decoration: underline;
+    color: #1D4ED8;
+}
+
+.hr-cad-desc-box {
+    background: #FFFFFF;
+    border: 1px solid #CBD5E1;
+    border-radius: 6px;
+    padding: 6px 8px 6px 10px;
+    min-height: 38px;
+    max-height: 64px;
+    overflow-y: auto;
+    box-sizing: border-box;
+    scrollbar-width: thin;
+    scrollbar-color: #94A3B8 #F1F5F9;
+}
+
+.hr-cad-desc-box::-webkit-scrollbar {
+    width: 5px;
+    display: block;
+}
+
+.hr-cad-desc-box::-webkit-scrollbar-track {
+    background: #F1F5F9;
+    border-radius: 4px;
+}
+
+.hr-cad-desc-box::-webkit-scrollbar-thumb {
+    background: #94A3B8;
+    border-radius: 4px;
+}
+
+.hr-cad-desc-box::-webkit-scrollbar-thumb:hover {
+    background: #64748B;
+}
+
+.hr-cad-desc-text {
+    margin: 0;
+    font-size: 12px;
+    line-height: 18px;
+    color: #000000;
+    word-break: break-word;
+    white-space: pre-wrap;
+}
+
+.hr-cad-desc-empty {
+    margin: 0;
+    font-size: 11px;
+    font-weight: 400;
+    color: #000000;
+}
+
+@media (max-width: 768px) {
+    .hr-cad-grid-paid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.hr-cad-footer {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 8px;
+}
+
+.hr-cad-reject-btn {
+    background: #FFFFFF;
+    color: #000000;
+    border: 1px solid #DDE0EE;
+    font-size: 12px;
+    font-weight: 500;
+    height: 32px;
+    padding: 0 16px;
+    border-radius: 6px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.hr-cad-reject-btn:hover:not(:disabled) {
+    background: #FEF2F2;
+    border-color: #FCA5A5;
+    color: #DC2626;
+}
+
+.hr-cad-approve-btn {
+    background: #215EF8;
+    color: #FFFFFF;
+    border: none;
+    font-size: 12px;
+    font-weight: 500;
+    height: 32px;
+    padding: 0 18px;
+    border-radius: 6px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.hr-cad-approve-btn:hover:not(:disabled) {
+    background: #1D4ED8;
+    box-shadow: 0 4px 10px rgba(33, 94, 248, 0.28);
+}
+
+.hr-cad-reject-btn:disabled,
+.hr-cad-approve-btn:disabled {
+    opacity: 0.65;
+    cursor: not-allowed;
+}
+
+.hr-cad-ok-btn {
+    background-color: #215EF8;
+    color: #FFFFFF;
+    font-size: 12px;
+    font-weight: 500;
+    height: 32px;
+    padding: 0 24px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.15s ease, transform 0.1s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hr-cad-ok-btn:hover {
+    background-color: #1D4ED8;
+}
+
+.hr-cad-ok-btn:active {
+    transform: scale(0.98);
+}
+
+@media (max-width: 640px) {
+    .hr-cad-modal-card {
+        padding: 0;
+    }
+
+    .hr-cad-header {
+        padding: 16px 40px 10px 16px;
+    }
+
+    .hr-cad-scroll-body {
+        padding: 0 16px 16px 16px;
+    }
+
+    .hr-cad-row {
+        grid-template-columns: 1fr;
+        gap: 3px;
+    }
+}
+
+/* --------------------------------------------------------------------------
+   Reject Request Reason Modal Styles
+   -------------------------------------------------------------------------- */
+.hr-aw-reject-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(15, 23, 42, 0.45);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000005;
+    padding: 20px;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    animation: hrAwFadeIn 0.15s ease-out;
+}
+
+.hr-aw-reject-modal-card {
+    position: relative;
+    background: #FFFFFF;
+    border-radius: 14px;
+    width: 525px;
+    max-width: 100%;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.14);
+    padding: 22px 24px 20px 24px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    animation: hrAwSlideUp 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes hrAwFadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes hrAwSlideUp {
+    from {
+        opacity: 0;
+        transform: translateY(16px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hr-aw-reject-close-btn {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    background: transparent;
+    border: none;
+    color: #94A3B8;
+    cursor: pointer;
+    padding: 4px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.15s ease;
+}
+
+.hr-aw-reject-close-btn:hover {
+    background: #F1F5F9;
+    color: #0F172A;
+}
+
+.hr-aw-reject-modal-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+}
+
+.hr-aw-reject-header-text {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding-right: 20px;
+}
+
+.hr-aw-reject-title {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 600;
+    color: #215EF8;
+    line-height: 1.3;
+}
+
+.hr-aw-reject-message {
+    margin: 0;
+    font-size: 13px;
+    font-weight: 400;
+    color: #6B7280;
+}
+
+.hr-aw-reject-info-box {
+    background: #F8FAFC;
+    border: 1px solid #DDE0EE;
+    border-radius: 8px;
+    padding: 10px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.hr-aw-reject-info-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 12px;
+    gap: 10px;
+}
+
+.hr-aw-reject-info-label {
+    color: #7F7F7F;
+    font-weight: 400;
+    flex-shrink: 0;
+}
+
+.hr-aw-reject-info-val {
+    color: #4D4D4D;
+    font-weight: 500;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: right;
+}
+
+.hr-aw-reject-reason-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-top: 2px;
+}
+
+.hr-aw-reject-reason-label {
+    font-size: 12px;
+    font-weight: 500;
+    color: #000000;
+}
+
+.hr-aw-reject-reason-required {
+    color: #EF4444;
+    margin-left: 2px;
+}
+
+.hr-aw-reject-textarea-wrap {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #CBD5E1;
+    border-radius: 8px;
+    background: #FFFFFF;
+    overflow: hidden;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.hr-aw-reject-textarea-wrap.has-error {
+    border-color: #EF4444 !important;
+    background-color: #FFFDFD !important;
+}
+
+.hr-aw-reject-textarea-wrap:focus-within {
+    border-color: #EF4444;
+    box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.12);
+}
+
+.hr-aw-reject-textarea-wrap.has-error:focus-within {
+    border-color: #EF4444 !important;
+    box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.12) !important;
+}
+
+.hr-aw-reject-reason-input {
+    width: 100%;
+    box-sizing: border-box;
+    border: none;
+    background: transparent;
+    padding: 9px 12px 4px 12px;
+    font-size: 12px;
+    font-weight: 400;
+    font-family: inherit;
+    color: #000000;
+    resize: none;
+    height: 74px;
+    overflow-y: auto;
+    outline: none;
+    line-height: 1.45;
+}
+
+.hr-aw-reject-reason-input::-webkit-scrollbar {
+    width: 5px;
+}
+
+.hr-aw-reject-reason-input::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.hr-aw-reject-reason-input::-webkit-scrollbar-thumb {
+    background: #CBD5E1;
+    border-radius: 999px;
+}
+
+.hr-aw-reject-reason-input::-webkit-scrollbar-thumb:hover {
+    background: #94A3B8;
+}
+
+.hr-aw-reject-char-count {
+    text-align: right;
+    padding: 2px 10px 6px 10px;
+    font-size: 11px;
+    color: #7F7F7F;
+    font-weight: 500;
+    user-select: none;
+}
+
+.hr-aw-reject-reason-error {
+    margin: 0;
+    font-size: 12px;
+    color: #EF4444;
+    font-weight: 400;
+}
+
+.hr-aw-reject-modal-footer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 4px;
+}
+
+.hr-aw-reject-btn-cancel {
+    background: #FFFFFF;
+    color: #000000;
+    border: 1px solid #DDE0EE;
+    font-size: 12px;
+    font-weight: 500;
+    height: 32px;
+    padding: 0 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.hr-aw-reject-btn-cancel:hover:not(:disabled) {
+    background: #F8FAFC;
+    border-color: #CBD5E1;
+}
+
+.hr-aw-reject-btn-confirm {
+    background: #EF4444;
+    color: #FFFFFF;
+    border: none;
+    font-size: 12px;
+    font-weight: 500;
+    height: 32px;
+    padding: 0 16px;
+    border-radius: 6px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.hr-aw-reject-btn-confirm:hover:not(:disabled) {
+    background: #DC2626;
+    box-shadow: 0 4px 10px rgba(239, 68, 68, 0.28);
+}
+
+.hr-aw-reject-btn-loading {
+    font-size: 12px;
+}
+
+/* ==========================================================================
+   Responsive Cards Layout (Tablet & Mobile)
+   ========================================================================== */
+
+.hr-aw-requests-container {
+    width: 100%;
+    min-height: 0;
+    flex: 1;
+}
+
+/* DESKTOP (DEFAULT): Cards list is ALWAYS HIDDEN, Table is visible */
+.hr-aw-cards-list {
+    display: none !important;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+}
+
+.hr-aw-cards-empty {
+    text-align: center;
+    padding: 36px 16px;
+    color: #94A3B8;
+    background: #FFFFFF;
+    border: 1px solid #E2E8F0;
+    border-radius: 8px;
+    font-size: 13px;
+}
+
+.hr-aw-card-item {
+    background: #FFFFFF;
+    border: 1px solid #E2E8F0;
+    border-radius: 8px;
+    padding: 12px 14px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.hr-aw-card-item:hover {
+    background: #F8FAFC;
+    border-color: #CBD5E1;
+}
+
+.hr-aw-card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.hr-aw-card-id {
+    background: none;
+    border: none;
+    padding: 0;
+    font-size: 11.5px;
+    font-weight: 500;
+    color: #64748B;
+    cursor: pointer;
+    text-align: left;
+    transition: color 0.15s ease;
+}
+
+.hr-aw-card-id:hover {
+    color: #215EF8;
+    text-decoration: underline;
+}
+
+.hr-aw-card-dots {
+    background: none;
+    border: none;
+    padding: 4px;
+    color: #94A3B8;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    transition: color 0.15s ease, background-color 0.15s ease;
+}
+
+.hr-aw-card-dots:hover {
+    color: #0F172A;
+    background: #F1F5F9;
+}
+
+.hr-aw-card-main {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    gap: 12px;
+}
+
+.hr-aw-card-user-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 0;
+}
+
+.hr-aw-card-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 0;
+}
+
+.hr-aw-card-emp-name {
+    font-size: 12.5px;
+    font-weight: 600;
+    color: #080808;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.hr-aw-card-emp-title {
+    font-size: 11px;
+    color: #64748B;
+    font-weight: 400;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.hr-aw-card-course-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 0;
+}
+
+.hr-aw-card-course-title {
+    font-size: 12.5px;
+    font-weight: 500;
+    color: #0F172A;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.hr-aw-card-date {
+    font-size: 11px;
+    color: #64748B;
+}
+
+.hr-aw-card-cert-submeta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.hr-aw-card-amount {
+    font-size: 11.5px;
+    font-weight: 600;
+    color: #215EF8;
+}
+
+.hr-aw-card-status-col {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+}
+
+.hr-aw-card-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* ==========================================================================
+   Responsive Breakpoints
+   - Tablet (768 × 1024)
+   - Mobile (375 × 812)
+   - Mobile Landscape (812 × 375)
+   - Small Mobile (320 × 568)
+   ========================================================================== */
+
+/* TABLET (768 × 1024) */
+@media (min-width: 601px) and (max-width: 900px) {
+    .hr-approvals-workflow-page {
+        padding: 16px 20px 24px 20px !important;
+        gap: 14px !important;
+        height: auto !important;
+        min-height: 100% !important;
+        overflow-y: auto !important;
+    }
+
+    .hr-aw-stats-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 10px !important;
+    }
+
+    .hr-aw-stat-card {
+        height: 64px !important;
+        padding: 10px 14px !important;
+    }
+
+    .hr-aw-controls-row {
+        flex-wrap: wrap !important;
+        gap: 10px !important;
+    }
+
+    .hr-aw-table-card {
+        display: none !important;
+    }
+
+    .hr-aw-cards-list {
+        display: flex !important;
+    }
+
+    .hr-aw-cards-pagination {
+        display: flex !important;
+    }
+
+    .hr-aw-card-main {
+        display: grid !important;
+        grid-template-columns: 200px 1fr auto !important;
+        align-items: center !important;
+        gap: 12px !important;
+    }
+}
+
+/* MOBILE (<= 767px) - PINNED TOP HEADER, METRICS, PILLS, TABS; SCROLLABLE CARDS */
+@media (max-width: 767px) {
+    .hr-approvals-workflow-page {
+        position: fixed !important;
+        top: 56px !important;
+        left: 0 !important;
+        right: 0 !important;
+        bottom: 0 !important;
+        width: 100% !important;
+        max-width: 100vw !important;
+        height: calc(100vh - 56px) !important;
+        height: calc(100dvh - 56px) !important;
+        max-height: calc(100vh - 56px) !important;
+        max-height: calc(100dvh - 56px) !important;
+        overflow: hidden !important;
+        display: flex !important;
+        flex-direction: column !important;
+        padding: 10px 10px 10px 10px !important;
+        gap: 8px !important;
+        box-sizing: border-box !important;
+        background: #F3F4F8 !important;
+        z-index: 10 !important;
+    }
+
+    .hr-approvals-workflow-page>.common-page-header,
+    .hr-approvals-workflow-page>.page-header {
+        flex-shrink: 0 !important;
+        width: 100% !important;
+    }
+
+    .hr-aw-stats-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 8px !important;
+        flex-shrink: 0 !important;
+        width: 100% !important;
+    }
+
+    .hr-aw-stat-card {
+        height: 56px !important;
+        padding: 8px 10px !important;
+        gap: 10px !important;
+        flex-shrink: 0 !important;
+    }
+
+    .hr-aw-stat-icon-wrap {
+        width: 32px !important;
+        height: 32px !important;
+    }
+
+    .hr-aw-stat-value {
+        font-size: 16px !important;
+    }
+
+    .hr-aw-stat-label {
+        font-size: 11px !important;
+    }
+
+    .hr-aw-controls-row {
+        flex-direction: row !important;
+        align-items: center !important;
+        gap: 8px !important;
+        width: 100% !important;
+        flex-shrink: 0 !important;
+        margin-bottom: 2px !important;
+    }
+
+    .hr-aw-type-pills {
+        display: flex !important;
+        flex-direction: row !important;
+        width: 100% !important;
+        gap: 8px !important;
+        overflow-x: auto !important;
+        white-space: nowrap !important;
+        scrollbar-width: none !important;
+        -webkit-overflow-scrolling: touch !important;
+        flex-shrink: 0 !important;
+        padding-bottom: 2px !important;
+    }
+
+    .hr-aw-type-pills::-webkit-scrollbar {
+        display: none !important;
+    }
+
+    .hr-aw-type-pill {
+        flex: 1 0 auto !important;
+        width: auto !important;
+        justify-content: center !important;
+        height: 32px !important;
+        font-size: 11.5px !important;
+        padding: 0 14px !important;
+        white-space: nowrap !important;
+        flex-shrink: 0 !important;
+    }
+
+    .hr-aw-btn-history {
+        width: auto !important;
+        justify-content: center !important;
+        height: 32px !important;
+        font-size: 11.5px !important;
+        padding: 0 12px !important;
+        flex-shrink: 0 !important;
+        white-space: nowrap !important;
+    }
+
+    .hr-aw-search-row {
+        width: 100% !important;
+        margin-top: 10px !important;
+        margin-bottom: 10px !important;
+    }
+
+    .hr-aw-search-box {
+        width: 100% !important;
+    }
+
+    .hr-aw-status-tabs-row {
+        flex-direction: column !important;
+        align-items: stretch !important;
+        gap: 8px !important;
+        border-bottom: none !important;
+    }
+
+    .hr-aw-status-tabs-row .hr-aw-status-tabs {
+        border-bottom: 1.3px solid #CBD1EA !important;
+        width: 100% !important;
+    }
+
+    .hr-aw-status-filter-wrap {
+        width: 100% !important;
+        justify-content: flex-end !important;
+        margin-bottom: 4px !important;
+    }
+
+    .hr-aw-status-tabs {
+        overflow-x: auto !important;
+        white-space: nowrap !important;
+        gap: 12px !important;
+        scrollbar-width: none !important;
+        flex-shrink: 0 !important;
+        margin-bottom: 2px !important;
+    }
+
+    .hr-aw-status-tabs::-webkit-scrollbar {
+        display: none !important;
+    }
+
+    .hr-aw-status-tab {
+        padding: 6px 12px 10px 12px !important;
+        flex-shrink: 0 !important;
+    }
+
+    .hr-aw-requests-container {
+        flex: 1 1 0 !important;
+        min-height: 0 !important;
+        width: 100% !important;
+        overflow-y: auto !important;
+        overflow-x: hidden !important;
+        -webkit-overflow-scrolling: touch !important;
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 10px !important;
+        padding-bottom: 10px !important;
+        scrollbar-width: thin !important;
+    }
+
+    .hr-aw-table-card {
+        display: none !important;
+    }
+
+    .hr-aw-cards-list {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 10px !important;
+        width: 100% !important;
+        height: auto !important;
+        overflow: visible !important;
+    }
+
+    .hr-aw-card-main {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        align-items: flex-start !important;
+        gap: 10px 12px !important;
+        width: 100% !important;
+    }
+
+    .hr-aw-card-user-info {
+        grid-column: 1 / 2 !important;
+        width: 100% !important;
+        min-width: 0 !important;
+        display: flex !important;
+        align-items: center !important;
+        gap: 8px !important;
+    }
+
+    .hr-aw-card-course-info {
+        grid-column: 2 / 3 !important;
+        width: 100% !important;
+        min-width: 0 !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: flex-end !important;
+        text-align: right !important;
+    }
+
+    .hr-aw-card-course-title {
+        font-size: 12px !important;
+        font-weight: 500 !important;
+        color: #0F172A !important;
+        text-align: right !important;
+        width: 100% !important;
+        white-space: nowrap !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+    }
+
+    .hr-aw-card-date {
+        font-size: 11px !important;
+        color: #64748B !important;
+        text-align: right !important;
+    }
+
+    .hr-aw-card-cert-submeta {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: flex-end !important;
+        gap: 6px !important;
+        width: 100% !important;
+    }
+
+    .hr-aw-card-status-col {
+        grid-column: 1 / -1 !important;
+        width: 100% !important;
+        margin-top: 4px !important;
+    }
+
+    .hr-aw-card-actions {
+        width: 100% !important;
+    }
+
+    .hr-aw-card-actions .hr-aw-btn-approve,
+    .hr-aw-card-actions .hr-aw-btn-reject {
+        flex: 1 !important;
+        justify-content: center !important;
+        height: 32px !important;
+        font-size: 12px !important;
+    }
+
+    .hr-aw-badge-approved,
+    .hr-aw-badge-rejected,
+    .hr-aw-badge-paid {
+        width: 100% !important;
+        text-align: center !important;
+        display: block !important;
+        box-sizing: border-box !important;
+        height: 28px !important;
+        line-height: 26px !important;
+    }
+}
+
+/* MOBILE LANDSCAPE (812 × 375) */
+@media (max-height: 500px) and (min-width: 600px) {
+    .hr-approvals-workflow-page {
+        padding: 12px 16px !important;
+        gap: 10px !important;
+        height: auto !important;
+        min-height: 100% !important;
+        overflow-y: auto !important;
+    }
+
+    .hr-aw-stats-grid {
+        grid-template-columns: repeat(4, 1fr) !important;
+        gap: 8px !important;
+    }
+
+    .hr-aw-stat-card {
+        height: 50px !important;
+        padding: 6px 10px !important;
+        gap: 8px !important;
+    }
+
+    .hr-aw-stat-icon-wrap {
+        width: 28px !important;
+        height: 28px !important;
+    }
+
+    .hr-aw-stat-value {
+        font-size: 15px !important;
+    }
+
+    .hr-aw-stat-label {
+        font-size: 10.5px !important;
+    }
+
+    .hr-aw-controls-row {
+        gap: 10px !important;
+    }
+
+    .hr-aw-table-card {
+        display: none !important;
+    }
+
+    .hr-aw-cards-list {
+        display: flex !important;
+    }
+
+    .hr-aw-cards-pagination {
+        display: flex !important;
+    }
+
+    .hr-aw-card-main {
+        display: grid !important;
+        grid-template-columns: 200px 1fr auto !important;
+        align-items: center !important;
+        gap: 14px !important;
+    }
+}
+
+/* EXTRA SMALL MOBILE (<= 480px) */
+@media (max-width: 480px) {
+    .hr-approvals-workflow-page {
+        top: 52px !important;
+        height: calc(100vh - 52px) !important;
+        height: calc(100dvh - 52px) !important;
+        max-height: calc(100vh - 52px) !important;
+        max-height: calc(100dvh - 52px) !important;
+    }
+}
+
+/* SMALL MOBILE (320 × 568) */
+@media (max-width: 360px) {
+    .hr-approvals-workflow-page {
+        padding: 64px 8px 20px 8px !important;
+        gap: 10px !important;
+    }
+
+    .hr-aw-stat-card {
+        padding: 6px 8px !important;
+        gap: 8px !important;
+    }
+
+    .hr-aw-card-item {
+        padding: 10px 10px !important;
+    }
+
+    .hr-aw-card-emp-name,
+    .hr-aw-card-course-title {
+        font-size: 11.5px !important;
+    }
+}
+
+/* ==========================================================================
+   History Modal Responsive Card Layout (Tablet & Mobile)
+   ========================================================================== */
+
+/* DESKTOP (DEFAULT): History Mobile Card is ALWAYS HIDDEN */
+.hr-aw-history-card-mobile {
+    display: none !important;
+}
+
+@media (max-width: 900px) {
+    .hr-aw-history-modal-card {
+        width: 95% !important;
+        max-width: 540px !important;
+        height: auto !important;
+        max-height: 88vh !important;
+        border-radius: 12px !important;
+    }
+
+    .hr-aw-history-modal-header {
+        padding: 14px 16px 10px 16px !important;
+    }
+
+    .hr-aw-history-title {
+        font-size: 17px !important;
+    }
+
+    .hr-aw-history-subtitle {
+        font-size: 11.5px !important;
+    }
+
+    /* Hide 7-column table header and row header on tablet/mobile */
+    .hr-aw-history-table-header {
+        display: none !important;
+    }
+
+    .hr-aw-history-row-header {
+        display: none !important;
+    }
+
+    /* Show Clean Card Layout */
+    .hr-aw-history-card-mobile {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 8px !important;
+        padding: 12px 14px !important;
+        box-sizing: border-box !important;
+    }
+
+    .hr-aw-hcard-top {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        width: 100% !important;
+    }
+
+    .hr-aw-hcard-top-right {
+        display: flex !important;
+        align-items: center !important;
+        gap: 8px !important;
+    }
+
+    .hr-aw-hcard-course {
+        display: flex !important;
+        align-items: center !important;
+        gap: 10px !important;
+    }
+
+    .hr-aw-hcard-course-title {
+        font-size: 13px !important;
+        font-weight: 600 !important;
+        color: #0F172A !important;
+        line-height: 1.3 !important;
+    }
+
+    .hr-aw-hcard-meta-grid {
+        display: grid !important;
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: 8px !important;
+        background: #F8FAFC !important;
+        border: 1px solid #E2E8F0 !important;
+        border-radius: 6px !important;
+        padding: 8px 10px !important;
+        margin-top: 2px !important;
+        box-sizing: border-box !important;
+    }
+
+    .hr-aw-hcard-meta-item {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 2px !important;
+        min-width: 0 !important;
+    }
+
+    .hr-aw-hcard-meta-label {
+        font-size: 9.5px !important;
+        font-weight: 500 !important;
+        color: #64748B !important;
+        text-transform: uppercase !important;
+        letter-spacing: 0.3px !important;
+    }
+
+    .hr-aw-hcard-meta-val {
+        font-size: 11.5px !important;
+        font-weight: 600 !important;
+        color: #080808 !important;
+        white-space: nowrap !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+    }
+
+    .hr-aw-hcard-val-amount {
+        color: #215EF8 !important;
+        font-weight: 700 !important;
+    }
+
+    .hr-aw-history-modal-body {
+        padding: 6px 12px 14px 12px !important;
+        gap: 10px !important;
+    }
+
+    .hr-aw-history-modal-footer {
+        padding: 10px 16px 14px 16px !important;
+    }
+
+    /* Stepper & Drawer inside history card */
+    .hr-aw-history-drawer {
+        flex-direction: column !important;
+        align-items: stretch !important;
+        gap: 12px !important;
+        padding: 12px 14px !important;
+        margin: 0 10px 12px 10px !important;
+    }
+
+    .hr-aw-history-subcard {
+        display: none !important;
+    }
+
+    .hr-aw-history-stepper {
+        width: 100% !important;
+        overflow-x: auto !important;
+        justify-content: flex-start !important;
+        padding: 8px 4px !important;
+        scrollbar-width: thin !important;
+    }
+
+    .hr-aw-hstepper-node {
+        min-width: 80px !important;
+        flex-shrink: 0 !important;
+    }
+
+    .hr-aw-hstepper-dotted-line {
+        min-width: 18px !important;
+        flex-shrink: 0 !important;
+    }
+}
+
+@media (max-width: 360px) {
+    .hr-aw-hcard-meta-grid {
+        gap: 4px !important;
+        padding: 6px 8px !important;
+    }
+
+    .hr-aw-hcard-meta-val {
+        font-size: 10.5px !important;
+    }
+}
+
+/* Empty Table & Card States */
+.hr-aw-table-scroll-container.is-empty,
+.hr-aw-table-scroll-container:has(.hr-empty-table-row) {
+    display: flex;
+    flex-direction: column;
+}
+
+.hr-aw-table.is-empty,
+.hr-aw-table:has(.hr-empty-table-row) {
+    height: 100%;
+    flex: 1 1 auto;
+}
+
+.hr-aw-table.is-empty tbody,
+.hr-aw-table:has(.hr-empty-table-row) tbody {
+    height: 100%;
+}
+
+.hr-empty-table-row {
+    height: 100% !important;
+}
+
+.hr-empty-table-row:hover td,
+.hr-empty-table-row td:hover {
+    background-color: transparent !important;
+}
+
+.hr-empty-table-cell {
+    height: 100% !important;
+    vertical-align: middle !important;
+    text-align: center !important;
+    border-bottom: none !important;
+    padding: 0 !important;
+    background: transparent !important;
+}
+
+.hr-empty-table-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    color: #7F7F7F;
+    font-size: 13px;
+    font-weight: 500;
+    margin: auto;
+    text-align: center;
+    height: 100%;
+    min-height: 280px;
+    padding: 36px 20px;
+    box-sizing: border-box;
+}
+
+.hr-empty-table-icon {
+    width: 56px;
+    height: 56px;
+    object-fit: contain;
+    opacity: 0.85;
+}
+
+.hr-aw-cards-empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    text-align: center;
+    padding: 36px 16px;
+    color: #64748B;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+/* ==========================================================================
+   Pay Button & Payment Slip Sub-Form
+   ========================================================================== */
+
+/* --- Pay Button (green, shown when status = Approved & not Paid) --- */
+.hr-cad-pay-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 22px;
+    background: #16A34A;
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.18s ease, box-shadow 0.18s ease;
+    letter-spacing: 0.01em;
+}
+
+.hr-cad-pay-btn:hover {
+    background: #15803D;
+    box-shadow: 0 2px 8px rgba(22, 163, 74, 0.18);
+}
+
+.hr-cad-pay-btn:active {
+    background: #166534;
+}
+
+.hr-cad-pay-btn:disabled,
+.hr-cad-pay-btn.disabled {
+    background: #94A3B8;
+    color: #FFFFFF;
+    cursor: not-allowed;
+    box-shadow: none;
+    opacity: 0.85;
+}
+
+.hr-cad-pay-btn:disabled:hover,
+.hr-cad-pay-btn.disabled:hover {
+    background: #94A3B8;
+    box-shadow: none;
+}
+
+/* --- "Payment Processed" badge footer --- */
+.hr-cad-footer-paid {
+    justify-content: center;
+    background: #F0FDF4;
+    border-top: 1px solid #BBF7D0;
+    padding: 12px 24px;
+}
+
+.hr-cad-paid-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #15803D;
+}
+
+/* --- Payment Slip Sub-Form container --- */
+.hr-pay-form-wrap {
+    padding: 16px 0 0 0;
+    border-radius: 0 0 14px 14px;
+}
+
+.hr-pay-form-title {
+    font-size: 13px;
+    font-weight: 500;
+    color: #000000;
+    margin: 0 0 14px 0;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
+
+/* --- Drag & Drop / File Zone --- */
+.hr-pay-dropzone {
+    border: 1px dashed #888787;
+    background: #F3F4F8;
+    border-radius: 10px;
+    height: 58px;
+    padding: 8px 16px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    margin-bottom: 0;
+}
+
+.hr-pay-dropzone:hover,
+.hr-pay-dropzone.drag-over {
+    border-color: #215EF8;
+    background: #F0F5FF;
+}
+
+.hr-pay-dropzone-icon-img {
+    width: 20px;
+    height: 18px;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+.hr-pay-dropzone-label {
+    margin: 0;
+    font-size: 12px;
+    font-family: inherit;
+    color: #7F7F7F;
+    line-height: 1.4;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    max-width: calc(100% - 36px);
+    min-width: 0;
+}
+
+.hr-pay-browse-link {
+    color: #215EF8;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.hr-pay-browse-link:hover {
+    text-decoration: underline;
+}
+
+.hr-pay-supports-text {
+    font-size: 11.5px;
+    font-weight: 400;
+    color: #7F7F7F;
+    margin-top: 4px;
+    display: block;
+    line-height: 1.4;
+}
+
+/* --- Selected file inside dropzone --- */
+.hr-pay-selected-filename {
+    display: inline-block;
+    max-width: 280px;
+    vertical-align: middle;
+    font-weight: 500;
+    color: #15803D;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.hr-pay-selected-filesize {
+    color: #64748B;
+    font-size: 11px;
+    margin-left: 2px;
+}
+
+.hr-pay-remove-file-btn {
+    background: transparent;
+    border: none;
+    color: #888888;
+    cursor: pointer;
+    padding: 0;
+    margin-left: 8px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    vertical-align: middle;
+    transition: color 0.15s ease;
+}
+
+.hr-pay-remove-file-btn:hover {
+    color: #DC2626;
+}
+
+/* --- Description field --- */
+.hr-pay-desc-field-group {
+    margin-top: 14px;
+}
+
+.hr-pay-desc-label {
+    font-size: 13px;
+    font-weight: 500;
+    color: #000000;
+    margin-bottom: 6px;
+    display: block;
+}
+
+.hr-pay-desc-wrapper {
+    position: relative;
+    width: 100%;
+    min-height: 84px;
+    border: 1px solid #CBD5E1;
+    border-radius: 8px;
+    background: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    cursor: text;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.hr-pay-desc-wrapper:focus-within {
+    border-color: #215EF8;
+    box-shadow: 0 0 0 3px rgba(33, 94, 248, 0.12);
+}
+
+.hr-pay-desc-textarea {
+    width: 100%;
+    flex: 1;
+    min-height: 58px;
+    border: none;
+    outline: none;
+    background: transparent;
+    padding: 10px 14px 4px 14px;
+    font-size: 12px;
+    color: #000000;
+    resize: none;
+    box-sizing: border-box;
+    font-family: inherit;
+    line-height: 1.5;
+    display: block;
+}
+
+.hr-pay-desc-textarea::placeholder {
+    color: #7f7f7f;
+}
+
+.hr-pay-desc-textarea::-webkit-scrollbar {
+    width: 5px;
+}
+
+.hr-pay-desc-textarea::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.hr-pay-desc-textarea::-webkit-scrollbar-thumb {
+    background: #CBD5E1;
+    border-radius: 999px;
+}
+
+.hr-pay-desc-textarea::-webkit-scrollbar-thumb:hover {
+    background: #94A3B8;
+}
+
+.hr-pay-desc-bottom-bar {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 2px 14px 6px 14px;
+    user-select: none;
+}
+
+.hr-pay-desc-char-count {
+    font-size: 12px;
+    font-weight: 400;
+    color: #7f7f7f;
+    line-height: 1;
+    margin: 0;
+}
+
+/* --- Error message --- */
+.hr-pay-error-msg {
+    font-size: 11.5px;
+    color: #DC2626;
+    margin-top: 6px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+/* --- Form footer buttons --- */
+.hr-pay-form-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 16px;
+}
+
+.hr-pay-cancel-btn {
+    padding: 7px 18px;
+    font-size: 12px;
+    font-weight: 500;
+    border: 1px solid #CBD5E1;
+    border-radius: 7px;
+    background: #fff;
+    color: #000000;
+    cursor: pointer;
+    transition: background 0.15s, border-color 0.15s;
+}
+
+.hr-pay-cancel-btn:hover {
+    background: #F1F5F9;
+    border-color: #94A3B8;
+}
+
+.hr-pay-confirm-btn {
+    padding: 7px 20px;
+    font-size: 12.5px;
+    font-weight: 600;
+    background: #16A34A;
+    color: #fff;
+    border: none;
+    border-radius: 7px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    transition: background 0.18s;
+}
+
+.hr-pay-confirm-btn:hover {
+    background: #15803D;
+}
+
+.hr-pay-confirm-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    background: #16A34A;
+}

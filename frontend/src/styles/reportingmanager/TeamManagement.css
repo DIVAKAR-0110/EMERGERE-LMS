@@ -1,0 +1,2268 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700;800;900&family=Lato:wght@400;600;700&display=swap');
+@import "../responsive/responsive-reportingmanager.css";
+
+/* =========================================================
+   REPORTING MANAGER: TEAM MANAGEMENT PAGE
+   src/styles/reportingmanager/TeamManagement.css
+   ========================================================= */
+
+.rm-team-management-page {
+    width: 100%;
+    height: 100vh;
+    max-height: 100vh;
+    padding: 20px 24px 16px 24px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: clamp(8px, 1.1vh, 12px);
+    overflow: hidden !important;
+    font-family: 'Roboto', sans-serif;
+    background: transparent;
+    overscroll-behavior: none;
+}
+
+/* =========================================================
+   BASE CARD STYLING
+   ========================================================= */
+
+.rm-tm-card {
+    width: 100%;
+    background: #FFFFFF;
+    border-radius: 10px;
+    box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04);
+    padding: clamp(10px, 1.4vh, 14px) clamp(14px, 1.5vw, 20px);
+    box-sizing: border-box;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+}
+
+.rm-tm-card-header {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    margin-bottom: 10px;
+    flex-shrink: 0;
+}
+
+.rm-tm-card-title {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 18px;
+    color: #060606;
+}
+
+.rm-tm-members-card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 10px 0 8px 0 !important;
+    box-sizing: border-box;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Figma Right Vertical Scrollbar Track & Draggable Thumb */
+.rm-tm-card-scrollbar-track {
+    position: absolute;
+    right: 2px;
+    top: 65px;
+    bottom: 8px;
+    width: 14px;
+    display: none;
+    opacity: 0;
+    pointer-events: none;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 20;
+    user-select: none;
+    overflow: hidden;
+    transition: opacity 0.2s ease;
+}
+
+.rm-tm-card-scrollbar-track.visible {
+    display: flex;
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.rm-tm-card-scrollbar-thumb {
+    position: absolute;
+    top: 0;
+    width: 7px;
+    height: 60px;
+    cursor: grab;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+    touch-action: none;
+    transition: filter 0.15s ease, opacity 0.15s ease;
+    will-change: transform;
+    outline: none;
+}
+
+.rm-tm-card-scrollbar-thumb:hover {
+    filter: brightness(0.92);
+}
+
+.rm-tm-card-scrollbar-thumb.dragging {
+    cursor: grabbing !important;
+    filter: brightness(0.85);
+}
+
+.rm-tm-card-scrollbar-thumb img {
+    width: 7px;
+    height: 60px;
+    border-radius: 3.5px;
+    display: block;
+    pointer-events: none;
+    user-select: none;
+}
+
+/* Fallback / Indicator for static cards */
+.rm-tm-card-scrollbar {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    z-index: 10;
+}
+
+.rm-tm-card-scrollbar img {
+    width: 6px;
+    height: 60px;
+    border-radius: 3px;
+    display: block;
+    opacity: 0.95;
+}
+
+/* =========================================================
+   TOP TWO-COLUMN GRID (55% / 45%)
+   ========================================================= */
+
+.rm-tm-top-grid {
+    display: grid;
+    grid-template-columns: 1.24fr 1fr;
+    gap: clamp(10px, 1.2vw, 10px);
+    width: 100%;
+    flex: 1 1 0;
+    min-height: 0;
+    overflow: hidden;
+}
+
+/* =========================================================
+   CARD 1: TEAM MEMBERS TABLE (FIGMA PIXEL-PERFECT)
+   ========================================================= */
+
+.rm-tm-members-card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 10px 0 8px 0 !important;
+    box-sizing: border-box;
+}
+
+.rm-tm-members-card .rm-tm-card-header {
+    padding: 0 16px;
+    margin-bottom: 8px;
+}
+
+.rm-tm-table-container {
+    width: 100%;
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    padding: 0 !important;
+    box-sizing: border-box;
+    scrollbar-width: none !important;
+    -ms-overflow-style: none !important;
+}
+
+.rm-tm-table-container.rm-tm-empty {
+    overflow-y: hidden !important;
+    overflow: hidden !important;
+}
+
+.rm-tm-table-container::-webkit-scrollbar {
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
+}
+
+.rm-tm-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    table-layout: fixed;
+}
+
+.rm-tm-table thead {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: #e0e7ff;
+}
+
+
+.rm-tm-table thead th:first-child,
+.rm-tm-table tbody td:first-child {
+    padding-left: 16px !important;
+}
+
+.rm-tm-table thead th:last-child,
+.rm-tm-table tbody td:last-child {
+    padding-right: 16px !important;
+}
+
+.rm-tm-table thead th {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: #e0e7ff;
+    padding: 5px 6px 4px 4px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 15px;
+    color: #3730a3;
+    border-bottom: 1px solid #E0E5F0;
+    box-shadow: inset 0 -1px 0 #E0E5F0;
+    user-select: none;
+    white-space: nowrap !important;
+    vertical-align: middle;
+}
+
+.rm-tm-table .rm-th-employee {
+    width: 25%;
+    padding-left: 6 !important;
+    text-align: left !important;
+    white-space: nowrap !important;
+}
+
+.rm-tm-table .rm-th-hours {
+    width: 23%;
+    white-space: nowrap !important;
+    text-align: left !important;
+    padding-left: 4px !important;
+}
+
+.rm-tm-table .rm-th-progress {
+    width: 28%;
+    white-space: nowrap !important;
+    text-align: left !important;
+    padding-left: 4px !important;
+}
+
+.rm-tm-table .rm-th-status {
+    width: 24%;
+    text-align: left !important;
+    padding-left: 4px !important;
+    padding-right: 0 !important;
+    white-space: nowrap !important;
+}
+
+.rm-th-flex {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+    user-select: none;
+    width: auto;
+}
+
+.rm-th-flex span {
+    font-weight: 500;
+    font-size: 12px;
+    color: #3730a3;
+    transition: color 0.15s ease;
+}
+
+/* Sortable Table Headers in RM Team Management (matching Dashboard and Employee module) */
+.rm-tm-table .rm-sortable-th {
+    cursor: pointer !important;
+    user-select: none !important;
+    transition: color 0.15s ease, background-color 0.15s ease;
+}
+
+.rm-tm-table .rm-sortable-th:hover,
+.rm-tm-table .rm-sortable-th:hover .rm-th-flex span {
+    color: #1E1B4B !important;
+}
+
+.rm-tm-table .rm-sortable-th.active-sort,
+.rm-tm-table .rm-sortable-th.active-sort .rm-th-flex span {
+    color: #1E1B4B !important;
+    font-weight: 600 !important;
+}
+
+.rm-th-flex .rm-sort-icon {
+    width: 12px !important;
+    height: 12px !important;
+    flex-shrink: 0;
+    transition: color 0.15s ease, opacity 0.15s ease;
+}
+
+.rm-th-flex .rm-sort-icon.inactive {
+    color: #4F46E5 !important;
+    opacity: 0.5;
+}
+
+.rm-tm-table .rm-sortable-th:hover .rm-sort-icon.inactive {
+    opacity: 0.9;
+    color: #3730a3;
+}
+
+.rm-th-flex .rm-sort-icon.active {
+    color: #1E1B4B !important;
+    opacity: 1 !important;
+}
+
+.rm-th-sort-icon {
+    width: 4px;
+    height: 9px;
+    object-fit: contain;
+    display: inline-block;
+    opacity: 0.6;
+}
+
+.rm-tm-table-row {
+    border-bottom: 1px solid #E0E5F0;
+    transition: background 0.12s ease;
+    cursor: pointer;
+}
+
+.rm-tm-table-row:last-child {
+    border-bottom: none;
+}
+
+/* Disable empty spacer row so bottom row reaches edge without blank space */
+.rm-tm-table tbody::after {
+    display: none !important;
+}
+
+.rm-tm-table-row:hover {
+    background: #F8FAFC;
+}
+
+.rm-tm-table-row.selected {
+    background: #EEF3FF;
+}
+
+.rm-tm-table-row td {
+    padding: 10px 4px;
+    vertical-align: middle;
+    box-sizing: border-box;
+}
+
+.rm-tm-table .rm-td-employee {
+    padding-left: 6 !important;
+    text-align: left !important;
+}
+
+.rm-tm-table .rm-td-hours {
+    text-align: left !important;
+    padding-left: 8px !important;
+    white-space: nowrap !important;
+}
+
+.rm-tm-table .rm-td-progress {
+    text-align: left !important;
+    padding-left: 8px !important;
+}
+
+.rm-tm-table .rm-td-status {
+    text-align: left !important;
+    padding-left: 8px !important;
+    padding-right: 0 !important;
+}
+
+.rm-employee-info-cell {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    min-width: 0;
+}
+
+.rm-member-avatar {
+    width: 24px;
+    height: 24px;
+    min-width: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Roboto', sans-serif;
+    font-size: 9px;
+    font-weight: 500;
+    color: #FFFFFF;
+    flex-shrink: 0;
+}
+
+.rm-member-name-s {
+    font-family: 'Roboto', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 16px;
+    color: #000000;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.rm-emp-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    min-width: 0;
+    max-width: 100%;
+}
+
+.rm-emp-id-sub {
+    font-size: 11px;
+    font-weight: 400;
+    color: #7F7F7F;
+    margin-top: 1px;
+    line-height: 14px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.rm-hours-text {
+    font-family: 'Roboto', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 16px;
+    color: #000000;
+    white-space: nowrap;
+}
+
+.rm-progress-cell-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 8px;
+    min-width: 0;
+    cursor: pointer;
+    padding: 3px 6px;
+    border-radius: 4px;
+    transition: background-color 0.15s ease;
+}
+
+.rm-progress-cell-wrapper:hover {
+    background-color: #EDF2FE;
+}
+
+.rm-progress-bar-track {
+    width: 65px;
+    height: 5px;
+    background: #DDE7FF;
+    border-radius: 9999px;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.rm-progress-bar-fill {
+    height: 100%;
+    background: #215EF8;
+    border-radius: 9999px;
+    transition: width 0.3s ease;
+}
+
+.rm-progress-percentage {
+    font-family: 'Roboto', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    color: #7F7F7F;
+    min-width: 22px;
+    white-space: nowrap;
+}
+
+.rm-status-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3px 10px;
+    border-radius: 4px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    box-sizing: border-box;
+    white-space: nowrap;
+    text-align: center;
+    min-width: 70px;
+    margin: 0;
+}
+
+.rm-status-badge.rm-status-on-track {
+    background: #F1F2F8;
+    border: 0.5px solid #A1BCFF;
+    color: #215EF8;
+}
+
+.rm-status-badge.rm-status-excellent {
+    background: #EEFBF5;
+    border: 0.5px solid #AEEDBE;
+    color: #0EAB62;
+}
+
+.rm-status-badge.rm-status-low-progress {
+    background: #FDF5EA;
+    border: 0.5px solid #FFD696;
+    color: #E79519;
+}
+
+.rm-status-badge.rm-status-completed {
+    background: #EEFBF5;
+    border: 0.5px solid #AEEDBE;
+    color: #0EAB62;
+}
+
+.rm-status-badge.rm-status-not-started {
+    background: #F2F2F2;
+    border: 0.5px solid #B8B8B8;
+    color: #858483;
+}
+
+.rm-status-badge.badge-ontrack,
+.rm-status-badge.rm-badge-ontrack,
+.rm-status-badge.on_track,
+.rm-status-badge.ontrack {
+    background: #F1F2F8;
+    border: 0.5px solid #A1BCFF;
+    color: #215EF8;
+}
+
+.rm-status-badge.badge-excellent,
+.rm-status-badge.rm-badge-excellent,
+.rm-status-badge.excellent {
+    background: #EEFBF5;
+    border: 0.5px solid #AEEDBE;
+    color: #0EAB62;
+}
+
+.rm-status-badge.badge-attention,
+.rm-status-badge.rm-badge-attention,
+.rm-status-badge.needs_attention,
+.rm-status-badge.attention {
+    background: #FDF5EA;
+    border: 0.5px solid #FFD696;
+    color: #E79519;
+}
+
+.rm-status-badge.inactive,
+.rm-status-badge.badge-inactive,
+.rm-status-badge.rm-badge-inactive {
+    background: #F8FAFC;
+    border: 0.5px solid #CBD5E1;
+    color: #64748B;
+}
+
+.rm-null-hyphen {
+    font-family: 'Roboto', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    color: #94A3B8;
+    display: inline-block;
+    padding-left: 2px;
+}
+
+/* =========================================================
+   CARD 2: MEMBERS LEARNING LOG
+   ========================================================= */
+
+.rm-tm-logs-card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 8px clamp(14px, 1.5vw, 20px) 8px 14px;
+    box-sizing: border-box;
+    overflow: hidden;
+    position: relative;
+}
+
+.rm-tm-logs-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 10px;
+    flex-shrink: 0;
+}
+
+.rm-tm-logs-header .rm-tm-card-title {
+    white-space: nowrap;
+    margin: 0;
+}
+
+.rm-tm-logs-controls {
+    display: flex;
+    align-items: center;
+    gap: clamp(10px, 1.2vw, 16px);
+    margin-left: auto;
+}
+
+.rm-month-navigator {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 28px;
+    gap: 2px;
+}
+
+.rm-month-nav-btn {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: #64748B;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    padding: 0;
+    border-radius: 4px;
+    transition: all 0.15s ease;
+    flex-shrink: 0;
+}
+
+.rm-month-nav-btn:hover {
+    color: #215EF8;
+    background: #F0F5FF;
+}
+
+.rm-month-nav-btn:disabled,
+.rm-month-nav-btn.disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+.rm-month-label {
+    font-family: 'Roboto', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    color: #215EF8;
+    user-select: none;
+    white-space: nowrap;
+    width: auto;
+    min-width: 60px;
+    max-width: 72px;
+    text-align: center;
+    justify-content: center;
+    display: inline-flex;
+    align-items: center;
+}
+
+button.rm-month-label,
+.rm-month-label-btn {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 2px 4px;
+    border-radius: 4px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    transition: background 0.15s ease, color 0.15s ease;
+    font-family: inherit;
+    line-height: inherit;
+    width: auto;
+    min-width: 60px;
+    max-width: 72px;
+}
+
+button.rm-month-label:hover,
+.rm-month-label-btn:hover {
+    background: #F0F5FF;
+}
+
+button.rm-month-label:focus-visible,
+.rm-month-label-btn:focus-visible {
+    outline: 2px solid #215EF8;
+    outline-offset: 1px;
+}
+
+.rm-member-dropdown-container {
+    position: relative;
+}
+
+.rm-member-dropdown-trigger {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: auto;
+    min-width: 140px;
+    max-width: 175px;
+    height: 30px;
+    padding: 0 10px;
+    background: #FFFFFF;
+    border: 1px solid #DDE0EE;
+    border-radius: 6px;
+    cursor: pointer;
+    box-sizing: border-box;
+    gap: 8px;
+    transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.rm-member-dropdown-trigger:hover {
+    background: #F8FAFC;
+    border-color: #CBD5E1;
+}
+
+.rm-dropdown-selected-name {
+    font-family: 'Roboto', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    color: #000000;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: left;
+    max-width: 140px;
+}
+
+.rm-chevron-icon {
+    color: #000000;
+    flex-shrink: 0;
+    width: 13px;
+    height: 13px;
+    transition: transform 0.2s ease;
+}
+
+.rm-chevron-icon.rotate {
+    transform: rotate(180deg);
+}
+
+.rm-member-dropdown-menu {
+    position: absolute;
+    top: calc(100% + 4px);
+    right: 0;
+    width: 165px;
+    max-height: 180px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    background: #FFFFFF;
+    border: 1px solid rgba(221, 224, 238, 1);
+    border-radius: 8px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    z-index: 50;
+    padding: 4px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    box-sizing: border-box;
+    scrollbar-width: thin;
+    scrollbar-color: #DDE0EE #FFFFFF;
+}
+
+.rm-member-dropdown-menu::-webkit-scrollbar {
+    width: 4px;
+}
+
+.rm-member-dropdown-menu::-webkit-scrollbar-track {
+    background: #FFFFFF;
+    border-radius: 4px;
+}
+
+.rm-member-dropdown-menu::-webkit-scrollbar-thumb {
+    background: #DDE0EE;
+    border-radius: 4px;
+}
+
+.rm-member-dropdown-menu::-webkit-scrollbar-thumb:hover {
+    background: #CBD5E1;
+}
+
+.rm-member-dropdown-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 8px;
+    border-radius: 6px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 12px;
+    color: #000000;
+    cursor: pointer;
+    transition: background 0.12s ease;
+    flex-shrink: 0;
+}
+
+.rm-member-dropdown-item span {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.rm-member-dropdown-item:hover,
+.rm-member-dropdown-item.selected {
+    background: #F0F5FF;
+    color: #215EF8;
+    font-weight: 500;
+}
+
+.rm-dropdown-avatar {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    font-family: 'Roboto', sans-serif;
+    font-size: 9px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #FFFFFF;
+    flex-shrink: 0;
+}
+
+.rm-tm-logs-list {
+    width: 100%;
+    flex: 1;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 0;
+    overflow-y: auto !important;
+    padding-right: 2px;
+    box-sizing: border-box;
+    scrollbar-width: none !important;
+    -ms-overflow-style: none !important;
+}
+
+.rm-tm-logs-list::-webkit-scrollbar {
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
+}
+
+.rm-tm-logs-empty {
+    width: 100%;
+    flex: 1;
+    min-height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #94A3B8;
+    font-family: 'Roboto', sans-serif;
+    font-size: 13px;
+    text-align: center;
+    padding: 20px 0;
+}
+
+.rm-tm-log-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 9px 4px 10px 4px;
+    border-bottom: 1px solid #DDE0EE;
+    background: transparent;
+    transition: background 0.12s ease;
+    box-sizing: border-box;
+    flex-shrink: 0;
+}
+
+.rm-tm-log-item:last-child {
+    border-bottom: none;
+}
+
+.rm-tm-log-item:hover {
+    background: #F8FAFC;
+}
+
+.rm-log-timestamp {
+    display: flex;
+    flex-direction: column;
+    min-width: 60px;
+    flex-shrink: 0;
+}
+
+.rm-log-date {
+    font-family: 'Roboto', sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    line-height: 16px;
+    color: #000000;
+}
+
+.rm-log-time {
+    font-family: 'Roboto', sans-serif;
+    font-size: 10px;
+    font-weight: 400;
+    line-height: 14px;
+    color: #666666;
+    margin-top: 1px;
+}
+
+.rm-log-details {
+    flex: 1;
+    min-width: 0;
+    padding: 0 12px 0 0;
+}
+
+.rm-log-course-title {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 18px;
+    color: #000000;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.rm-log-topic {
+    margin: 1px 0 0 0;
+    font-family: 'Roboto', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 16px;
+    color: #737373;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.rm-log-duration-badge {
+    width: 50px;
+    height: 20px;
+    padding: 0;
+    border-radius: 9999px;
+    background: #F1F2F8;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    box-sizing: border-box;
+}
+
+.rm-log-duration-badge span {
+    font-family: 'Roboto', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    color: #215EF8;
+    white-space: nowrap;
+}
+
+/* =========================================================
+   CARD 3: COURSE APPROVAL STATUS
+   ========================================================= */
+
+.rm-tm-approvals-card {
+    width: 100%;
+    flex: 0 0 auto;
+    min-height: 0;
+    background: #FFFFFF;
+    border-radius: 10px;
+    box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04);
+    padding: clamp(8px, 1.2vh, 12px) clamp(14px, 1.5vw, 20px) clamp(8px, 1.2vh, 10px) clamp(14px, 1.5vw, 20px);
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+}
+
+.rm-tm-approvals-list {
+    width: 100%;
+    flex: 1;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 8px;
+    /* Show exactly 2 rows (76px each) + 1 gap (8px) = 160px visible */
+    max-height: 160px;
+    overflow-y: auto;
+    /* Hide native scrollbar — custom right-side scrollbar track is used instead */
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    padding-right: 12px;
+}
+
+.rm-tm-approvals-list::-webkit-scrollbar {
+    width: 4px;
+}
+
+.rm-tm-approvals-list::-webkit-scrollbar-track {
+    background: transparent;
+    border-radius: 4px;
+}
+
+.rm-tm-approvals-list::-webkit-scrollbar {
+    display: none !important;
+    width: 0 !important;
+}
+
+.rm-tm-approvals-list::-webkit-scrollbar-track {
+    display: none !important;
+}
+
+.rm-tm-approvals-list::-webkit-scrollbar-thumb {
+    display: none !important;
+}
+
+.rm-tm-approvals-list::-webkit-scrollbar-thumb:hover {
+    display: none !important;
+}
+
+.rm-tm-approval-row-card {
+    background: #F3F4F8;
+    border-radius: 10px;
+    padding: 8px clamp(10px, 1.5vw, 18px);
+    flex: 0 0 76px;
+    height: 70px;
+    min-height: 76px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    box-sizing: border-box;
+    transition: background 0.12s ease;
+}
+
+
+
+.rm-approval-course-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 230px;
+    min-width: 200px;
+    flex-shrink: 0;
+}
+
+.rm-approval-badge-img {
+    width: 30px;
+    height: 30px;
+    min-width: 20px;
+    min-height: 20px;
+    flex-shrink: 0;
+    display: block;
+}
+
+.rm-approval-text-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 0;
+}
+
+.rm-approval-employee-header {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    min-width: 0;
+}
+
+.rm-approval-employee-name {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 17px;
+    color: #000000;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.rm-approval-request-code {
+    font-family: 'Roboto', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    padding: 1px 6px;
+    border-radius: 4px;
+    line-height: 15px;
+    white-space: nowrap;
+    letter-spacing: 0.2px;
+    display: inline-block;
+}
+
+.rm-approval-request-code {
+    font-family: 'Roboto', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    color: #000000;
+    padding: 1px 6px;
+    border-radius: 4px;
+    line-height: 15px;
+    white-space: nowrap;
+    letter-spacing: 0.2px;
+    display: inline-block;
+}
+
+.rm-approval-course-name {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 15px;
+    color: #7F7F7F;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.rm-approval-request-date {
+    font-family: 'Roboto', sans-serif;
+    font-size: 11px;
+    font-weight: 400;
+    line-height: 14px;
+    color: #7F7F7F;
+}
+
+/* 5-Step Horizontal Stepper */
+.rm-approval-stepper-container {
+    flex: 1;
+    max-width: 680px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-left: auto;
+}
+
+.rm-stepper-node {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 76px;
+    min-width: 65px;
+    flex-shrink: 0;
+}
+
+.rm-stepper-icon-wrapper {
+    width: 22px;
+    height: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.rm-stepper-icon-img {
+    width: 22px;
+    height: 22px;
+    display: block;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+.rm-stepper-circle {
+    width: 22px;
+    height: 22px;
+    min-width: 22px;
+    min-height: 22px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    box-sizing: border-box;
+}
+
+.rm-circle-completed {
+    background: #215EF8;
+}
+
+.rm-circle-pending {
+    background: #FDAD33;
+}
+
+.rm-circle-upcoming {
+    border: 2px solid #C5D0FF;
+    background: #EEF2FF;
+}
+
+.rm-circle-inner-dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: #93C5FD;
+    display: block;
+}
+
+.rm-node-role-label {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 14px;
+    color: #000000;
+    text-align: center;
+    margin-top: 3px;
+    white-space: nowrap;
+}
+
+.rm-node-sub-info {
+    font-family: 'Roboto', sans-serif;
+    font-size: 11px;
+    font-weight: 400;
+    line-height: 13px;
+    color: #7F7F7F;
+    text-align: center;
+    margin-top: 1px;
+    white-space: nowrap;
+    height: 13px;
+    display: block;
+}
+
+.rm-stepper-dashed-line {
+    flex: 1;
+    min-width: 16px;
+    height: 0;
+    border-top: 1.5px dashed #B4B4B4;
+    margin-bottom: 27px;
+    flex-shrink: 1;
+}
+
+/* =========================================================
+   RESPONSIVE MEDIA QUERIES (DESKTOP STATIC, TABLET & MOBILE)
+   ========================================================= */
+
+/* =========================================================
+   1. DESKTOP WORKSTATIONS & LAPTOPS (≥ 1024px)
+   Uses 100vh so the page is always exactly the viewport height,
+   regardless of the parent's height: auto chain.
+   ========================================================= */
+@media (min-width: 1024px) {
+    .rm-team-management-page {
+        width: 100% !important;
+        height: 100vh !important;
+        max-height: 100vh !important;
+        padding: 20px 24px 16px 24px !important;
+        box-sizing: border-box !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: flex-start !important;
+        gap: clamp(8px, 1.1vh, 12px) !important;
+        overflow: hidden !important;
+    }
+
+    /* PageHeader: fixed-height row, never shrinks */
+    .rm-team-management-page>.common-page-header {
+        flex: 0 0 auto !important;
+        flex-shrink: 0 !important;
+    }
+
+    /* Top grid: fills all remaining space after header + approvals card */
+    .rm-tm-top-grid {
+        display: grid !important;
+        grid-template-columns: 1.24fr 1fr !important;
+        gap: clamp(10px, 1.2vw, 10px) !important;
+        width: 100% !important;
+        flex: 1 1 0 !important;
+        min-height: 0 !important;
+        overflow: hidden !important;
+    }
+
+    .rm-tm-members-card,
+    .rm-tm-logs-card {
+        height: 100% !important;
+        min-height: 0 !important;
+        max-height: none !important;
+        overflow: hidden !important;
+    }
+
+    /* Approvals card: fixed height to show header + exactly 2 rows */
+    .rm-tm-approvals-card {
+        width: 100% !important;
+        flex: 0 0 auto !important;
+        min-height: 0 !important;
+        /* header ~40px + padding ~20px + 2 rows 160px = ~220px */
+        height: clamp(200px, 28vh, 240px) !important;
+        max-height: clamp(200px, 28vh, 240px) !important;
+        overflow: hidden !important;
+    }
+
+    .rm-tm-approvals-list {
+        flex: 1 !important;
+        min-height: 0 !important;
+        /* Exactly 2 rows visible = 2×76px + 1×8px gap = 160px */
+        max-height: 160px !important;
+        overflow-y: auto !important;
+        scrollbar-width: none !important;
+        -ms-overflow-style: none !important;
+    }
+
+    .rm-tm-approval-row-card {
+        flex: 0 0 76px !important;
+        height: 70px !important;
+        min-height: 76px !important;
+    }
+}
+
+/* =========================================================
+   2. TABLET VIEW (768px – 1023px)
+   Stacked full-width cards — each card is a scrollable container
+   ========================================================= */
+@media (min-width: 768px) and (max-width: 1023px) {
+    .rm-team-management-page {
+        height: auto !important;
+        max-height: none !important;
+        min-height: 100vh !important;
+        overflow-y: auto !important;
+        overflow-x: hidden !important;
+        -webkit-overflow-scrolling: touch !important;
+        padding: 18px 20px 40px 20px !important;
+        gap: 16px !important;
+        justify-content: flex-start !important;
+        box-sizing: border-box !important;
+    }
+
+    .rm-tm-top-grid {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 16px !important;
+        flex: none !important;
+        width: 100% !important;
+        height: auto !important;
+        max-height: none !important;
+        min-height: 0 !important;
+        overflow: visible !important;
+    }
+
+    /* Ensure card base styles are preserved */
+    .rm-tm-card,
+    .rm-tm-members-card,
+    .rm-tm-logs-card,
+    .rm-tm-approvals-card {
+        width: 100% !important;
+        background: #FFFFFF !important;
+        border-radius: 12px !important;
+        box-shadow: 0 2px 8px rgba(15, 23, 42, 0.08) !important;
+        box-sizing: border-box !important;
+    }
+
+    .rm-tm-members-card {
+        height: auto !important;
+        min-height: 0 !important;
+        max-height: none !important;
+        flex: none !important;
+        padding: 14px 16px 14px 16px !important;
+        display: flex !important;
+        flex-direction: column !important;
+        overflow: visible !important;
+    }
+
+    .rm-tm-logs-card {
+        height: auto !important;
+        min-height: 300px !important;
+        max-height: 420px !important;
+        flex: none !important;
+        padding: 14px 16px 12px 16px !important;
+        display: flex !important;
+        flex-direction: column !important;
+        overflow: hidden !important;
+        position: relative !important;
+    }
+
+    .rm-tm-card-scrollbar-track {
+        display: none !important;
+    }
+
+    /* Table containerized card layout (no horizontal scrolling) */
+    .rm-tm-table-container {
+        width: 100% !important;
+        flex: none !important;
+        min-height: 0 !important;
+        max-height: 480px !important;
+        overflow-x: hidden !important;
+        overflow-y: auto !important;
+        -webkit-overflow-scrolling: touch !important;
+        scrollbar-width: thin !important;
+        scrollbar-color: #CBD5E1 transparent !important;
+        padding-right: 4px !important;
+        padding-bottom: 16px !important;
+        box-sizing: border-box !important;
+    }
+
+    .rm-tm-table {
+        display: block !important;
+        width: 100% !important;
+        min-width: 0 !important;
+        table-layout: auto !important;
+        border: none !important;
+    }
+
+    .rm-tm-table thead {
+        display: none !important;
+    }
+
+    .rm-tm-table tbody {
+        display: grid !important;
+        grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)) !important;
+        gap: 12px !important;
+        width: 100% !important;
+    }
+
+    .rm-tm-table tbody::after {
+        display: none !important;
+    }
+
+    .rm-tm-table-row {
+        display: flex !important;
+        flex-direction: column !important;
+        background: #FFFFFF !important;
+        border: 1px solid #DDE0EE !important;
+        border-radius: 12px !important;
+        padding: 12px 14px !important;
+        box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04) !important;
+        gap: 6px !important;
+        box-sizing: border-box !important;
+        width: 100% !important;
+        transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease !important;
+    }
+
+    .rm-tm-table-row:hover {
+        border-color: #215EF8 !important;
+        box-shadow: 0 4px 12px rgba(33, 94, 248, 0.08) !important;
+        transform: translateY(-1px) !important;
+    }
+
+    .rm-tm-table-row td {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        width: 100% !important;
+        min-width: 0 !important;
+        max-width: none !important;
+        padding: 6px 0 !important;
+        border-bottom: 1px solid #F1F5F9 !important;
+        white-space: normal !important;
+        box-sizing: border-box !important;
+        font-size: 12px !important;
+    }
+
+    .rm-tm-table-row td:last-child {
+        border-bottom: none !important;
+    }
+
+    /* Labels */
+    .rm-tm-table-row td:not(.rm-td-employee)::before {
+        content: attr(data-label) !important;
+        font-size: 11.5px !important;
+        font-weight: 500 !important;
+        color: #64748B !important;
+        flex-shrink: 0 !important;
+        text-align: left !important;
+    }
+
+    /* Card header (Employee info) */
+    .rm-tm-table .rm-td-employee {
+        padding: 0 0 8px 0 !important;
+        border-bottom: 1px solid #E2E8F0 !important;
+        justify-content: flex-start !important;
+    }
+
+    .rm-tm-table .rm-employee-info-cell {
+        display: flex !important;
+        align-items: center !important;
+        gap: 8px !important;
+    }
+
+    .rm-tm-table .rm-member-avatar {
+        width: 28px !important;
+        height: 28px !important;
+        border-radius: 50% !important;
+        font-size: 11px !important;
+        font-weight: 600 !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        flex-shrink: 0 !important;
+    }
+
+    .rm-tm-table .rm-member-name-s {
+        font-size: 12px !important;
+        font-weight: 400 !important;
+        color: #000000 !important;
+        line-height: 1.2 !important;
+    }
+
+    .rm-tm-table .rm-td-hours .rm-hours-text {
+        font-weight: 400 !important;
+        color: #000000 !important;
+        margin-left: auto !important;
+    }
+
+    .rm-tm-table .rm-td-progress .rm-progress-cell-wrapper {
+        display: flex !important;
+        align-items: center !important;
+        gap: 8px !important;
+        margin-left: auto !important;
+    }
+
+    .rm-tm-table .rm-td-progress .rm-progress-bar-track {
+        width: 70px !important;
+        height: 5px !important;
+        background: #E2E8F0 !important;
+        border-radius: 4px !important;
+        overflow: hidden !important;
+    }
+
+    .rm-tm-table .rm-td-progress .rm-progress-percentage {
+        font-size: 11.5px !important;
+        font-weight: 600 !important;
+        color: #215EF8 !important;
+        min-width: 30px !important;
+        text-align: right !important;
+    }
+
+    .rm-tm-table .rm-td-status .rm-status-badge {
+        margin-left: auto !important;
+    }
+
+    /* Logs list scrollable */
+    .rm-tm-logs-list {
+        flex: 1 !important;
+        min-height: 0 !important;
+        max-height: 330px !important;
+        overflow-y: auto !important;
+        scrollbar-width: thin !important;
+        scrollbar-color: #CBD5E1 transparent !important;
+        padding-right: 4px !important;
+    }
+
+    .rm-tm-approvals-card {
+        height: auto !important;
+        min-height: 280px !important;
+        max-height: none !important;
+        flex: none !important;
+        padding: 14px 16px 12px 16px !important;
+        display: flex !important;
+        flex-direction: column !important;
+        overflow: hidden !important;
+    }
+
+    .rm-tm-approvals-list {
+        flex: 1 !important;
+        min-height: 0 !important;
+        max-height: 400px !important;
+        overflow-y: auto !important;
+        gap: 10px !important;
+        padding-right: 4px !important;
+        scrollbar-width: thin !important;
+        scrollbar-color: #CBD5E1 transparent !important;
+    }
+
+    .rm-tm-approval-row-card {
+        flex-direction: row !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        gap: 14px !important;
+        padding: 10px 14px !important;
+        height: auto !important;
+        min-height: 70px !important;
+        flex: none !important;
+    }
+
+    .rm-approval-stepper-container {
+        flex: 1 !important;
+        max-width: none !important;
+        overflow-x: auto !important;
+        -webkit-overflow-scrolling: touch !important;
+        padding: 4px 0 8px 0 !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: flex-start !important;
+        scrollbar-width: thin !important;
+        scrollbar-color: #CBD5E1 transparent !important;
+    }
+
+    .rm-approval-stepper-container>.rm-stepper-node {
+        width: 80px !important;
+        min-width: 76px !important;
+        flex-shrink: 0 !important;
+    }
+
+    .rm-approval-stepper-container>.rm-stepper-dashed-line {
+        min-width: 18px !important;
+        flex: 1 !important;
+        flex-shrink: 0 !important;
+        margin-bottom: 27px !important;
+    }
+
+    /* Hide custom scrollbar thumb on tablet (use native) */
+    .rm-tm-card-scrollbar-track {
+        display: none !important;
+    }
+}
+
+/* =========================================================
+   3. MOBILE VIEW (≤ 767px)
+   Single column stacked cards with full horizontal scroll on table
+   ========================================================= */
+@media (max-width: 767px) {
+    .rm-team-management-page {
+        height: auto !important;
+        max-height: none !important;
+        min-height: 100vh !important;
+        overflow-y: auto !important;
+        overflow-x: hidden !important;
+        -webkit-overflow-scrolling: touch !important;
+        padding: 14px 14px 48px 14px !important;
+        gap: 14px !important;
+        justify-content: flex-start !important;
+        box-sizing: border-box !important;
+    }
+
+    .rm-tm-top-grid {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 12px !important;
+        flex: none !important;
+        width: 100% !important;
+        height: auto !important;
+        max-height: none !important;
+        min-height: 0 !important;
+        overflow: visible !important;
+    }
+
+    /* Card base */
+    .rm-tm-card,
+    .rm-tm-members-card,
+    .rm-tm-logs-card,
+    .rm-tm-approvals-card {
+        width: 100% !important;
+        background: #FFFFFF !important;
+        border-radius: 12px !important;
+        box-shadow: 0 2px 10px rgba(15, 23, 42, 0.08) !important;
+        box-sizing: border-box !important;
+    }
+
+    /* Team Members card */
+    .rm-tm-members-card {
+        height: auto !important;
+        min-height: 0 !important;
+        max-height: none !important;
+        flex: none !important;
+        padding: 14px 12px 12px 14px !important;
+        display: flex !important;
+        flex-direction: column !important;
+        overflow: visible !important;
+    }
+
+    /* Learning Log card */
+    .rm-tm-logs-card {
+        height: auto !important;
+        min-height: 300px !important;
+        max-height: 420px !important;
+        flex: none !important;
+        padding: 14px 12px 12px 14px !important;
+        display: flex !important;
+        flex-direction: column !important;
+        overflow: hidden !important;
+        position: relative !important;
+    }
+
+    /* Table: Mobile 1-column card list */
+    .rm-tm-table-container {
+        width: 100% !important;
+        flex: none !important;
+        min-height: 0 !important;
+        max-height: 420px !important;
+        overflow-x: hidden !important;
+        overflow-y: auto !important;
+        -webkit-overflow-scrolling: touch !important;
+        scrollbar-width: thin !important;
+        scrollbar-color: #CBD5E1 transparent !important;
+        padding-right: 2px !important;
+        padding-bottom: 12px !important;
+        box-sizing: border-box !important;
+    }
+
+    .rm-tm-table {
+        display: block !important;
+        width: 100% !important;
+        min-width: 0 !important;
+        table-layout: auto !important;
+        border: none !important;
+    }
+
+    .rm-tm-table thead {
+        display: none !important;
+    }
+
+    .rm-tm-table tbody {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 10px !important;
+        width: 100% !important;
+    }
+
+    .rm-tm-table tbody::after {
+        display: none !important;
+    }
+
+    .rm-tm-table-row {
+        display: flex !important;
+        flex-direction: column !important;
+        background: #FFFFFF !important;
+        border: 1px solid #DDE0EE !important;
+        border-radius: 12px !important;
+        padding: 12px 14px !important;
+        box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04) !important;
+        gap: 6px !important;
+        box-sizing: border-box !important;
+        width: 100% !important;
+        height: auto !important;
+        min-height: 0 !important;
+        transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease !important;
+    }
+
+    .rm-tm-table-row:hover {
+        border-color: #215EF8 !important;
+        box-shadow: 0 4px 12px rgba(33, 94, 248, 0.08) !important;
+    }
+
+    .rm-tm-table-row td {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        width: 100% !important;
+        min-width: 0 !important;
+        max-width: none !important;
+        padding: 5px 0 !important;
+        border-bottom: 1px solid #F1F5F9 !important;
+        white-space: normal !important;
+        box-sizing: border-box !important;
+        font-size: 12px !important;
+        height: auto !important;
+        min-height: 28px !important;
+    }
+
+    .rm-tm-table-row td:last-child {
+        border-bottom: none !important;
+    }
+
+    /* Labels */
+    .rm-tm-table-row td:not(.rm-td-employee)::before {
+        content: attr(data-label) !important;
+        font-size: 11.5px !important;
+        font-weight: 500 !important;
+        color: #64748B !important;
+        flex-shrink: 0 !important;
+        text-align: left !important;
+    }
+
+    /* Card header (Employee info) */
+    .rm-tm-table .rm-td-employee {
+        padding: 0 0 8px 0 !important;
+        border-bottom: 1px solid #E2E8F0 !important;
+        justify-content: flex-start !important;
+    }
+
+    .rm-tm-table .rm-employee-info-cell {
+        display: flex !important;
+        align-items: center !important;
+        gap: 8px !important;
+    }
+
+    .rm-tm-table .rm-member-avatar {
+        width: 28px !important;
+        height: 28px !important;
+        border-radius: 50% !important;
+        font-size: 11px !important;
+        font-weight: 600 !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        flex-shrink: 0 !important;
+    }
+
+    .rm-tm-table .rm-member-name-s {
+        font-size: 12px !important;
+        font-weight: 500 !important;
+        color: #000000 !important;
+        line-height: 1.2 !important;
+    }
+
+    .rm-tm-table .rm-td-hours .rm-hours-text {
+        font-weight: 400 !important;
+        color: #000000 !important;
+        margin-left: auto !important;
+    }
+
+    .rm-tm-table .rm-td-progress .rm-progress-cell-wrapper {
+        display: flex !important;
+        align-items: center !important;
+        gap: 8px !important;
+        margin-left: auto !important;
+    }
+
+    .rm-tm-table .rm-td-progress .rm-progress-bar-track {
+        width: 70px !important;
+        height: 5px !important;
+        background: #E2E8F0 !important;
+        border-radius: 4px !important;
+        overflow: hidden !important;
+    }
+
+    .rm-tm-table .rm-td-progress .rm-progress-percentage {
+        font-size: 11.5px !important;
+        font-weight: 600 !important;
+        color: #215EF8 !important;
+        min-width: 30px !important;
+        text-align: right !important;
+    }
+
+    .rm-tm-table .rm-td-status .rm-status-badge {
+        margin-left: auto !important;
+    }
+
+    /* Learning Log list */
+    .rm-tm-logs-list {
+        flex: 1 !important;
+        min-height: 0 !important;
+        max-height: 340px !important;
+        overflow-y: auto !important;
+        padding-right: 4px !important;
+        scrollbar-width: thin !important;
+        scrollbar-color: #CBD5E1 transparent !important;
+    }
+
+    /* Learning Log header */
+    .rm-tm-logs-header {
+        flex-wrap: wrap !important;
+        gap: 8px !important;
+    }
+
+    .rm-tm-logs-controls {
+        width: 100% !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        gap: 8px !important;
+        flex-wrap: wrap !important;
+    }
+
+    .rm-member-dropdown-trigger {
+        width: 120px !important;
+        height: 28px !important;
+    }
+
+    .rm-month-label {
+        font-size: 11.5px !important;
+    }
+
+    /* Log items */
+    .rm-tm-log-item {
+        padding: 7px 4px !important;
+    }
+
+    .rm-log-details {
+        padding: 0 8px !important;
+    }
+
+    .rm-log-course-title {
+        font-size: 12px !important;
+        line-height: 16px !important;
+    }
+
+    .rm-log-topic {
+        font-size: 11px !important;
+        line-height: 14px !important;
+    }
+
+    /* Course Approval card */
+    .rm-tm-approvals-card {
+        height: auto !important;
+        min-height: auto !important;
+        max-height: none !important;
+        flex: none !important;
+        padding: 14px 12px 12px 14px !important;
+        display: flex !important;
+        flex-direction: column !important;
+        overflow: hidden !important;
+    }
+
+    .rm-tm-approvals-list {
+        flex: 1 !important;
+        min-height: 0 !important;
+        max-height: none !important;
+        overflow-y: visible !important;
+        gap: 12px !important;
+        padding-right: 0 !important;
+    }
+
+    .rm-tm-approval-row-card {
+        flex-direction: column !important;
+        align-items: stretch !important;
+        gap: 10px !important;
+        padding: 12px !important;
+        height: auto !important;
+        min-height: auto !important;
+        flex: none !important;
+    }
+
+    .rm-approval-course-info {
+        width: 100% !important;
+        min-width: 0 !important;
+        gap: 10px !important;
+    }
+
+    .rm-approval-badge-img {
+        width: 24px !important;
+        height: 24px !important;
+        min-width: 24px !important;
+        min-height: 24px !important;
+    }
+
+    .rm-approval-stepper-container {
+        width: 100% !important;
+        max-width: 100% !important;
+        overflow-x: auto !important;
+        -webkit-overflow-scrolling: touch !important;
+        padding: 4px 0 8px 0 !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: flex-start !important;
+        scrollbar-width: thin !important;
+        scrollbar-color: #CBD5E1 transparent !important;
+        margin-left: auto !important;
+    }
+
+    .rm-approval-stepper-container>.rm-stepper-node {
+        width: 76px !important;
+        min-width: 72px !important;
+        flex-shrink: 0 !important;
+    }
+
+    .rm-approval-stepper-container>.rm-stepper-dashed-line {
+        min-width: 16px !important;
+        flex: 1 !important;
+        flex-shrink: 0 !important;
+        margin-bottom: 27px !important;
+    }
+
+    /* Hide custom scrollbar thumb on mobile */
+    .rm-tm-card-scrollbar-track {
+        display: none !important;
+    }
+}
+
+/* =========================================================
+   4. COMPACT MOBILE (≤ 480px)
+   ========================================================= */
+@media (max-width: 480px) {
+    .rm-team-management-page {
+        padding: 12px 10px 48px 10px !important;
+        gap: 12px !important;
+    }
+
+    .rm-tm-card,
+    .rm-tm-members-card,
+    .rm-tm-logs-card,
+    .rm-tm-approvals-card {
+        border-radius: 10px !important;
+    }
+
+    .rm-tm-members-card {
+        min-height: 0 !important;
+        max-height: none !important;
+        padding: 12px 10px 20px 12px !important;
+        overflow: visible !important;
+    }
+
+    .rm-tm-logs-card {
+        min-height: 260px !important;
+        max-height: 380px !important;
+        padding: 12px 10px 20px 12px !important;
+    }
+
+    .rm-tm-approvals-card {
+        padding: 12px 10px 20px 12px !important;
+    }
+
+    .rm-member-dropdown-trigger {
+        width: 110px !important;
+        height: 26px !important;
+        padding: 0 6px !important;
+    }
+
+    .rm-month-label {
+        font-size: 11px !important;
+    }
+
+    .rm-tm-table {
+        min-width: 0 !important;
+    }
+
+    .rm-approval-stepper-container>.rm-stepper-node {
+        width: 70px !important;
+        min-width: 68px !important;
+    }
+
+    .rm-node-role-label {
+        font-size: 9.5px !important;
+    }
+
+    .rm-node-sub-info {
+        font-size: 9px !important;
+    }
+}
+
+/* =========================================================
+   PROGRESS OVERVIEW FLOATING HOVER POPOVER (TEAM MANAGEMENT)
+   ========================================================= */
+
+.rm-progress-popover {
+    position: fixed;
+    min-width: 190px;
+    max-width: 280px;
+    width: max-content;
+    background: #FFFFFF;
+    border: 1px solid #DDE0EE;
+    border-radius: 8px;
+    box-shadow: 0 10px 25px -4px rgba(15, 23, 42, 0.16), 0 4px 8px -2px rgba(15, 23, 42, 0.08);
+    padding: 10px 12px;
+    box-sizing: border-box;
+    z-index: 99999;
+    pointer-events: none;
+    user-select: none;
+    transition: opacity 0.18s cubic-bezier(0.16, 1, 0.3, 1), transform 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.rm-progress-popover.rm-popover-top {
+    transform: translate(-50%, -100%);
+    animation: rmPopoverFadeInTop 0.18s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes rmPopoverFadeInTop {
+    from {
+        opacity: 0;
+        transform: translate(-50%, calc(-100% + 5px));
+    }
+
+    to {
+        opacity: 1;
+        transform: translate(-50%, -100%);
+    }
+}
+
+.rm-progress-popover.rm-popover-bottom {
+    transform: translate(-50%, 0);
+    animation: rmPopoverFadeInBottom 0.18s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes rmPopoverFadeInBottom {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -5px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translate(-50%, 0);
+    }
+}
+
+.rm-progress-popover-header {
+    font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 12.5px;
+    font-weight: 700;
+    color: #0F172A;
+    text-align: center;
+    letter-spacing: -0.1px;
+    padding-bottom: 5px;
+}
+
+.rm-progress-popover-divider {
+    width: 100%;
+    height: 1px;
+    background: #EEF2F6;
+    margin: 0 0 8px 0;
+}
+
+.rm-progress-popover-courses-list {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    max-height: 180px;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #CBD5E1 #F8FAFC;
+    padding-right: 2px;
+}
+
+.rm-progress-popover-course-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.rm-progress-popover-course-title {
+    font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    color: #0F172A;
+    padding: 3px 4px;
+    line-height: 1.4;
+    white-space: normal;
+    word-break: break-word;
+    margin: 0;
+    display: flex;
+    align-items: flex-start;
+    gap: 7px;
+}
+
+.rm-progress-popover-course-title::before {
+    content: "•";
+    color: #215EF8;
+    font-size: 14px;
+    line-height: 1.2;
+    flex-shrink: 0;
+}
+
+.rm-progress-popover-empty {
+    font-family: 'Roboto', sans-serif;
+    font-size: 12px;
+    color: #64748B;
+    text-align: center;
+    padding: 6px 8px;
+}
+
+/* Arrow Caret pointing directly to progress bar */
+.rm-progress-popover-arrow {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: #FFFFFF;
+}
+
+.rm-progress-popover-arrow.rm-arrow-top {
+    bottom: -6px;
+    left: 50%;
+    transform: translateX(-50%) rotate(45deg);
+    border-right: 1px solid #DDE0EE;
+    border-bottom: 1px solid #DDE0EE;
+}
+
+.rm-progress-popover-arrow.rm-arrow-bottom {
+    top: -6px;
+    left: 50%;
+    transform: translateX(-50%) rotate(45deg);
+    border-left: 1px solid #DDE0EE;
+    border-top: 1px solid #DDE0EE;
+}
+
+/* =========================================================
+   EMPTY STATE STYLES (MATCHING COURSE LIBRARY & RESOURCES)
+   ========================================================= */
+
+.rm-team-management-page .rm-empty-state {
+    width: 100% !important;
+    min-height: 0 !important;
+    height: 100% !important;
+    flex: 1 1 auto !important;
+    background: transparent !important;
+    border: none !important;
+    border-radius: 12px;
+    padding: 16px 20px !important;
+    box-sizing: border-box !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    gap: clamp(8px, 1.2vh, 12px) !important;
+    color: #7F7F7F !important;
+    margin: 0 !important;
+    overflow: hidden !important;
+}
+
+.rm-team-management-page .rm-empty-state-icon {
+    width: clamp(65px, 7.5vh, 90px) !important;
+    height: clamp(65px, 7.5vh, 90px) !important;
+    object-fit: contain !important;
+    opacity: 0.8 !important;
+    flex-shrink: 0 !important;
+    margin: 0 auto !important;
+    display: block !important;
+}
+
+.rm-team-management-page .rm-empty-state h3 {
+    margin: 0 !important;
+    font-size: 13px !important;
+    font-weight: 500 !important;
+    color: #7F7F7F !important;
+    line-height: 1.4 !important;
+    text-align: center !important;
+}
+
+.rm-team-management-page .rm-empty-state-cell {
+    border: none !important;
+    background: transparent !important;
+    padding: 0 !important;
+    vertical-align: middle;
+}
+
+.rm-team-management-page .rm-tm-empty-state {
+    flex: 1 1 auto !important;
+    width: 100% !important;
+    height: 100% !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    overflow: hidden !important;
+}
+
+.rm-team-management-page .rm-approvals-empty-box {
+    width: 100% !important;
+    height: 140px !important;
+    min-height: 120px !important;
+    flex: 1 1 auto !important;
+    margin: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    overflow: hidden !important;
+}
+
+.rm-team-management-page .rm-approvals-empty-box .rm-empty-state-icon {
+    width: clamp(50px, 5.5vh, 65px) !important;
+    height: clamp(50px, 5.5vh, 65px) !important;
+}
+
+.rm-team-management-page .rm-tm-logs-empty-box {
+    flex: 1 1 auto !important;
+    width: 100% !important;
+    height: 100% !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    overflow: hidden !important;
+}
+
+.rm-team-management-page .rm-tm-logs-empty-box .rm-empty-state-icon {
+    width: clamp(60px, 7vh, 85px) !important;
+    height: clamp(60px, 7vh, 85px) !important;
+    object-fit: contain !important;
+    opacity: 0.8 !important;
+    flex-shrink: 0 !important;
+    margin: 0 auto !important;
+    display: block !important;
+}

@@ -1,0 +1,198 @@
+/* ==========================================================================
+   UNIFIED STAT CARDS DESIGN SYSTEM (11 Pages across 5 Modules)
+   Standardized styling across Employee, Reporting Manager, L&D, HR, and CEO.
+   ========================================================================== */
+
+/* 1. Stat Card Container */
+.emp-stat-card-container,
+.emp-cert-stat-card,
+.rm-stat-card,
+.ld-stat-card,
+.ld-aw-stat-card,
+.ld-budget-stat-card,
+.hr-metric-card,
+.hr-aw-stat-card,
+.ceo-metric-card,
+.ceo-budget-stat-card,
+.ld-workshops-stat-card {
+    background-color: #FFFFFF !important;
+    border-radius: 10px !important;
+    border: 1px solid #FFFFFF !important;
+    border-bottom: 3.5px solid #C1D2FF !important;
+    border-bottom-left-radius: 10px !important;
+    border-bottom-right-radius: 10px !important;
+    box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04) !important;
+    box-sizing: border-box !important;
+    height: 70px !important;
+    padding: 0 16px !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 14px !important;
+    position: relative !important;
+    overflow: hidden !important;
+    transition: transform 0.15s ease, box-shadow 0.15s ease !important;
+}
+
+/* Card inner for nested wrappers */
+.emp-dashboard-stat-card,
+.rm-stat-card-inner {
+    background: transparent !important;
+    padding: 0 !important;
+    height: 100% !important;
+    width: 100% !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 14px !important;
+    border: none !important;
+}
+
+/* Hide redundant overlay bottom bar divs/svgs in favor of clean CSS border-bottom */
+.emp-stat-card-bottom-bar,
+.rm-stat-bottom-bar,
+.ld-stat-bottom-line,
+.ld-aw-stat-bottom-line,
+.hr-metric-bottom-line,
+.hr-aw-stat-bottom-line,
+.ld-workshops-stat-bottom-line {
+    display: none !important;
+}
+
+/* 2. Stat Values */
+.emp-stat-value,
+.emp-stat-value-text,
+.rm-stat-value,
+.ld-stat-value,
+.ld-aw-stat-value,
+.ld-budget-stat-value,
+.hr-metric-value,
+.hr-aw-stat-value,
+.ceo-metric-value,
+.ceo-budget-stat-value {
+    font-family: 'Roboto', sans-serif !important;
+    font-size: 22px !important;
+    font-weight: 500 !important;
+    color: #080808 !important;
+    vertical-align: middle !important;
+    line-height: 1.1 !important;
+    letter-spacing: -0.3px !important;
+    margin: 0 !important;
+    display: inline-flex !important;
+    align-items: center !important;
+}
+
+/* 3. Stat Labels */
+.emp-stat-label,
+.emp-stat-label-text,
+.rm-stat-label,
+.ld-stat-label,
+.ld-aw-stat-label,
+.ld-budget-stat-label,
+.hr-metric-title,
+.hr-aw-stat-label,
+.ceo-metric-title,
+.ceo-budget-stat-label,
+.ceo-stat-label-full {
+    font-family: 'Roboto', sans-serif !important;
+    font-size: 11px !important;
+    font-weight: 500 !important;
+    color: #656565 !important;
+    vertical-align: middle !important;
+    line-height: 1.2 !important;
+    white-space: nowrap !important;
+    margin-top: 2px !important;
+}
+
+/* 4. Stat Icon Containers (Circle Badge) */
+.emp-stat-icon-circle,
+.emp-stat-card-icon-circle,
+.rm-stat-icon-circle,
+.ld-stat-icon-circle,
+.ld-aw-stat-icon-wrap,
+.ld-budget-stat-icon,
+.hr-metric-icon-wrapper,
+.hr-aw-stat-icon-wrap,
+.ceo-metric-icon-wrapper,
+.ceo-budget-stat-icon {
+    width: 40px !important;
+    height: 40px !important;
+    min-width: 40px !important;
+    min-height: 40px !important;
+    border-radius: 50% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    flex-shrink: 0 !important;
+}
+
+/* 5. SVG Images inside Icon Containers */
+.emp-stat-svg-icon,
+.emp-stat-card-icon-circle img,
+.rm-stat-svg-icon,
+.ld-stat-icon-circle img,
+.ld-stat-icon-circle svg,
+.ld-aw-stat-icon-wrap img,
+.ld-budget-stat-icon img,
+.hr-metric-icon,
+.hr-aw-stat-icon-wrap img,
+.ceo-metric-icon,
+.ceo-metric-icon-wrapper svg,
+.ceo-budget-stat-icon img {
+    width: 20px !important;
+    height: 20px !important;
+    max-width: 20px !important;
+    max-height: 20px !important;
+    object-fit: contain !important;
+    display: block !important;
+}
+
+/* ==========================================================================
+   Mobile Responsive Adjustments (<= 767px)
+   ========================================================================== */
+@media (max-width: 767px) {
+    .emp-stat-card-container {
+        height: 56px !important;
+        min-height: 56px !important;
+        padding: 0 10px !important;
+        gap: 8px !important;
+        border-radius: 8px !important;
+        border-bottom-width: 3px !important;
+        border-bottom-left-radius: 8px !important;
+        border-bottom-right-radius: 8px !important;
+    }
+
+    .emp-dashboard-stat-card {
+        height: 52px !important;
+        padding: 0 !important;
+        gap: 8px !important;
+    }
+
+    .emp-stat-icon-circle {
+        width: 30px !important;
+        height: 30px !important;
+        min-width: 30px !important;
+        min-height: 30px !important;
+    }
+
+    .emp-stat-svg-icon {
+        width: 14px !important;
+        height: 14px !important;
+        max-width: 14px !important;
+        max-height: 14px !important;
+    }
+
+    .emp-stat-value {
+        font-size: 17px !important;
+        line-height: 1.1 !important;
+        font-weight: 600 !important;
+    }
+
+    .emp-stat-label {
+        font-size: 10px !important;
+        line-height: 1.15 !important;
+        letter-spacing: -0.15px !important;
+        margin-top: 1px !important;
+        white-space: nowrap !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+    }
+}

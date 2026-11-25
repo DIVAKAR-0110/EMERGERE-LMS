@@ -1,0 +1,1343 @@
+/* ==========================================================================
+   ENTERPRISE LMS — EMPLOYEE MODULE RESPONSIVE STYLES
+   src/styles/responsive/responsive-employee.css
+
+   Breakpoints:
+   1. Large Desktop     (≥ 1440px)
+   2. Standard Desktop  (1200px – 1439px)
+   3. Compact Laptop    (1024px – 1199px)    ← 13"–14" / high-zoom fix
+   4. Tablet            (768px – 1023px)
+   5. Mobile            (≤ 767px)
+   6. Small Mobile      (≤ 480px)
+
+   ZOOM LEVEL COVERAGE:
+   At 125% zoom a 1440px screen behaves like ~1152px → hits Compact Laptop rules
+   At 150% zoom a 1440px screen behaves like ~960px  → hits Tablet rules
+   At  90% zoom a 1024px screen behaves like ~1138px → hits Standard Desktop rules
+
+   DESIGN TOKENS (never change these — match Figma exactly):
+   Font family : 'Roboto', sans-serif
+   Primary blue: #215EF8
+   Dark text   : #000000 / #080808
+   Grey text   : #7F7F7F / #787878
+   Border      : #DDE0EE
+   Background  : #F8FAFC / #F1F2F8
+   ========================================================================== */
+
+/* ==========================================================================
+   1. LARGE DESKTOP (≥ 1440px)
+   ========================================================================== */
+@media (min-width: 1440px) {
+
+    /* — Dashboard — */
+    .emp-employee-dashboard-page {
+        height: 100vh !important;
+        max-height: 100vh !important;
+        overflow: hidden !important;
+        padding: 20px 24px 16px 24px !important;
+    }
+
+    .emp-dashboard-stats-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 14px;
+        height: 76px;
+        min-height: 76px;
+    }
+
+    .emp-stat-card-container {
+        height: 76px;
+        min-height: 76px;
+    }
+
+    .emp-dashboard-stat-card {
+        padding: 0 18px;
+        gap: 14px;
+    }
+
+    .emp-stat-icon-circle {
+        width: 44px;
+        height: 44px;
+        min-width: 44px;
+    }
+
+    .emp-stat-value {
+        font-size: 22px;
+    }
+
+    .emp-stat-label {
+        font-size: 11px;
+    }
+
+    .emp-dashboard-main-grid {
+        gap: 16px;
+        min-height: clamp(350px, 55vh, 700px);
+    }
+
+    /* — Leaderboard — */
+    .emp-leaderboard-page-container {
+        padding: 16px 24px 14px 24px;
+    }
+
+    /* — Course Library — */
+    .emp-course-library-page,
+    .course-library-container {
+        padding: 20px 24px 16px 24px;
+    }
+
+    /* — Certification — */
+    .emp-cert-reimb-page {
+        padding: 20px 24px 16px 24px;
+    }
+
+    /* — Daily Learning — */
+    .emp-daily-learning-page {
+        padding: clamp(10px, 1vw, 14px) clamp(12px, 1.1vw, 16px);
+    }
+
+    .emp-daily-learning-container {
+        padding: 0;
+    }
+}
+
+/* ==========================================================================
+   2. STANDARD DESKTOP (1200px – 1439px)
+   Handles: standard 1366×768, 1280×800 laptops, 100% zoom on 1366px screens
+   ========================================================================== */
+@media (min-width: 1200px) and (max-width: 1439px) {
+
+    /* — Dashboard — */
+    .emp-employee-dashboard-page {
+        height: 100vh !important;
+        max-height: 100vh !important;
+        overflow: hidden !important;
+        padding: 20px 24px 16px 24px !important;
+    }
+
+    .emp-dashboard-stats-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 12px;
+        height: 72px;
+        min-height: 72px;
+    }
+
+    .emp-stat-card-container {
+        height: 72px;
+        min-height: 72px;
+    }
+
+    .emp-dashboard-stat-card {
+        padding: 0 14px;
+        gap: 12px;
+    }
+
+    .emp-stat-value {
+        font-size: 22px;
+    }
+
+    .emp-stat-label {
+        font-size: 11px;
+    }
+
+    .emp-dashboard-main-grid {
+        gap: 14px;
+        min-height: clamp(280px, 50vh, 580px);
+    }
+
+    /* — Leaderboard — */
+    .emp-leaderboard-page-container {
+        padding: 18px 24px 14px 24px;
+    }
+
+    /* — Course Library — */
+    .emp-course-library-page,
+    .course-library-container {
+        padding: 18px 24px 14px 24px;
+    }
+
+    /* — Certification — */
+    .emp-cert-reimb-page {
+        padding: 18px 24px 14px 24px;
+    }
+}
+
+/* ==========================================================================
+   3. COMPACT LAPTOP (1024px – 1199px)
+   Handles:
+   - 13"–14" laptops at 100% zoom (1024px–1199px viewport)
+   - 15.6" laptops at 125% browser zoom (1440/1.25 = 1152px)
+   - 1920px desktops at 150% browser zoom (1920/1.5 = 1280px → lower end)
+   ========================================================================== */
+@media (min-width: 1024px) and (max-width: 1199px) {
+
+    /* — Dashboard — */
+    .emp-employee-dashboard-page {
+        height: 100vh !important;
+        max-height: 100vh !important;
+        overflow: hidden !important;
+        padding: 20px 24px 16px 24px !important;
+    }
+
+    .emp-dashboard-stats-grid {
+        display: grid !important;
+        grid-template-columns: repeat(4, 1fr) !important;
+        gap: 10px !important;
+        height: 68px !important;
+        min-height: 68px !important;
+        flex-shrink: 0 !important;
+    }
+
+    .emp-stat-card-container {
+        height: 68px !important;
+        min-height: 68px !important;
+    }
+
+    .emp-dashboard-stat-card {
+        padding: 0 10px !important;
+        gap: 9px !important;
+    }
+
+    .emp-stat-icon-circle {
+        width: 36px !important;
+        height: 36px !important;
+        min-width: 36px !important;
+    }
+
+    .emp-stat-value {
+        font-size: 22px !important;
+    }
+
+    .emp-stat-label {
+        font-size: 11px !important;
+    }
+
+    /* Keep side-by-side layout but with reduced gap */
+    .emp-dashboard-main-grid {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        gap: 10px !important;
+        min-height: clamp(240px, 48vh, 520px) !important;
+        flex: 1 !important;
+    }
+
+    .emp-dashboard-right-col {
+        gap: 10px !important;
+    }
+
+    /* Overall Progress donut — scale slightly */
+    .emp-donut-chart-wrapper {
+        width: 88px !important;
+        height: 88px !important;
+    }
+
+    .emp-donut-svg {
+        width: 88px !important;
+        height: 88px !important;
+    }
+
+    .emp-donut-shadow-circle {
+        width: 66px !important;
+        height: 66px !important;
+    }
+
+    .emp-donut-percentage {
+        font-size: 20px !important;
+    }
+
+    .emp-progress-gauge-section {
+        width: 96px !important;
+    }
+
+    /* — Leaderboard — */
+    .emp-leaderboard-page-container {
+        padding: 14px 18px 12px 18px;
+        height: 100vh !important;
+        max-height: 100vh !important;
+        overflow: hidden !important;
+    }
+
+    .emp-leaderboard-scrollable-content {
+        overflow-y: auto !important;
+    }
+
+    .emp-leaderboard-main-grid {
+        gap: 10px !important;
+    }
+
+    /* — Course Library — */
+    .emp-course-library-page,
+    .course-library-container {
+        padding: 14px 18px 12px 18px !important;
+        overflow-y: auto !important;
+    }
+
+    /* — Certification — */
+    .emp-cert-reimb-page {
+        padding: 14px 18px 12px 18px !important;
+        height: 100vh !important;
+        max-height: 100vh !important;
+        overflow: hidden !important;
+    }
+
+    .emp-cert-scrollable-content {
+        overflow-y: auto !important;
+    }
+
+    .emp-cert-stats-grid {
+        gap: 10px !important;
+    }
+
+    /* — Daily Learning — */
+    .emp-daily-learning-page,
+    .emp-daily-learning-container {
+        overflow-y: auto !important;
+    }
+
+    /* AI Assistant */
+    .ai-assistant-page-container {
+        padding: 14px 18px 12px 18px !important;
+    }
+}
+
+/* ==========================================================================
+   4. TABLET (768px – 1023px)
+   Handles:
+   - iPad, iPad Pro, small tablets
+   - 15.6" at 150% browser zoom (1440/1.5 = 960px)
+   ========================================================================== */
+@media (min-width: 768px) and (max-width: 1023px) {
+
+    /* — Dashboard — */
+    .emp-employee-dashboard-page {
+        height: auto !important;
+        min-height: 100% !important;
+        max-height: none !important;
+        overflow: visible !important;
+        padding: 16px 18px 24px 18px !important;
+    }
+
+    .emp-dashboard-scrollable-content {
+        flex: none !important;
+        height: auto !important;
+        min-height: auto !important;
+        overflow: visible !important;
+    }
+
+    /* 4×1 Single Row Grid for Stats */
+    .emp-dashboard-stats-grid {
+        display: grid !important;
+        grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+        gap: 8px !important;
+        height: 66px !important;
+        min-height: 66px !important;
+        flex-shrink: 0 !important;
+    }
+
+    .emp-stat-card-container {
+        height: 66px !important;
+        min-height: 66px !important;
+    }
+
+    .emp-dashboard-stat-card {
+        height: 61px !important;
+        padding: 0 8px !important;
+        gap: 6px !important;
+    }
+
+    .emp-stat-icon-circle {
+        width: 30px !important;
+        height: 30px !important;
+        min-width: 30px !important;
+    }
+
+    .emp-stat-svg-icon {
+        max-width: 15px !important;
+        max-height: 15px !important;
+    }
+
+    .emp-stat-value {
+        font-size: 18px !important;
+    }
+
+    .emp-stat-label {
+        font-size: 10px !important;
+    }
+
+    /* Stack columns vertically */
+    .emp-dashboard-main-grid {
+        display: grid !important;
+        grid-template-columns: 1fr !important;
+        gap: 12px !important;
+        height: auto !important;
+        min-height: auto !important;
+        flex: none !important;
+    }
+
+    .emp-dashboard-left-col {
+        width: 100% !important;
+        height: auto !important;
+        min-height: auto !important;
+    }
+
+    /* Overall Progress & Recent Learning Log side-by-side */
+    .emp-dashboard-right-col {
+        display: grid !important;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
+        gap: 12px !important;
+        width: 100% !important;
+        height: auto !important;
+        min-height: auto !important;
+        align-items: stretch !important;
+    }
+
+    /* Cards stretch to show full content */
+    .emp-dashboard-card,
+    .emp-team-leaderboard-card {
+        height: auto !important;
+        min-height: auto !important;
+        padding: 14px 16px !important;
+        box-sizing: border-box !important;
+    }
+
+    .emp-overall-progress-card,
+    .emp-recent-learning-log-card {
+        height: 100% !important;
+        min-height: auto !important;
+        padding: 12px 14px !important;
+        box-sizing: border-box !important;
+    }
+
+    /* Leaderboard row list shows all rows */
+    .emp-team-leaderboard-rows-list {
+        flex: none !important;
+        height: auto !important;
+        overflow-y: visible !important;
+        max-height: none !important;
+    }
+
+    .emp-learning-log-items-list {
+        flex: none !important;
+        height: auto !important;
+        overflow-y: visible !important;
+        max-height: none !important;
+    }
+
+    /* Overall progress — side layout maintained */
+    .emp-overall-progress-body {
+        gap: 10px !important;
+    }
+
+    /* — Leaderboard Page — */
+    .emp-leaderboard-page-container {
+        height: auto !important;
+        max-height: none !important;
+        overflow-y: auto !important;
+        overflow-x: hidden !important;
+        padding: 16px 18px 24px 18px !important;
+        gap: 12px !important;
+    }
+
+    .emp-leaderboard-main-grid,
+    .emp-leaderboard-top-row {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 14px !important;
+        height: auto !important;
+    }
+
+    .emp-leaderboard-top-right,
+    .emp-leaderboard-bottom-row {
+        display: grid !important;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
+        gap: 12px !important;
+        height: auto !important;
+        align-items: stretch !important;
+    }
+
+    .emp-learning-report-banner {
+        height: auto !important;
+        min-height: 70px !important;
+        padding: 12px 18px !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        flex-wrap: nowrap !important;
+        gap: 14px !important;
+    }
+
+    /* — Course Library — */
+    .emp-course-library-page,
+    .course-library-container {
+        flex: 1 1 auto !important;
+        min-height: 100% !important;
+        height: auto !important;
+        max-height: none !important;
+        overflow-y: visible !important;
+        overflow-x: hidden !important;
+        padding: 12px 18px 12px 18px !important;
+    }
+
+    .emp-course-library-scrollable-content {
+        overflow-y: visible !important;
+        flex: 1 1 auto !important;
+        min-height: min-content !important;
+        display: flex !important;
+        flex-direction: column !important;
+    }
+
+    .emp-course-grid,
+    .course-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+        grid-template-rows: repeat(2, minmax(min-content, 1fr)) !important;
+        grid-auto-rows: minmax(min-content, 1fr) !important;
+        flex: 1 1 auto !important;
+        min-height: min-content !important;
+        gap: 8px !important;
+    }
+
+    .emp-course-library-action-bar {
+        flex-wrap: nowrap !important;
+        gap: 10px !important;
+    }
+
+    /* — Certification — */
+    .emp-cert-reimb-page {
+        height: auto !important;
+        max-height: none !important;
+        overflow-y: auto !important;
+        overflow-x: hidden !important;
+        padding: 16px 18px 24px 18px !important;
+    }
+
+    .emp-cert-stats-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+        gap: 10px !important;
+        height: auto !important;
+    }
+
+    .emp-cert-main-grid {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 14px !important;
+        height: auto !important;
+    }
+
+    .emp-cert-left-col,
+    .emp-cert-right-col {
+        width: 100% !important;
+        height: auto !important;
+        min-height: auto !important;
+    }
+
+    /* — Daily Learning Log — */
+    .emp-daily-learning-page,
+    .emp-daily-learning-container {
+        height: auto !important;
+        max-height: none !important;
+        overflow-y: auto !important;
+        padding: 16px 18px 24px 18px !important;
+    }
+
+    /* AI Assistant */
+    .ai-assistant-page-container {
+        height: auto !important;
+        max-height: none !important;
+        overflow-y: auto !important;
+        padding: 16px 18px 24px 18px !important;
+    }
+}
+
+/* ==========================================================================
+   5. MOBILE (≤ 767px)
+   Handles: all phones (360px–480px), phablets (481px–767px)
+   ========================================================================== */
+@media (max-width: 767px) {
+
+    /* — Dashboard — */
+    .emp-employee-dashboard-page {
+        position: fixed !important;
+        top: 56px !important;
+        left: 0 !important;
+        right: 0 !important;
+        bottom: 0 !important;
+        width: 100% !important;
+        max-width: 100vw !important;
+        height: calc(100vh - 56px) !important;
+        height: calc(100dvh - 56px) !important;
+        max-height: calc(100vh - 56px) !important;
+        max-height: calc(100dvh - 56px) !important;
+        padding: 12px 14px 10px 14px !important;
+        overflow: hidden !important;
+        display: flex !important;
+        flex-direction: column !important;
+        box-sizing: border-box !important;
+        background: #F3F4F8 !important;
+        z-index: 10 !important;
+    }
+
+    .emp-dashboard-fixed-header {
+        flex-shrink: 0 !important;
+        width: 100% !important;
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 10px !important;
+        background: #F3F4F8 !important;
+        z-index: 20 !important;
+    }
+
+    .emp-dashboard-scrollable-content {
+        flex: 1 !important;
+        min-height: 0 !important;
+        width: 100% !important;
+        overflow-y: auto !important;
+        overflow-x: hidden !important;
+        -webkit-overflow-scrolling: touch !important;
+        padding-bottom: 24px !important;
+    }
+
+    /* Stats: 2-Column Grid */
+    .emp-dashboard-stats-grid {
+        display: grid !important;
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 8px !important;
+        height: auto !important;
+        min-height: auto !important;
+        width: 100% !important;
+        flex-shrink: 0 !important;
+    }
+
+    .emp-stat-card-container {
+        height: 56px !important;
+        min-height: 56px !important;
+        padding: 0 10px !important;
+        gap: 8px !important;
+        border-radius: 8px !important;
+        border-bottom-width: 3px !important;
+        border-bottom-left-radius: 8px !important;
+        border-bottom-right-radius: 8px !important;
+    }
+
+    .emp-dashboard-stat-card {
+        height: 52px !important;
+        padding: 0 !important;
+        gap: 8px !important;
+        border-radius: 8px 8px 0 0 !important;
+    }
+
+    .emp-stat-icon-circle {
+        width: 30px !important;
+        height: 30px !important;
+        min-width: 30px !important;
+        min-height: 30px !important;
+    }
+
+    .emp-stat-svg-icon {
+        width: 14px !important;
+        height: 14px !important;
+        max-width: 14px !important;
+        max-height: 14px !important;
+    }
+
+    .emp-stat-value {
+        font-size: 17px !important;
+        line-height: 1.1 !important;
+        font-weight: 600 !important;
+    }
+
+    .emp-stat-label {
+        font-size: 10px !important;
+        line-height: 1.15 !important;
+        letter-spacing: -0.15px !important;
+        margin-top: 1px !important;
+        white-space: nowrap !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+    }
+
+    /* Single Column Stack */
+    .emp-dashboard-main-grid {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 12px !important;
+        width: 100% !important;
+        height: auto !important;
+        min-height: auto !important;
+        flex: none !important;
+    }
+
+    .emp-dashboard-left-col,
+    .emp-dashboard-right-col {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 12px !important;
+        width: 100% !important;
+        height: auto !important;
+        min-height: auto !important;
+    }
+
+    .emp-dashboard-card,
+    .emp-overall-progress-card,
+    .emp-recent-learning-log-card,
+    .emp-team-leaderboard-card {
+        width: 100% !important;
+        height: auto !important;
+        min-height: auto !important;
+        padding: 14px !important;
+        box-sizing: border-box !important;
+        border-radius: 10px !important;
+    }
+
+    /* Team Leaderboard rows — no fixed height */
+    .emp-team-leaderboard-rows-list {
+        flex: none !important;
+        height: auto !important;
+        overflow-y: visible !important;
+        max-height: none !important;
+        gap: 0 !important;
+    }
+
+    /* Overall Progress — stack body vertically on mobile */
+    .emp-overall-progress-body {
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 12px !important;
+    }
+
+    /* Gauge section stays column (donut on top, label below) */
+    .emp-progress-gauge-section {
+        width: auto !important;
+        align-items: center !important;
+    }
+
+    .emp-progress-pill-filters {
+        flex-wrap: wrap !important;
+        gap: 6px !important;
+    }
+
+    /* Recent Learning Log */
+    .emp-learning-log-items-list {
+        flex: none !important;
+        height: auto !important;
+        overflow-y: visible !important;
+        max-height: none !important;
+    }
+
+    /* — Leaderboard Page — */
+    .emp-leaderboard-page-container {
+        position: fixed !important;
+        top: 56px !important;
+        left: 0 !important;
+        right: 0 !important;
+        bottom: 0 !important;
+        width: 100% !important;
+        max-width: 100vw !important;
+        height: calc(100vh - 56px) !important;
+        height: calc(100dvh - 56px) !important;
+        max-height: calc(100vh - 56px) !important;
+        max-height: calc(100dvh - 56px) !important;
+        overflow: hidden !important;
+        display: flex !important;
+        flex-direction: column !important;
+        padding: 12px 14px 10px 14px !important;
+        gap: 10px !important;
+        box-sizing: border-box !important;
+        background: #F3F4F8 !important;
+        z-index: 10 !important;
+    }
+
+    .emp-leaderboard-fixed-header {
+        flex-shrink: 0 !important;
+        width: 100% !important;
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 8px !important;
+        background: #F3F4F8 !important;
+        z-index: 20 !important;
+    }
+
+    .emp-leaderboard-scrollable-content {
+        flex: 1 !important;
+        min-height: 0 !important;
+        width: 100% !important;
+        overflow-y: auto !important;
+        overflow-x: hidden !important;
+        -webkit-overflow-scrolling: touch !important;
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 12px !important;
+        padding-top: 4px !important;
+        padding-bottom: 36px !important;
+    }
+
+    .leaderboard-overall-report-banner,
+    .emp-learning-report-banner {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 12px !important;
+        padding: 14px !important;
+        height: auto !important;
+        min-height: auto !important;
+        flex-shrink: 0 !important;
+    }
+
+    .emp-leaderboard-main-grid,
+    .emp-leaderboard-top-row,
+    .emp-leaderboard-bottom-row {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 12px !important;
+        width: 100% !important;
+        height: auto !important;
+    }
+
+    .emp-leaderboard-top-left,
+    .emp-leaderboard-top-right {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 12px !important;
+        width: 100% !important;
+        height: auto !important;
+        min-height: auto !important;
+        flex: none !important;
+    }
+
+    .emp-your-stats-card,
+    .emp-overview-card,
+    .emp-department-learning-card,
+    .emp-domains-card {
+        height: auto !important;
+        min-height: auto !important;
+        max-height: none !important;
+        flex: none !important;
+        overflow: visible !important;
+        width: 100% !important;
+    }
+
+    .emp-department-learning-list {
+        height: auto !important;
+        min-height: 120px !important;
+        max-height: none !important;
+        flex: none !important;
+    }
+
+    .emp-time-filter-tabs,
+    .leaderboard-time-filters {
+        flex-wrap: wrap !important;
+        gap: 6px !important;
+        width: 100% !important;
+    }
+
+
+    /* Course Library Mobile */
+    .emp-time-filter-pill {
+        width: auto !important;
+        min-width: 80px !important;
+        height: 28px !important;
+        font-size: 11px !important;
+        padding: 0 12px !important;
+    }
+
+    /* Team Leaderboard card on Leaderboard page */
+    .emp-team-leaderboard-card {
+        min-height: 385px !important;
+    }
+
+    /* — Course Library — */
+    .emp-course-library-page {
+        position: fixed !important;
+        top: 56px !important;
+        left: 0 !important;
+        right: 0 !important;
+        bottom: 0 !important;
+        width: 100% !important;
+        max-width: 100vw !important;
+        height: calc(100vh - 56px) !important;
+        height: calc(100dvh - 56px) !important;
+        max-height: calc(100vh - 56px) !important;
+        max-height: calc(100dvh - 56px) !important;
+        overflow: hidden !important;
+        display: flex !important;
+        flex-direction: column !important;
+        padding: 12px 14px 10px 14px !important;
+        gap: 10px !important;
+        box-sizing: border-box !important;
+        background: #F3F4F8 !important;
+        z-index: 10 !important;
+    }
+
+    .emp-course-library-fixed-header {
+        flex-shrink: 0 !important;
+        width: 100% !important;
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 4px !important;
+        background: #F3F4F8 !important;
+        z-index: 20 !important;
+    }
+
+    .emp-course-library-scrollable-content {
+        flex: 1 !important;
+        min-height: 0 !important;
+        width: 100% !important;
+        overflow-y: auto !important;
+        overflow-x: hidden !important;
+        -webkit-overflow-scrolling: touch !important;
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 12px !important;
+        padding-bottom: 24px !important;
+    }
+
+    .emp-course-library-action-bar {
+        flex-direction: column !important;
+        align-items: stretch !important;
+        gap: 10px !important;
+        width: 100% !important;
+    }
+
+    .emp-course-search-wrapper {
+        width: 100% !important;
+        max-width: none !important;
+    }
+
+    .emp-course-grid,
+    .course-grid {
+        grid-template-columns: 1fr !important;
+        gap: 12px !important;
+        width: 100% !important;
+    }
+
+    /* Filter pills wrap */
+    .emp-course-filter-bar {
+        flex-direction: column !important;
+        align-items: stretch !important;
+        gap: 10px !important;
+        width: 100% !important;
+    }
+
+    /* — Certification & Reimb — */
+    .emp-cert-reimb-page {
+        position: fixed !important;
+        top: 56px !important;
+        left: 0 !important;
+        right: 0 !important;
+        bottom: 0 !important;
+        width: 100% !important;
+        max-width: 100vw !important;
+        height: calc(100vh - 56px) !important;
+        height: calc(100dvh - 56px) !important;
+        max-height: calc(100vh - 56px) !important;
+        max-height: calc(100dvh - 56px) !important;
+        overflow: hidden !important;
+        display: flex !important;
+        flex-direction: column !important;
+        padding: 12px 14px 10px 14px !important;
+        gap: 10px !important;
+        box-sizing: border-box !important;
+        background: #F3F4F8 !important;
+        z-index: 10 !important;
+    }
+
+    .emp-cert-fixed-header {
+        flex-shrink: 0 !important;
+        width: 100% !important;
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 10px !important;
+        background: #F3F4F8 !important;
+        z-index: 20 !important;
+    }
+
+    .emp-cert-scrollable-content {
+        flex: 1 !important;
+        min-height: 0 !important;
+        width: 100% !important;
+        overflow-y: auto !important;
+        overflow-x: hidden !important;
+        -webkit-overflow-scrolling: touch !important;
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 12px !important;
+        padding-bottom: 24px !important;
+    }
+
+    .emp-cert-stats-grid {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 8px !important;
+        height: auto !important;
+        flex-shrink: 0 !important;
+    }
+
+    .emp-cert-main-grid {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 12px !important;
+        height: auto !important;
+    }
+
+    .emp-cert-left-col,
+    .emp-cert-right-col {
+        width: 100% !important;
+        height: auto !important;
+    }
+
+    /* Tables scroll horizontally */
+    .emp-cert-table-wrapper,
+    .emp-reimb-table-wrapper {
+        overflow-x: auto !important;
+        -webkit-overflow-scrolling: touch !important;
+    }
+
+    /* — Daily Learning Log — */
+    .emp-daily-learning-page {
+        position: fixed !important;
+        top: 56px !important;
+        left: 0 !important;
+        right: 0 !important;
+        bottom: 0 !important;
+        width: 100% !important;
+        max-width: 100vw !important;
+        height: calc(100vh - 56px) !important;
+        height: calc(100dvh - 56px) !important;
+        max-height: calc(100vh - 56px) !important;
+        max-height: calc(100dvh - 56px) !important;
+        overflow: hidden !important;
+        display: flex !important;
+        flex-direction: column !important;
+        padding: 12px 14px 10px 14px !important;
+        gap: 10px !important;
+        box-sizing: border-box !important;
+        background: #F3F4F8 !important;
+        z-index: 10 !important;
+    }
+
+    .emp-daily-learning-fixed-header {
+        flex-shrink: 0 !important;
+        width: 100% !important;
+        background: #F3F4F8 !important;
+        z-index: 20 !important;
+    }
+
+    .emp-daily-learning-scrollable-content {
+        flex: 1 !important;
+        min-height: 0 !important;
+        width: 100% !important;
+        overflow-y: auto !important;
+        overflow-x: hidden !important;
+        -webkit-overflow-scrolling: touch !important;
+        padding-bottom: 24px !important;
+    }
+
+    .emp-daily-learning-main-grid {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 12px !important;
+        height: auto !important;
+    }
+
+    /* AI Assistant */
+    .ai-assistant-page-container {
+        height: auto !important;
+        max-height: none !important;
+        min-height: calc(100vh - 56px) !important;
+        overflow-y: auto !important;
+        padding: 12px 14px 28px 14px !important;
+    }
+}
+
+/* ==========================================================================
+   6. SMALL MOBILE (≤ 480px)
+   ========================================================================== */
+@media (max-width: 480px) {
+
+    .emp-employee-dashboard-page,
+    .emp-leaderboard-page-container,
+    .emp-course-library-page,
+    .emp-daily-learning-page,
+    .emp-cert-reimb-page {
+        top: 52px !important;
+        height: calc(100vh - 52px) !important;
+        height: calc(100dvh - 52px) !important;
+        max-height: calc(100vh - 52px) !important;
+        max-height: calc(100dvh - 52px) !important;
+    }
+
+    /* — Dashboard — */
+    .emp-employee-dashboard-page {
+        padding: 10px 10px 10px 10px !important;
+    }
+
+    .emp-dashboard-stats-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 8px !important;
+        height: auto !important;
+        min-height: auto !important;
+    }
+
+    .emp-stat-card-container {
+        height: 56px !important;
+        min-height: 56px !important;
+        padding: 0 10px !important;
+        gap: 8px !important;
+        border-radius: 8px !important;
+        border-bottom-width: 3px !important;
+    }
+
+    .emp-dashboard-stat-card {
+        height: 52px !important;
+        padding: 0 !important;
+        gap: 8px !important;
+    }
+
+    .emp-stat-icon-circle {
+        width: 30px !important;
+        height: 30px !important;
+        min-width: 30px !important;
+        min-height: 30px !important;
+    }
+
+    .emp-stat-svg-icon {
+        width: 14px !important;
+        height: 14px !important;
+        max-width: 14px !important;
+        max-height: 14px !important;
+    }
+
+    .emp-stat-value {
+        font-size: 17px !important;
+        line-height: 1.1 !important;
+        font-weight: 600 !important;
+    }
+
+    .emp-stat-label {
+        font-size: 10px !important;
+        line-height: 1.15 !important;
+        letter-spacing: -0.15px !important;
+        margin-top: 1px !important;
+        white-space: nowrap !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+    }
+
+    /* Overall Progress on small mobile: keep column — donut on top */
+    .emp-progress-gauge-section {
+        flex-direction: column !important;
+        align-items: center !important;
+        width: auto !important;
+        gap: 6px !important;
+    }
+
+    .emp-donut-chart-wrapper {
+        width: 88px !important;
+        height: 88px !important;
+    }
+
+    .emp-donut-svg {
+        width: 88px !important;
+        height: 88px !important;
+    }
+
+    .emp-donut-shadow-circle {
+        width: 66px !important;
+        height: 66px !important;
+    }
+
+    .emp-donut-percentage {
+        font-size: 20px !important;
+    }
+
+    /* — Leaderboard — */
+    .emp-leaderboard-page-container {
+        padding: 10px 10px 24px 10px !important;
+        gap: 10px !important;
+    }
+
+    .emp-your-stats-card {
+        height: auto !important;
+        min-height: auto !important;
+        max-height: none !important;
+        flex: none !important;
+        overflow: visible !important;
+        padding: 12px 12px 16px 12px !important;
+    }
+
+    .emp-your-stats-grid {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 8px !important;
+        width: 100% !important;
+        height: auto !important;
+    }
+
+    .emp-stat-sparkline-box {
+        height: auto !important;
+        min-height: 68px !important;
+        padding: 7px 10px !important;
+        box-sizing: border-box !important;
+        width: 100% !important;
+        flex-shrink: 0 !important;
+        overflow: visible !important;
+    }
+
+    .emp-time-filter-pill {
+        width: auto !important;
+        min-width: 70px !important;
+        height: 26px !important;
+        font-size: 10px !important;
+    }
+
+    /* — Course Library — */
+    .emp-course-library-page,
+    .course-library-container {
+        padding: 10px 10px 24px 10px !important;
+        gap: 10px !important;
+    }
+
+    .emp-course-grid,
+    .course-grid {
+        grid-template-columns: 1fr !important;
+        gap: 10px !important;
+    }
+
+    /* — Certification — */
+    .emp-cert-reimb-page {
+        padding: 10px 10px 24px 10px !important;
+        gap: 10px !important;
+    }
+
+    .emp-cert-stats-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 6px !important;
+    }
+
+    /* — Daily Learning — */
+    .emp-daily-learning-page,
+    .emp-daily-learning-container {
+        padding: 10px 10px 24px 10px !important;
+        gap: 10px !important;
+    }
+}
+
+/* ==========================================================================
+   ZOOM-LEVEL SPECIFIC FIXES
+   When user zooms in (125%, 150%) the viewport shrinks but CSS breakpoints
+   still fire based on the logical viewport width — these rules ensure smooth
+   transition at every zoom level.
+   ========================================================================== */
+
+/* Force all employee pages to scroll at any zoom level — never clip */
+.emp-employee-dashboard-page,
+.emp-leaderboard-page-container,
+.emp-course-library-page,
+.emp-cert-reimb-page,
+.emp-daily-learning-page,
+.emp-daily-learning-container {
+    overflow-x: hidden !important;
+}
+
+/* Prevent fixed-height containers from hard-clipping at zoom */
+@media (min-width: 1024px) {
+
+    .main-content:has(.emp-employee-dashboard-page),
+    .emp-employee-dashboard-page {
+        height: 100vh !important;
+        max-height: 100vh !important;
+        overflow: hidden !important;
+    }
+
+    .emp-dashboard-scrollable-content {
+        overflow: hidden !important;
+        flex: 1 1 0 !important;
+        min-height: 0 !important;
+        height: auto !important;
+    }
+
+    /* Leaderboard desktop: fixed header, scrollable content */
+    .emp-leaderboard-page-container {
+        height: 100vh !important;
+        max-height: 100vh !important;
+        overflow: hidden !important;
+    }
+
+    .emp-leaderboard-scrollable-content {
+        overflow-y: auto !important;
+        scrollbar-width: none !important;
+        -ms-overflow-style: none !important;
+    }
+
+    .emp-leaderboard-scrollable-content::-webkit-scrollbar {
+        display: none !important;
+        width: 0 !important;
+        height: 0 !important;
+    }
+}
+
+/* When viewport is very short (zoomed in landscape, or short screens) */
+@media (min-height: 0px) and (max-height: 700px) and (min-width: 1024px) {
+    .emp-employee-dashboard-page {
+        overflow: hidden !important;
+        max-height: 100vh !important;
+    }
+
+    .emp-dashboard-main-grid {
+        min-height: 220px !important;
+    }
+
+    .emp-dashboard-stats-grid {
+        height: 62px !important;
+        min-height: 62px !important;
+    }
+
+    .emp-stat-card-container {
+        height: 62px !important;
+        min-height: 62px !important;
+    }
+
+    /* Leaderboard — keep container 100vh and scroll the content on short screens (e.g. 1366×650) */
+    .emp-leaderboard-page-container {
+        height: 100vh !important;
+        max-height: 100vh !important;
+        overflow: hidden !important;
+    }
+
+    .emp-leaderboard-scrollable-content {
+        overflow-y: auto !important;
+    }
+
+    /* Reduce card padding and min-heights so content fits without clipping */
+    .emp-overview-card,
+    .emp-your-stats-card {
+        min-height: auto !important;
+        height: auto !important;
+    }
+
+    .emp-team-leaderboard-card {
+        min-height: 300px !important;
+    }
+
+    .emp-overview-stats-grid {
+        gap: 8px !important;
+    }
+
+    .emp-overview-stat-box {
+        height: auto !important;
+        min-height: 72px !important;
+        padding: 6px !important;
+    }
+
+    .emp-your-stats-grid {
+        gap: 6px !important;
+    }
+
+    .emp-stat-sparkline-box {
+        height: auto !important;
+        min-height: 72px !important;
+        padding: 7px 10px !important;
+    }
+
+    .emp-learning-report-banner {
+        height: auto !important;
+        min-height: 60px !important;
+        padding: 8px 18px !important;
+    }
+}

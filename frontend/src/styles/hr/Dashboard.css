@@ -1,0 +1,1449 @@
+/* =============================================================
+   HR MODULE - DASHBOARD STYLES
+   Pixel-Perfect Single-Page Figma Implementation (No Scroll)
+   ============================================================= */
+
+.hr-dashboard-page {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    max-height: 100vh;
+    padding: 20px 24px 16px 24px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-family: 'Roboto', sans-serif;
+    background: transparent;
+    overflow: hidden;
+}
+
+/* =============================================================
+   1. TOP KPI METRIC CARDS (4 CARDS)
+   ============================================================= */
+
+.hr-metric-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    width: 100%;
+    height: 70px;
+    flex-shrink: 0;
+}
+
+.hr-metric-card {
+    position: relative;
+    background: #FFFFFF;
+    border-radius: 10px;
+    border: 1px solid #EAEFF5;
+    padding: 0 16px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04);
+    box-sizing: border-box;
+    height: 100%;
+    overflow: hidden;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.hr-metric-bottom-line {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 3.5px;
+    display: block;
+    object-fit: fill;
+    pointer-events: none;
+}
+
+
+.hr-metric-icon-wrapper {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: url("../../assets/hr/Dashboard/background.svg") no-repeat center center;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.hr-metric-icon {
+    width: 18px;
+    height: 18px;
+    object-fit: contain;
+    border-radius: 3px;
+    border: 1px solid #ffffff00;
+}
+
+.hr-metric-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-width: 0;
+}
+
+.hr-metric-value {
+    font-size: 23px;
+    font-weight: 500;
+    color: #080808;
+    line-height: 1.1;
+    font-family: 'Roboto', sans-serif;
+}
+
+.hr-metric-title {
+    font-size: 11px;
+    font-weight: 500;
+    color: #656565;
+    white-space: nowrap;
+    margin-top: 2px;
+}
+
+/* =============================================================
+   2. MAIN 2-COLUMN GRID (FILLS ALL REMAINING HEIGHT)
+   ============================================================= */
+
+.hr-dashboard-main-grid {
+    flex: 1 1 0;
+    min-height: 0;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 10px;
+    overflow: hidden;
+}
+
+.hr-dashboard-card {
+    flex: 1 1 0;
+    min-height: 0;
+    height: 100%;
+    background: #FFFFFF;
+    border-radius: 10px;
+    border: 1px solid #ffffff;
+    padding: 10px 16px;
+    box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04);
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.hr-card-header-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 6px;
+    flex-shrink: 0;
+}
+
+.hr-card-title {
+    font-size: 13.5px;
+    font-weight: 600;
+    color: #060606;
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    letter-spacing: -0.1px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    line-height: 1.4;
+    margin-bottom: 8px;
+}
+
+.hr-card-title .ld-title-count {
+    font-size: 13px;
+    font-weight: 500;
+    color: #215EF8;
+}
+
+.hr-card-view-all {
+    font-size: 11px;
+    font-weight: 500;
+    color: #2667F9;
+    cursor: pointer;
+    text-decoration: none;
+    background: none;
+    border: none;
+    padding: 0;
+    font-family: inherit;
+    line-height: inherit;
+}
+
+.hr-card-view-all:hover {
+    text-decoration: underline;
+}
+
+.hr-accordion-chevron {
+    display: none !important;
+}
+
+.hr-card-body {
+    display: flex !important;
+}
+
+.hr-reimbursement-body {
+    flex-direction: column;
+    flex: 1 1 0;
+    min-height: 0;
+    gap: 10px;
+}
+
+/* =============================================================
+   3. RECENT HR ACTIVITY
+   ============================================================= */
+
+.hr-activity-card {
+    /* Inherits flex 1 */
+}
+
+.hr-activity-list {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 0;
+    min-height: 0;
+    gap: 5px;
+}
+
+.hr-empty-activity-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 36px 16px;
+    color: #7F7F7F;
+    font-size: 13px;
+    font-weight: 500;
+    margin: auto;
+    text-align: center;
+    flex: 1 1 0;
+}
+
+.hr-empty-activity-icon {
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+    opacity: 0.85;
+}
+
+.hr-activity-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px 10px;
+    border: 1px solid #DDE0EE;
+    border-radius: 10px;
+    background: #FFFFFF;
+    flex: 1 1 0;
+    min-height: 0;
+    box-sizing: border-box;
+    transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+
+
+.hr-activity-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 0;
+}
+
+.hr-activity-icon-wrapper {
+    width: 24px;
+    height: 24px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.hr-activity-icon-orange {
+    background: #FDF4EF;
+}
+
+.hr-activity-icon-green {
+    background: #EDFBF6;
+}
+
+.hr-activity-icon-blue {
+    background: #EEFAFD;
+}
+
+.hr-activity-icon-purple {
+    background: #F8F3FD;
+}
+
+.hr-activity-icon {
+    width: 13px;
+    height: 16px;
+    object-fit: contain;
+}
+
+.hr-activity-title {
+    font-size: 12px;
+    font-weight: 400;
+    color: #000000;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.hr-activity-time {
+    font-size: 10px;
+    font-weight: 400;
+    color: #7F7F7F;
+    white-space: nowrap;
+    flex-shrink: 0;
+    margin-left: 8px;
+}
+
+/* =============================================================
+   4. EMPLOYEE DISTRIBUTION (Donut Chart & Legend)
+   ============================================================= */
+
+.hr-distribution-card {
+    /* Inherits flex 1 */
+}
+
+.hr-distribution-content {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    flex: 1 1 0;
+    min-height: 0;
+}
+
+.hr-donut-container {
+    background: #F3F4F8;
+    background-image: url("../../assets/hr/backgroundcircle.svg");
+    background-size: 100% 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 10px;
+    padding: 6px 6px 8px 6px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 165px;
+    height: 180px;
+    flex-shrink: 0;
+    box-sizing: border-box;
+}
+
+.hr-donut-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    min-height: 0;
+}
+
+.hr-donut-svg {
+    display: block;
+    width: 110px;
+    height: 110px;
+    max-width: 110px;
+    max-height: 110px;
+}
+
+.hr-donut-total-text {
+    margin-top: 4px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    line-height: 25px;
+    letter-spacing: 0%;
+    color: #000000;
+    text-align: center;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.hr-distribution-legend {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    flex: 1 1 0;
+    min-height: 0;
+    max-height: 168px;
+    height: auto;
+    gap: 0;
+    padding-left: 6px;
+    padding-right: 4px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    scrollbar-width: thin;
+    scrollbar-color: #CBD5E1 transparent;
+}
+
+.hr-distribution-legend::-webkit-scrollbar {
+    width: 4px;
+}
+
+.hr-distribution-legend::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.hr-distribution-legend::-webkit-scrollbar-thumb {
+    background: #CBD5E1;
+    border-radius: 4px;
+}
+
+.hr-distribution-legend::-webkit-scrollbar-thumb:hover {
+    background: #94A3B8;
+}
+
+.hr-legend-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    padding: 0 2px;
+    border-bottom: 1px solid #DDE0EE;
+    height: 27px;
+    min-height: 27px;
+    flex-shrink: 0;
+    box-sizing: border-box;
+}
+
+.hr-legend-row:last-child {
+    border-bottom: none;
+}
+
+.hr-legend-left {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-width: 0;
+}
+
+.hr-legend-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.hr-legend-name {
+    font-family: 'Roboto', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 25px;
+    letter-spacing: 0%;
+    color: #000000;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.hr-legend-pct {
+    font-family: 'Roboto', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 22.75px;
+    letter-spacing: 0%;
+    color: #080808;
+    flex-shrink: 0;
+}
+
+/* =============================================================
+   5. REIMBURSEMENT OVERVIEW
+   ============================================================= */
+
+.hr-reimbursement-card {
+    /* Inherits flex 1 */
+}
+
+.hr-reimbursement-top {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    flex: 1 1 0;
+    min-height: 0;
+    margin-bottom: 8px;
+    padding: 0;
+    width: 100%;
+}
+
+.hr-wallet-circle-wrap {
+    position: relative;
+    width: 104px;
+    height: 104px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.hr-wallet-big-circle {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    pointer-events: none;
+}
+
+.hr-wallet-circles {
+    position: absolute;
+    width: 80%;
+    height: 80%;
+    top: 10%;
+    left: 10%;
+    object-fit: contain;
+    pointer-events: none;
+}
+
+.hr-wallet-icon {
+    position: relative;
+    z-index: 2;
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+}
+
+.hr-reimbursement-stats-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1px;
+}
+
+.hr-reimbursement-claims-label {
+    font-size: 11px;
+    font-weight: 500;
+    color: #7F7F7F;
+    line-height: 1.2;
+}
+
+.hr-reimbursement-claims-num {
+    font-size: 22px;
+    font-weight: 600;
+    color: #000000;
+    line-height: 1.1;
+    margin: 1px 0;
+}
+
+.hr-reimbursement-period {
+    font-size: 11px;
+    font-weight: 500;
+    color: #7F7F7F;
+    line-height: 1.2;
+    margin-top: 1px;
+}
+
+.hr-reimbursement-growth {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 11px;
+    margin-top: 2px;
+}
+
+.hr-reimbursement-growth.positive .hr-growth-arrow,
+.hr-reimbursement-growth.positive .hr-growth-pct {
+    color: #1CB06A;
+}
+
+.hr-reimbursement-growth.negative .hr-growth-arrow,
+.hr-reimbursement-growth.negative .hr-growth-pct {
+    color: #EF4444;
+}
+
+.hr-growth-arrow {
+    font-size: 9px;
+}
+
+.hr-growth-pct {
+    font-weight: 700;
+    font-size: 11px;
+}
+
+.hr-growth-vs {
+    color: #000000;
+    font-weight: 500;
+    font-size: 11px;
+}
+
+.hr-reimbursement-status-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    height: 75px;
+    flex-shrink: 0;
+}
+
+.hr-status-box {
+    border-radius: 6px;
+    padding: 0 15px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    height: 65px;
+    box-sizing: border-box;
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.15s ease, opacity 0.15s ease;
+}
+
+/* .hr-status-box:hover {
+    transform: translateY(-1.5px);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
+    opacity: 0.95;
+} */
+
+.hr-status-approved {
+    background: #EEFBF5;
+}
+
+.hr-status-pending {
+    background: #FEF8F0;
+}
+
+.hr-status-rejected {
+    background: #FEF3EF;
+}
+
+.hr-status-icon-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.hr-status-icon {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+}
+
+.hr-status-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.hr-status-num {
+    font-size: 22px;
+    font-weight: 500;
+    color: #080808;
+    line-height: 1.1;
+}
+
+.hr-status-label {
+    font-size: 11px;
+    font-weight: 400;
+    color: #000000;
+    margin-top: 2px;
+}
+
+/* =============================================================
+   6. LEARNING BY DEPARTMENT
+   ============================================================= */
+
+.hr-learning-dept-card {
+    /* Inherits flex 1 */
+}
+
+.hr-learning-dept-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    flex: 1 1 0;
+    min-height: 0;
+    gap: 10px;
+    padding-right: 4px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    scrollbar-width: thin;
+    scrollbar-color: #CBD5E1 transparent;
+}
+
+.hr-learning-dept-list::-webkit-scrollbar {
+    width: 4px;
+}
+
+.hr-learning-dept-list::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.hr-learning-dept-list::-webkit-scrollbar-thumb {
+    background: #CBD5E1;
+    border-radius: 4px;
+}
+
+.hr-learning-dept-list::-webkit-scrollbar-thumb:hover {
+    background: #94A3B8;
+}
+
+.hr-learning-dept-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    height: 27px;
+    min-height: 22px;
+    flex-shrink: 0;
+    box-sizing: border-box;
+}
+
+.hr-learning-dept-name {
+    width: clamp(140px, 18vw, 175px);
+    font-size: 12px;
+    font-weight: 400;
+    color: #000000;
+    flex-shrink: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.hr-learning-bar-track {
+    flex: 1;
+    height: 6px;
+    min-width: 25px;
+    background: #EEF2F6;
+    border-radius: 999px;
+    overflow: hidden;
+}
+
+.hr-learning-bar-fill {
+    height: 100%;
+    border-radius: 999px;
+    transition: width 0.3s ease;
+}
+
+.hr-learning-dept-stat {
+    font-size: 12px;
+    font-weight: 500;
+    color: #000000;
+    text-align: right;
+    white-space: nowrap;
+    width: 34px;
+    flex-shrink: 0;
+}
+
+/* =============================================================
+   7. RESPONSIVE BREAKPOINTS (MATCHING USER SPECIFICATION)
+   ============================================================= */
+
+/* LAPTOP (1366 × 768) & COMPACT DESKTOP - TRUE SINGLE PAGE VIEW (NO SCROLL) */
+@media (min-width: 1025px) and (max-height: 820px) {
+    .hr-dashboard-page {
+        padding: 20px 24px 16px 24px !important;
+        gap: 8px !important;
+        height: 100% !important;
+        max-height: 100vh !important;
+        overflow: hidden !important;
+    }
+
+    .hr-metric-cards-grid {
+        height: 70px !important;
+        gap: 10px !important;
+    }
+
+    .hr-metric-card {
+        padding: 0 18px !important;
+        gap: 16px !important;
+    }
+
+    .hr-metric-icon-wrapper {
+        width: 34px !important;
+        height: 34px !important;
+    }
+
+    .hr-metric-icon {
+        width: 20px !important;
+        height: 20px !important;
+    }
+
+    .hr-metric-value {
+        font-size: 22px !important;
+    }
+
+    .hr-metric-title {
+        font-size: 11px !important;
+    }
+
+    .hr-dashboard-main-grid {
+        gap: 8px !important;
+        flex: 1 1 0 !important;
+        min-height: 0 !important;
+        overflow: hidden !important;
+    }
+
+    .hr-dashboard-card {
+        padding: 8px 14px !important;
+    }
+
+    .hr-card-header-row {
+        margin-bottom: 4px !important;
+    }
+
+    .hr-card-title {
+        font-size: 13px !important;
+        margin-bottom: 8px !important;
+    }
+
+    .hr-activity-list {
+        gap: 4px !important;
+    }
+
+    .hr-activity-item {
+        padding: 3px 8px !important;
+    }
+
+    .hr-activity-left {
+        gap: 8px !important;
+    }
+
+    .hr-activity-icon-wrapper {
+        width: 22px !important;
+        height: 22px !important;
+    }
+
+    .hr-activity-icon {
+        width: 12px !important;
+        height: 14px !important;
+    }
+
+    .hr-activity-title {
+        font-size: 12px !important;
+    }
+
+    .hr-activity-time {
+        font-size: 10px !important;
+    }
+
+    .hr-donut-container {
+        width: 165px !important;
+        height: 180px !important;
+        padding: 6px 6px 8px 6px !important;
+    }
+
+    .hr-donut-svg {
+        width: 110px !important;
+        height: 110px !important;
+        max-width: 110px !important;
+        max-height: 110px !important;
+    }
+
+    .hr-donut-total-text {
+        font-size: 11px !important;
+        margin-top: 4px !important;
+    }
+
+    .hr-legend-row {
+        padding: 3px 0 !important;
+    }
+
+    .hr-legend-name,
+    .hr-legend-pct {
+        font-size: 12px !important;
+    }
+
+    .hr-reimbursement-top {
+        gap: 16px !important;
+        margin-bottom: 4px !important;
+    }
+
+    .hr-wallet-circle-wrap {
+        width: 90px !important;
+        height: 90px !important;
+    }
+
+    .hr-wallet-icon {
+        width: 35px !important;
+        height: 35px !important;
+    }
+
+    .hr-reimbursement-claims-num {
+        font-size: 22px !important;
+    }
+
+    .hr-reimbursement-status-grid {
+        height: 75px !important;
+        gap: 8px !important;
+    }
+
+    .hr-status-box {
+        padding: 0 15px !important;
+        gap: 20px !important;
+    }
+
+    .hr-status-icon {
+        width: 24px !important;
+        height: 24px !important;
+    }
+
+    .hr-status-num {
+        font-size: 22px !important;
+        font-weight: 500;
+    }
+
+    .hr-status-label {
+        font-size: 11px !important;
+    }
+
+    .hr-learning-dept-list {
+        gap: 3px !important;
+    }
+
+    .hr-learning-dept-row {
+        gap: 8px !important;
+    }
+
+    .hr-learning-dept-name {
+        width: clamp(140px, 18vw, 175px) !important;
+        font-size: 12px !important;
+    }
+
+    .hr-learning-dept-stat {
+        font-size: 12px !important;
+        width: 34px !important;
+    }
+}
+
+/* TABLET LANDSCAPE (1024 × 768) */
+@media (min-width: 901px) and (max-width: 1024px) {
+    .hr-dashboard-page {
+        padding: 14px 20px 14px 20px !important;
+        gap: 10px !important;
+        height: auto !important;
+        min-height: 100% !important;
+        overflow-y: auto !important;
+    }
+
+    .hr-metric-cards-grid {
+        grid-template-columns: repeat(4, 1fr) !important;
+        height: 64px !important;
+        gap: 10px !important;
+    }
+
+    .hr-metric-card {
+        padding: 0 12px !important;
+        gap: 8px !important;
+    }
+
+    .hr-metric-value {
+        font-size: 18px !important;
+    }
+
+    .hr-metric-title {
+        font-size: 10.5px !important;
+    }
+
+    .hr-dashboard-main-grid {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        grid-template-rows: auto auto !important;
+        gap: 12px !important;
+        height: auto !important;
+        overflow: visible !important;
+        flex: none !important;
+    }
+
+    .hr-dashboard-card {
+        height: auto !important;
+        min-height: 220px !important;
+        flex: none !important;
+        overflow: visible !important;
+        padding: 12px 14px !important;
+    }
+
+    .hr-activity-list {
+        flex: none !important;
+        height: auto !important;
+        gap: 6px !important;
+    }
+
+    .hr-activity-item {
+        flex: none !important;
+        min-height: 40px !important;
+    }
+
+    .hr-distribution-content {
+        flex: none !important;
+        height: auto !important;
+    }
+
+    .hr-reimbursement-top {
+        flex: none !important;
+        height: auto !important;
+        margin-bottom: 10px !important;
+    }
+
+    .hr-reimbursement-status-grid {
+        height: 75px !important;
+    }
+
+    .hr-learning-dept-list {
+        flex: none !important;
+        height: auto !important;
+        gap: 6px !important;
+    }
+
+    .hr-learning-dept-row {
+        flex: none !important;
+        min-height: 26px !important;
+    }
+}
+
+/* TABLET PORTRAIT (768 × 1024) */
+@media (min-width: 601px) and (max-width: 900px) {
+    .hr-dashboard-page {
+        padding: 16px 20px 24px 20px !important;
+        gap: 14px !important;
+        height: auto !important;
+        min-height: 100% !important;
+        overflow-y: auto !important;
+    }
+
+    .hr-metric-cards-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        height: auto !important;
+        gap: 12px !important;
+    }
+
+    .hr-metric-card {
+        min-height: 66px !important;
+        height: auto !important;
+        padding: 12px 16px !important;
+    }
+
+    .hr-dashboard-main-grid {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        grid-template-rows: auto auto auto !important;
+        gap: 14px !important;
+        height: auto !important;
+        overflow: visible !important;
+        flex: none !important;
+    }
+
+    .hr-activity-card {
+        grid-column: 1 / -1 !important;
+        height: auto !important;
+        flex: none !important;
+        overflow: visible !important;
+        padding: 16px !important;
+    }
+
+    .hr-reimbursement-card {
+        grid-column: 1 / -1 !important;
+        height: auto !important;
+        min-height: fit-content !important;
+        flex: none !important;
+        overflow: visible !important;
+        padding: 16px !important;
+    }
+
+    .hr-reimbursement-body {
+        display: flex !important;
+        flex-direction: column !important;
+        height: auto !important;
+        min-height: fit-content !important;
+        flex: none !important;
+    }
+
+    .hr-distribution-card {
+        grid-column: 1 !important;
+        height: auto !important;
+        flex: none !important;
+        overflow: visible !important;
+        padding: 16px !important;
+    }
+
+    .hr-learning-dept-card {
+        grid-column: 2 !important;
+        height: auto !important;
+        flex: none !important;
+        overflow: visible !important;
+        padding: 16px !important;
+    }
+
+    .hr-activity-list {
+        flex: none !important;
+        height: auto !important;
+        gap: 8px !important;
+    }
+
+    .hr-activity-item {
+        flex: none !important;
+        min-height: 44px !important;
+        padding: 8px 12px !important;
+    }
+
+    .hr-distribution-content {
+        flex: none !important;
+        height: auto !important;
+        gap: 14px !important;
+    }
+
+    .hr-donut-container {
+        width: 120px !important;
+        padding: 6px !important;
+    }
+
+    .hr-donut-svg {
+        width: 85px !important;
+        height: 85px !important;
+    }
+
+    .hr-distribution-legend {
+        height: auto !important;
+        flex: 1 !important;
+        gap: 4px !important;
+    }
+
+    .hr-legend-row {
+        flex: none !important;
+        padding: 6px 0 !important;
+    }
+
+    .hr-reimbursement-top {
+        flex: none !important;
+        height: auto !important;
+        margin-bottom: 14px !important;
+    }
+
+    .hr-reimbursement-status-grid {
+        grid-template-columns: repeat(3, 1fr) !important;
+        height: auto !important;
+        gap: 12px !important;
+    }
+
+    .hr-status-box {
+        min-height: 54px !important;
+        padding: 8px 12px !important;
+        height: auto !important;
+    }
+
+    .hr-learning-dept-list {
+        flex: none !important;
+        height: auto !important;
+        gap: 8px !important;
+    }
+
+    .hr-learning-dept-row {
+        flex: none !important;
+        min-height: 28px !important;
+    }
+}
+
+/* MOBILE (<= 767px) - PINNED HEADER & METRIC CARDS, SCROLLABLE MAIN CONTENT */
+@media (max-width: 767px) {
+    .hr-dashboard-page {
+        position: fixed !important;
+        top: 56px !important;
+        left: 0 !important;
+        right: 0 !important;
+        bottom: 0 !important;
+        width: 100% !important;
+        max-width: 100vw !important;
+        height: calc(100vh - 56px) !important;
+        height: calc(100dvh - 56px) !important;
+        max-height: calc(100vh - 56px) !important;
+        max-height: calc(100dvh - 56px) !important;
+        overflow: hidden !important;
+        display: flex !important;
+        flex-direction: column !important;
+        padding: 10px 10px 10px 10px !important;
+        gap: 10px !important;
+        box-sizing: border-box !important;
+        background: #F3F4F8 !important;
+        z-index: 10 !important;
+    }
+
+    .hr-dashboard-page>.common-page-header,
+    .hr-dashboard-page>.page-header {
+        flex-shrink: 0 !important;
+        width: 100% !important;
+    }
+
+    .hr-metric-cards-grid {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        height: auto !important;
+        gap: 8px !important;
+        flex-shrink: 0 !important;
+        width: 100% !important;
+    }
+
+    .hr-metric-card {
+        min-height: 58px !important;
+        height: auto !important;
+        padding: 8px 10px !important;
+        gap: 8px !important;
+        flex-shrink: 0 !important;
+    }
+
+    .hr-metric-icon-wrapper {
+        width: 34px !important;
+        height: 34px !important;
+        min-width: 34px !important;
+    }
+
+    .hr-metric-icon {
+        width: 23px !important;
+        height: 23px !important;
+    }
+
+    .hr-metric-value {
+        font-size: 17px !important;
+    }
+
+    .hr-metric-title {
+        font-size: 11px !important;
+        white-space: normal !important;
+        line-height: 1.2 !important;
+    }
+
+    .hr-dashboard-main-grid {
+        flex: 1 1 0 !important;
+        min-height: 0 !important;
+        width: 100% !important;
+        overflow-y: auto !important;
+        overflow-x: hidden !important;
+        -webkit-overflow-scrolling: touch !important;
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 12px !important;
+        padding-bottom: 10px !important;
+        scrollbar-width: thin !important;
+    }
+
+    .hr-dashboard-card {
+        height: auto !important;
+        min-height: fit-content !important;
+        flex: none !important;
+        overflow: visible !important;
+        padding: 14px 12px !important;
+        border-radius: 10px !important;
+    }
+
+    .hr-activity-list {
+        flex: none !important;
+        height: auto !important;
+        gap: 6px !important;
+    }
+
+    .hr-activity-item {
+        flex: none !important;
+        min-height: 42px !important;
+        padding: 6px 10px !important;
+        gap: 8px !important;
+    }
+
+    .hr-activity-title {
+        font-size: 12px !important;
+        white-space: normal !important;
+        line-height: 1.3 !important;
+    }
+
+    .hr-activity-time {
+        font-size: 10px !important;
+    }
+
+    .hr-distribution-card {
+        height: auto !important;
+        min-height: fit-content !important;
+        flex: none !important;
+        overflow: visible !important;
+    }
+
+    .hr-distribution-content {
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 14px !important;
+        flex: none !important;
+        height: auto !important;
+        overflow: visible !important;
+        width: 100% !important;
+    }
+
+    .hr-donut-container {
+        width: 100% !important;
+        max-width: 220px !important;
+        height: auto !important;
+        min-height: 155px !important;
+        padding: 10px !important;
+        flex: none !important;
+    }
+
+    .hr-distribution-legend {
+        width: 100% !important;
+        padding-left: 0 !important;
+        height: auto !important;
+        min-height: fit-content !important;
+        flex: none !important;
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 4px !important;
+        overflow: visible !important;
+    }
+
+    .hr-legend-row {
+        flex: none !important;
+        height: auto !important;
+        min-height: 28px !important;
+        padding: 5px 0 !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        width: 100% !important;
+        border-bottom: 1px solid #DDE0EE !important;
+    }
+
+    .hr-legend-name,
+    .hr-legend-pct {
+        font-size: 12px !important;
+    }
+
+    .hr-reimbursement-body {
+        display: flex !important;
+        flex-direction: column !important;
+        height: auto !important;
+        min-height: fit-content !important;
+        flex: none !important;
+    }
+
+    .hr-reimbursement-top {
+        flex-direction: row !important;
+        justify-content: center !important;
+        align-items: center !important;
+        gap: 16px !important;
+        margin-bottom: 12px !important;
+        flex: none !important;
+        height: auto !important;
+    }
+
+    .hr-wallet-circle-wrap {
+        width: 78px !important;
+        height: 78px !important;
+    }
+
+    .hr-wallet-icon {
+        width: 30px !important;
+        height: 30px !important;
+    }
+
+    .hr-reimbursement-claims-num {
+        font-size: 22px !important;
+    }
+
+    .hr-reimbursement-status-grid {
+        grid-template-columns: repeat(3, 1fr) !important;
+        height: auto !important;
+        gap: 6px !important;
+    }
+
+    .hr-status-box {
+        padding: 8px 6px !important;
+        gap: 4px !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+        text-align: center !important;
+        min-height: 60px !important;
+        height: auto !important;
+    }
+
+    .hr-status-icon {
+        width: 18px !important;
+        height: 18px !important;
+    }
+
+    .hr-status-num {
+        font-size: 17px !important;
+    }
+
+    .hr-status-label {
+        font-size: 11px !important;
+    }
+
+    .hr-learning-dept-list {
+        flex: none !important;
+        height: auto !important;
+        gap: 6px !important;
+    }
+
+    .hr-learning-dept-row {
+        flex: none !important;
+        min-height: 28px !important;
+        gap: 8px !important;
+    }
+
+    .hr-learning-dept-name {
+        width: 105px !important;
+        font-size: 11px !important;
+    }
+
+    .hr-learning-dept-stat {
+        width: auto !important;
+        font-size: 12px !important;
+    }
+}
+
+/* EXTRA SMALL MOBILE (<= 480px) */
+@media (max-width: 480px) {
+    .hr-dashboard-page {
+        top: 52px !important;
+        height: calc(100vh - 52px) !important;
+        height: calc(100dvh - 52px) !important;
+        max-height: calc(100vh - 52px) !important;
+        max-height: calc(100dvh - 52px) !important;
+    }
+}
+
+/* SMALL MOBILE (320 × 568) */
+@media (max-width: 360px) {
+    .hr-metric-cards-grid {
+        grid-template-columns: 1fr !important;
+        gap: 8px !important;
+    }
+
+    .hr-metric-card {
+        min-height: 52px !important;
+        padding: 8px 12px !important;
+    }
+
+    .hr-metric-icon-wrapper {
+        width: 30px !important;
+        height: 30px !important;
+    }
+
+    .hr-card-view-all {
+        display: none !important;
+    }
+
+    .hr-accordion-header {
+        cursor: pointer;
+        padding: 2px 0;
+    }
+
+    .hr-accordion-chevron {
+        display: inline-block !important;
+        font-size: 18px;
+        color: #7F7F7F;
+        transition: transform 0.2s ease;
+    }
+
+    .hr-card-body.body-closed {
+        display: none !important;
+    }
+
+    .hr-card-body.body-open {
+        display: flex !important;
+        margin-top: 10px !important;
+    }
+}

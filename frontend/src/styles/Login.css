@@ -1,0 +1,591 @@
+/* =========================================================
+   PAGE
+   ========================================================= */
+
+.login-page {
+    position: relative;
+
+    width: 100%;
+    min-height: 100vh;
+
+    overflow: hidden;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #07164f;
+
+    font-family: 'Roboto', sans-serif;
+}
+
+
+/* =========================================================
+   BACKGROUND IMAGE
+   ========================================================= */
+
+.login-background {
+    position: absolute;
+
+    inset: 0;
+
+    background-size: cover;
+
+    background-position: center;
+
+    background-repeat: no-repeat;
+}
+
+
+/* =========================================================
+   OVERLAY
+   ========================================================= */
+
+.login-overlay {
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(90deg,
+            rgba(3, 18, 70, 0.12),
+            rgba(4, 18, 70, 0.05),
+            rgba(3, 18, 70, 0.10));
+}
+
+
+/* =========================================================
+   GLASS CARD (FIGMA SPEC: 568px x 381px)
+   ========================================================= */
+
+.login-card {
+    position: relative;
+
+    z-index: 2;
+
+    width: 568px;
+
+    min-height: 381px;
+
+    box-sizing: border-box;
+
+    padding: 28px 46px 32px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    border-radius: 16px;
+
+    border: 1px solid #DDDDDD;
+
+    background:
+        linear-gradient(135deg,
+            rgba(25, 55, 160, 0.42),
+            rgba(15, 38, 125, 0.32));
+
+    backdrop-filter: blur(36px);
+
+    -webkit-backdrop-filter: blur(36px);
+
+    box-shadow: 0px 9.5px 36px rgba(70, 70, 70, 0.25);
+}
+
+
+/* =========================================================
+   LOGO (FIGMA SPEC: 280px x 105px)
+   ========================================================= */
+
+.login-brand {
+    width: 100%;
+
+    display: flex;
+
+    justify-content: center;
+
+    margin-bottom: 8px;
+}
+
+
+.login-logo {
+    width: 280px;
+
+    height: 105px;
+
+    object-fit: contain;
+
+    display: block;
+}
+
+
+/* =========================================================
+   TITLE (FIGMA SPEC: Roboto 800 ExtraBold 35px #FFFFFF)
+   ========================================================= */
+
+.login-title {
+    margin: 0;
+
+    color: #ffffff;
+
+    text-align: center;
+
+    font-family: 'Roboto', sans-serif;
+
+    font-size: 35px;
+
+    font-weight: 800;
+
+    line-height: 100%;
+
+    letter-spacing: 0%;
+}
+
+
+/* =========================================================
+   DESCRIPTION (FIGMA SPEC: Roboto 400 Regular 18px #C7D6FF)
+   ========================================================= */
+
+.login-description {
+    margin: 8px 0 0;
+
+    color: #C7D6FF;
+
+    text-align: center;
+
+    font-family: 'Roboto', sans-serif;
+
+    font-size: 18px;
+
+    font-weight: 400;
+
+    line-height: 100%;
+
+    letter-spacing: 0%;
+}
+
+
+/* =========================================================
+   DIVIDER LINE (FIGMA SPEC: 162px x 1px #FFFFFF)
+   ========================================================= */
+
+.login-divider {
+    width: 162px;
+
+    height: 1px;
+
+    background: #ffffff;
+
+    margin: 16px auto 14px;
+
+    opacity: 0.9;
+}
+
+
+/* =========================================================
+   SIGN IN (FIGMA SPEC: Roboto 500 Medium 18px #FFFFFF)
+   ========================================================= */
+
+.login-sign-text {
+    margin: 0 0 12px;
+
+    color: #ffffff;
+
+    font-family: 'Roboto', sans-serif;
+
+    font-size: 18px;
+
+    font-weight: 500;
+
+    text-align: center;
+
+    line-height: 100%;
+
+    letter-spacing: 0%;
+}
+
+
+/* =========================================================
+   ERROR
+   ========================================================= */
+
+.login-error {
+    width: 100%;
+
+    max-width: 465.6px;
+
+    box-sizing: border-box;
+
+    margin-bottom: 12px;
+
+    padding: 9px 12px;
+
+    border-radius: 7px;
+
+    border: 1px solid rgba(255, 100, 100, 0.5);
+
+    background:
+        rgba(120, 20, 20, 0.22);
+
+    color: #ffd7d7;
+
+    font-size: 13px;
+
+    text-align: center;
+}
+
+
+/* =========================================================
+   MICROSOFT BUTTON (FIGMA SPEC: 465.6px x 59.51px, Radius 10.5px)
+   ========================================================= */
+
+.microsoft-button {
+    position: relative;
+
+    width: 100%;
+
+    max-width: 465.6px;
+
+    height: 59.51px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 11px;
+
+    border: 1px solid #DDDDDD;
+
+    border-radius: 10.5px;
+
+    background: #ffffff;
+
+    color: #1f1f1f;
+
+    font-family: 'Roboto', sans-serif;
+
+    cursor: pointer;
+
+    box-shadow: 0px 4px 34px rgba(175, 175, 175, 0.25);
+
+    transition:
+        transform 0.15s ease,
+        box-shadow 0.15s ease;
+}
+
+
+.microsoft-button:hover {
+    transform: translateY(-1px);
+
+    box-shadow: 0px 6px 38px rgba(175, 175, 175, 0.35);
+}
+
+
+.microsoft-button:active {
+    transform: translateY(0);
+}
+
+
+.microsoft-button:disabled {
+    opacity: 0.65;
+
+    cursor: not-allowed;
+}
+
+
+/* =========================================================
+   MICROSOFT LOGO
+   ========================================================= */
+
+.microsoft-logo {
+    width: 22px;
+
+    height: 22px;
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    grid-template-rows: 1fr 1fr;
+
+    gap: 2px;
+}
+
+
+.microsoft-logo span {
+    display: block;
+}
+
+
+.ms-red {
+    background: #f25022;
+}
+
+
+.ms-green {
+    background: #7fba00;
+}
+
+
+.ms-blue {
+    background: #00a4ef;
+}
+
+
+.ms-yellow {
+    background: #ffb900;
+}
+
+
+/* =========================================================
+   MICROSOFT TEXT
+   ========================================================= */
+
+.microsoft-text {
+    font-size: 16px;
+
+    font-weight: 600;
+
+    color: #1F1F1F;
+}
+
+
+/* =========================================================
+   CHEVRON
+   ========================================================= */
+
+.chevron {
+    position: absolute;
+
+    right: 18px;
+
+    color: #666;
+
+    transition: transform 0.2s ease;
+}
+
+
+.chevron.rotate {
+    transform: rotate(180deg);
+}
+
+
+/* =========================================================
+   ROLE DROPDOWN
+   ========================================================= */
+
+.role-dropdown {
+    width: 100%;
+
+    max-width: 465.6px;
+
+    box-sizing: border-box;
+
+    margin-top: 10px;
+
+    padding: 8px;
+
+    border-radius: 12px;
+
+    border: 1px solid rgba(255, 255, 255, 0.25);
+
+    background: rgba(15, 35, 110, 0.85);
+
+    backdrop-filter: blur(20px);
+
+    -webkit-backdrop-filter: blur(20px);
+
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.35);
+
+    animation: dropdown-in 0.18s ease-out;
+}
+
+
+@keyframes dropdown-in {
+    from {
+        opacity: 0;
+        transform: translateY(-5px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+.role-dropdown-title {
+    padding: 8px 12px 7px;
+
+    color: rgba(255, 255, 255, 0.60);
+
+    font-size: 11px;
+
+    font-weight: 600;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.7px;
+}
+
+
+.role-item {
+    width: 100%;
+
+    min-height: 40px;
+
+    padding: 8px 12px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 11px;
+
+    border: none;
+
+    border-radius: 6px;
+
+    background: transparent;
+
+    color: #ffffff;
+
+    font-family: inherit;
+
+    font-size: 14px;
+
+    font-weight: 500;
+
+    text-align: left;
+
+    cursor: pointer;
+
+    transition: background 0.15s ease, transform 0.15s ease;
+}
+
+
+.role-item:hover {
+    background: rgba(255, 255, 255, 0.15);
+
+    transform: translateX(2px);
+}
+
+
+.role-item:disabled {
+    opacity: 0.5;
+
+    cursor: not-allowed;
+}
+
+
+.role-icon {
+    width: 28px;
+
+    height: 28px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 6px;
+
+    background: rgba(255, 255, 255, 0.15);
+
+    color: #ffffff;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 640px) {
+    .login-page {
+        padding: 16px 12px;
+        align-items: center;
+    }
+
+    .login-card {
+        width: 100%;
+        max-width: 480px;
+        padding: 24px 18px 24px;
+        border-radius: 12px;
+    }
+
+    .login-logo {
+        width: min(220px, 60vw);
+        height: auto;
+    }
+
+    .login-title {
+        font-size: 26px;
+    }
+
+    .login-description {
+        font-size: 14px;
+    }
+
+    .login-sign-text {
+        font-size: 15px;
+        margin: 18px 0 14px;
+    }
+
+    .role-btn {
+        height: 48px;
+        padding: 0 12px;
+        font-size: 14px;
+    }
+
+    .role-dropdown {
+        max-height: 240px;
+    }
+}
+
+@media (max-width: 360px) {
+    .login-card {
+        padding: 18px 12px 20px;
+    }
+
+    .login-title {
+        font-size: 22px;
+    }
+
+    .login-description {
+        font-size: 13px;
+    }
+
+    .role-btn {
+        height: 44px;
+        font-size: 13px;
+    }
+}
+
+/* =========================================================
+   AUTH-032 FIX: BROWSER PASSWORD/INPUT AUTOFILL IN LOGIN
+   ========================================================= */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:autofill,
+input:-moz-ui-autofill {
+    -webkit-box-shadow: 0 0 0 1000px transparent inset !important;
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+input:autofill + label,
+input:autofill ~ label,
+input:-webkit-autofill + label,
+input:-webkit-autofill ~ label,
+input:-moz-ui-autofill + label,
+input:-moz-ui-autofill ~ label,
+input:not(:placeholder-shown) + label,
+input:not(:placeholder-shown) ~ label {
+    transform: translateY(-50%) scale(0.85);
+    top: 0;
+    opacity: 1;
+    pointer-events: none;
+}

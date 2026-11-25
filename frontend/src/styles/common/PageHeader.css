@@ -1,0 +1,299 @@
+/* =========================================================
+   COMMON PAGE HEADER (Title + Subtitle + View Switcher + Notification)
+   src/styles/common/PageHeader.css
+   ========================================================= */
+
+.common-page-header {
+    width: 100%;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin: 0;
+    padding: 0;
+    flex-shrink: 0;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.common-page-header-title-section {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2px;
+}
+
+.common-page-header-title-section h1 {
+    margin: 0;
+    padding: 0;
+    color: #080808;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 24px;
+    display: flex;
+    align-items: center;
+    white-space: normal;
+    word-break: keep-all;
+    overflow-wrap: break-word;
+}
+
+.common-page-header-title-section p {
+    margin: 2px 0 0 0;
+    padding: 0;
+    color: #787676;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 18px;
+    display: flex;
+    align-items: center;
+    white-space: normal;
+    word-break: normal;
+    overflow-wrap: break-word;
+}
+
+/* =========================================================
+   RIGHT ACTIONS (VIEW SWITCHER + NOTIFICATION BELL)
+   ========================================================= */
+
+.common-page-header-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+}
+
+/* ROLE-BASED VIEW SWITCHER (FIGMA PILL WITH WHITE KNOB) */
+.common-view-switch-btn {
+    height: 30px;
+    min-width: 154px;
+    background: #215EF8;
+    border-radius: 175px;
+    display: inline-flex;
+    align-items: center;
+    padding: 0 8px;
+    border: none;
+    cursor: pointer;
+    box-sizing: border-box;
+    transition: background 0.2s ease, opacity 0.2s ease;
+    text-decoration: none;
+    -webkit-user-select: none;
+    user-select: none;
+    box-shadow: 0 1px 3px rgba(33, 94, 248, 0.2);
+}
+
+.common-view-switch-btn:hover {
+    background: #215EF8;
+}
+
+.view-switch-knob,
+.view-switch-circle {
+    width: 16px;
+    height: 16px;
+    min-width: 16px;
+    min-height: 16px;
+    border-radius: 50%;
+    background: #FFFFFF;
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.2);
+    display: inline-block;
+    flex-shrink: 0;
+    margin-left: 2px;
+    pointer-events: none;
+}
+
+.view-switch-text {
+    color: #FFFFFF;
+    font-family: 'Roboto', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    margin-left: 8px;
+    white-space: nowrap;
+    line-height: 1;
+    letter-spacing: 0.1px;
+}
+
+/* NOTIFICATION BELL CONTAINER */
+.common-header-bell-container {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+}
+
+/* NOTIFICATION BELL BUTTON */
+.common-header-bell-btn,
+.header-bell-btn {
+    position: relative;
+    width: 30px;
+    height: 30px;
+    min-width: 30px;
+    border-radius: 50%;
+    border: 1px solid #DDE0EE;
+    background: #FFFFFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-sizing: border-box;
+    transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+.common-header-bell-btn:hover,
+.header-bell-btn:hover {
+    background: #F8FAFC;
+    border-color: #CBD5E1;
+}
+
+.bell-icon-custom {
+    color: #334155;
+}
+
+.common-notification-img,
+.header-notification-icon-img {
+    width: 18px;
+    height: 18px;
+    object-fit: contain;
+    display: block;
+}
+
+.common-bell-badge-dot,
+.bell-badge-dot,
+.common-notification-badge,
+.header-notification-badge {
+    position: absolute;
+    top: 7px;
+    right: 8px;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #EF4444;
+    box-shadow: 0 0 0 1.5px #FFFFFF;
+}
+
+/* =========================================================
+   RESPONSIVE OVERRIDES (< 768px & < 540px)
+   ========================================================= */
+@media (max-width: 768px) {
+    .common-page-header {
+        margin-bottom: 10px;
+        gap: 10px;
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: flex-start !important;
+        justify-content: space-between !important;
+        width: 100% !important;
+    }
+
+    .common-page-header-title-section {
+        flex: 1 !important;
+        min-width: 0 !important;
+    }
+
+    .common-page-header-title-section h1 {
+        font-size: 20px !important;
+        word-break: keep-all !important;
+        line-height: 1.25 !important;
+    }
+
+    .common-page-header-title-section p {
+        font-size: 12.5px !important;
+        line-height: 1.35 !important;
+    }
+
+    .common-page-header-right {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: flex-end !important;
+        flex-shrink: 0 !important;
+        margin-top: 0 !important;
+        gap: 8px !important;
+    }
+
+    .common-view-switch-btn {
+        min-width: 130px !important;
+        height: 30px !important;
+        padding: 0 6px !important;
+    }
+
+    .view-switch-text {
+        font-size: 11px !important;
+        margin-left: 6px !important;
+    }
+
+    .common-header-bell-btn,
+    .header-bell-btn {
+        width: 30px !important;
+        height: 30px !important;
+        min-width: 30px !important;
+        min-height: 30px !important;
+    }
+}
+
+@media (max-width: 540px) {
+
+    /* Only stack if there is a role view switcher button (management roles) */
+    .common-page-header.has-view-switcher {
+        flex-direction: column !important;
+        align-items: stretch !important;
+        gap: 8px !important;
+    }
+
+    .common-page-header.has-view-switcher .common-page-header-right {
+        width: 100% !important;
+        justify-content: space-between !important;
+    }
+
+    /* For employee pages / without view switcher: keep title on left and bell on top right */
+    .common-page-header.no-view-switcher,
+    .common-page-header:not(.has-view-switcher) {
+        flex-direction: row !important;
+        align-items: flex-start !important;
+        justify-content: space-between !important;
+        gap: 10px !important;
+    }
+
+    .common-page-header.no-view-switcher .common-page-header-right,
+    .common-page-header:not(.has-view-switcher) .common-page-header-right {
+        width: auto !important;
+        justify-content: flex-end !important;
+        flex-shrink: 0 !important;
+    }
+}
+
+
+/* Default: Employee View */
+.common-view-switch-btn.employee-view {
+    background-color: #215EF8;
+    border: 1px solid #215EF8;
+    color: #FFFFFF;
+    transition: background-color 0.25s ease,
+        border-color 0.25s ease;
+}
+
+/* Primary View */
+.common-view-switch-btn.primary-view {
+    background-color: #0737AC;
+    border: 1px solid #0737AC;
+    color: #FFFFFF;
+    transition: background-color 0.25s ease,
+        border-color 0.25s ease;
+}
+
+/* Hover effects */
+.common-view-switch-btn.employee-view:hover {
+    background-color: #194FD8;
+    border-color: #194FD8;
+}
+
+.common-view-switch-btn.primary-view:hover {
+    background-color: #052D8F;
+    border-color: #052D8F;
+}
+
+/* Keep the toggle knob visible */
+.common-view-switch-btn .view-switch-knob {
+    background-color: #FFFFFF;
+}

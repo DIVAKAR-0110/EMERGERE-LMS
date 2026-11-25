@@ -1,0 +1,4353 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700;800;900&display=swap');
+
+/* =========================================================
+   CERTIFICATION & REIMBURSEMENT PAGE
+   ========================================================= */
+
+.emp-cert-reimb-page,
+.emp-cert-reimb-page *,
+.emp-cert-reimb-page button,
+.emp-cert-reimb-page input,
+.emp-cert-reimb-page select,
+.emp-cert-reimb-page textarea,
+.emp-cert-modal-overlay,
+.emp-cert-modal-overlay * {
+    font-family: 'Roboto', sans-serif;
+    box-sizing: border-box;
+}
+
+.emp-cert-reimb-page {
+    position: relative;
+    width: 100%;
+    min-height: 100%;
+    height: auto;
+    max-width: 100%;
+    padding: 20px 24px 12px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    background: transparent;
+    box-sizing: border-box;
+}
+
+@media (min-width: 1024px) {
+    .emp-cert-reimb-page {
+        height: 100vh !important;
+        max-height: 100vh !important;
+        overflow: hidden !important;
+        padding: 20px 24px 16px 24px !important;
+        box-sizing: border-box !important;
+    }
+}
+
+.emp-cert-fixed-header {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    flex-shrink: 0;
+    z-index: 20;
+    background: transparent;
+    position: relative;
+}
+
+.emp-cert-scrollable-content {
+    flex: 1;
+    min-height: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    box-sizing: border-box;
+    scrollbar-width: none !important;
+    -ms-overflow-style: none !important;
+}
+
+.emp-cert-scrollable-content::-webkit-scrollbar {
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
+}
+
+.emp-cert-scrollable-content .emp-cert-list-container,
+.emp-cert-list-container {
+    width: 100%;
+    flex: 0 0 auto;
+    min-height: 0;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    overflow: visible;
+}
+
+/* Wrapper for the MyCertificatesTab */
+.emp-my-certificates-wrapper {
+    width: 100%;
+    height: 100%;
+    min-height: 100%;
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 8px;
+    box-sizing: border-box;
+}
+
+.emp-course-pagination-bar {
+    margin-top: auto;
+    flex-shrink: 0;
+}
+
+.emp-cert-notification-btn:hover {
+    background: #F8FAFC;
+    border-color: #CBD5E1;
+}
+
+.emp-notification-red-dot {
+    position: absolute;
+    top: 7px;
+    right: 7px;
+    width: 6px;
+    height: 6px;
+    background: #EF4444;
+    border-radius: 50%;
+}
+
+/* =========================================================
+   SUMMARY KPI STAT CARDS (ROW OF 4 CARDS)
+   ========================================================= */
+
+.emp-cert-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    width: 100%;
+    flex-shrink: 0;
+}
+
+.emp-cert-stat-card {
+    background: #FFFFFF;
+    width: 100%;
+    height: 70px;
+    border-bottom: 5px solid #c1d2ff;
+    border-radius: 10px;
+    padding: 12px 18px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+    transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease, border-color 0.2s ease;
+    cursor: default;
+}
+
+.emp-stat-card-icon-circle {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.emp-icon-blue-bg {
+    background-color: #f1f2f8;
+}
+
+.emp-icon-navy-bg {
+    background-color: #f7f3fd;
+}
+
+.emp-icon-amber-bg {
+    background-color: #fef3ef;
+}
+
+.emp-icon-emerald-bg {
+    background-color: #eefbf5;
+}
+
+.emp-stat-card-info-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.emp-stat-value-text {
+    font-size: 22px;
+    font-weight: 600;
+    color: #080808;
+    line-height: 1.1;
+    margin: 0;
+}
+
+.emp-stat-label-text {
+    font-size: 12px;
+    font-weight: 500;
+    color: #656565;
+    margin-top: 3px;
+    white-space: nowrap;
+}
+
+/* Skeleton loading for stat cards */
+@keyframes emp-stat-skeleton-pulse {
+    0% {
+        opacity: 1;
+        background-color: #E2E8F0;
+    }
+
+    50% {
+        opacity: 0.45;
+        background-color: #CBD5E1;
+    }
+
+    100% {
+        opacity: 1;
+        background-color: #E2E8F0;
+    }
+}
+
+.emp-stat-skeleton,
+.ld-skeleton-block {
+    display: inline-block;
+    height: 22px;
+    border-radius: 4px;
+    background: #E2E8F0;
+    animation: emp-stat-skeleton-pulse 1.4s ease-in-out infinite;
+    vertical-align: middle;
+}
+
+/* =========================================================
+   TABS & ACTION TOOLBAR
+   ========================================================= */
+
+.emp-cert-toolbar-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+    flex-shrink: 0;
+    margin-top: 4px;
+}
+
+.emp-cert-tabs-bar-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 4px;
+    margin-bottom: 4px;
+    flex-shrink: 0;
+    width: 100%;
+}
+
+.emp-cert-tabs-group {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.emp-cert-tab-pill {
+    padding: 2px 18px;
+    height: 30px;
+    font-size: 12px;
+    font-weight: 500;
+    border-radius: 24px;
+    border: 1px solid #DDE0EE;
+    background: #FFFFFF;
+    color: #080808;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02);
+}
+
+.emp-cert-tab-pill:hover {
+    border-color: #CBD5E1;
+    background: #F8FAFC;
+}
+
+.emp-cert-tab-pill.active {
+    height: 30px;
+    background: #215EF8;
+    color: #FFFFFF;
+    border: 1px solid #2563EB;
+    font-weight: 500;
+    box-shadow: 0 2px 6px rgba(37, 99, 235, 0.25);
+}
+
+.emp-tab-label-short {
+    display: none;
+}
+
+.emp-tab-label-full {
+    display: inline;
+}
+
+.emp-cert-action-btns-group {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.emp-btn-upload-outline-blue {
+    display: flex;
+    align-items: center;
+    height: 30px;
+    gap: 8px;
+    padding: 8px 18px;
+    font-size: 12px;
+    font-weight: 500;
+    color: #215EF8;
+    background: #FFFFFF;
+    border: 1.5px solid #215EF8;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.emp-btn-upload-outline-blue:hover {
+    background: #F0F5FF;
+}
+
+.emp-btn-primary-blue-pill {
+    display: flex;
+    align-items: center;
+    height: 30px;
+    gap: 6px;
+    padding: 9px 20px;
+    font-size: 12px;
+    font-weight: 500;
+    color: #FFFFFF;
+    background: #2563EB;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.emp-btn-primary-blue-pill:hover {
+    background: #1D4ED8;
+}
+
+.emp-cert-actions-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.emp-btn-upload-outline {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 18px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #215EF8;
+    background: #FFFFFF;
+    border: 1px solid #215EF8;
+    border-radius: 9px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.emp-btn-upload-outline:hover {
+    background: #EFF6FF;
+    transform: translateY(-1px);
+}
+
+.emp-btn-request-primary {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 20px;
+    font-size: 13px;
+    font-weight: 400;
+    color: #FFFFFF;
+    background: #215EF8;
+    border: none;
+    border-radius: 9px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: 1px solid #DDE0EE;
+    box-shadow: 0 2px 6px rgba(37, 99, 235, 0.25);
+}
+
+.emp-btn-request-primary:hover {
+    background: #1D4ED8;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 10px rgba(37, 99, 235, 0.35);
+}
+
+.emp-filter-dropdown-wrapper {
+    position: relative;
+}
+
+.emp-filter-select-btn,
+.emp-btn-toolbar-outline {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    height: 30px;
+    padding: 0 12px;
+    font-size: 12px;
+    font-weight: 400;
+    color: #000000;
+    background: #FFFFFF;
+    border: 1px solid #CBD5E1;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02);
+}
+
+.emp-filter-select-btn:hover,
+.emp-btn-toolbar-outline:hover {
+    border-color: #94A3B8;
+    background: #F8FAFC;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+}
+
+.emp-btn-toolbar-outline.filtered {
+    border-color: #2563EB !important;
+    background: #EFF6FF !important;
+    color: #2563EB !important;
+}
+
+.emp-btn-toolbar-outline.filtered:hover {
+    border-color: #1D4ED8 !important;
+    background: #DBEAFE !important;
+}
+
+.emp-btn-toolbar-outline.filtered span:not(.emp-filter-clear-cross) {
+    color: #2563EB !important;
+    font-weight: 500;
+}
+
+.emp-btn-toolbar-outline .emp-filter-clear-cross,
+.emp-filter-clear-cross {
+    margin-left: 5px;
+    font-weight: 700;
+    cursor: pointer;
+    font-size: 14px;
+    line-height: 1;
+    color: #EF4444 !important;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 1px;
+    transition: transform 0.15s ease, color 0.15s ease;
+}
+
+.emp-btn-toolbar-outline .emp-filter-clear-cross:hover,
+.emp-filter-clear-cross:hover {
+    color: #DC2626 !important;
+    transform: scale(1.2);
+}
+
+.emp-filter-menu-dropdown {
+    position: absolute;
+    top: calc(100% + 6px);
+    right: 0;
+    background: #FFFFFF;
+    border: 1px solid #E2E8F0;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+    min-width: 210px;
+    padding: 6px 0;
+    z-index: 50;
+    animation: dropdownFade 0.15s ease-out forwards;
+}
+
+@keyframes dropdownFade {
+    from {
+        opacity: 0;
+        transform: translateY(-4px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.emp-filter-item-btn {
+    width: 100%;
+    text-align: left;
+    padding: 8px 16px;
+    font-size: 12px;
+    font-weight: 400;
+    color: #000000;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    transition: background 0.15s ease;
+}
+
+.emp-filter-item-btn:hover {
+    background: #F1F5F9;
+    color: #2563EB;
+}
+
+.emp-filter-item-btn.selected {
+    font-weight: 500;
+    color: #2563EB;
+    background: #EFF6FF;
+}
+
+/* =========================================================
+   CERTIFICATES LIST VIEW (MY CERTIFICATES)
+   ========================================================= */
+
+.emp-cert-list-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+    scrollbar-width: none !important;
+    -ms-overflow-style: none !important;
+}
+
+.emp-cert-list-container::-webkit-scrollbar {
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
+}
+
+.emp-cert-card-row {
+    position: relative;
+    background: #FFFFFF;
+    width: 100%;
+    min-height: 72px;
+    border-radius: 10px;
+    padding: 14px 18px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+    transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+    box-sizing: border-box;
+    overflow: hidden;
+    cursor: default;
+}
+
+
+.emp-cert-row-bottom-line {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 5px;
+    object-fit: fill;
+    background-color: #C1D2FF;
+    border-bottom-left-radius: 9px;
+    border-bottom-right-radius: 9px;
+    pointer-events: none;
+}
+
+
+.emp-cert-left-section {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    min-width: 0;
+    flex: 1;
+}
+
+.emp-cert-type-icon-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.emp-cert-type-icon-box.emp-badge-blue {
+    color: #FFFFFF;
+}
+
+.emp-cert-type-icon-box.emp-book-navy {
+    color: #FFFFFF;
+}
+
+.emp-cert-main-details {
+    display: flex;
+    flex-direction: column;
+    width: 260px;
+    flex: 0 0 260px;
+}
+
+.emp-cert-title-text {
+    font-size: 12px;
+    font-weight: 500;
+    color: #000000;
+    line-height: 20px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.emp-cert-category-text {
+    font-size: 12px;
+    color: #7F7F7F;
+    font-weight: 400;
+    margin-top: 2px;
+}
+
+.emp-cert-row-divider {
+    width: 1px;
+    height: 28px;
+    background-color: #E2E8F0;
+    margin: 0 8px;
+    flex-shrink: 0;
+}
+
+.emp-cert-meta-section {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    min-width: 0;
+    flex: 1;
+}
+
+.emp-cert-provider-info {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    font-weight: 500;
+    color: #000000;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 190px;
+    flex: 0 0 190px;
+}
+
+.emp-cert-provider-info svg {
+    color: #2563EB;
+}
+
+.emp-cert-status-info {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    font-weight: 500;
+    color: #7F7F7F;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 220px;
+    flex: 0 0 220px;
+    margin-left: 30px;
+}
+
+.emp-cert-status-info.valid {
+    color: #7F7F7F;
+    font-weight: 500;
+}
+
+.emp-cert-status-info.valid svg {
+    color: #2563EB;
+}
+
+
+/* Right side action icon buttons */
+.emp-cert-right-actions {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-shrink: 0;
+    margin-left: auto;
+    width: 175px;
+    justify-content: center;
+}
+
+.emp-cert-right-actions.emp-cert-req-actions {
+    width: auto;
+    justify-content: flex-end;
+    gap: 15px;
+    margin-right: 40px;
+}
+
+.emp-cert-title-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-width: 0;
+    width: 100%;
+}
+
+.emp-cert-title-row .emp-cert-title-text {
+    min-width: 0;
+    flex: 0 1 auto;
+}
+
+.emp-cert-req-arrow-btn {
+    width: 20px;
+    height: 20px;
+    border-radius: 4px;
+    border: none;
+    background: transparent;
+    box-shadow: none;
+    outline: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    flex-shrink: 0;
+    padding: 0;
+    transition: opacity 0.15s ease, transform 0.15s ease;
+}
+
+.emp-cert-req-arrow-btn:hover {
+    background: transparent;
+    border: none;
+    opacity: 0.7;
+    transform: scale(1.15);
+}
+
+.emp-cert-req-arrow-btn.expanded {
+    background: transparent;
+    border: none;
+}
+
+.emp-icon-action-spacer-grad {
+    width: 35px;
+    height: 35px;
+    flex-shrink: 0;
+}
+
+.emp-icon-action-spacer {
+    width: 19px;
+    height: 19px;
+    flex-shrink: 0;
+}
+
+.emp-icon-btn-grad {
+    width: 30px;
+    height: 30px;
+    border-radius: 4px;
+    background-color: #F0F3FA;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: default;
+}
+
+.emp-icon-action-btn {
+    width: 15px;
+    height: 15px;
+    border-radius: 6px;
+    background: transparent;
+    color: #64748B;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.emp-icon-action-btn:hover {
+    background: #EFF6FF;
+    color: #2563EB;
+    transform: scale(1.15);
+}
+
+.emp-icon-action-btn.emp-delete-btn:hover {
+    background: #FEE2E2;
+    color: #EF4444;
+    transform: scale(1.15);
+}
+
+/* =========================================================
+   REIMBURSEMENT CLAIMS TAB CONTENT
+   ========================================================= */
+
+.emp-reimb-claims-outer-container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex: 1;
+    min-height: 0;
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.emp-reimb-subtabs-bar {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    border-bottom: 1px solid #CBD1EA;
+    padding-bottom: 2px;
+    padding-left: 4px;
+    flex-shrink: 0;
+}
+
+.emp-reimb-subtab-btn {
+    background: transparent;
+    border: none;
+    font-size: 12px;
+    font-weight: 500;
+    color: #6B6B6B;
+    padding: 8px 4px 10px 4px;
+    cursor: pointer;
+    position: relative;
+    transition: color 0.15s ease;
+}
+
+.emp-reimb-subtab-btn:hover {
+    color: #1E293B;
+}
+
+.emp-reimb-subtab-btn.active {
+    color: #215EF8;
+    font-weight: 500;
+}
+
+.emp-reimb-subtab-btn.active::after {
+    content: "";
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: #2563EB;
+    border-radius: 3px 3px 0 0;
+}
+
+.emp-reimb-claims-container {
+    background: #FFFFFF;
+    border: 1px solid #E2E8F0;
+    border-radius: 10px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+    flex: 1;
+    min-height: 0;
+    overflow: hidden;
+    padding: 16px 20px 10px 20px;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+}
+
+.emp-reimb-header-row {
+    display: grid;
+    grid-template-columns: 105px minmax(170px, 1fr) 85px 135px 120px 80px 65px;
+    align-items: center;
+    gap: 12px;
+    margin: -16px -20px 8px -20px;
+    padding: 12px 41.5px 12px 35.5px;
+    width: calc(100% + 40px);
+    box-sizing: border-box;
+    font-size: 12px;
+    font-weight: 500;
+    color: #3730a3;
+    background: #e0e7ff;
+    border-bottom: 1px solid #C7D2FE;
+    flex-shrink: 0;
+}
+
+.emp-sortable-header {
+    cursor: pointer;
+    user-select: none;
+    transition: color 0.15s ease, background-color 0.15s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    box-sizing: border-box;
+    white-space: nowrap;
+}
+
+.emp-cert-sort-icon {
+    width: 12px !important;
+    height: 12px !important;
+    flex-shrink: 0;
+    transition: color 0.15s ease, opacity 0.15s ease, transform 0.15s ease;
+}
+
+.emp-cert-sort-icon.inactive {
+    color: #4f46e5;
+    opacity: 0.5;
+}
+
+.emp-sortable-header:hover .emp-cert-sort-icon.inactive {
+    opacity: 0.9;
+    color: #3730a3;
+}
+
+.emp-cert-sort-icon.active {
+    color: #1e1b4b;
+    opacity: 1;
+}
+
+.emp-col-claim-id,
+.emp-col-cert-title,
+.emp-col-amount,
+.emp-col-purchase-date,
+.emp-col-submitted-on,
+.emp-col-status,
+.emp-col-action {
+    min-width: 0;
+}
+
+.emp-col-action {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.emp-reimb-cards-list {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    flex: 1 1 0%;
+    min-height: 0;
+    overflow-y: auto !important;
+    overflow-x: hidden;
+    padding-right: 6px;
+    padding-bottom: 6px;
+    scrollbar-width: thin;
+    scrollbar-color: #CBD5E1 transparent;
+}
+
+.emp-reimb-claims-container .emp-course-pagination-bar {
+    margin-top: auto;
+    padding-top: 20px;
+    padding-bottom: 6px;
+    flex-shrink: 0;
+    width: 100%;
+}
+
+.emp-reimb-cards-list::-webkit-scrollbar {
+    width: 6px;
+}
+
+.emp-reimb-cards-list::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.emp-reimb-cards-list::-webkit-scrollbar-thumb {
+    background: #CBD5E1;
+    border-radius: 4px;
+}
+
+.emp-reimb-cards-list::-webkit-scrollbar-thumb:hover {
+    background: #94A3B8;
+}
+
+.emp-reimb-card-wrapper {
+    background: #eff6ff;
+    border-radius: 10px;
+    padding: 11px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    box-sizing: border-box;
+    flex-shrink: 0;
+    transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+    cursor: default;
+}
+
+
+.emp-reimb-card-row {
+    display: grid;
+    grid-template-columns: 105px minmax(170px, 1fr) 85px 135px 120px 80px 65px;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.emp-reimb-action-group {
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 8px;
+}
+
+.emp-reimb-eye-btn {
+    width: 24px;
+    height: 24px;
+    border: 1px solid #DDE0EE;
+    border-radius: 6px;
+    background: #FFFFFF;
+    color: #215EF8;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02);
+    transition: background 0.15s ease, border-color 0.15s ease, transform 0.1s ease;
+    padding: 0;
+    flex-shrink: 0;
+}
+
+.emp-reimb-eye-btn:hover {
+    border-color: #215EF8;
+    background: #EFF6FF;
+}
+
+.emp-reimb-eye-btn:active {
+    transform: scale(0.95);
+}
+
+/* =========================================================
+   REQUESTS TAB TABLE VIEW
+   ========================================================= */
+
+.emp-requests-table-wrapper {
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+}
+
+.emp-requests-table-container {
+    background: #FFFFFF;
+    border: 1px solid #E2E8F0;
+    border-radius: 10px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+    flex: 1;
+    min-height: 0;
+    height: 100%;
+    overflow: hidden;
+    padding: 16px 20px 10px 20px;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+}
+
+.emp-requests-header-row {
+    display: grid;
+    grid-template-columns: minmax(220px, 1.8fr) minmax(140px, 1.2fr) minmax(140px, 1.2fr) 95px 28px;
+    align-items: center;
+    gap: 16px;
+    margin: -16px -20px 8px -20px;
+    padding: 12px 41.5px 12px 35.5px;
+    width: calc(100% + 40px);
+    box-sizing: border-box;
+    font-size: 12px;
+    font-weight: 500;
+    color: #3730a3;
+    background: #e0e7ff;
+    border-bottom: 1px solid #C7D2FE;
+    flex-shrink: 0;
+}
+
+.emp-requests-cards-list {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    flex: 1 1 0%;
+    min-height: 0;
+    overflow-y: auto !important;
+    overflow-x: hidden;
+    padding-right: 6px;
+    padding-bottom: 6px;
+    scrollbar-width: thin;
+    scrollbar-color: #CBD5E1 transparent;
+}
+
+.emp-requests-cards-list::-webkit-scrollbar {
+    width: 6px;
+}
+
+.emp-requests-cards-list::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.emp-requests-cards-list::-webkit-scrollbar-thumb {
+    background: #CBD5E1;
+    border-radius: 4px;
+}
+
+.emp-requests-cards-list::-webkit-scrollbar-thumb:hover {
+    background: #94A3B8;
+}
+
+.emp-requests-card-wrapper {
+    background: #eff6ff;
+    border-radius: 10px;
+    padding: 11px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    box-sizing: border-box;
+    flex-shrink: 0;
+    transition: box-shadow 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+    cursor: default;
+}
+
+.emp-requests-card-row {
+    display: grid;
+    grid-template-columns: minmax(220px, 1.8fr) minmax(140px, 1.2fr) minmax(140px, 1.2fr) 95px 28px;
+    align-items: center;
+    gap: 16px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.emp-req-col-name {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 0;
+}
+
+.emp-req-col-provider {
+    display: flex;
+    align-items: center;
+    min-width: 0;
+}
+
+.emp-req-col-exam-date {
+    display: flex;
+    align-items: center;
+    min-width: 0;
+}
+
+.emp-req-col-status {
+    display: flex;
+    align-items: center;
+    min-width: 0;
+}
+
+.emp-req-col-action {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.emp-requests-table-container .emp-course-pagination-bar {
+    margin-top: auto;
+    padding-top: 20px;
+    padding-bottom: 6px;
+    flex-shrink: 0;
+    width: 100%;
+}
+
+/* =========================================================
+   MY CERTIFICATES TAB TABLE VIEW
+   ========================================================= */
+
+.emp-my-certs-table-wrapper {
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+}
+
+.emp-my-certs-table-container {
+    background: #FFFFFF;
+    border: 1px solid #E2E8F0;
+    border-radius: 10px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+    flex: 1;
+    min-height: 0;
+    height: 100%;
+    overflow: hidden;
+    padding: 16px 20px 10px 20px;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+}
+
+.emp-my-certs-header-row {
+    display: grid;
+    grid-template-columns: minmax(220px, 1.8fr) minmax(140px, 1.2fr) minmax(140px, 1.2fr) 139px;
+    align-items: center;
+    gap: 16px;
+    margin: -16px -20px 8px -20px;
+    padding: 12px 41.5px 12px 35.5px;
+    width: calc(100% + 40px);
+    box-sizing: border-box;
+    font-size: 12px;
+    font-weight: 500;
+    color: #3730a3;
+    background: #e0e7ff;
+    border-bottom: 1px solid #C7D2FE;
+    flex-shrink: 0;
+}
+
+.emp-my-certs-cards-list {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    flex: 1 1 0%;
+    min-height: 0;
+    overflow-y: auto !important;
+    overflow-x: hidden;
+    padding-right: 6px;
+    padding-bottom: 6px;
+    scrollbar-width: thin;
+    scrollbar-color: #CBD5E1 transparent;
+}
+
+.emp-my-certs-cards-list::-webkit-scrollbar {
+    width: 6px;
+}
+
+.emp-my-certs-cards-list::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.emp-my-certs-cards-list::-webkit-scrollbar-thumb {
+    background: #CBD5E1;
+    border-radius: 4px;
+}
+
+.emp-my-certs-cards-list::-webkit-scrollbar-thumb:hover {
+    background: #7f7f7f;
+}
+
+.emp-my-certs-card-wrapper {
+    background: #eff6ff;
+    border-radius: 10px;
+    padding: 9px 14px;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    flex-shrink: 0;
+    transition: box-shadow 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+    cursor: default;
+    position: relative;
+    overflow: hidden;
+}
+
+.emp-my-certs-card-wrapper.has-bottom-line {
+    border-bottom-color: #C1D2FF;
+    padding: 8px 14px 14px 14px;
+}
+
+.emp-my-certs-card-wrapper.has-bottom-line:hover {
+    border-bottom-color: #C1D2FF;
+}
+
+.emp-my-certs-bottom-line {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 4px;
+    display: block;
+    object-fit: fill;
+    pointer-events: none;
+    border-bottom-left-radius: 8.5px;
+    border-bottom-right-radius: 8.5px;
+    z-index: 1;
+}
+
+.emp-my-certs-card-row {
+    display: grid;
+    grid-template-columns: minmax(220px, 1.8fr) minmax(140px, 1.2fr) minmax(140px, 1.2fr) 139px;
+    align-items: center;
+    gap: 16px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.emp-cert-col-name {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 0;
+}
+
+.emp-cert-col-provider {
+    display: flex;
+    align-items: center;
+    min-width: 0;
+}
+
+.emp-cert-col-schedule {
+    display: flex;
+    align-items: center;
+    min-width: 0;
+}
+
+.emp-cert-col-schedule .emp-cert-status-info,
+.emp-req-col-exam-date .emp-cert-status-info {
+    margin-left: 0 !important;
+    width: auto !important;
+    max-width: 100% !important;
+}
+
+.emp-cert-col-provider .emp-cert-provider-info,
+.emp-req-col-provider .emp-cert-provider-info {
+    margin-left: 0 !important;
+    width: auto !important;
+    max-width: 100% !important;
+    flex: 1 1 auto !important;
+}
+
+.emp-cert-col-action {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 12px;
+    min-width: 0;
+}
+
+.emp-my-certs-table-container .emp-course-pagination-bar {
+    margin-top: auto;
+    padding-top: 20px;
+    padding-bottom: 6px;
+    flex-shrink: 0;
+    width: 100%;
+}
+
+.emp-reimb-mobile-label {
+    display: none;
+}
+
+.emp-reimb-action-toggle-label {
+    display: none;
+}
+
+.emp-claim-cert-value-wrap {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.emp-claim-id-text {
+    font-size: 12px;
+    font-weight: 400;
+    color: #000000;
+}
+
+.emp-cert-title-box {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.emp-cert-type-icon-box.mini {
+    width: 28px;
+    height: 28px;
+    border-radius: 8px;
+    transition: transform 0.2s ease;
+}
+
+
+
+.emp-claim-cert-name {
+    font-size: 12px;
+    font-weight: 500;
+    color: #000000;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.emp-claim-amount-text {
+    font-size: 12px;
+    font-weight: 400;
+    color: #000000;
+}
+
+.emp-claim-date-text {
+    font-size: 12px;
+    color: #000000;
+    font-weight: 400;
+}
+
+.emp-claim-status-box {
+    display: flex;
+    align-items: center;
+}
+
+.emp-reimb-status-pill {
+    width: 68px;
+    height: 23px;
+    padding: 0 4px;
+    box-sizing: border-box;
+    font-size: 11px;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    white-space: nowrap;
+    border-radius: 6px;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+
+.emp-reimb-status-pill.approved {
+    background-color: #eefbf5;
+    border: 0.5px solid #aeedbe;
+    color: #0eab62;
+}
+
+.emp-reimb-status-pill.pending {
+    background-color: #fdf5ea;
+    border: 0.5px solid #ffd696;
+    color: #e79519;
+}
+
+.emp-reimb-status-pill.rejected {
+    background-color: #feebea;
+    border: 0.5px solid #ffc7c7;
+    color: #DC2626;
+}
+
+.emp-no-claims-found {
+    padding: 30px;
+    text-align: center;
+    color: #7f7f7f;
+    font-size: 14px;
+    font-weight: 500;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 250px;
+}
+
+.emp-reimb-table tr:last-child td {
+    border-bottom: none;
+}
+
+.emp-reimb-table tr:hover td {
+    background: #F8FAFC;
+}
+
+.emp-claim-id-badge {
+    font-family: monospace;
+    font-weight: 600;
+    color: #2563EB;
+    background: #EFF6FF;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+}
+
+.emp-status-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.emp-status-pill.pending {
+    background: #FFF7ED;
+    color: #EA580C;
+    border: 1px solid #FFEDD5;
+}
+
+.emp-status-pill.approved {
+    background: #ECFDF5;
+    color: #059669;
+    border: 1px solid #D1FAE5;
+}
+
+.emp-status-pill.rejected {
+    background: #FEF2F2;
+    color: #DC2626;
+    border: 1px solid #FEE2E2;
+}
+
+.emp-amount-bold {
+    font-weight: 700;
+    color: #0F172A;
+}
+
+/* Empty state */
+.emp-empty-cert-state {
+    background: transparent;
+    border: none;
+    border-radius: 12px;
+    padding: 0px 24px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 400;
+    gap: clamp(8px, 1.2vh, 14px);
+    color: #7F7F7F;
+    flex: 1;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.emp-empty-cert-icon {
+    width: clamp(90px, 8vh, 110px);
+    height: clamp(90px, 8vh, 110px);
+    object-fit: contain;
+    opacity: 0.8;
+    flex-shrink: 0;
+}
+
+.emp-empty-cert-state h3 {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 500;
+    color: #7f7f7f;
+}
+
+/* =========================================================
+   MODAL STYLES
+   ========================================================= */
+
+.emp-cert-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(15, 23, 42, 0.5);
+    backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: 20px;
+    animation: fadeInModal 0.2s ease-out;
+}
+
+@keyframes fadeInModal {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.emp-cert-modal-container {
+    background: #FFFFFF;
+    border-radius: 8px;
+    height: min(485px, 84vh);
+    max-height: 84vh;
+    width: 670px;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.15), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    animation: slideUpModal 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes slideUpModal {
+    from {
+        opacity: 0;
+        transform: translateY(16px) scale(0.98);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.emp-cert-modal-header {
+    padding: 12px 20px 16px 20px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    background: #FFFFFF;
+    flex-shrink: 0;
+    z-index: 10;
+}
+
+.emp-cert-modal-header.emp-border-bottom {
+    border-bottom: 1px solid #E2E8F0;
+}
+
+.emp-cert-modal-header p {
+    margin: 2px 0 0 0;
+    font-size: 12.5px;
+    font-weight: 400;
+    color: #6B7280;
+}
+
+.emp-cert-modal-close {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: transparent;
+    border: none;
+    color: #64748B;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.emp-cert-modal-close:hover {
+    background: #F1F5F9;
+    color: #0F172A;
+}
+
+.emp-cert-modal-form-wrapper {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-height: 0;
+    overflow: hidden;
+}
+
+.emp-modal-scrollable-body-wrapper {
+    display: flex;
+    align-items: stretch;
+    flex: 1;
+    min-height: 0;
+    width: 100%;
+    position: relative;
+    padding: 0 20px 5px 20px;
+    box-sizing: border-box;
+    gap: 8px;
+}
+
+.emp-cert-modal-body {
+    padding: 0px;
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.emp-cert-modal-body::-webkit-scrollbar {
+    display: none;
+}
+
+.emp-modal-scroll-track {
+    width: 6px;
+    height: 100%;
+    min-height: 0;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    overflow: hidden;
+    padding-top: 2px;
+}
+
+.emp-modal-scroll-thumb-wrapper {
+    width: 6px;
+    height: 60px;
+    transition: transform 0.05s ease-out;
+    will-change: transform;
+}
+
+.emp-modal-scroll-icon {
+    width: 6px;
+    height: 60px;
+    display: block;
+    object-fit: contain;
+}
+
+.emp-cert-form-row {
+    display: flex;
+    gap: 14px;
+}
+
+.emp-cert-form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    width: 100%;
+}
+
+.emp-cert-form-group.emp-flex-1 {
+    flex: 1;
+}
+
+.emp-cert-form-group.emp-flex-2 {
+    flex: 2;
+}
+
+.emp-cert-form-group label {
+    font-size: 12px;
+    font-weight: 400;
+    color: #000000;
+}
+
+.emp-req-star {
+    color: #EF4444;
+}
+
+.emp-cert-form-group input[type="text"],
+.emp-cert-form-group input[type="number"],
+.emp-cert-form-group input[type="date"],
+.emp-cert-form-group input,
+.emp-cert-form-group select {
+    width: 100%;
+    height: 30px;
+    padding: 10px 6px;
+    font-size: 12px;
+    font-weight: 400;
+    color: #000000;
+    background: #FFFFFF;
+    border: 1px solid #CBD5E1;
+    border-radius: 4px;
+    outline: none;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.emp-cert-form-group input::placeholder,
+.emp-cert-form-group input[type="text"]::placeholder,
+.emp-cert-form-group input[type="number"]::placeholder,
+.emp-input-with-icon-right input::placeholder,
+.emp-input-with-rupee-box input::placeholder {
+    color: #7F7F7F;
+    font-weight: 400;
+}
+
+.emp-cert-form-group input:-webkit-autofill,
+.emp-cert-form-group input:-webkit-autofill:hover,
+.emp-cert-form-group input:-webkit-autofill:focus,
+.emp-cert-form-group input:-webkit-autofill:active,
+.emp-input-with-icon-right input:-webkit-autofill,
+.emp-input-with-rupee-box input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px #FFFFFF inset !important;
+    box-shadow: 0 0 0 1000px #FFFFFF inset !important;
+    -webkit-text-fill-color: #000000 !important;
+    caret-color: #000000 !important;
+    transition: background-color 5000s ease-in-out 0s;
+    background-color: #FFFFFF !important;
+}
+
+.emp-cert-form-group input:focus,
+.emp-cert-form-group select:focus,
+.emp-cert-form-group textarea:focus {
+    border-color: #2563EB;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+.emp-cert-dropzone {
+    border: 2px dashed #CBD5E1;
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+    background: #F8FAFC;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.emp-cert-dropzone:hover,
+.emp-cert-dropzone.active {
+    border-color: #2563EB;
+    background: #EFF6FF;
+}
+
+.emp-cert-dropzone.emp-has-file {
+    border-color: #10B981;
+    background: #ECFDF5;
+}
+
+.emp-dropzone-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+}
+
+.emp-upload-icon {
+    color: #2563EB;
+    margin-bottom: 8px;
+}
+
+.emp-dropzone-text {
+    margin: 0;
+    font-size: 12px;
+    font-weight: 500;
+    font-family: 'Roboto', sans-serif;
+    color: #7F7F7F;
+}
+
+.emp-dropzone-text .emp-browse-files-blue-text {
+    color: #215EF8;
+    font-weight: 500;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.emp-dropzone-sub {
+    margin: 4px 0 0 0;
+    font-size: 12px;
+    color: #94A3B8;
+}
+
+.emp-file-preview-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.emp-file-preview-info .emp-file-icon {
+    color: #059669;
+}
+
+.emp-file-name {
+    font-weight: 600;
+    font-size: 14px;
+    color: #0F172A;
+    display: block;
+}
+
+.emp-file-status {
+    font-size: 12px;
+    color: #059669;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    margin-top: 2px;
+}
+
+.emp-cert-reimb-checkbox-row {
+    display: flex;
+    align-items: center;
+    margin-top: 4px;
+}
+
+.emp-checkbox-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13.5px;
+    color: #334155;
+    cursor: pointer;
+    user-select: none;
+}
+
+.emp-cert-modal-footer {
+    padding: 10px 20px 12px 20px;
+    background: #FFFFFF;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 12px;
+    flex-shrink: 0;
+    z-index: 10;
+}
+
+.emp-cert-modal-footer.emp-space-between {
+    justify-content: space-between;
+}
+
+.emp-btn-secondary {
+    padding: 9px 18px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #475569;
+    background: #FFFFFF;
+    border: 1px solid #CBD5E1;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.emp-btn-secondary:hover {
+    background: #F1F5F9;
+    color: #0F172A;
+}
+
+.emp-btn-primary {
+    padding: 9px 20px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #FFFFFF;
+    background: #2563EB;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    box-shadow: 0 1px 3px rgba(37, 99, 235, 0.3);
+}
+
+.emp-btn-primary:hover {
+    background: #1D4ED8;
+}
+
+.emp-btn-danger-outline {
+    padding: 9px 16px;
+    font-size: 13.5px;
+    font-weight: 600;
+    color: #DC2626;
+    background: #FFFFFF;
+    border: 1px solid #FCA5A5;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.15s ease;
+}
+
+.emp-btn-danger-outline:hover {
+    background: #FEF2F2;
+}
+
+.emp-btn-danger {
+    padding: 9px 20px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #FFFFFF;
+    background: #DC2626;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.emp-btn-danger:hover {
+    background: #B91C1C;
+}
+
+/* Detail Modal Styles */
+.emp-cert-icon-large {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.emp-cert-icon-large.emp-badge-blue {
+    background: #2563EB;
+}
+
+.emp-cert-icon-large.emp-book-navy {
+    background: #1E293B;
+}
+
+.emp-cert-badge-type {
+    font-size: 13px;
+    color: #64748B;
+    margin: 2px 0 0 0;
+}
+
+.emp-detail-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    padding: 8px 0;
+}
+
+.emp-detail-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.emp-detail-label {
+    font-size: 12px;
+    text-transform: uppercase;
+    color: #64748B;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.emp-detail-value {
+    font-size: 14px;
+    font-weight: 600;
+    color: #0F172A;
+}
+
+.emp-font-mono {
+    font-family: monospace;
+}
+
+.emp-blue-icon {
+    color: #2563EB;
+}
+
+.emp-green-icon {
+    color: #10B981;
+}
+
+.emp-green-text {
+    color: #059669;
+}
+
+.emp-gray-icon {
+    color: #64748B;
+}
+
+.emp-detail-reimb-box {
+    margin-top: 12px;
+    background: #F8FAFC;
+    border: 1px solid #E2E8F0;
+    border-radius: 12px;
+    padding: 16px;
+}
+
+.emp-reimb-box-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.emp-reimb-box-header h4 {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 600;
+    color: #1E293B;
+}
+
+.emp-reimb-status-tag {
+    font-size: 12px;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.emp-reimb-status-tag.approved {
+    background: #ECFDF5;
+    color: #059669;
+}
+
+.emp-reimb-status-tag.pending {
+    background: #FFF7ED;
+    color: #EA580C;
+}
+
+.emp-reimb-status-tag.none {
+    background: #E2E8F0;
+    color: #64748B;
+}
+
+.emp-reimb-box-action {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.emp-reimb-box-action p {
+    margin: 0;
+    font-size: 12.5px;
+    color: #64748B;
+}
+
+.emp-btn-pill-blue {
+    padding: 6px 14px;
+    font-size: 12.5px;
+    font-weight: 600;
+    color: #FFFFFF;
+    background: #2563EB;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+/* Helpers */
+.emp-flex-row {
+    display: flex;
+}
+
+.emp-align-center {
+    align-items: center;
+}
+
+.emp-gap-6 {
+    gap: 6px;
+}
+
+.emp-gap-10 {
+    gap: 10px;
+}
+
+.emp-gap-12 {
+    gap: 12px;
+}
+
+.emp-confirm-icon-box {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: #FEE2E2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.emp-confirm-modal-body h3 {
+    margin: 0 0 8px 0;
+    font-size: 18px;
+    color: #0F172A;
+}
+
+.emp-confirm-modal-body p {
+    margin: 0;
+    font-size: 14px;
+    color: #475569;
+    line-height: 20px;
+}
+
+/* =========================================================
+   EXPANDED CLAIM APPROVAL TIMELINE
+   ========================================================= */
+
+.emp-cert-item-wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.emp-cert-req-wrapper.is-expanded {
+    background: #FFFFFF;
+    border-radius: 10px;
+    padding: 12px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    box-sizing: border-box;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+    transition: background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.emp-cert-req-wrapper.is-expanded .emp-cert-req-card-row {
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    padding: 0;
+    min-height: auto;
+}
+
+.emp-cert-req-wrapper.is-expanded .emp-cert-timeline-expanded-container {
+    background: #F3F4F8;
+    border: none;
+    border-radius: 10px;
+    padding: 8px 14px;
+    margin-top: 0;
+}
+
+.emp-cert-timeline-expanded-container {
+    background: #F3F4F8;
+    border: none;
+    border-radius: 10px;
+    padding: 8px 14px;
+    margin-top: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    overflow: hidden;
+    animation: fadeInTimeline 0.2s ease-out forwards;
+}
+
+@keyframes fadeInTimeline {
+    from {
+        opacity: 0;
+        transform: translateY(-4px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.emp-timeline-header-box {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+}
+
+.emp-corner-icon-square {
+    width: 32px;
+    height: 32px;
+    background: #FFFFFF;
+    border-radius: 8px;
+    border: 1px solid #E2E8F0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+}
+
+.emp-timeline-title-text {
+    font-size: 12px;
+    font-weight: 500;
+    color: #060606;
+    white-space: nowrap;
+}
+
+.emp-timeline-stepper-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 0;
+    flex: 1;
+    min-width: 0;
+    justify-content: flex-end;
+}
+
+.emp-timeline-step-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    flex: 1 1 auto;
+    min-width: 0;
+}
+
+.emp-step-circle {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #FFFFFF;
+    margin-bottom: 6px;
+}
+
+.emp-step-circle.blue {
+    background-color: #215EF8;
+}
+
+.emp-step-circle.green {
+    background-color: #00B050;
+}
+
+.emp-step-label {
+    font-size: 12px;
+    font-weight: 400;
+    color: #000000;
+    white-space: nowrap;
+}
+
+.emp-step-date {
+    font-size: 11px;
+    font-weight: 400;
+    color: #7F7F7F;
+    margin-top: 1px;
+    white-space: nowrap;
+}
+
+.emp-step-circle.red {
+    background-color: #EF4444;
+    border: 1.5px solid #DC2626;
+}
+
+.emp-step-date.rejected {
+    color: #DC2626;
+    font-weight: 500;
+}
+
+/* DASHED CONNECTOR LINE (MATCHING COURSE REQUEST TRACKER) */
+.emp-tracker-timeline-connector,
+.emp-timeline-dotted-line,
+.emp-timeline-dotline-img {
+    flex: 0.45 1 10px;
+    min-width: 8px;
+    max-width: 48px;
+    height: 0;
+    border-top: 1.5px dashed #B0B7C3;
+    margin-top: 12px;
+}
+
+/* =========================================================
+   REQUEST CERTIFICATION MODAL DESIGN
+   ========================================================= */
+
+.emp-req-cert-modal {
+    max-width: 669px;
+    width: 100%;
+}
+
+.emp-cert-modal-container.emp-upload-cert-modal {
+    height: auto;
+    max-height: 92vh;
+}
+
+.emp-req-cert-title {
+    font-size: 20px;
+    line-height: 24px;
+    font-weight: 500;
+    color: #215EF8;
+    margin: 0;
+}
+
+.emp-form-label-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.emp-btn-switch-preset {
+    background: transparent;
+    border: none;
+    color: #215EF8;
+    font-family: 'Roboto', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    cursor: pointer;
+    padding: 0;
+    transition: opacity 0.15s ease, text-decoration 0.15s ease;
+}
+
+.emp-btn-switch-preset:hover {
+    text-decoration: underline;
+    opacity: 0.85;
+}
+
+.emp-input-with-icon-right,
+.emp-input-with-icon-left,
+.emp-select-wrapper,
+.emp-input-with-rupee-box {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.emp-inner-icon-right {
+    position: absolute;
+    right: 14px;
+    color: #000000;
+    pointer-events: none;
+}
+
+/* Hide browser native datalist arrow and right-side date picker calendar icon */
+input[list]::-webkit-calendar-picker-indicator,
+.emp-cert-form-group input[type="date"]::-webkit-calendar-picker-indicator,
+.emp-input-with-icon-left input[type="date"]::-webkit-calendar-picker-indicator {
+    display: none !important;
+    opacity: 0 !important;
+    -webkit-appearance: none !important;
+}
+
+.emp-inner-icon-left {
+    position: absolute;
+    left: 14px;
+    color: #64748B;
+    pointer-events: none;
+}
+
+.emp-input-with-icon-left input {
+    padding-left: 42px !important;
+}
+
+.emp-input-with-icon-left input[type="date"] {
+    cursor: pointer;
+}
+
+.emp-input-with-icon-right input {
+    padding-left: 12px !important;
+    padding-right: 44px !important;
+}
+
+.emp-select-chevron {
+    position: absolute;
+    right: 14px;
+    color: #000000;
+    pointer-events: none;
+}
+
+.emp-select-wrapper select {
+    width: 100%;
+    appearance: none;
+    background: #FFFFFF;
+    padding-right: 36px !important;
+    cursor: pointer;
+}
+
+.emp-input-with-rupee-box {
+    border: 1px solid #CBD5E1;
+    border-radius: 4px;
+    overflow: hidden;
+    background: #FFFFFF;
+    height: 30px;
+    box-sizing: border-box;
+}
+
+.emp-input-with-rupee-box:focus-within {
+    border-color: #2563EB;
+}
+
+.emp-input-with-rupee-box.is-disabled,
+.emp-input-with-rupee-box:has(input:disabled) {
+    background: #F8FAFC !important;
+    border-color: #E2E8F0 !important;
+    cursor: not-allowed !important;
+}
+
+.emp-input-with-rupee-box.is-disabled input,
+.emp-input-with-rupee-box input:disabled {
+    background: transparent !important;
+    color: #000000 !important;
+    cursor: not-allowed !important;
+}
+
+.emp-input-with-rupee-box.is-disabled .emp-rupee-symbol-box,
+.emp-input-with-rupee-box:has(input:disabled) .emp-rupee-symbol-box {
+    background: #F1F5F9 !important;
+    color: #64748B !important;
+    border-right-color: #E2E8F0 !important;
+}
+
+.emp-rupee-symbol-box {
+    padding: 0 10px;
+    background: #F8FAFC;
+    border-right: 1px solid #CBD5E1;
+    font-size: 13px;
+    color: #64748B;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+.emp-input-with-rupee-box input {
+    border: none !important;
+    border-radius: 0 !important;
+    height: 100% !important;
+    padding: 0 10px !important;
+    font-size: 12px !important;
+    color: #000000 !important;
+    box-sizing: border-box !important;
+}
+
+.emp-textarea-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.emp-textarea-wrapper textarea {
+    width: 100%;
+    height: 100%;
+    padding: 10px 14px 28px 14px !important;
+    font-size: 12px;
+    font-weight: 400;
+    color: #000000;
+    background: #FFFFFF;
+    border: 1px solid #DDE0EE;
+    border-radius: 4px;
+    outline: none;
+    resize: none;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.emp-textarea-wrapper textarea::placeholder {
+    color: #7F7F7F;
+    font-weight: 400;
+}
+
+.emp-textarea-wrapper textarea:focus {
+    border-color: #215EF8;
+    box-shadow: 0 0 0 3px rgba(33, 94, 248, 0.12);
+}
+
+.emp-char-counter {
+    position: absolute;
+    bottom: 8px;
+    right: 14px;
+    font-size: 12px;
+    font-weight: 400;
+    color: #6B7280;
+    pointer-events: none;
+}
+
+.emp-optional-text {
+    font-weight: 400;
+    color: #7F7F7F;
+    margin-left: 4px;
+}
+
+.emp-file-dropzone-container {
+    border: 1px dashed #888787;
+    background: #F3F4F8;
+    border-radius: 10px;
+    height: 48px;
+    padding: 8px 16px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.emp-file-dropzone-container:hover {
+    border-color: #2563EB;
+    background: #F0F5FF;
+}
+
+.emp-dropzone-text {
+    margin: 0;
+    font-size: 12px;
+    font-family: 'Roboto', sans-serif;
+    color: #7F7F7F;
+    line-height: 1.4;
+    max-width: calc(100% - 36px);
+    min-width: 0;
+}
+
+.emp-dropzone-text span {
+    text-decoration: none;
+}
+
+.emp-browse-files-blue-text {
+    color: #215EF8;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.emp-browse-files-blue-text:hover {
+    text-decoration: underline;
+}
+
+.emp-browse-files-link {
+    color: #2563EB;
+    font-weight: 500;
+    text-decoration: underline;
+}
+
+.emp-browse-files-svg-img {
+    height: 14px;
+    vertical-align: middle;
+    margin-left: 4px;
+    object-fit: contain;
+}
+
+.emp-supporting-doc-label-img {
+    height: 14px;
+    display: inline-block;
+    vertical-align: middle;
+    object-fit: contain;
+}
+
+.emp-selected-filename {
+    display: inline-block;
+    max-width: calc(100% - 28px);
+    vertical-align: middle;
+    font-weight: 500;
+    color: #2FC47E;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.emp-remove-file-cross-btn {
+    background: transparent;
+    border: none;
+    color: #888888;
+    cursor: pointer;
+    padding: 0;
+    margin-left: 8px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    vertical-align: middle;
+    transition: color 0.15s ease;
+}
+
+.emp-remove-file-cross-btn:hover {
+    color: #374151;
+}
+
+.emp-file-supports-text {
+    font-size: 11px;
+    font-weight: 400;
+    color: #7F7F7F;
+    margin-top: 2px;
+    display: block;
+}
+
+.emp-btn-cancel-gray {
+    background: #F3F4F8;
+    color: #000000;
+    height: 30px;
+    border: 1px solid #DDE7FF;
+    border-radius: 9px;
+    padding: 6px 20px;
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.15s ease;
+}
+
+.emp-btn-submit-blue {
+    background: #2563EB;
+    color: #FFFFFF;
+    border: none;
+    height: 30px;
+    border-radius: 9px;
+    padding: 6px 20px;
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.15s ease;
+}
+
+.emp-btn-submit-blue:hover {
+    background: #1D4ED8;
+}
+
+/* Supporting Document & Uploaded File Card Styles */
+.emp-btn-add-supporting-doc {
+    display: inline-flex;
+    align-items: center;
+    height: 30px;
+    gap: 6px;
+    padding: 9px 18px;
+    font-size: 12px;
+    font-weight: 500;
+    color: #215EF8;
+    background: #FFFFFF;
+    border: 1px solid #215EF8;
+    border-radius: 9px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    margin-top: 4px;
+}
+
+.emp-btn-add-supporting-doc:hover {
+    background: #F0F5FF;
+}
+
+.emp-supporting-files-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 8px;
+}
+
+.emp-uploaded-file-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 14px;
+    background: #F8FAFC;
+    border: 1px solid #E2E8F0;
+    border-radius: 8px;
+    margin-top: 8px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02);
+    transition: all 0.15s ease;
+}
+
+.emp-uploaded-file-card:hover {
+    border-color: #CBD5E1;
+    background: #FFFFFF;
+}
+
+.emp-cert-file-card {
+    border-color: #BFDBFE;
+    background: #EFF6FF;
+}
+
+.emp-supporting-doc-card {
+    border-color: #E2E8F0;
+    background: #F8FAFC;
+}
+
+.emp-uploaded-file-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 0;
+    flex: 1;
+}
+
+.emp-uploaded-file-icon-box {
+    width: 34px;
+    height: 30px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.emp-cert-icon-bg {
+    background: #DBEAFE;
+    color: #2563EB;
+}
+
+.emp-supp-icon-bg {
+    background: #E2E8F0;
+    color: #475569;
+}
+
+.emp-file-icon-blue {
+    color: #2563EB;
+}
+
+.emp-file-icon-gray {
+    color: #475569;
+}
+
+.emp-uploaded-file-details {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 0;
+    flex: 1;
+}
+
+.emp-uploaded-file-name {
+    font-size: 13px;
+    font-weight: 600;
+    color: #0F172A;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.emp-uploaded-file-meta {
+    font-size: 11.5px;
+    color: #64748B;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.emp-check-icon-green {
+    color: #10B981;
+}
+
+.emp-btn-remove-file {
+    background: transparent;
+    border: none;
+    color: #94A3B8;
+    cursor: pointer;
+    padding: 6px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.15s ease;
+    flex-shrink: 0;
+}
+
+.emp-btn-remove-file:hover {
+    background: #FEE2E2;
+    color: #EF4444;
+}
+
+/* =========================================================
+   UPLOADED DOCUMENT PREVIEW CARD (MATCHING REFERENCE UI)
+   ========================================================= */
+
+.emp-uploaded-doc-preview-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 16px;
+    background: #FFFFFF;
+    border: 1px solid #E0E7FF;
+    border-radius: 8px;
+    margin-top: 10px;
+    box-shadow: 0 1px 3px rgba(15, 23, 42, 0.03);
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.emp-uploaded-doc-preview-card:hover {
+    border-color: #C7D2FE;
+    box-shadow: 0 2px 5px rgba(37, 99, 235, 0.06);
+}
+
+.emp-uploaded-doc-left {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    min-width: 0;
+    flex: 1;
+}
+
+.emp-uploaded-doc-blue-icon {
+    color: #2563EB;
+    flex-shrink: 0;
+}
+
+.emp-uploaded-doc-text {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    min-width: 0;
+    flex: 1;
+}
+
+.emp-uploaded-doc-title {
+    font-size: 13px;
+    font-weight: 400;
+    color: #000000;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.emp-uploaded-doc-subtext {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    font-size: 13px;
+    font-weight: 400;
+    color: #6B7280;
+}
+
+.emp-uploaded-doc-size {
+    color: #64748B;
+}
+
+.emp-uploaded-doc-right {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-shrink: 0;
+    margin-left: 16px;
+}
+
+.emp-uploaded-doc-badge {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: #10B981;
+    font-weight: 600;
+    font-size: 13px;
+}
+
+.emp-badge-check-icon {
+    color: #10B981;
+}
+
+.emp-uploaded-doc-more-btn {
+    background: transparent;
+    border: none;
+    color: #475569;
+    cursor: pointer;
+    padding: 6px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.15s ease, color 0.15s ease;
+}
+
+.emp-uploaded-doc-more-btn:hover {
+    background: #F1F5F9;
+    color: #0F172A;
+}
+
+.emp-uploaded-doc-trash-btn {
+    background: transparent;
+    border: none;
+    color: #64748B;
+    cursor: pointer;
+    padding: 6px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.15s ease, color 0.15s ease;
+}
+
+.emp-uploaded-doc-trash-btn:hover {
+    background: #FEE2E2;
+    color: #DC2626;
+}
+
+/* Custom SVG Icon Styles for Upload Certificate Modal */
+
+.emp-select-chevron-img {
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 9px;
+    height: 6px;
+    pointer-events: none;
+}
+
+.emp-inner-icon-left-img {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 16px;
+    height: 18px;
+    cursor: pointer;
+    z-index: 2;
+}
+
+.emp-dropzone-upload-icon-img {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+    margin-bottom: 0;
+}
+
+.emp-uploaded-doc-blue-icon-img {
+    width: 28px;
+    height: 36px;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+.emp-badge-check-icon-img {
+    width: 18px;
+    height: 18px;
+    object-fit: contain;
+}
+
+.emp-modal-close-icon-img {
+    width: 10px;
+    height: 10px;
+    object-fit: contain;
+}
+
+/* =========================================================
+   UPLOAD SUCCESS CONFIRMATION MODAL
+   ========================================================= */
+
+.emp-upload-success-modal-card {
+    background: #FFFFFF;
+    border-radius: 16px;
+    padding: 36px 40px 36px 40px;
+    width: 377px;
+    height: 201px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.15), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    animation: slideUpModal 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.emp-upload-success-close-btn {
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: background 0.15s ease;
+}
+
+.emp-upload-success-close-btn:hover {
+    background: #F1F5F9;
+}
+
+.emp-upload-success-icon-container {
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.emp-upload-success-check-img {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+}
+
+.emp-upload-success-heading {
+    font-size: 20px;
+    font-weight: 500;
+    color: #000000;
+    line-height: 25px;
+    margin: 0;
+    text-align: center;
+}
+
+/* Vertical Ellipsis Popover Menu Styles */
+.emp-uploaded-doc-more-container {
+    position: relative;
+    display: inline-block;
+}
+
+.emp-doc-more-menu-dropdown {
+    position: absolute;
+    right: 0;
+    top: calc(100% + 4px);
+    background: #FFFFFF;
+    border-radius: 8px;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    padding: 4px;
+    z-index: 50;
+    min-width: 110px;
+    animation: fadeInModal 0.15s ease-out;
+}
+
+.emp-doc-more-menu-item {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    font-size: 13px;
+    font-weight: 500;
+    color: #0F172A;
+    background: transparent;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.15s ease;
+}
+
+.emp-doc-more-menu-item.emp-remove {
+    color: #EF4444;
+}
+
+.emp-doc-more-menu-item.emp-remove:hover {
+    background: #FEE2E2;
+}
+
+/* =========================================================
+   RESPONSIVE MEDIA QUERIES (< 1024px)
+   ========================================================= */
+@media (max-width: 1023px) {
+    .emp-cert-reimb-page {
+        height: 100% !important;
+        max-height: 100% !important;
+        overflow: hidden !important;
+        padding: 14px 16px 12px 16px !important;
+    }
+
+    .emp-cert-metrics-grid {
+        display: grid !important;
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 12px !important;
+    }
+
+    .emp-cert-content-split {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 16px !important;
+    }
+
+    .emp-cert-tab-nav {
+        display: flex !important;
+        flex-wrap: wrap !important;
+        gap: 8px !important;
+    }
+
+    .emp-cert-tab-btn {
+        flex: 1 1 calc(50% - 8px) !important;
+        text-align: center !important;
+    }
+}
+
+@media (max-width: 520px) {
+    .emp-cert-metrics-grid {
+        grid-template-columns: 1fr !important;
+        gap: 10px !important;
+    }
+
+    .emp-cert-tab-btn {
+        flex: 1 1 100% !important;
+    }
+}
+
+/* =========================================================
+   MODAL VALIDATION ERROR STYLES
+   ========================================================= */
+
+.emp-cert-form-group input.emp-form-input-error,
+.emp-cert-form-group input.form-input-error,
+.emp-cert-form-group .emp-form-input-error:not(textarea):not(.emp-file-dropzone-container),
+.emp-cert-form-group .form-input-error:not(textarea):not(.emp-file-dropzone-container),
+.emp-input-with-icon-right input.emp-form-input-error,
+.emp-input-with-icon-right input.form-input-error,
+.emp-select-wrapper.emp-form-input-error select,
+.emp-input-with-rupee-box.emp-form-input-error {
+    border-color: #EF4444 !important;
+    height: 30px;
+}
+
+.emp-textarea-wrapper textarea.emp-form-input-error,
+.emp-textarea-wrapper textarea.form-input-error,
+.emp-cert-form-group textarea.emp-form-input-error,
+.emp-cert-form-group textarea.form-input-error {
+    border-color: #EF4444 !important;
+    height: 100% !important;
+    min-height: 80px;
+}
+
+.emp-file-dropzone-container.emp-form-input-error,
+.emp-file-dropzone-container.form-input-error {
+    border-color: #EF4444 !important;
+    height: 48px;
+}
+
+.emp-cert-form-group .emp-form-input-error:focus,
+.emp-cert-form-group .form-input-error:focus,
+.emp-cert-form-group input.emp-form-input-error:focus,
+.emp-cert-form-group input.form-input-error:focus,
+.emp-input-with-icon-right input.emp-form-input-error:focus,
+.emp-input-with-icon-right input.form-input-error:focus,
+.emp-select-wrapper.emp-form-input-error select:focus,
+.emp-input-with-rupee-box.emp-form-input-error:focus-within,
+.emp-textarea-wrapper textarea.emp-form-input-error:focus,
+.emp-textarea-wrapper textarea.form-input-error:focus,
+.emp-cert-form-group textarea.emp-form-input-error:focus,
+.emp-cert-form-group textarea.form-input-error:focus {
+    box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.15) !important;
+    border-color: #EF4444 !important;
+}
+
+.emp-form-error-text {
+    font-family: 'Roboto', sans-serif;
+    font-size: 12px;
+    line-height: 16px;
+    color: #EF4444;
+    margin-top: 4px;
+    display: block;
+    font-weight: 400;
+}
+
+/* =========================================================
+   MOBILE SCROLL FIX — Break the flex:1 + min-height:0 collapse chain.
+   On mobile/tablet, the page container has height:auto, so flex:1 children
+   collapse to 0. Set everything to height:auto + overflow:visible so
+   the scroll container (.app-container on mobile, .main-content on tablet)
+   can naturally scroll all content.
+   ========================================================= */
+
+/* Tablet: .main-content scrolls, page must be taller than viewport */
+@media (max-width: 1023px) {
+    .emp-cert-reimb-page {
+        height: auto !important;
+        min-height: 0 !important;
+        overflow: visible !important;
+    }
+
+    .emp-my-certificates-wrapper {
+        height: auto !important;
+        flex: none !important;
+        min-height: 0 !important;
+        overflow: visible !important;
+    }
+
+    .emp-cert-list-container {
+        height: auto !important;
+        flex: none !important;
+        min-height: 0 !important;
+        overflow-y: visible !important;
+        overflow-x: hidden !important;
+    }
+
+    .emp-reimb-claims-outer-container {
+        height: auto !important;
+        flex: none !important;
+        min-height: 0 !important;
+        overflow: visible !important;
+    }
+
+    .emp-reimb-claims-container {
+        height: auto !important;
+        flex: none !important;
+        min-height: 0 !important;
+        overflow: visible !important;
+    }
+
+    .emp-reimb-cards-list {
+        height: auto !important;
+        flex: none !important;
+        min-height: 0 !important;
+        overflow-y: visible !important;
+    }
+}
+
+/* Mobile: .app-container scrolls, same fix applies */
+@media (max-width: 767px) {
+    .emp-cert-reimb-page {
+        padding: 10px 10px 48px 10px !important;
+        /* 56px mobile header + 14px gap */
+        padding-bottom: 10px !important;
+    }
+
+    .emp-cert-modal-overlay {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        bottom: 0 !important;
+        padding: 16px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        box-sizing: border-box !important;
+    }
+
+    .emp-cert-modal-container,
+    .emp-req-cert-modal {
+        width: 100% !important;
+        max-width: 440px !important;
+        height: auto !important;
+        max-height: 80vh !important;
+        border-radius: 16px !important;
+        margin: auto !important;
+    }
+
+    .emp-cert-modal-footer {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        gap: 10px !important;
+        width: 100% !important;
+        padding: 12px 16px !important;
+        box-sizing: border-box !important;
+    }
+
+    .emp-btn-submit-blue {
+        order: 1 !important;
+        width: 100% !important;
+        height: 40px !important;
+        border-radius: 8px !important;
+        font-size: 12px !important;
+        font-weight: 600 !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        box-sizing: border-box !important;
+        padding: 0 8px !important;
+        white-space: nowrap !important;
+    }
+
+    .emp-btn-cancel-gray {
+        order: 2 !important;
+        width: 100% !important;
+        height: 40px !important;
+        border-radius: 8px !important;
+        font-size: 12px !important;
+        font-weight: 500 !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        box-sizing: border-box !important;
+        padding: 0 8px !important;
+        white-space: nowrap !important;
+    }
+}
+
+/* =========================================================
+   CUSTOM CERTIFICATION DROPDOWN UI (REIMBURSEMENT CLAIM)
+   ========================================================= */
+
+.emp-cert-select-trigger {
+    width: 100%;
+    height: 30px;
+    padding: 0 36px 0 10px;
+    font-size: 12px;
+    font-weight: 400;
+    font-family: inherit;
+    color: #080808;
+    background: #FFFFFF;
+    border: 1px solid #CBD5E1;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    text-align: left;
+    outline: none;
+    box-sizing: border-box;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.emp-cert-select-trigger:focus,
+.emp-cert-select-trigger.active {
+    border-color: #2563EB;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+.emp-cert-select-trigger.emp-form-input-error {
+    border-color: #EF4444;
+}
+
+.emp-cert-select-trigger.emp-form-input-error:focus,
+.emp-cert-select-trigger.emp-form-input-error.active {
+    box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.15);
+}
+
+.emp-cert-select-value {
+    font-size: 12px;
+    font-weight: 400;
+    color: #080808;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.emp-cert-select-value.placeholder {
+    color: #7f7f7f;
+}
+
+.emp-cert-dropdown-menu {
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 0;
+    width: 100%;
+    background: #FFFFFF;
+    border: 1px solid #E2E8F0;
+    border-radius: 8px;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    z-index: 100;
+    max-height: 220px;
+    overflow-y: auto;
+    padding: 6px;
+    box-sizing: border-box;
+    animation: empCertDropdownFadeIn 0.15s ease-out forwards;
+}
+
+@keyframes empCertDropdownFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-4px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.emp-cert-dropdown-section {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.emp-cert-dropdown-group-header {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 8px 4px 8px;
+    font-size: 11px;
+    font-weight: 600;
+    color: #474747;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    user-select: none;
+}
+
+.emp-cert-dropdown-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    display: inline-block;
+    flex-shrink: 0;
+}
+
+.emp-cert-dropdown-dot.approved {
+    background-color: #16A34A;
+}
+
+.emp-cert-dropdown-dot.pending {
+    background-color: #EAB308;
+}
+
+.emp-cert-dropdown-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 12px;
+    color: #1E293B;
+    background: transparent;
+    border: none;
+    width: 100%;
+    text-align: left;
+    transition: background 0.12s ease, color 0.12s ease;
+    box-sizing: border-box;
+}
+
+.emp-cert-dropdown-item:hover {
+    background: #F1F5F9;
+    color: #2563EB;
+}
+
+.emp-cert-dropdown-item.selected {
+    background: #EFF6FF;
+    color: #2563EB;
+    font-weight: 500;
+}
+
+.emp-cert-dropdown-item-left {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    flex: 1;
+}
+
+.emp-cert-dropdown-item-name {
+    font-weight: 500;
+    color: #000000;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.emp-cert-dropdown-item-provider {
+    font-size: 12px;
+    color: #7f7f7f;
+    font-weight: 400;
+    flex-shrink: 0;
+}
+
+.emp-cert-dropdown-check-icon {
+    color: #2563EB;
+    flex-shrink: 0;
+    margin-left: 8px;
+}
+
+.emp-cert-dropdown-item-badge {
+    font-size: 10px;
+    font-weight: 500;
+    padding: 1px 6px;
+    border-radius: 10px;
+    line-height: 1.2;
+    flex-shrink: 0;
+}
+
+.emp-cert-dropdown-item-badge.pending {
+    background: #FEF3C7;
+    color: #B45309;
+}
+
+.emp-cert-dropdown-empty {
+    padding: 10px 8px;
+    font-size: 12px;
+    font-weight: 400;
+    color: #7f7f7f;
+    text-align: center;
+}
+
+.emp-cert-dropdown-divider {
+    height: 1px;
+    background: #E2E8F0;
+    margin: 4px 0;
+}
+
+.emp-cert-dropdown-custom-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 500;
+    color: #2563EB;
+    background: transparent;
+    border: none;
+    width: 100%;
+    text-align: left;
+    transition: background 0.12s ease;
+    box-sizing: border-box;
+}
+
+.emp-cert-dropdown-custom-item:hover {
+    background: #EFF6FF;
+    color: #1D4ED8;
+}
+
+/* =========================================================
+
+   CUSTOM MODAL SELECT DROPDOWN COMPONENT (UI REPLACEMENT)
+
+   ========================================================= */
+
+
+
+.emp-modal-select-wrapper {
+
+    position: relative;
+
+    width: 100%;
+
+}
+
+
+
+.emp-modal-select-wrapper.open {
+
+    z-index: 1000;
+
+}
+
+
+
+.emp-modal-select-trigger {
+
+    width: 100%;
+
+    height: 30px;
+
+    padding: 0 32px 0 12px;
+
+    font-size: 12px;
+
+    font-weight: 400;
+
+    font-family: 'Roboto', sans-serif;
+
+    color: #080808;
+
+    background: #FFFFFF;
+
+    border: 1px solid #DDE0EE;
+
+    border-radius: 4px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    cursor: pointer;
+
+    text-align: left;
+
+    outline: none;
+
+    box-sizing: border-box;
+
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+
+    user-select: none;
+
+    position: relative;
+
+}
+
+
+
+.emp-modal-select-trigger:hover:not(:disabled) {
+
+    border-color: #94A3B8;
+
+}
+
+
+
+.emp-modal-select-trigger.active,
+
+.emp-modal-select-trigger:focus {
+
+    border-color: rgba(33, 94, 248, 1);
+
+    box-shadow: 0 0 0 2px rgba(33, 94, 248, 0.1);
+
+}
+
+
+
+.emp-modal-select-trigger.emp-form-input-error {
+
+    border-color: #EF4444 !important;
+
+}
+
+
+
+.emp-modal-select-trigger.emp-form-input-error.active,
+
+.emp-modal-select-trigger.emp-form-input-error:focus {
+
+    box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.15) !important;
+
+}
+
+
+
+.emp-modal-select-trigger:disabled {
+
+    background: #F8FAFC;
+
+    color: #94A3B8;
+
+    cursor: not-allowed;
+
+    border-color: #E2E8F0;
+
+}
+
+
+
+.emp-modal-select-value {
+
+    white-space: nowrap;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+
+    flex: 1;
+
+    font-family: 'Roboto', sans-serif;
+
+    font-size: 12px;
+
+    color: #000000;
+
+    font-weight: 400;
+
+}
+
+
+
+.emp-modal-select-value.placeholder {
+
+    color: #7F7F7F;
+
+}
+
+
+
+.emp-modal-select-chevron {
+
+    position: absolute;
+
+    right: 14px;
+
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    width: 9px;
+
+    height: 6px;
+
+    object-fit: contain;
+
+    pointer-events: none;
+
+    transition: transform 0.2s ease;
+
+}
+
+
+
+.emp-modal-select-chevron.open {
+
+    transform: translateY(-50%) rotate(180deg);
+
+}
+
+
+
+.emp-modal-select-menu {
+
+    position: absolute;
+
+    top: calc(100% + 4px);
+
+    left: 0;
+
+    width: 100%;
+
+    min-width: 100%;
+
+    max-height: 190px;
+
+    background: #FFFFFF;
+
+    border: 1px solid rgba(221, 224, 238, 1);
+
+    border-radius: 6px;
+
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12), 0 2px 6px rgba(0, 0, 0, 0.04);
+
+    overflow-y: auto !important;
+
+    overflow-x: hidden !important;
+
+    z-index: 1000;
+
+    padding: 4px 0;
+
+    box-sizing: border-box;
+
+    scrollbar-width: thin !important;
+
+    scrollbar-color: #D9D9D9 #FFFFFF !important;
+
+    animation: fadeInDropdown 0.15s ease-out;
+
+    scroll-behavior: smooth;
+
+    display: flex !important;
+
+    flex-direction: column !important;
+
+}
+
+
+
+.emp-modal-select-menu.drop-up {
+
+    top: auto;
+
+    bottom: calc(100% + 4px);
+
+    box-shadow: 0 -10px 25px rgba(0, 0, 0, 0.12), 0 -2px 6px rgba(0, 0, 0, 0.04);
+
+}
+
+
+
+.emp-modal-select-menu::-webkit-scrollbar {
+
+    width: 7px !important;
+
+    display: block !important;
+
+}
+
+
+
+.emp-modal-select-menu::-webkit-scrollbar-track {
+
+    background: #FFFFFF !important;
+
+    border-radius: 4px;
+
+}
+
+
+
+.emp-modal-select-menu::-webkit-scrollbar-thumb {
+
+    background: #D9D9D9 !important;
+
+    border-radius: 4px !important;
+
+}
+
+
+
+.emp-modal-select-menu::-webkit-scrollbar-thumb:hover {
+
+    background: #BFBFBF !important;
+
+}
+
+
+
+.emp-modal-select-item {
+
+    display: flex !important;
+
+    align-items: center !important;
+
+    width: 100% !important;
+
+    min-height: 30px !important;
+
+    height: 30px !important;
+
+    flex-shrink: 0 !important;
+
+    padding: 0 14px !important;
+
+    font-family: 'Roboto', sans-serif !important;
+
+    font-size: 12px !important;
+
+    font-weight: 400;
+
+    line-height: 30px !important;
+
+    color: #080808;
+
+    cursor: pointer;
+
+    transition: background 0.12s ease, color 0.12s ease;
+
+    white-space: nowrap;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+
+    box-sizing: border-box !important;
+
+    background: transparent;
+
+    border: none;
+
+    text-align: left;
+
+}
+
+
+
+.emp-modal-select-item:hover,
+
+.emp-modal-select-item.is-highlighted {
+
+    background: #F0F5FF;
+
+    color: #215EF8;
+
+}
+
+
+
+.emp-modal-select-item.selected {
+
+    background: #EBF2FF;
+
+    color: #215EF8;
+
+    font-weight: 500;
+
+}
+
+
+
+.emp-modal-select-item-text {
+
+    white-space: nowrap;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+
+    flex: 1;
+
+}
+
+
+
+.emp-modal-select-item.other-option {
+
+    border-top: 1px solid #E2E8F0;
+
+    margin-top: 2px;
+
+    color: #215EF8;
+
+    font-weight: 500;
+
+}
+
+
+
+.emp-modal-select-item.other-option:hover {
+
+    background: #F0F5FF;
+
+    color: #215EF8;
+
+}
+
+/* =========================================================
+   CERTIFICATION FILTER DRAWER (MATCHING REFERENCE DESIGN)
+   ========================================================= */
+
+.emp-cert-filter-drawer-root {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 99990;
+    pointer-events: auto;
+}
+
+.emp-cert-filter-drawer-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(15, 23, 42, 0.4);
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+    z-index: 99991;
+    animation: empCertDrawerFadeIn 0.2s ease-out;
+}
+
+.emp-cert-filter-drawer-panel {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 330px;
+    max-width: 90vw;
+    height: 100vh;
+    background: #FFFFFF;
+    box-shadow: -4px 0 24px rgba(15, 23, 42, 0.14);
+    z-index: 99992;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+    animation: empCertDrawerSlideIn 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes empCertDrawerSlideIn {
+    from {
+        transform: translateX(100%);
+    }
+
+    to {
+        transform: translateX(0);
+    }
+}
+
+@keyframes empCertDrawerFadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.emp-cert-filter-panel-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 22px;
+    background: #FFFFFF;
+    border-bottom: 1px solid #DDE0EE;
+    flex-shrink: 0;
+}
+
+.emp-cert-filter-panel-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: #000000;
+    font-family: 'Roboto', sans-serif;
+    letter-spacing: -0.2px;
+}
+
+.emp-cert-filter-panel-clear-btn {
+    background: transparent;
+    border: none;
+    color: #215EF8;
+    font-size: 13px;
+    font-weight: 500;
+    font-family: 'Roboto', sans-serif;
+    cursor: pointer;
+    padding: 4px 6px;
+    border-radius: 4px;
+    transition: all 0.15s ease;
+}
+
+.emp-cert-filter-panel-clear-btn:hover {
+    color: #1948C2;
+    text-decoration: underline;
+}
+
+.emp-cert-filter-panel-close-btn {
+    background: transparent;
+    border: none;
+    color: #64748B;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+    padding: 0;
+    transition: background 0.15s ease, color 0.15s ease;
+}
+
+.emp-cert-filter-panel-close-btn:hover {
+    background: #F1F5F9;
+    color: #0F172A;
+}
+
+.emp-cert-filter-panel-body {
+    padding: 18px 22px;
+    overflow-y: auto;
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    scrollbar-width: thin;
+    scrollbar-color: #CBD5E1 #F8FAFC;
+}
+
+.emp-cert-filter-panel-body::-webkit-scrollbar {
+    width: 5px;
+}
+
+.emp-cert-filter-panel-body::-webkit-scrollbar-thumb {
+    background: #CBD5E1;
+    border-radius: 4px;
+}
+
+.emp-cert-filter-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.emp-cert-filter-group-heading {
+    margin: 0;
+    font-size: 13px;
+    font-weight: 500;
+    color: #060606;
+    font-family: 'Roboto', sans-serif;
+}
+
+.emp-cert-filter-search-box {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.emp-cert-filter-search-icon {
+    position: absolute;
+    left: 10px;
+    color: #7f7f7f;
+    pointer-events: none;
+}
+
+.emp-cert-filter-search-input {
+    width: 100%;
+    height: 30px;
+    padding: 0 10px 0 32px;
+    border: 1px solid #DDE0EE;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 400;
+    font-family: 'Roboto', sans-serif;
+    color: #000000;
+    background: #F8FAFC;
+    box-sizing: border-box;
+    outline: none;
+    transition: all 0.15s ease;
+}
+
+.emp-cert-filter-search-input:focus {
+    border-color: #215EF8;
+    background: #FFFFFF;
+    box-shadow: 0 0 0 2px rgba(33, 94, 248, 0.1);
+}
+
+.emp-cert-filter-search-input::placeholder {
+    color: #7f7f7f;
+}
+
+.emp-cert-filter-options-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.emp-cert-filter-checkbox-row {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    cursor: pointer;
+    user-select: none;
+    transition: opacity 0.12s;
+}
+
+.emp-cert-filter-checkbox-row:hover .emp-cert-filter-checkbox-label {
+    color: #000000;
+}
+
+.emp-cert-filter-custom-checkbox {
+    width: 16px;
+    height: 16px;
+    min-width: 16px;
+    border-radius: 3px;
+    border: 1.5px solid #DDE0EE;
+    background: #FFFFFF;
+    box-sizing: border-box;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.15s ease;
+    cursor: pointer;
+}
+
+.emp-cert-filter-custom-checkbox.checked {
+    background: #215EF8;
+    border-color: #215EF8;
+}
+
+.emp-cert-filter-checkbox-label {
+    font-size: 12px;
+    font-weight: 400;
+    color: #474747;
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.3;
+    cursor: pointer;
+}
+
+.emp-cert-filter-more-toggle-btn {
+    background: transparent;
+    border: none;
+    color: #215EF8;
+    font-size: 12px;
+    font-weight: 500;
+    font-family: 'Roboto', sans-serif;
+    cursor: pointer;
+    padding: 2px 0;
+    text-align: left;
+    width: fit-content;
+    transition: all 0.12s ease;
+}
+
+.emp-cert-filter-more-toggle-btn:hover {
+    color: #1948C2;
+}
+
+.emp-cert-filter-panel-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 22px;
+    background: #FFFFFF;
+    flex-shrink: 0;
+    border-top: 1px solid #F1F5F9;
+}
+
+.emp-cert-filter-panel-apply-btn {
+    background: #215EF8;
+    border: 1px solid #215EF8;
+    color: #FFFFFF;
+    border-radius: 6px;
+    padding: 0 18px;
+    height: 30px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.15s ease, box-shadow 0.15s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.emp-cert-filter-panel-apply-btn:hover {
+    background: #1948C2;
+    border-color: #1948C2;
+    box-shadow: 0 2px 8px rgba(33, 94, 248, 0.25);
+}
+
+.emp-filter-active-count-badge {
+    background: #215EF8;
+    color: #FFFFFF !important;
+    font-size: 10px;
+    font-weight: 600;
+    padding: 1px 6px;
+    border-radius: 10px;
+    line-height: 14px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 2px;
+}
+
+/* =========================================================
+   REIMBURSEMENT CLAIM FILTER DRAWER (AMAZON PRICE & DATES)
+   ========================================================= */
+
+.emp-reimb-filter-drawer-panel {
+    width: 360px;
+    max-width: 92vw;
+}
+
+.emp-cert-filter-group-header-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 2px;
+}
+
+.emp-cert-filter-clear-link {
+    background: transparent;
+    border: none;
+    color: #215EF8;
+    font-size: 11.5px;
+    font-weight: 500;
+    cursor: pointer;
+    padding: 0;
+    text-decoration: none;
+    transition: color 0.15s ease;
+}
+
+.emp-cert-filter-clear-link:hover {
+    color: #1948C2;
+    text-decoration: underline;
+}
+
+/* Amazon-style Price Refinements Scale (#priceRefinements) */
+#priceRefinements,
+.price-refinements {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.emp-price-scale-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+    padding: 2px 0 6px 0;
+}
+
+.emp-price-display-text {
+    font-size: 15px;
+    font-weight: 700;
+    color: #0F172A;
+    font-family: 'Roboto', sans-serif;
+    letter-spacing: -0.2px;
+    user-select: none;
+}
+
+.emp-range-slider-track-box {
+    position: relative;
+    width: 100%;
+    height: 28px;
+    display: flex;
+    align-items: center;
+}
+
+.emp-range-slider-bar {
+    position: absolute;
+    width: 100%;
+    height: 4px;
+    background: #E2E8F0;
+    border-radius: 2px;
+    z-index: 1;
+}
+
+.emp-range-slider-progress {
+    position: absolute;
+    height: 4px;
+    background: #1B5CA8;
+    border-radius: 2px;
+    z-index: 2;
+}
+
+.emp-price-range-slider-input {
+    position: absolute;
+    width: 100%;
+    height: 4px;
+    background: none;
+    pointer-events: none;
+    -webkit-appearance: none;
+    appearance: none;
+    margin: 0;
+    outline: none;
+}
+
+.emp-price-range-slider-input::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    pointer-events: auto;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #FFFFFF 28%, #1B5CA8 30%);
+    border: 2.5px solid #8598AD;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
+    cursor: pointer;
+    transition: transform 0.1s ease, border-color 0.1s ease;
+}
+
+.emp-price-range-slider-input::-webkit-slider-thumb:hover,
+.emp-price-range-slider-input::-webkit-slider-thumb:active {
+    border-color: #1B5CA8;
+    transform: scale(1.1);
+}
+
+.emp-price-range-slider-input::-moz-range-thumb {
+    pointer-events: auto;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #FFFFFF 28%, #1B5CA8 30%);
+    border: 2.5px solid #8598AD;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
+    cursor: pointer;
+}
+
+/* Date Range Filter Rows */
+.emp-filter-date-range-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+}
+
+.emp-filter-date-field {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 0;
+}
+
+.emp-filter-date-sublabel {
+    font-size: 11px;
+    color: #64748B;
+    font-weight: 500;
+}
+
+.emp-filter-date-separator {
+    font-size: 12px;
+    color: #64748B;
+    font-weight: 500;
+    margin-top: 16px;
+    flex-shrink: 0;
+}

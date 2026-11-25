@@ -1,0 +1,224 @@
+import React, { useState, useEffect, useRef } from "react";
+import { createPortal } from "react-dom";
+import { X } from "lucide-react";
+import EmpDatePicker from "../../employee/Certification/EmpDatePicker";
+import DrawerDropdownField, { toggleFilterMultiOption } from "../../common/DrawerDropdownField";
+import DualRangeSlider from "../../common/DualRangeSlider";
+import "../../../styles/reportingmanager/RecommendCourse.css";
+import "../../../styles/reportingmanager/LearningRecords.css";
+import "../../../styles/L&D/CourseManagement.css";
+
+export default function WorkshopsFilterDrawer({
+    isOpen = false,
+    onClose,
+    categories = [],
+    selectedCategories = ["All"],
+    departments = [],
+    selectedDepartments = ["All"],
+    amountLimits = { min: 0, max: 1000, step: 100 },
+    selectedAmountRange = null,
+    selectedStartDate = "",
+    selectedEndDate = "",
+    onApply,
+    onClearAll,
+}) {
+    const drawerRef = useRef(null);
+
+    // Staged draft states
+    const [draftCategories, setDraftCategories] = useState(selectedCategories);
+    const [draftDepartments, setDraftDepartments] = useState(selectedDepartments);
+    const [draftAmountRange, setDraftAmountRange] = useState(
+        selectedAmountRange || [amountLimits.min, amountLimits.max]
+    );
+    const [draftStartDate, setDraftStartDate] = useState(selectedStartDate);
+    const [draftEndDate, setDraftEndDate] = useState(selectedEndDate);
+
+    // Sync state when drawer opens or incoming values update
+    useEffect(() => {
+        if (isOpen) {
+            setDraftCategories(selectedCategories?.length ? selectedCategories : ["All"]);
+            setDraftDepartments(selectedDepartments?.length ? selectedDepartments : ["All"]);
+            const safeRange =
+                selectedAmountRange?.length === 2 && selectedAmountRange[1] <= amountLimits.max
+                    ? selectedAmountRange
+                    : [amountLimits.min, amountLimits.max];
+            setDraftAmountRange(safeRange);
+            setDraftStartDate(selectedStartDate || "");
+            setDraftEndDate(selectedEndDate || "");
+        }
+    }, [
+        isOpen,
+        selectedCategories,
+        selectedDepartments,
+        selectedAmountRange,
+        selectedStartDate,
+        selectedEndDate,
+        amountLimits,
+    ]);
+
+    // Lock body scroll while drawer is open (filter closes ONLY when X icon is clicked)
+    useEffect(() => {
+        if (!isOpen) return;
+        const prevOverflow = document.body.style.overflow;
+        document.body.style.overflow = "hidden";
+        return () => {
+            document.body.style.overflow = prevOverflow;
+        };
+    }, [isOpen]);
+
+    const handleClearAllInternal = () => {
+        setDraftCategories(["All"]);
+        setDraftDepartments(["All"]);
+        setDraftAmountRange([amountLimits.min, amountLimits.max]);
+        setDraftStartDate("");
+        setDraftEndDate("");
+        onClearAll?.();
+    };
+
+    const handleApplyInternal = () => {
+        onApply?.({
+            categories: draftCategories,
+            departments: draftDepartments,
+            amountRange: draftAmountRange,
+            startDate: draftStartDate,
+            endDate: draftEndDate,
+        });
+        onClose?.();
+    };
+
+    if (!isOpen) return null;
+
+    return createPortal(
+        <div className="rm-filter-drawer-root">
+            {/* Backdrop: closes ONLY via the top-right X button */}
+            <div className="rm-filter-drawer-backdrop" aria-hidden="true" />
+            <aside
+                className="rm-filter-drawer-panel"
+                ref={drawerRef}
+                role="dialog"
+                aria-modal="true"
+                aria-label="Filters"
+                onClick={(e) => e.stopPropagation()}
+            >
+                {/* 1. Header */}
+                <div className="rm-filter-panel-header">
+                    <span className="rm-filter-panel-title">Filters</span>
+                    <button
+                        type="button"
+                        className="rm-filter-panel-close-btn"
+                        onClick={onClose}
+                        aria-label="Close filters"
+                        title="Close filters"
+                    >
+                        <X size={18} />
+                    </button>
+                </div>
+
+                {/* 2. Scrollable Body */}
+                <div className="rm-filter-panel-body" style={{ display: "flex", flexDirection: "column", gap: "22px" }}>
+                    {/* Event Category Dropdown */}
+                    <DrawerDropdownField
+                        title="Event Category"
+                        allLabel="All Categories"
+                        options={categories}
+                        selectedValues={draftCategories}
+                        showAllOption={false}
+                        onToggleOption={(item) =>
+                            toggleFilterMultiOption(item, draftCategories, setDraftCategories)
+                        }
+                        onClearField={() => setDraftCategories(["All"])}
+                    />
+
+                    {/* Department Dropdown */}
+                    <DrawerDropdownField
+                        title="Department"
+                        allLabel="All Departments"
+                        options={departments}
+                        selectedValues={draftDepartments}
+                        showAllOption={false}
+                        onToggleOption={(item) =>
+                            toggleFilterMultiOption(item, draftDepartments, setDraftDepartments)
+                        }
+                        onClearField={() => setDraftDepartments(["All"])}
+                    />
+
+                    {/* Amount Range Slider */}
+                    <DualRangeSlider
+                        title="Amount"
+                        min={amountLimits.min}
+                        max={amountLimits.max}
+                        step={amountLimits.step || 100}
+                        value={draftAmountRange}
+                        showPlusAtMax={false}
+                        onChange={setDraftAmountRange}
+                        onClear={() => setDraftAmountRange([amountLimits.min, amountLimits.max])}
+                    />
+
+                    {/* Event Date Range (start date - end date) */}
+                    <div className="rm-filter-group">
+                        <div
+                            className="rm-filter-group-header-row"
+                            style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}
+                        >
+                            <h4 className="rm-filter-group-heading">Event Date</h4>
+                            {(draftStartDate || draftEndDate) && (
+                                <button
+                                    type="button"
+                                    className="rm-filter-clear-link"
+                                    onClick={() => {
+                                        setDraftStartDate("");
+                                        setDraftEndDate("");
+                                    }}
+                                >
+                                    Clear
+                                </button>
+                            )}
+                        </div>
+
+                        <div className="rm-filter-date-range-row">
+                            <div className="rm-filter-date-field">
+                                <span className="rm-filter-date-sublabel">Starting Date</span>
+                                <EmpDatePicker
+                                    value={draftStartDate}
+                                    onChange={(e) => setDraftStartDate(e.target.value)}
+                                    placeholder="dd/mm/yyyy"
+                                />
+                            </div>
+
+                            <span className="rm-filter-date-separator">to</span>
+
+                            <div className="rm-filter-date-field">
+                                <span className="rm-filter-date-sublabel">Ending Date</span>
+                                <EmpDatePicker
+                                    value={draftEndDate}
+                                    onChange={(e) => setDraftEndDate(e.target.value)}
+                                    placeholder="dd/mm/yyyy"
+                                    min={draftStartDate || undefined}
+                                />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {/* 3. Sticky Footer */}
+                <div className="rm-filter-panel-footer">
+                    <button
+                        type="button"
+                        className="rm-filter-panel-clear-btn"
+                        onClick={handleClearAllInternal}
+                    >
+                        Clear all
+                    </button>
+                    <button
+                        type="button"
+                        className="rm-filter-panel-apply-btn"
+                        onClick={handleApplyInternal}
+                    >
+                        Apply Filter
+                    </button>
+                </div>
+            </aside>
+        </div>,
+        document.body
+    );
+}

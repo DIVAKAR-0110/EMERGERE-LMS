@@ -1,0 +1,343 @@
+/* ==========================================================================
+   MONTHLY LEARNING HISTORY MODAL STYLES
+   ========================================================================== */
+
+.emp-modal-backdrop-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(15, 23, 42, 0.45);
+    backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 99999;
+    padding: 20px;
+    box-sizing: border-box;
+    animation: empModalFadeIn 0.2s ease-out;
+}
+
+@keyframes empModalFadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.97);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.emp-monthly-history-modal-card {
+    position: relative;
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 20px 40px rgba(15, 23, 42, 0.14);
+    width: 669px;
+    height: 470px;
+    max-width: 95vw;
+    max-height: 90vh;
+    padding: 15px 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+}
+
+.emp-full-month-header {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    width: 100%;
+    padding-right: 0 !important;
+    box-sizing: border-box;
+}
+
+.emp-full-month-header-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.emp-full-month-header-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    width: 100%;
+}
+
+.emp-month-modal-blue-title {
+    margin: 0;
+    font-size: 22px;
+    font-weight: 500;
+    color: #215EF8;
+    letter-spacing: -0.3px;
+    font-family: inherit;
+}
+
+.emp-month-modal-close {
+    position: static !important;
+    width: 24px;
+    height: 24px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.15s ease;
+    flex-shrink: 0;
+}
+
+.emp-month-modal-close:hover {
+    opacity: 0.75;
+}
+
+.emp-modal-close-icon-img {
+    width: 12px;
+    height: 12px;
+    object-fit: contain;
+    display: block;
+}
+
+.emp-modal-subtitle {
+    margin: 4px 0 0 0;
+    font-size: 13px;
+    font-weight: 400;
+    color: #7f7f7f;
+    line-height: 20px;
+    font-family: inherit;
+}
+
+.emp-month-modal-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 140px;
+    flex-shrink: 0;
+}
+
+.emp-month-modal-nav-text {
+    color: #215EF8;
+    font-size: 12px;
+    font-weight: 500;
+    flex: 1;
+    min-width: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    user-select: none;
+}
+
+.emp-calendar-nav-btn {
+    width: 18px;
+    height: 18px;
+    padding: 0;
+    border: none;
+    border-radius: 3px;
+    background: transparent;
+    color: #215EF8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.15s ease;
+}
+
+.emp-calendar-nav-btn:hover {
+    background: #f0f4ff;
+}
+
+.emp-calendar-nav-btn.disabled,
+.emp-calendar-nav-btn:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+.emp-nav-arrow-icon {
+    width: 12px;
+    height: 12px;
+    object-fit: contain;
+}
+
+.emp-monthly-history-scroll-body {
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+    margin-top: 16px;
+    margin-bottom: 12px;
+    padding-right: 8px;
+    scrollbar-width: thin;
+    scrollbar-color: #cbd5e1 transparent;
+}
+
+.emp-monthly-history-scroll-body::-webkit-scrollbar {
+    width: 5px;
+}
+
+.emp-monthly-history-scroll-body::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 4px;
+}
+
+.emp-month-activity-group {
+    margin-bottom: 10px;
+}
+
+.emp-month-group-banner {
+    background: #f3f4f8;
+    border-radius: 6px;
+    padding: 10px 16px;
+    min-height: 46px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2px;
+    box-sizing: border-box;
+}
+
+.emp-group-date-header {
+    font-size: 13px;
+    font-weight: 500;
+    color: #060606;
+}
+
+.emp-group-day-of-week {
+    font-size: 12px;
+    font-weight: 400;
+    color: #737373;
+}
+
+.emp-activities-list {
+    display: flex;
+    flex-direction: column;
+    padding: 0px 0px 4px 0px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.emp-activity-item-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 12px 0;
+    border-bottom: 1px solid #DDE0EE;
+}
+
+.emp-activity-item-row:last-child {
+    border-bottom: none;
+}
+
+.emp-activity-left {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    min-width: 0;
+    gap: 12px;
+    margin-left: 15px;
+}
+
+.emp-activity-datetime-col {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    width: auto;
+    min-width: unset;
+    flex-shrink: 0;
+}
+
+.emp-activity-date-str {
+    font-size: 10px;
+    font-weight: 600;
+    color: #000000;
+    white-space: nowrap;
+}
+
+.emp-activity-time-str {
+    font-size: 8px;
+    font-weight: 500;
+    color: #666666;
+    white-space: nowrap;
+}
+
+.emp-activity-info-col {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    flex: 1;
+    min-width: 0;
+}
+
+.emp-activity-item-row .emp-activity-title {
+    margin: 0;
+    font-size: 12px;
+    font-weight: 500;
+    color: #000000;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.emp-activity-item-row .emp-activity-desc {
+    margin: 0;
+    font-size: 12px;
+    font-weight: 400;
+    color: #737373;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.emp-activity-duration-badge {
+    background: #f1f2f8;
+    color: #215EF8;
+    width: 50px;
+    height: 25px;
+    padding: 0;
+    box-sizing: border-box;
+    border-radius: 140px;
+    font-size: 12px;
+    font-weight: 500;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    white-space: nowrap;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .emp-modal-backdrop-overlay {
+        padding: 12px;
+    }
+
+    .emp-monthly-history-modal-card {
+        width: 100%;
+        max-width: calc(100vw - 24px);
+        max-height: 90vh;
+        height: auto;
+        padding: 15px;
+    }
+
+    .emp-full-month-header-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+    .emp-month-modal-blue-title {
+        font-size: 18px;
+    }
+}

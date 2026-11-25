@@ -1,0 +1,755 @@
+/* =========================================================
+   ENTERPRISE ERP REPORTING MANAGER RESPONSIVE STYLES
+   src/styles/responsive/responsive-reportingmanager.css
+
+   Enforces:
+   - Fixed top headers on mobile screens (<= 1023px, <= 767px, <= 480px)
+   - Smooth inner scrolling for main content only
+   - 100% pixel-perfect desktop layouts (>= 1024px)
+   ========================================================= */
+
+/* ==========================================================================
+   1. DESKTOP & TABLET LAYOUT (>= 768px)
+   ========================================================================== */
+@media (min-width: 768px) {
+
+    /* 1. Team Dashboard */
+    .rm-dashboard-page {
+        width: 100% !important;
+        height: 100vh !important;
+        max-height: 100vh !important;
+        overflow: hidden !important;
+        padding: 20px 24px 16px 24px !important;
+        gap: 22px !important;
+        box-sizing: border-box !important;
+        display: flex !important;
+        flex-direction: column !important;
+    }
+
+    .rm-dashboard-fixed-header {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 10px !important;
+        flex-shrink: 0 !important;
+        width: 100% !important;
+    }
+
+    .rm-dashboard-scrollable-content {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 15px !important;
+        flex: 1 1 0 !important;
+        min-height: 0 !important;
+        width: 100% !important;
+        overflow: hidden !important;
+    }
+
+    .rm-team-members-card {
+        flex: 1 1 0 !important;
+        min-height: 0 !important;
+        overflow: hidden !important;
+    }
+
+    .rm-dashboard-bottom-grid {
+        flex: 0 0 clamp(180px, 31vh, 255px) !important;
+        height: clamp(180px, 31vh, 255px) !important;
+        min-height: 0 !important;
+        overflow: hidden !important;
+    }
+
+    /* 2. Team Management */
+    .rm-team-management-page {
+        width: 100% !important;
+        height: 100vh !important;
+        max-height: 100vh !important;
+        overflow: hidden !important;
+        padding: 20px 24px 16px 24px !important;
+        gap: clamp(8px, 1.1vh, 12px) !important;
+        box-sizing: border-box !important;
+        display: flex !important;
+        flex-direction: column !important;
+    }
+
+    .rm-team-management-fixed-header {
+        flex-shrink: 0 !important;
+        width: 100% !important;
+        display: flex !important;
+        flex-direction: column !important;
+    }
+
+    .rm-team-management-scrollable-content {
+        flex: 1 1 0 !important;
+        min-height: 0 !important;
+        width: 100% !important;
+        display: flex !important;
+        flex-direction: column !important;
+        gap: clamp(8px, 1.1vh, 12px) !important;
+        overflow: hidden !important;
+    }
+
+    /* 3. Learning Records */
+    .rm-learning-records-page {
+        width: 100% !important;
+        height: 100vh !important;
+        max-height: 100vh !important;
+        overflow: hidden !important;
+        padding: 20px 24px 16px 24px !important;
+        gap: 10px !important;
+        box-sizing: border-box !important;
+        display: flex !important;
+        flex-direction: column !important;
+    }
+
+    .rm-learning-records-fixed-header {
+        flex-shrink: 0 !important;
+        width: 100% !important;
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 10px !important;
+    }
+
+    .rm-learning-records-scrollable-content,
+    .rm-learning-records-page .rm-records-table-container-card {
+        flex: 1 1 0 !important;
+        min-height: 0 !important;
+        width: 100% !important;
+        display: flex !important;
+        flex-direction: column !important;
+        overflow: hidden !important;
+    }
+
+    .rm-learning-records-page .rm-records-table-scroll-body {
+        flex: 1 1 0 !important;
+        min-height: 0 !important;
+        height: auto !important;
+        width: 100% !important;
+        overflow-y: auto !important;
+        overflow-x: hidden !important;
+        -webkit-overflow-scrolling: touch !important;
+        scrollbar-width: none !important;
+        -ms-overflow-style: none !important;
+    }
+
+    .rm-learning-records-page .rm-records-table-scroll-body::-webkit-scrollbar {
+        display: none !important;
+        width: 0 !important;
+        height: 0 !important;
+    }
+
+    /* 4. Recommend Learning Resources */
+    .rm-recommend-course-page {
+        width: 100% !important;
+        height: 100vh !important;
+        max-height: 100vh !important;
+        overflow: hidden !important;
+        padding: 20px 24px 16px 24px !important;
+        box-sizing: border-box !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: space-between !important;
+        gap: 10px !important;
+    }
+
+    .rm-recommend-course-fixed-header {
+        flex-shrink: 0 !important;
+        width: 100% !important;
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 12px !important;
+    }
+
+    .rm-recommend-course-scrollable-content {
+        flex: 1 1 0 !important;
+        min-height: 0 !important;
+        width: 100% !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: space-between !important;
+        overflow: hidden !important;
+    }
+
+    /* 5. Reports & Analytics */
+    .rm-reports-analytics-page {
+        width: 100% !important;
+        height: 100vh !important;
+        max-height: 100vh !important;
+        overflow: hidden !important;
+        padding: 20px 24px 16px 24px !important;
+        gap: 10px !important;
+        box-sizing: border-box !important;
+        display: flex !important;
+        flex-direction: column !important;
+    }
+
+    .rm-reports-analytics-fixed-header {
+        flex-shrink: 0 !important;
+        width: 100% !important;
+        display: flex !important;
+        flex-direction: column !important;
+    }
+
+    .rm-reports-analytics-scrollable-content {
+        flex: 1 1 0 !important;
+        min-height: 0 !important;
+        width: 100% !important;
+        height: auto !important;
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 18px !important;
+        overflow: hidden !important;
+    }
+
+    .rm-ra-dashboard-grid-container {
+        flex: 1 1 0 !important;
+        min-height: 0 !important;
+        height: auto !important;
+    }
+}
+
+/* ==========================================================================
+   2. TABLET LAYOUT (768px – 1023px) / 150% Zoom (Sidebar visible, Top Bar hidden)
+   ========================================================================== */
+@media (min-width: 768px) and (max-width: 1023px) {
+
+    .rm-dashboard-page,
+    .rm-team-management-page,
+    .rm-learning-records-page,
+    .rm-recommend-course-page,
+    .rm-reports-analytics-page {
+        position: relative !important;
+        top: auto !important;
+        left: auto !important;
+        right: auto !important;
+        bottom: auto !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        height: 100vh !important;
+        max-height: 100vh !important;
+        padding: 16px 20px 14px 20px !important;
+        overflow: hidden !important;
+        display: flex !important;
+        flex-direction: column !important;
+        box-sizing: border-box !important;
+        background: transparent !important;
+        z-index: 10 !important;
+    }
+
+    .rm-dashboard-fixed-header,
+    .rm-team-management-fixed-header,
+    .rm-learning-records-fixed-header,
+    .rm-recommend-course-fixed-header,
+    .rm-reports-analytics-fixed-header {
+        flex-shrink: 0 !important;
+        width: 100% !important;
+        background: transparent !important;
+    }
+
+    .rm-dashboard-stats-grid {
+        display: grid !important;
+        grid-template-columns: repeat(4, 1fr) !important;
+        gap: 10px !important;
+        height: auto !important;
+        flex-shrink: 0 !important;
+    }
+
+    .rm-stat-card {
+        height: 72px !important;
+        min-height: 72px !important;
+    }
+
+    .rm-certs-team-card {
+        padding: 14px !important;
+    }
+}
+
+/* ==========================================================================
+   3. MOBILE ONLY (<= 767px) — Fixed Headers + Scrollable Body with 56px Top Bar
+   ========================================================================== */
+@media (max-width: 767px) {
+
+    /* 1. Team Dashboard - Mobile (Under top header 56px) */
+    .rm-dashboard-page {
+        position: fixed !important;
+        top: 56px !important;
+        left: 0 !important;
+        right: 0 !important;
+        bottom: 0 !important;
+        width: 100% !important;
+        max-width: 100vw !important;
+        height: calc(100vh - 56px) !important;
+        height: calc(100dvh - 56px) !important;
+        max-height: calc(100vh - 56px) !important;
+        max-height: calc(100dvh - 56px) !important;
+        padding: 12px 14px 10px 14px !important;
+        overflow: hidden !important;
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 10px !important;
+        box-sizing: border-box !important;
+        background: #F3F4F8 !important;
+        z-index: 10 !important;
+    }
+
+    .rm-dashboard-fixed-header {
+        flex-shrink: 0 !important;
+        width: 100% !important;
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 8px !important;
+        background: #F3F4F8 !important;
+        z-index: 20 !important;
+    }
+
+    .rm-dashboard-scrollable-content {
+        flex: 1 !important;
+        min-height: 0 !important;
+        width: 100% !important;
+        overflow-y: auto !important;
+        overflow-x: hidden !important;
+        -webkit-overflow-scrolling: touch !important;
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 15px !important;
+        padding-top: 4px !important;
+        padding-bottom: 64px !important;
+    }
+
+    .rm-dashboard-stats-grid {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 8px !important;
+        height: auto !important;
+        flex-shrink: 0 !important;
+    }
+
+    .rm-stat-card {
+        height: 68px !important;
+        min-height: 68px !important;
+    }
+
+    .rm-dashboard-bottom-grid {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 12px !important;
+        height: auto !important;
+        min-height: auto !important;
+        flex: none !important;
+    }
+
+    .rm-certs-team-card {
+        padding: 12px !important;
+    }
+
+    .rm-certs-table-wrapper {
+        padding-bottom: 6px !important;
+    }
+
+    /* 2. Team Management */
+    .rm-team-management-page {
+        position: fixed !important;
+        top: 56px !important;
+        left: 0 !important;
+        right: 0 !important;
+        bottom: 0 !important;
+        width: 100% !important;
+        max-width: 100vw !important;
+        height: calc(100vh - 56px) !important;
+        height: calc(100dvh - 56px) !important;
+        max-height: calc(100vh - 56px) !important;
+        max-height: calc(100dvh - 56px) !important;
+        padding: 12px 14px 10px 14px !important;
+        overflow: hidden !important;
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 10px !important;
+        box-sizing: border-box !important;
+        background: #F3F4F8 !important;
+        z-index: 10 !important;
+    }
+
+    .rm-team-management-fixed-header {
+        flex-shrink: 0 !important;
+        width: 100% !important;
+        display: flex !important;
+        flex-direction: column !important;
+        background: #F3F4F8 !important;
+        z-index: 20 !important;
+    }
+
+    .rm-team-management-scrollable-content {
+        flex: 1 !important;
+        min-height: 0 !important;
+        width: 100% !important;
+        overflow-y: auto !important;
+        overflow-x: hidden !important;
+        -webkit-overflow-scrolling: touch !important;
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 12px !important;
+        padding-top: 4px !important;
+        padding-bottom: 36px !important;
+    }
+
+    .rm-tm-top-grid {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 12px !important;
+        height: auto !important;
+        min-height: auto !important;
+    }
+
+    /* 3. Learning Records */
+    .rm-learning-records-page {
+        position: fixed !important;
+        top: 56px !important;
+        left: 0 !important;
+        right: 0 !important;
+        bottom: 0 !important;
+        width: 100% !important;
+        max-width: 100vw !important;
+        height: calc(100vh - 56px) !important;
+        height: calc(100dvh - 56px) !important;
+        max-height: calc(100vh - 56px) !important;
+        max-height: calc(100dvh - 56px) !important;
+        padding: 12px 14px 10px 14px !important;
+        overflow: hidden !important;
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 8px !important;
+        box-sizing: border-box !important;
+        background: #F3F4F8 !important;
+        z-index: 10 !important;
+    }
+
+    .rm-learning-records-fixed-header {
+        flex-shrink: 0 !important;
+        width: 100% !important;
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 8px !important;
+        background: #F3F4F8 !important;
+        z-index: 20 !important;
+    }
+
+    .rm-learning-records-toolbar {
+        flex-direction: column !important;
+        gap: 8px !important;
+        align-items: stretch !important;
+        width: 100% !important;
+    }
+
+    .rm-pill-tabs-container {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        gap: 8px !important;
+        width: 100% !important;
+    }
+
+    .rm-pill-tab-btn {
+        width: 100% !important;
+        justify-content: center !important;
+        text-align: center !important;
+    }
+
+    .rm-toolbar-controls-right {
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        gap: 6px !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+    }
+
+    .rm-records-search-wrapper {
+        flex: 1 1 0 !important;
+        min-width: 0 !important;
+        width: auto !important;
+    }
+
+    .rm-records-search-input {
+        width: 100% !important;
+        height: 30px !important;
+        font-size: 13px !important;
+        padding: 0 10px 0 32px !important;
+    }
+
+    .rm-records-search-icon-img {
+        left: 10px !important;
+        width: 14px !important;
+        height: 14px !important;
+    }
+
+    .rm-records-filter-sort-group {
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        gap: 6px !important;
+        flex-shrink: 0 !important;
+    }
+
+    .rm-custom-filter-container,
+    .rm-custom-sort-container {
+        width: auto !important;
+        position: relative !important;
+        flex-shrink: 0 !important;
+    }
+
+    .rm-btn-filter-action {
+        width: auto !important;
+        height: 32px !important;
+        padding: 0 10px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 5px !important;
+        font-size: 12px !important;
+        white-space: nowrap !important;
+        box-sizing: border-box !important;
+    }
+
+    .rm-custom-sort-trigger {
+        width: auto !important;
+        height: 32px !important;
+        padding: 0 10px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 4px !important;
+        font-size: 12px !important;
+        white-space: nowrap !important;
+        box-sizing: border-box !important;
+    }
+
+    .rm-filter-label-prefix {
+        display: none !important;
+    }
+
+    .rm-custom-filter-menu {
+        left: 0 !important;
+        right: auto !important;
+        min-width: 175px !important;
+    }
+
+    .rm-custom-sort-menu {
+        right: 0 !important;
+        left: auto !important;
+        min-width: 130px !important;
+    }
+
+    .rm-learning-records-scrollable-content,
+    .rm-learning-records-page .rm-records-table-container-card {
+        flex: 1 !important;
+        min-height: 0 !important;
+        width: 100% !important;
+        overflow: hidden !important;
+        display: flex !important;
+        flex-direction: column !important;
+    }
+
+    .rm-learning-records-page .rm-records-table-scroll-body {
+        flex: 1 !important;
+        min-height: 0 !important;
+        height: auto !important;
+        width: 100% !important;
+        overflow-y: auto !important;
+        overflow-x: hidden !important;
+        -webkit-overflow-scrolling: touch !important;
+        scrollbar-width: none !important;
+        -ms-overflow-style: none !important;
+    }
+
+    .rm-learning-records-page .rm-records-table-scroll-body::-webkit-scrollbar {
+        display: none !important;
+        width: 0 !important;
+        height: 0 !important;
+    }
+
+    /* 4. Recommend Learning Resources */
+    .rm-recommend-course-page {
+        position: fixed !important;
+        top: 56px !important;
+        left: 0 !important;
+        right: 0 !important;
+        bottom: 0 !important;
+        width: 100% !important;
+        max-width: 100vw !important;
+        height: calc(100vh - 56px) !important;
+        height: calc(100dvh - 56px) !important;
+        max-height: calc(100vh - 56px) !important;
+        max-height: calc(100dvh - 56px) !important;
+        padding: 12px 14px 10px 14px !important;
+        overflow: hidden !important;
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 8px !important;
+        box-sizing: border-box !important;
+        background: #F3F4F8 !important;
+        z-index: 10 !important;
+    }
+
+    .rm-recommend-course-fixed-header {
+        flex-shrink: 0 !important;
+        width: 100% !important;
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 8px !important;
+        background: #F3F4F8 !important;
+        z-index: 20 !important;
+    }
+
+    .rm-recommend-course-scrollable-content {
+        flex: 1 !important;
+        min-height: 0 !important;
+        width: 100% !important;
+        overflow-y: auto !important;
+        overflow-x: hidden !important;
+        -webkit-overflow-scrolling: touch !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: flex-start !important;
+        gap: 12px !important;
+        padding-top: 4px !important;
+        padding-bottom: 24px !important;
+    }
+
+    .rm-recommend-course-grid {
+        grid-template-columns: 1fr !important;
+        gap: 10px !important;
+        width: 100% !important;
+    }
+
+    /* 5. Reports & Analytics */
+    .rm-reports-analytics-page {
+        position: fixed !important;
+        top: 56px !important;
+        left: 0 !important;
+        right: 0 !important;
+        bottom: 0 !important;
+        width: 100% !important;
+        max-width: 100vw !important;
+        height: calc(100vh - 56px) !important;
+        height: calc(100dvh - 56px) !important;
+        max-height: calc(100vh - 56px) !important;
+        max-height: calc(100dvh - 56px) !important;
+        padding: 12px 14px 10px 14px !important;
+        overflow: hidden !important;
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 10px !important;
+        box-sizing: border-box !important;
+        background: #F3F4F8 !important;
+        z-index: 10 !important;
+    }
+
+    .rm-reports-analytics-fixed-header {
+        flex-shrink: 0 !important;
+        width: 100% !important;
+        display: flex !important;
+        flex-direction: column !important;
+        background: #F3F4F8 !important;
+        z-index: 20 !important;
+    }
+
+    .rm-reports-analytics-scrollable-content {
+        flex: 1 !important;
+        min-height: 0 !important;
+        width: 100% !important;
+        overflow-y: auto !important;
+        overflow-x: hidden !important;
+        -webkit-overflow-scrolling: touch !important;
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 12px !important;
+        padding-top: 4px !important;
+        padding-bottom: 36px !important;
+    }
+
+    .rm-ra-dashboard-grid-container {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 12px !important;
+        height: auto !important;
+        min-height: auto !important;
+    }
+
+    .rm-ra-grid-slot {
+        width: 100% !important;
+        height: auto !important;
+        min-height: auto !important;
+    }
+}
+
+/* ==========================================================================
+   3. COMPACT MOBILE (<= 480px)
+   ========================================================================== */
+@media (max-width: 480px) {
+
+    .rm-dashboard-page,
+    .rm-team-management-page,
+    .rm-learning-records-page,
+    .rm-recommend-course-page,
+    .rm-reports-analytics-page {
+        top: 52px !important;
+        height: calc(100vh - 52px) !important;
+        height: calc(100dvh - 52px) !important;
+        max-height: calc(100vh - 52px) !important;
+        max-height: calc(100dvh - 52px) !important;
+        padding: 10px 10px 30px 10px !important;
+        gap: 8px !important;
+    }
+
+    .rm-dashboard-stats-grid {
+        gap: 6px !important;
+    }
+
+    .rm-stat-card {
+        height: 62px !important;
+        min-height: 62px !important;
+        padding: 8px 10px !important;
+    }
+
+    .rm-dashboard-scrollable-content {
+        padding-bottom: 12px !important;
+    }
+
+    .rm-certs-team-card {
+        padding: 10px 10px 18px 10px !important;
+    }
+
+    .rm-toolbar-controls-right {
+        gap: 5px !important;
+    }
+
+    .rm-records-search-input {
+        padding: 0 8px 0 28px !important;
+        font-size: 12px !important;
+    }
+
+    .rm-records-search-icon-img {
+        left: 8px !important;
+        width: 13px !important;
+        height: 13px !important;
+    }
+
+    .rm-btn-filter-action,
+    .rm-custom-sort-trigger {
+        padding: 0 8px !important;
+        font-size: 11.5px !important;
+        gap: 4px !important;
+    }
+}
+
+/* ==========================================================================
+   4. EXTRA COMPACT MOBILE (<= 380px)
+   ========================================================================== */
+@media (max-width: 380px) {
+    .rm-sort-label-prefix {
+        display: none !important;
+    }
+
+    .rm-btn-filter-action,
+    .rm-custom-sort-trigger {
+        padding: 0 6px !important;
+        font-size: 11px !important;
+    }
+}

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Signing in...</title>
+  <style>
+    body {
+      margin: 0;
+      background: #0f172a;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+    .msg { color: rgba(255,255,255,0.6); font-size: 14px; }
+  </style>
+</head>
+<body>
+  <span class="msg">Completing Microsoft sign-in...</span>
+  <script>
+    /**
+     * MSAL v5 Redirect Bridge — auth.html
+     *
+     * This lightweight page is the OAuth redirectUri registered in Azure Portal.
+     * After Microsoft authenticates the user, it redirects the popup here.
+     * MSAL then reads the auth code from the URL, sends the token to the main
+     * window (where loginPopup() is awaiting), and closes this popup.
+     *
+     * IMPORTANT: This file must remain minimal — no React, no router, no imports.
+     * Register in Azure Portal → App Registration → Authentication → SPA:
+     *   http://localhost:3000/auth.html
+     */
+    (function () {
+      // MSAL uses BroadcastChannel or localStorage to signal the parent window.
+      // Calling handleRedirectPromise is not needed here — MSAL detects the popup
+      // automatically via the hash/search params and the msalInstance in the parent.
+      // We just need to NOT interfere. The parent's loginPopup() will resolve.
+      //
+      // However, for older MSAL compat, also postMessage the href to the opener:
+      try {
+        if (window.opener && window.opener !== window) {
+          window.opener.postMessage(
+            { type: 'msal:popupRedirect', href: window.location.href },
+            window.location.origin
+          );
+        }
+      } catch (e) {
+        // Silently ignore cross-origin errors
+      }
+    })();
+  </script>
+</body>
+</html>

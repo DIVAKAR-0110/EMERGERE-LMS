@@ -1,0 +1,5 @@
+project-includes = ["backend/**/*.py"]
+search-path = ["backend"]
+preset = "basic"
+fallback-python-interpreter-name = "python"
+

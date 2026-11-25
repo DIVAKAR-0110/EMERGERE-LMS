@@ -1,0 +1,522 @@
+/* =========================================================
+   STUDY MATERIAL FILTER SIDE DRAWER STYLES
+========================================================= */
+
+.sm-filter-drawer-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.45);
+    backdrop-filter: blur(2px);
+    z-index: 9998;
+    display: flex;
+    justify-content: flex-end;
+    animation: smFadeIn 0.2s ease-out;
+}
+
+.sm-filter-drawer-container {
+    width: 380px;
+    max-width: 90vw;
+    height: 100vh;
+    height: 100dvh;
+    max-height: 100dvh;
+    background: #FFFFFF;
+    box-shadow: -6px 0 28px rgba(15, 23, 42, 0.16);
+    display: flex;
+    flex-direction: column;
+    z-index: 9999;
+    animation: smSlideInRight 0.24s cubic-bezier(0.16, 1, 0.3, 1);
+    font-family: 'Roboto', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+@keyframes smFadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes smSlideInRight {
+    from {
+        transform: translateX(100%);
+    }
+
+    to {
+        transform: translateX(0);
+    }
+}
+
+/* ─── Header ────────────────────────────────────────────── */
+.sm-filter-drawer-header {
+    padding: 20px 24px;
+    border-bottom: 1px solid #E2E8F0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #FAFBFC;
+}
+
+.sm-filter-header-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.sm-filter-icon-box {
+    width: 34px;
+    height: 30px;
+    border-radius: 8px;
+    background: #EFF6FF;
+    color: #2563EB;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sm-filter-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #0F172A;
+    margin: 0;
+    line-height: 1.2;
+}
+
+.sm-filter-subtitle {
+    font-size: 12px;
+    color: #64748B;
+    margin: 2px 0 0 0;
+}
+
+.sm-filter-drawer-close {
+    width: 32px;
+    height: 32px;
+    border-radius: 6px;
+    border: none;
+    background: transparent;
+    color: #64748B;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.sm-filter-drawer-close:hover {
+    background: #F1F5F9;
+    color: #0F172A;
+}
+
+/* ─── Body ──────────────────────────────────────────────── */
+.sm-filter-drawer-body {
+    flex: 1;
+    padding: 24px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.sm-filter-section {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.sm-filter-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #1E293B;
+    letter-spacing: 0.01em;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.sm-filter-active-indicator {
+    font-size: 11px;
+    font-weight: 500;
+    color: #2563EB;
+    background: #EFF6FF;
+    padding: 2px 8px;
+    border-radius: 12px;
+}
+
+/* ─── Drawer Custom Select UI ───────────────────────────── */
+.drawer-custom-select-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.drawer-custom-select-wrapper.open {
+    z-index: 1000;
+}
+
+.drawer-custom-select-trigger {
+    width: 100%;
+    height: 38px;
+    background: #FFFFFF;
+    border: 1px solid #DDE0EE;
+    border-radius: 6px;
+    padding: 0 32px 0 12px;
+    font-size: 13px;
+    font-weight: 400;
+    font-family: 'Roboto', sans-serif;
+    color: #080808;
+    outline: none;
+    cursor: pointer;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-align: left;
+    position: relative;
+    user-select: none;
+}
+
+.drawer-custom-select-trigger:hover:not(:disabled) {
+    border-color: #94A3B8;
+}
+
+.drawer-custom-select-trigger.active,
+.drawer-custom-select-trigger:focus {
+    border-color: rgba(33, 94, 248, 1);
+    box-shadow: 0 0 0 2px rgba(33, 94, 248, 0.1);
+}
+
+.drawer-custom-select-value {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    flex: 1;
+    color: #080808;
+}
+
+.drawer-custom-select-trigger.placeholder .drawer-custom-select-value,
+.drawer-custom-select-value.placeholder {
+    color: #7F7F7F;
+}
+
+.drawer-custom-select-arrow {
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 11px;
+    height: 6px;
+    object-fit: contain;
+    pointer-events: none;
+    transition: transform 0.2s ease;
+    opacity: 0.8;
+}
+
+.drawer-custom-select-arrow.open {
+    transform: translateY(-50%) rotate(180deg);
+}
+
+.drawer-custom-select-menu {
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 0;
+    width: 100%;
+    min-width: 100%;
+    background: #FFFFFF;
+    border: 1px solid rgba(221, 224, 238, 1);
+    border-radius: 6px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12), 0 2px 6px rgba(0, 0, 0, 0.04);
+    z-index: 1000;
+    padding: 4px 0;
+    box-sizing: border-box;
+    max-height: 190px;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    scrollbar-width: thin !important;
+    scrollbar-color: #D9D9D9 #FFFFFF !important;
+    animation: fadeInDropdown 0.15s ease-out;
+    scroll-behavior: smooth;
+    display: flex !important;
+    flex-direction: column !important;
+}
+
+.drawer-custom-select-menu.drop-up {
+    top: auto;
+    bottom: calc(100% + 4px);
+    box-shadow: 0 -10px 25px rgba(0, 0, 0, 0.12), 0 -2px 6px rgba(0, 0, 0, 0.04);
+}
+
+.drawer-custom-select-menu::-webkit-scrollbar {
+    width: 7px !important;
+    display: block !important;
+}
+
+.drawer-custom-select-menu::-webkit-scrollbar-track {
+    background: #FFFFFF !important;
+    border-radius: 4px;
+}
+
+.drawer-custom-select-menu::-webkit-scrollbar-thumb {
+    background: #D9D9D9 !important;
+    border-radius: 4px !important;
+}
+
+.drawer-custom-select-menu::-webkit-scrollbar-thumb:hover {
+    background: #BFBFBF !important;
+}
+
+.drawer-custom-select-item {
+    display: flex !important;
+    align-items: center !important;
+    width: 100% !important;
+    min-height: 32px !important;
+    height: 32px !important;
+    flex-shrink: 0 !important;
+    padding: 0 14px !important;
+    font-family: 'Roboto', sans-serif !important;
+    font-size: 12.5px !important;
+    font-weight: 400;
+    line-height: 32px !important;
+    color: #080808;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    box-sizing: border-box !important;
+    transition: background 0.12s ease, color 0.12s ease;
+    user-select: none;
+}
+
+.drawer-custom-select-item:hover,
+.drawer-custom-select-item.is-highlighted {
+    background-color: #F0F5FF;
+    color: #215EF8;
+}
+
+.drawer-custom-select-item.selected {
+    background-color: #EBF2FF;
+    color: #215EF8;
+    font-weight: 500;
+}
+
+.drawer-custom-select-item-text {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    flex: 1;
+}
+
+/* ─── Custom Select (legacy) ─────────────────────────────── */
+.sm-filter-select-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.sm-filter-select {
+    width: 100%;
+    height: 42px;
+    background: #FFFFFF;
+    border: 1.5px solid #CBD5E1;
+    border-radius: 8px;
+    padding: 0 36px 0 14px;
+    font-size: 13.5px;
+    font-weight: 500;
+    color: #0F172A;
+    outline: none;
+    appearance: none;
+    -webkit-appearance: none;
+    cursor: pointer;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+    box-sizing: border-box;
+}
+
+.sm-filter-select:hover {
+    border-color: #94A3B8;
+}
+
+.sm-filter-select:focus {
+    border-color: #2563EB;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+}
+
+.sm-filter-select-arrow {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    color: #64748B;
+}
+
+/* ─── Quick Filter Chips ────────────────────────────────── */
+.sm-filter-chips-label {
+    font-size: 11.5px;
+    font-weight: 500;
+    color: #64748B;
+    margin-top: 4px;
+}
+
+.sm-filter-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 6px;
+}
+
+.sm-filter-chip {
+    padding: 6px 14px;
+    border-radius: 20px;
+    border: 1px solid #E2E8F0;
+    background: #F8FAFC;
+    color: #334155;
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    user-select: none;
+}
+
+.sm-filter-chip:hover {
+    background: #EFF6FF;
+    border-color: #BFDBFE;
+    color: #1D4ED8;
+}
+
+.sm-filter-chip.active {
+    background: #2563EB;
+    border-color: #2563EB;
+    color: #FFFFFF;
+    box-shadow: 0 2px 6px rgba(37, 99, 235, 0.25);
+}
+
+/* ─── Match Count Info Box ──────────────────────────────── */
+.sm-filter-match-box {
+    background: #F8FAFC;
+    border: 1px dashed #CBD5E1;
+    border-radius: 8px;
+    padding: 12px 14px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: auto;
+}
+
+.sm-filter-match-text {
+    font-size: 12.5px;
+    color: #475569;
+}
+
+.sm-filter-match-count {
+    font-size: 13px;
+    font-weight: 700;
+    color: #2563EB;
+}
+
+/* ─── Footer ────────────────────────────────────────────── */
+.sm-filter-drawer-footer {
+    padding: 16px 24px;
+    border-top: 1px solid #E2E8F0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 12px;
+    background: #FAFBFC;
+}
+
+.sm-btn-filter-reset {
+    padding: 9px 18px;
+    border-radius: 8px;
+    border: 1px solid #CBD5E1;
+    background: #FFFFFF;
+    color: #475569;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.sm-btn-filter-reset:hover {
+    background: #F1F5F9;
+    color: #0F172A;
+    border-color: #94A3B8;
+}
+
+.sm-btn-filter-apply {
+    padding: 9px 22px;
+    border-radius: 8px;
+    border: none;
+    background: #2563EB;
+    color: #FFFFFF;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    box-shadow: 0 2px 4px rgba(37, 99, 235, 0.2);
+}
+
+.sm-btn-filter-apply:hover {
+    background: #1D4ED8;
+    box-shadow: 0 4px 8px rgba(37, 99, 235, 0.3);
+}
+
+/* ─── Active Indicator on Parent Filter Button ──────────── */
+.emp-btn-filter-toggle.filter-active,
+.rm-btn-filter-toggle.filter-active {
+    border-color: #2563EB !important;
+    background: #EFF6FF !important;
+    color: #2563EB !important;
+    font-weight: 500;
+}
+
+.filter-badge-dot {
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    background: #2563EB;
+    border-radius: 50%;
+    margin-left: 4px;
+}
+
+/* ─── Mobile Responsiveness (<= 767px) ───────────────────── */
+@media (max-width: 767px) {
+    .sm-filter-drawer-container {
+        width: 360px;
+        max-width: 92vw;
+        height: 100vh;
+        height: 100dvh;
+        max-height: 100dvh;
+    }
+
+    .sm-filter-drawer-header {
+        padding: 16px 18px;
+    }
+
+    .sm-filter-title {
+        font-size: 15px;
+    }
+
+    .sm-filter-subtitle {
+        font-size: 11px;
+    }
+
+    .sm-filter-drawer-close {
+        width: 34px;
+        height: 30px;
+    }
+
+    .sm-filter-drawer-body {
+        padding: 14px 18px;
+        gap: 14px;
+    }
+
+    .sm-filter-drawer-footer {
+        padding: 12px 18px;
+        gap: 10px;
+    }
+
+    .sm-btn-filter-reset,
+    .sm-btn-filter-apply {
+        padding: 8px 16px;
+        font-size: 12.5px;
+    }
+}

@@ -1,0 +1,643 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700;800;900&display=swap');
+
+/* ==========================================================================
+   EDIT LEARNING LOG MODAL STYLES (ISOLATED & SCOPED)
+   ========================================================================== */
+
+/* Fullscreen Backdrop Overlay */
+.emp-edit-modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(15, 23, 42, 0.45);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 99999;
+    padding: 16px;
+    box-sizing: border-box;
+    animation: empEditModalFadeIn 0.2s ease-out;
+}
+
+@keyframes empEditModalFadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* Modal Card Container */
+.emp-edit-modal-card {
+    position: relative;
+    background: #FFFFFF;
+    box-shadow: 0 20px 45px rgba(15, 23, 42, 0.22);
+    width: min(94vw, 565px);
+    max-width: 565px;
+    height: auto;
+    max-height: 88vh;
+    border-radius: 10px;
+    padding: 20px 24px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    font-family: 'Roboto', sans-serif;
+    animation: empEditModalScaleIn 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes empEditModalScaleIn {
+    from {
+        transform: scale(0.96);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Header Section */
+.emp-edit-modal-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    padding-right: 28px;
+    flex-shrink: 0;
+}
+
+.emp-edit-modal-title {
+    margin: 0;
+    font-size: 22px;
+    font-weight: 500;
+    color: #215EF8;
+    line-height: 1.25;
+    letter-spacing: -0.2px;
+}
+
+.emp-edit-modal-subtitle {
+    margin: 4px 0 0 0;
+    font-size: 13px;
+    font-weight: 400;
+    color: #6B7280;
+    line-height: 1.4;
+}
+
+/* Close Icon Button */
+.emp-edit-modal-close-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 26px;
+    height: 26px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: background 0.15s ease, opacity 0.15s ease;
+    z-index: 10;
+}
+
+.emp-edit-modal-close-btn:hover {
+    background: rgba(0, 0, 0, 0.06);
+    opacity: 0.85;
+}
+
+.emp-edit-modal-close-icon {
+    width: 12px;
+    height: 12px;
+    object-fit: contain;
+    display: block;
+}
+
+/* Form Container */
+.emp-edit-modal-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+    flex: 1 1 auto;
+    min-height: 0;
+    box-sizing: border-box;
+}
+
+/* Generic Field & Label */
+.emp-edit-modal-field {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.emp-edit-modal-label {
+    font-size: 12px;
+    font-weight: 400;
+    color: #474747;
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    user-select: none;
+}
+
+.emp-edit-modal-star {
+    color: #EF4444;
+    font-weight: 600;
+}
+
+/* Course / Activity Dropdown */
+.emp-edit-modal-course-dropdown {
+    position: relative;
+    width: 100%;
+}
+
+.emp-edit-modal-course-input-wrap {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.emp-edit-modal-course-input {
+    width: 100%;
+    height: 34px;
+    font-size: 12px;
+    font-weight: 400;
+    color: #111827;
+    background: #FFFFFF;
+    border: 1px solid #D1D5DB;
+    border-radius: 8px;
+    padding: 0 36px 0 12px;
+    box-sizing: border-box;
+    outline: none;
+    font-family: inherit;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.emp-edit-modal-course-input:focus {
+    border-color: #215EF8;
+    box-shadow: 0 0 0 2px rgba(33, 94, 248, 0.15);
+}
+
+.emp-edit-modal-course-input::placeholder {
+    color: #9CA3AF;
+}
+
+.emp-edit-modal-dropdown-toggle {
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 34px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    transition: opacity 0.15s ease;
+}
+
+.emp-edit-modal-dropdown-arrow {
+    width: 10px;
+    height: 6px;
+    object-fit: contain;
+    transition: transform 0.2s ease;
+}
+
+.emp-edit-modal-dropdown-toggle.open .emp-edit-modal-dropdown-arrow {
+    transform: rotate(180deg);
+}
+
+.emp-edit-modal-dropdown-menu {
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 0;
+    right: 0;
+    background: #FFFFFF;
+    border: 1px solid #E5E7EB;
+    border-radius: 8px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+    z-index: 100;
+    max-height: 180px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 4px;
+    box-sizing: border-box;
+}
+
+.emp-edit-modal-dropdown-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.emp-edit-modal-dropdown-item {
+    width: 100%;
+    text-align: left;
+    padding: 8px 10px;
+    font-size: 12px;
+    color: #374151;
+    background: transparent;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-family: inherit;
+    transition: background 0.12s ease, color 0.12s ease;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.emp-edit-modal-dropdown-item:hover {
+    background: #F3F4F6;
+    color: #111827;
+}
+
+.emp-edit-modal-dropdown-item.active {
+    background: #EBF3FF;
+    color: #215EF8;
+    font-weight: 500;
+}
+
+.emp-edit-modal-dropdown-empty {
+    padding: 12px;
+    text-align: center;
+    font-size: 12px;
+    color: #9CA3AF;
+}
+
+/* Dual Duration Section */
+.emp-edit-modal-duration-row {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 2px 0;
+}
+
+.emp-edit-modal-duration-block {
+    flex: 1 1 0;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.emp-edit-modal-duration-label {
+    font-size: 12px;
+    font-weight: 400;
+    color: #474747;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    user-select: none;
+}
+
+.emp-edit-modal-info-icon {
+    width: 14px;
+    height: 14px;
+    opacity: 0.75;
+    cursor: help;
+}
+
+.emp-edit-modal-duration-grid {
+    display: flex;
+    align-items: flex-end;
+    gap: 10px;
+}
+
+.emp-edit-modal-time-subfield {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.emp-edit-modal-time-label {
+    font-size: 10.5px;
+    font-size: 11px;
+    color: #474747;
+    font-weight: 400;
+}
+
+.emp-edit-modal-time-input-wrap {
+    position: relative;
+    width: 105px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+}
+
+.emp-edit-modal-time-input {
+    width: 100%;
+    height: 100%;
+    border: 1px solid #D1D5DB;
+    border-radius: 6px;
+    padding: 0 22px 0 10px;
+    font-size: 12px;
+    font-weight: 500;
+    text-align: left;
+    color: #111827;
+    background: #FFFFFF;
+    outline: none;
+    box-sizing: border-box;
+    font-family: inherit;
+    transition: border-color 0.15s ease;
+    -moz-appearance: textfield;
+}
+
+.emp-edit-modal-time-input::-webkit-inner-spin-button,
+.emp-edit-modal-time-input::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.emp-edit-modal-time-input:focus {
+    border-color: #215EF8;
+}
+
+.emp-edit-modal-updown-controls {
+    position: absolute;
+    right: 4px;
+    top: 0;
+    bottom: 0;
+    width: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    pointer-events: auto;
+}
+
+.emp-edit-modal-updown-btn {
+    position: absolute;
+    width: 100%;
+    height: 50%;
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    padding: 0;
+    z-index: 2;
+}
+
+.emp-edit-modal-updown-btn.up {
+    top: 0;
+}
+
+.emp-edit-modal-updown-btn.down {
+    bottom: 0;
+}
+
+.emp-edit-modal-updown-icon {
+    width: 8px;
+    height: 14px;
+    object-fit: contain;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.emp-edit-modal-minutes-wrap {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.emp-edit-modal-outside-suffix {
+    font-size: 11px;
+    color: #6B7280;
+    font-weight: 400;
+    user-select: none;
+}
+
+/* Dashed Vertical Divider */
+.emp-edit-modal-divider {
+    width: 0;
+    height: 48px;
+    border-left: 1.5px dashed #CBD5E1;
+    align-self: center;
+    margin: 0 2px;
+    flex-shrink: 0;
+}
+
+/* Total Duration Banner */
+.emp-edit-modal-banner {
+    background: #F8FAFC;
+    border: 1px solid #D0E1FD;
+    border-radius: 6px;
+    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+    box-sizing: border-box;
+    flex-shrink: 0;
+}
+
+.emp-edit-modal-banner-left {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+}
+
+.emp-edit-modal-banner-clock {
+    color: #215EF8;
+    flex-shrink: 0;
+}
+
+.emp-edit-modal-banner-main {
+    font-size: 12px;
+    font-weight: 600;
+    color: #215EF8;
+}
+
+.emp-edit-modal-banner-sub {
+    font-size: 11px;
+    font-weight: 400;
+    color: #215EF8;
+}
+
+.emp-edit-modal-points-badge {
+    background: #E0F2FE;
+    color: #0369A1;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 12px;
+    white-space: nowrap;
+}
+
+/* Error Text */
+.emp-edit-modal-error-text {
+    color: #EF4444;
+    font-size: 12px;
+    line-height: 16px;
+    margin-top: 2px;
+    display: block;
+    font-family: inherit;
+}
+
+/* What Did You Learn (Textarea) Field */
+.emp-edit-modal-textarea-field {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    width: 100%;
+    flex-shrink: 0;
+    box-sizing: border-box;
+}
+
+.emp-edit-modal-textarea-wrap {
+    position: relative;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.emp-edit-modal-textarea {
+    width: 100%;
+    height: 76px;
+    min-height: 76px;
+    max-height: 120px;
+    padding: 8px 12px 22px 12px;
+    box-sizing: border-box;
+    border: 1px solid #D1D5DB;
+    border-radius: 8px;
+    background: #FFFFFF;
+    color: #111827;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 17px;
+    font-family: inherit;
+    outline: none;
+    resize: none;
+    display: block;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.emp-edit-modal-textarea:focus {
+    border-color: #215EF8;
+    box-shadow: 0 0 0 2px rgba(33, 94, 248, 0.15);
+}
+
+.emp-edit-modal-textarea::placeholder {
+    color: #9CA3AF;
+    font-size: 12px;
+}
+
+.emp-edit-modal-textarea.has-error {
+    border-color: #EF4444 !important;
+    background-color: #FFFDFD !important;
+}
+
+.emp-edit-modal-char-counter {
+    position: absolute;
+    right: 12px;
+    bottom: 5px;
+    font-size: 11px;
+    font-weight: 400;
+    line-height: 15px;
+    color: #7F7F7F;
+    pointer-events: none;
+    z-index: 2;
+    user-select: none;
+}
+
+/* Footer & Save Button */
+.emp-edit-modal-footer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-top: 4px;
+    padding-top: 4px;
+    flex-shrink: 0;
+}
+
+.emp-edit-modal-save-btn {
+    background: #215EF8;
+    color: #FFFFFF;
+    border: none;
+    height: 34px;
+    border-radius: 8px;
+    padding: 0 30px;
+    font-size: 12px;
+    font-weight: 500;
+    font-family: inherit;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(33, 94, 248, 0.22);
+    transition: background 0.15s ease, box-shadow 0.15s ease, opacity 0.15s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.emp-edit-modal-save-btn:hover:not(:disabled) {
+    background: #1B4FD8;
+    box-shadow: 0 4px 10px rgba(33, 94, 248, 0.32);
+}
+
+.emp-edit-modal-save-btn:disabled {
+    opacity: 0.65;
+    cursor: not-allowed;
+}
+
+/* ==========================================================================
+   RESPONSIVE ADAPTATIONS (MOBILE <= 600px)
+   ========================================================================== */
+@media (max-width: 600px) {
+    .emp-edit-modal-backdrop {
+        padding: 10px !important;
+    }
+
+    .emp-edit-modal-card {
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: 16px 14px !important;
+        gap: 12px !important;
+        max-height: 92vh !important;
+    }
+
+    .emp-edit-modal-title {
+        font-size: 19px !important;
+    }
+
+    .emp-edit-modal-subtitle {
+        font-size: 12px !important;
+    }
+
+    .emp-edit-modal-duration-row {
+        flex-direction: column !important;
+        gap: 12px !important;
+    }
+
+    .emp-edit-modal-divider {
+        display: none !important;
+    }
+
+    .emp-edit-modal-textarea {
+        height: 72px !important;
+        min-height: 72px !important;
+    }
+}

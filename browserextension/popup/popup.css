@@ -1,0 +1,220 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+    width: 320px;
+    background-color: #F8FAFC;
+    color: #0F172A;
+    font-size: 13px;
+}
+
+.popup-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.popup-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 16px;
+    background: #FFFFFF;
+    border-bottom: 1px solid #E2E8F0;
+}
+
+.header-brand {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.brand-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #2563EB;
+}
+
+.header-brand h1 {
+    font-size: 14px;
+    font-weight: 700;
+    color: #1E293B;
+}
+
+.version-badge {
+    font-size: 11px;
+    font-weight: 600;
+    background: #EFF6FF;
+    color: #2563EB;
+    padding: 2px 6px;
+    border-radius: 12px;
+}
+
+.popup-body {
+    padding: 16px;
+}
+
+.view-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.status-indicator {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #10B981;
+}
+
+.pulsing-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #10B981;
+    box-shadow: 0 0 6px #10B981;
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(0.95); opacity: 0.8; }
+    50% { transform: scale(1.2); opacity: 1; }
+    100% { transform: scale(0.95); opacity: 0.8; }
+}
+
+.course-card-mini {
+    background: #FFFFFF;
+    border: 1px solid #E2E8F0;
+    border-radius: 8px;
+    padding: 12px;
+}
+
+.course-title {
+    font-size: 13px;
+    font-weight: 600;
+    color: #0F172A;
+    margin-bottom: 4px;
+    line-height: 1.4;
+}
+
+.account-email {
+    font-size: 11px;
+    color: #64748B;
+    word-break: break-all;
+}
+
+.stats-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.stat-box {
+    background: #FFFFFF;
+    border: 1px solid #E2E8F0;
+    border-radius: 8px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.stat-label {
+    font-size: 11px;
+    color: #64748B;
+}
+
+.stat-value {
+    font-size: 15px;
+    font-weight: 700;
+    color: #0F172A;
+}
+
+.stat-value.synced {
+    color: #10B981;
+    font-size: 13px;
+}
+
+.btn {
+    width: 100%;
+    padding: 10px;
+    border-radius: 6px;
+    border: none;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.btn-primary {
+    background: #2563EB;
+    color: #FFFFFF;
+}
+
+.btn-primary:hover {
+    background: #1D4ED8;
+}
+
+#session-idle-view {
+    text-align: center;
+    padding: 10px 0;
+}
+
+.idle-illustration {
+    font-size: 36px;
+    margin-bottom: 6px;
+}
+
+#session-idle-view h2 {
+    font-size: 14px;
+    font-weight: 700;
+    color: #1E293B;
+    margin-bottom: 6px;
+}
+
+#session-idle-view p {
+    font-size: 12px;
+    color: #64748B;
+    line-height: 1.5;
+    margin-bottom: 12px;
+}
+
+.test-account-box {
+    background: #EFF6FF;
+    border: 1px solid #DBEAFE;
+    border-radius: 6px;
+    padding: 8px 10px;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.test-label {
+    font-size: 10px;
+    font-weight: 600;
+    color: #1E40AF;
+    text-transform: uppercase;
+}
+
+.test-email {
+    font-size: 12px;
+    font-weight: 600;
+    color: #1D4ED8;
+    word-break: break-all;
+}
+
+.popup-footer {
+    padding: 10px 16px;
+    background: #F1F5F9;
+    border-top: 1px solid #E2E8F0;
+    font-size: 11px;
+    color: #64748B;
+    text-align: center;
+}

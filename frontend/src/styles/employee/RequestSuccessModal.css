@@ -1,0 +1,140 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700;800;900&display=swap');
+
+/* =========================================================
+   REQUEST SUCCESS MODAL (FIGMA: 377px x 201px, RADIUS 10px)
+   ========================================================= */
+
+.emp-custom-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(15, 23, 42, 0.45);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 99999;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+}
+
+.emp-success-modal {
+    position: relative;
+    width: min(390px, calc(100vw - 32px)) !important;
+    min-width: 0 !important;
+    max-width: calc(100vw - 32px) !important;
+    height: auto !important;
+    min-height: 201px !important;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 1);
+    background: rgba(255, 255, 255, 1);
+    opacity: 1;
+    padding: 0 24px 28px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    font-family: 'Roboto', sans-serif;
+    overflow: hidden;
+    animation: scaleInSuccess 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes scaleInSuccess {
+    from {
+        transform: scale(0.96);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* CLOSE BUTTON (FIGMA: 12px x 12px, TOP: 23px, LEFT: 345px -> RIGHT: 20px) */
+.emp-success-modal .emp-modal-close {
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+    background: transparent;
+    border: none;
+    outline: none;
+    box-shadow: none;
+    cursor: pointer;
+    z-index: 10;
+    border-radius: 4px;
+    transition: background 0.15s ease;
+}
+
+.emp-success-modal .emp-modal-close:hover {
+    background: rgba(0, 0, 0, 0.05);
+}
+
+.emp-success-modal .emp-modal-close img {
+    width: 12px;
+    height: 12px;
+    display: block;
+    object-fit: contain;
+}
+
+/* SUCCESS ICON (FIGMA: 53px x 53px, TOP: 42px) */
+.emp-success-icon-wrapper {
+    margin-top: 36px;
+    width: 53px;
+    height: 53px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.emp-success-icon-img {
+    width: 53px;
+    height: 53px;
+    display: block;
+    object-fit: contain;
+}
+
+/* SUCCESS TITLE (FIGMA: 267px x 50px, TOP: 104px -> MARGIN-TOP: 9px) */
+.emp-success-modal-title {
+    width: auto;
+    max-width: 320px;
+    margin: 12px 0 0 0;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 25px;
+    letter-spacing: 0%;
+    text-align: center;
+    color: rgba(0, 0, 0, 1);
+    display: block;
+}
+
+/* COURSE NAME SUBTITLE */
+.emp-success-modal-course-text {
+    margin: 8px 0 0 0;
+    max-width: 320px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    line-height: 20px;
+    color: #4B5563;
+    text-align: center;
+    word-break: break-word;
+}
+
+.emp-success-modal-course-name {
+    color: #111827;
+    font-weight: 600;
+}

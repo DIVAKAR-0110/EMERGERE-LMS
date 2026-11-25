@@ -1,0 +1,445 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700;800;900&display=swap');
+
+/* =========================================================
+   REPORTING MANAGER: RECOMMEND COURSE CARD COMPONENT
+   Strictly scoped to .rm-recommend-card / .rm-recommend-course-card
+   ========================================================= */
+
+.rm-recommend-card,
+.rm-recommend-course-card {
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+    max-height: 178px;
+    opacity: 1;
+    background: #FFFFFF;
+    border-radius: 8px;
+    border: 1px solid #DEDEDE;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 6px;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+    transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+}
+
+.rm-recommend-card *,
+.rm-recommend-course-card * {
+    font-family: 'Roboto', sans-serif;
+}
+
+/* =========================================================
+   TOP THUMBNAIL BANNER (SOLID BLUE AS PER FIGMA)
+   ========================================================= */
+
+.rm-recommend-card .rm-course-thumbnail,
+.rm-recommend-course-card .rm-course-thumbnail {
+    position: relative;
+    width: 100%;
+    min-height: 64px;
+    flex: 1 1 auto;
+    max-height: 88px;
+    flex-shrink: 0;
+    border-radius: 6px;
+    background: linear-gradient(180deg, #0145EE 0%, #4379FF 100%) !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.rm-recommend-card .rm-category-badge,
+.rm-recommend-course-card .rm-category-badge {
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    width: auto;
+    min-width: 48px;
+    max-width: calc(100% - 8px);
+    height: 16px;
+    padding: 0 4px;
+    border-radius: 4px;
+    background: #FFFFFF !important;
+    color: #215EF8 !important;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 600 !important;
+    font-size: 8.5px;
+    line-height: 16px;
+    letter-spacing: 0.2px;
+    text-transform: uppercase;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+    z-index: 2;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    box-sizing: border-box;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.rm-recommend-card .rm-thumbnail-icon,
+.rm-recommend-course-card .rm-thumbnail-icon {
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
+    opacity: 1;
+    z-index: 2;
+    transform: translateY(2px);
+}
+
+/* =========================================================
+   CARD BODY
+   ========================================================= */
+
+.rm-recommend-card .rm-course-card-body,
+.rm-recommend-course-card .rm-course-card-body {
+    width: 100%;
+    flex: 0 0 auto;
+    min-height: min-content;
+    padding: 4px 2px 2px 2px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 5px;
+    box-sizing: border-box;
+    background: transparent;
+    flex-shrink: 0;
+}
+
+.rm-recommend-card .rm-course-info,
+.rm-recommend-course-card .rm-course-info {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    width: 100%;
+}
+
+.rm-recommend-card .rm-course-title,
+.rm-recommend-course-card .rm-course-title {
+    margin: 0;
+    color: #000000;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+    vertical-align: middle;
+    height: 16px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100%;
+}
+
+.rm-recommend-card .rm-course-provider,
+.rm-recommend-course-card .rm-course-provider {
+    display: flex;
+    padding: 0;
+    align-items: center;
+    gap: 4px;
+    color: #7f7f7f;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    font-size: 11px;
+    line-height: 14px;
+}
+
+.rm-recommend-card .rm-course-provider img,
+.rm-recommend-course-card .rm-course-provider img {
+    width: 12px;
+    height: 12px;
+    object-fit: contain;
+}
+
+/* =========================================================
+   RECOMMEND BUTTON (WHITE WITH BLUE BORDER)
+   ========================================================= */
+
+.rm-recommend-card .rm-btn-course-recommend,
+.rm-recommend-course-card .rm-btn-course-recommend {
+    width: 100%;
+    height: 25px;
+    border-radius: 5px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    font-size: 11.5px;
+    line-height: 25px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    border: 1px solid #215EF8;
+    background: #EFF3FF;
+    color: #215EF8;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    margin-top: 2px;
+}
+
+.rm-recommend-card .rm-btn-course-recommend:hover,
+.rm-recommend-course-card .rm-btn-course-recommend:hover {
+    background: #EFF3FF;
+    border-color: #215EF8;
+    color: #215EF8;
+}
+
+/* Responsive adjustments when 4 or more rows are active on tall monitors */
+.rm-recommend-course-grid[style*="--rm-course-grid-rows: 4"] .rm-recommend-card,
+.rm-recommend-course-grid[style*="--rm-course-grid-rows: 5"] .rm-recommend-card,
+.rm-recommend-course-grid[style*="--rm-course-grid-rows: 6"] .rm-recommend-card,
+.rm-recommend-course-grid[style*="--rm-course-grid-rows: 7"] .rm-recommend-card {
+    min-height: 0;
+    max-height: 155px;
+    padding: 4px 5px;
+}
+
+.rm-recommend-course-grid[style*="--rm-course-grid-rows: 4"] .rm-course-thumbnail,
+.rm-recommend-course-grid[style*="--rm-course-grid-rows: 5"] .rm-course-thumbnail,
+.rm-recommend-course-grid[style*="--rm-course-grid-rows: 6"] .rm-course-thumbnail,
+.rm-recommend-course-grid[style*="--rm-course-grid-rows: 7"] .rm-course-thumbnail {
+    min-height: 52px;
+    max-height: 72px;
+}
+
+.rm-recommend-course-grid[style*="--rm-course-grid-rows: 4"] .rm-btn-course-recommend,
+.rm-recommend-course-grid[style*="--rm-course-grid-rows: 5"] .rm-btn-course-recommend,
+.rm-recommend-course-grid[style*="--rm-course-grid-rows: 6"] .rm-btn-course-recommend,
+.rm-recommend-course-grid[style*="--rm-course-grid-rows: 7"] .rm-btn-course-recommend {
+    height: 23px;
+    line-height: 23px;
+    font-size: 11px;
+}
+
+/* =========================================================
+   125% BROWSER ZOOM / COMPACT LAPTOP VIEWPORT
+   Applies when browser is zoomed to ~125% (viewport height <= 720px
+   or 1.2 to 1.35 dppx). Reduces card height to prevent merging with pagination.
+   ========================================================= */
+@media (min-width: 1024px) and (max-width: 1400px) and (max-height: 720px),
+(min-width: 1024px) and (min-resolution: 1.2dppx) and (max-resolution: 1.35dppx) and (max-height: 740px) {
+
+    .rm-recommend-card,
+    .rm-recommend-course-card {
+        height: 100% !important;
+        min-height: 0 !important;
+        max-height: 155px !important;
+        padding: 4px 5px !important;
+    }
+
+    .rm-recommend-card .rm-course-thumbnail,
+    .rm-recommend-course-card .rm-course-thumbnail {
+        min-height: 52px !important;
+        max-height: 72px !important;
+    }
+
+    .rm-recommend-card .rm-thumbnail-icon,
+    .rm-recommend-course-card .rm-thumbnail-icon {
+        width: 26px !important;
+        height: 26px !important;
+        transform: translateY(2px) !important;
+    }
+
+    .rm-recommend-card .rm-category-badge,
+    .rm-recommend-course-card .rm-category-badge {
+        width: auto !important;
+        max-width: calc(100% - 8px) !important;
+        height: 14px !important;
+        line-height: 14px !important;
+        font-size: 8px !important;
+        padding: 0 4px !important;
+    }
+
+    .rm-recommend-card .rm-course-card-body,
+    .rm-recommend-course-card .rm-course-card-body {
+        padding: 3px 1px 1px 1px !important;
+        gap: 3px !important;
+    }
+
+    .rm-recommend-card .rm-course-title,
+    .rm-recommend-course-card .rm-course-title {
+        font-size: 11.5px !important;
+        line-height: 15px !important;
+        height: 15px !important;
+    }
+
+    .rm-recommend-card .rm-course-provider,
+    .rm-recommend-course-card .rm-course-provider {
+        font-size: 10px !important;
+        line-height: 13px !important;
+    }
+
+    .rm-recommend-card .rm-btn-course-recommend,
+    .rm-recommend-course-card .rm-btn-course-recommend {
+        height: 23px !important;
+        line-height: 23px !important;
+        font-size: 11px !important;
+    }
+}
+
+/* =========================================================
+   RESPONSIVE OVERRIDES (TABLET & MOBILE)
+   ========================================================= */
+
+/* Tablet (768px – 1023px) */
+@media (min-width: 768px) and (max-width: 1023px) {
+
+    .rm-recommend-card,
+    .rm-recommend-course-card {
+        width: 100% !important;
+        max-width: 100% !important;
+        height: auto !important;
+        min-height: 200px !important;
+        max-height: none !important;
+        padding: 10px !important;
+        flex-direction: column !important;
+        display: flex !important;
+        justify-content: space-between !important;
+    }
+
+    .rm-recommend-card .rm-course-thumbnail,
+    .rm-recommend-course-card .rm-course-thumbnail {
+        width: 100% !important;
+        height: 100px !important;
+        min-height: 100px !important;
+        max-height: 100px !important;
+    }
+
+    .rm-recommend-card .rm-category-badge,
+    .rm-recommend-course-card .rm-category-badge {
+        top: 6px !important;
+        left: 6px !important;
+        width: 96px !important;
+        max-width: calc(100% - 12px) !important;
+        height: 20px !important;
+        padding: 0 4px !important;
+        font-size: 9px !important;
+        line-height: 20px !important;
+        text-align: center !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+    }
+
+    .rm-recommend-card .rm-thumbnail-icon,
+    .rm-recommend-course-card .rm-thumbnail-icon {
+        width: 42px !important;
+        height: 38px !important;
+    }
+
+    .rm-recommend-card .rm-course-card-body,
+    .rm-recommend-course-card .rm-course-card-body {
+        padding: 8px 0 0 0 !important;
+        gap: 6px !important;
+    }
+
+    .rm-recommend-card .rm-course-title,
+    .rm-recommend-course-card .rm-course-title {
+        font-size: 13.5px !important;
+        line-height: 18px !important;
+        height: 18px !important;
+    }
+
+    .rm-recommend-card .rm-btn-course-recommend,
+    .rm-recommend-course-card .rm-btn-course-recommend {
+        height: 30px !important;
+        font-size: 12.5px !important;
+        line-height: 30px !important;
+    }
+}
+
+/* Mobile (< 768px) */
+@media (max-width: 767px) {
+
+    .rm-recommend-card,
+    .rm-recommend-course-card {
+        width: 100% !important;
+        max-width: 100% !important;
+        height: auto !important;
+        min-height: 80px !important;
+        max-height: none !important;
+        padding: 8px 10px !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        gap: 10px !important;
+        box-sizing: border-box !important;
+    }
+
+    .rm-recommend-card .rm-course-thumbnail,
+    .rm-recommend-course-card .rm-course-thumbnail {
+        width: 74px !important;
+        min-width: 74px !important;
+        max-width: 74px !important;
+        height: 70px !important;
+        min-height: 70px !important;
+        max-height: 70px !important;
+        flex-shrink: 0 !important;
+        border-radius: 6px !important;
+    }
+
+    .rm-recommend-card .rm-category-badge,
+    .rm-recommend-course-card .rm-category-badge {
+        top: 4px !important;
+        left: 4px !important;
+        width: auto !important;
+        max-width: calc(100% - 8px) !important;
+        height: 16px !important;
+        padding: 0 6px !important;
+        font-size: 7.5px !important;
+        line-height: 16px !important;
+        border-radius: 3px !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+    }
+
+    .rm-recommend-card .rm-thumbnail-icon,
+    .rm-recommend-course-card .rm-thumbnail-icon {
+        width: 26px !important;
+        height: 26px !important;
+    }
+
+    .rm-recommend-card .rm-course-card-body,
+    .rm-recommend-course-card .rm-course-card-body {
+        flex: 1 !important;
+        min-width: 0 !important;
+        height: 100% !important;
+        padding: 0 !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: space-between !important;
+        gap: 4px !important;
+    }
+
+    .rm-recommend-card .rm-course-title,
+    .rm-recommend-course-card .rm-course-title {
+        font-size: 12.5px !important;
+        line-height: 16px !important;
+        margin-bottom: 2px !important;
+        white-space: normal !important;
+        word-break: break-word !important;
+        -webkit-line-clamp: 2 !important;
+        display: -webkit-box !important;
+        -webkit-box-orient: vertical !important;
+        overflow: hidden !important;
+        height: auto !important;
+    }
+
+    .rm-recommend-card .rm-course-provider,
+    .rm-recommend-course-card .rm-course-provider {
+        font-size: 10.5px !important;
+        padding: 0 !important;
+        gap: 4px !important;
+    }
+
+    .rm-recommend-card .rm-btn-course-recommend,
+    .rm-recommend-course-card .rm-btn-course-recommend {
+        height: 24px !important;
+        font-size: 11px !important;
+        border-radius: 4px !important;
+        margin-top: 4px !important;
+        padding: 0 8px !important;
+    }
+}

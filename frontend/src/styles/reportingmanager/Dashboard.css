@@ -1,0 +1,1508 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700;800;900&display=swap');
+@import url('../../styles/responsive/responsive-rm-dashboard.css');
+
+
+/* =========================================================
+   REPORTING MANAGER - TEAM DASHBOARD
+   src/styles/reportingmanager/Dashboard.css
+   ========================================================= */
+
+.rm-dashboard-page,
+.rm-dashboard-page *,
+.rm-dashboard-page button,
+.rm-dashboard-page input,
+.rm-dashboard-page select,
+.rm-dashboard-page textarea {
+    font-family: 'Roboto', sans-serif;
+    box-sizing: border-box;
+}
+
+.rm-dashboard-page {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    max-height: 100vh;
+    overflow: hidden !important;
+    padding: 14px 24px 12px 24px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 18px !important;
+    background: transparent;
+    font-family: 'Roboto', sans-serif;
+}
+
+/* Prevent flex children from overflowing their allocated space */
+.rm-dashboard-fixed-header {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex-shrink: 0;
+    z-index: 10;
+}
+
+.rm-dashboard-scrollable-content {
+    flex: 1 1 0;
+    min-height: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* Prevent flex children from overflowing their allocated space */
+.rm-dashboard-page>* {
+    min-height: 0;
+    flex-shrink: 0;
+}
+
+/* The scrollable content fills leftover space */
+.rm-dashboard-page>.rm-dashboard-scrollable-content {
+    flex: 1 1 0;
+    height: 100%;
+}
+
+/* =========================================================
+   1. TOP KPI STATS GRID (4 STAT CARDS)
+   ========================================================= */
+
+.rm-dashboard-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    width: 100%;
+    height: 70px;
+    flex-shrink: 0;
+}
+
+.rm-stat-card {
+    background: #FFFFFF;
+    border-radius: 10px;
+    border: 1px solid #DDE0EE;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+    position: relative;
+    overflow: hidden;
+    height: 100%;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+
+
+.rm-stat-card-inner {
+    padding: 0 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex: 1;
+}
+
+/* Icon Circle */
+.rm-stat-icon-circle {
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    min-height: 40px;
+    border-radius: 50%;
+    background: linear-gradient(306.06deg, #0D3BAE 5.34%, #0145EE 82.65%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.rm-stat-svg-icon {
+    width: 18px;
+    height: 18px;
+    object-fit: contain;
+    display: block;
+    filter: brightness(0) invert(1);
+}
+
+.rm-stat-text-col {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1px;
+    min-width: 0;
+}
+
+.rm-stat-value {
+    font-family: 'Roboto', sans-serif;
+    font-size: 22px;
+    font-weight: 600;
+    color: #080808;
+    line-height: 1.1;
+    margin-bottom: 0px;
+    display: flex;
+    align-items: center;
+    min-height: 24px;
+}
+
+/* Skeleton loading state for RM Stat Cards */
+@keyframes rm-stat-skeleton-shimmer {
+    0% {
+        background-position: -200% 0;
+    }
+    100% {
+        background-position: 200% 0;
+    }
+}
+
+.rm-stat-skeleton {
+    display: inline-block;
+    width: 44px;
+    height: 20px;
+    border-radius: 4px;
+    background: linear-gradient(90deg, #E2E8F0 25%, #F1F5F9 50%, #E2E8F0 75%);
+    background-size: 200% 100%;
+    animation: rm-stat-skeleton-shimmer 1.5s infinite ease-in-out;
+    vertical-align: middle;
+}
+
+.rm-stat-label {
+    font-family: 'Roboto', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    color: #656565;
+    line-height: 14px;
+    white-space: nowrap;
+}
+
+/* Bottom accent bar: height 5px, border-bottom-radius 10px, background #C1D2FF */
+.rm-stat-bottom-bar {
+    width: 100%;
+    height: 5px;
+    background: #C1D2FF;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    flex-shrink: 0;
+}
+
+/* =========================================================
+   2. COMMON CARD STYLES
+   ========================================================= */
+
+.rm-card {
+    background: #FFFFFF;
+    border-radius: 10px;
+    padding: 8px 10px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    box-sizing: border-box;
+    min-height: 0;
+}
+
+.rm-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    flex-shrink: 0;
+}
+
+.rm-card-title {
+    margin: 0;
+    font-size: 13px;
+    font-weight: 500;
+    color: #060606;
+    line-height: 20px;
+}
+
+.rm-header-with-action {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.rm-view-all-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background: transparent;
+    border: none;
+    font-size: 11px;
+    font-weight: 500;
+    color: #215EF8;
+    cursor: pointer;
+    padding: 2px 6px;
+    border-radius: 4px;
+    transition: all 0.15s ease;
+}
+
+.rm-view-all-btn:hover {
+    background: #EFF6FF;
+    color: #1D4ED8;
+}
+
+.rm-view-all-icon {
+    width: 13px;
+    height: 8px;
+
+}
+
+/* =========================================================
+   3. TEAM MEMBERS TABLE CARD
+   ========================================================= */
+
+.rm-team-members-card {
+    width: 100%;
+    flex: 1.15;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    padding: 8px 0 0 0 !important;
+}
+
+.rm-team-members-card .rm-card-header {
+    padding: 0 12px 0px 12px;
+}
+
+
+/* The card body (table area) must grow and scroll cleanly */
+.rm-team-members-card .rm-table-wrapper {
+    flex: 1 1 0;
+    min-height: 0;
+    width: 100%;
+    overflow-y: auto;
+    overflow-x: auto;
+    padding-right: 0 !important;
+    box-sizing: border-box;
+    scrollbar-width: thin;
+    scrollbar-color: #CBD5E1 #F8FAFC;
+}
+
+.rm-table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #CBD5E1 #F8FAFC;
+}
+
+/* Modern visible scrollbar for team members table */
+.rm-team-members-card .rm-table-wrapper::-webkit-scrollbar,
+.rm-table-wrapper::-webkit-scrollbar {
+    width: 6px !important;
+    height: 6px !important;
+    display: block !important;
+}
+
+.rm-team-members-card .rm-table-wrapper::-webkit-scrollbar-track,
+.rm-table-wrapper::-webkit-scrollbar-track {
+    background: #F8FAFC;
+    border-radius: 9999px;
+}
+
+.rm-team-members-card .rm-table-wrapper::-webkit-scrollbar-thumb,
+.rm-table-wrapper::-webkit-scrollbar-thumb {
+    background: #CBD5E1 !important;
+    border-radius: 9999px !important;
+    min-height: 40px;
+}
+
+.rm-team-members-card .rm-table-wrapper::-webkit-scrollbar-thumb:hover,
+.rm-table-wrapper::-webkit-scrollbar-thumb:hover {
+    background: #94A3B8 !important;
+}
+
+.rm-team-table {
+    width: 100%;
+    min-width: 760px;
+    table-layout: fixed;
+    border-collapse: collapse;
+    text-align: left;
+    font-size: 12px;
+    font-weight: 400;
+}
+
+/* Prevent the last row from being clipped by the flex container edge.
+   One extra row-height of breathing room ensures the scroll body
+   always shows complete rows only. */
+.rm-team-table tbody {
+    display: table-row-group;
+}
+
+/* Disable empty spacer row so bottom row reaches edge without blank space */
+.rm-team-table tbody::after {
+    display: none !important;
+}
+
+/* Static / Sticky Header */
+
+.rm-team-table th:first-child,
+.rm-team-table td:first-child {
+    padding-left: 12px !important;
+}
+
+.rm-team-table th:last-child,
+.rm-team-table td:last-child {
+    padding-right: 12px !important;
+}
+
+.rm-team-table thead th {
+    position: sticky;
+    top: 0;
+    background: #e0e7ff;
+    z-index: 3;
+    padding: 6px 8px;
+    height: 30px;
+    font-size: 12px;
+    font-weight: 500;
+    color: #3730a3;
+    border-bottom: 1px solid #E0E5F0;
+    box-shadow: inset 0 -1px 0 #E0E5F0;
+    white-space: nowrap;
+    box-sizing: border-box;
+}
+
+.rm-team-table th,
+.rm-team-table td {
+    text-align: left !important;
+    box-sizing: border-box;
+}
+
+/* Proportional Column Widths & Alignments */
+.rm-team-table .rm-th-employee,
+.rm-team-table .rm-td-employee {
+    width: 16%;
+    min-width: 175px;
+    padding-left: 4px !important;
+    text-align: left !important;
+    white-space: nowrap !important;
+}
+
+.rm-team-table .rm-th-role,
+.rm-team-table .rm-td-role {
+    width: 24%;
+    min-width: 160px;
+    max-width: 0;
+    text-align: left !important;
+    padding-left: 8px !important;
+    padding-right: 8px !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+}
+
+.rm-team-table .rm-th-progress,
+.rm-team-table .rm-td-progress {
+    width: 17%;
+    min-width: 130px;
+    text-align: left !important;
+    padding-left: 8px !important;
+    white-space: nowrap !important;
+}
+
+.rm-team-table .rm-th-hours,
+.rm-team-table .rm-td-hours {
+    width: 10%;
+    min-width: 75px;
+    text-align: left !important;
+    padding-left: 8px !important;
+    white-space: nowrap !important;
+}
+
+.rm-team-table .rm-th-courses,
+.rm-team-table .rm-td-courses {
+    width: 10%;
+    min-width: 55px;
+    text-align: left !important;
+    padding-left: 8px !important;
+    white-space: nowrap !important;
+}
+
+.rm-team-table .rm-th-certs,
+.rm-team-table .rm-td-certs {
+    width: 10%;
+    min-width: 70px;
+    text-align: left !important;
+    padding-left: 8px !important;
+    white-space: nowrap !important;
+}
+
+.rm-team-table .rm-th-status,
+.rm-team-table .rm-td-status {
+    width: 13%;
+    min-width: 95px;
+    padding-left: 8px !important;
+    padding-right: 8px !important;
+    text-align: left !important;
+    white-space: nowrap !important;
+}
+
+/* Sortable Table Headers in RM Dashboard (matching Employee module) */
+.rm-sortable-th {
+    cursor: pointer !important;
+    user-select: none !important;
+    transition: color 0.15s ease, background-color 0.15s ease;
+}
+
+.rm-sortable-th:hover {
+    color: #1E1B4B !important;
+}
+
+.rm-sortable-th.active-sort {
+    color: #1E1B4B !important;
+    font-weight: 600 !important;
+}
+
+.rm-th-sortable {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+    user-select: none;
+    width: auto;
+}
+
+.rm-sort-icon {
+    width: 12px !important;
+    height: 12px !important;
+    flex-shrink: 0;
+    transition: color 0.15s ease, opacity 0.15s ease, transform 0.15s ease;
+}
+
+.rm-sort-icon.inactive {
+    color: #4F46E5 !important;
+    opacity: 0.5;
+}
+
+.rm-sortable-th:hover .rm-sort-icon.inactive {
+    opacity: 0.95;
+    color: #1E1B4B !important;
+}
+
+.rm-sort-icon.active {
+    color: #1E1B4B !important;
+    opacity: 1 !important;
+}
+
+.rm-team-table td {
+    padding: 7px 8px;
+    height: 35px;
+    border-bottom: 1px solid #E0E5F0;
+    color: #000000;
+    font-size: 13px;
+    font-weight: 400;
+    vertical-align: middle;
+    box-sizing: border-box;
+}
+
+.rm-table-row {
+    min-height: 38px;
+    height: auto;
+    transition: background-color 0.12s ease;
+    cursor: default;
+}
+
+.rm-table-row:hover {
+    background-color: #F8FAFC;
+}
+
+.rm-team-skeleton-row:hover,
+.rm-certs-skeleton-row:hover {
+    background-color: transparent !important;
+}
+
+.rm-table-row:last-child td {
+    border-bottom: none;
+}
+
+/* Avatar Pill */
+.rm-avatar-pill {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.rm-member-avatar {
+    width: 24px;
+    height: 24px;
+    min-width: 24px;
+    min-height: 24px;
+    border-radius: 50%;
+    color: #FFFFFF;
+    font-size: 9px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.rm-member-name {
+    font-size: 12px;
+    font-weight: 400;
+    color: #000000;
+    white-space: nowrap;
+}
+
+.rm-emp-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    min-width: 0;
+    max-width: 100%;
+}
+
+.rm-emp-id-sub {
+    font-size: 11px;
+    font-weight: 400;
+    color: #7F7F7F;
+    margin-top: 1px;
+    line-height: 14px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Progress Cell */
+.rm-team-table .rm-progress-bar-cell {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 150px;
+    max-width: 220px;
+    margin: 0;
+}
+
+.rm-team-table .rm-progress-track {
+    flex: 1;
+    height: 5px;
+    background: #DDE7FF;
+    border-radius: 100px;
+    overflow: hidden;
+}
+
+.rm-team-table .rm-progress-fill {
+    height: 100%;
+    background: #215EF8;
+    border-radius: 100px;
+    transition: width 0.4s ease;
+}
+
+.rm-team-table .rm-progress-pct {
+    font-size: 12px;
+    font-weight: 500;
+    color: #666666;
+    width: 30px;
+    text-align: right;
+    flex-shrink: 0;
+}
+
+/* Status Badges */
+.rm-status-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3px 10px;
+    border-radius: 4px;
+    font-size: 10px;
+    font-weight: 500;
+    white-space: nowrap;
+    text-align: center;
+    min-width: fit-content;
+    margin: 0;
+}
+
+.rm-status-badge.on_track {
+    background: #F1F2F8;
+    border: 0.5px solid #A1BCFF;
+    color: #215EF8;
+}
+
+.rm-status-badge.excellent {
+    background: #EEFBF5;
+    border: 0.5px solid #AEEDBE;
+    color: #0EAB62;
+}
+
+.rm-status-badge.needs_attention {
+    background: #FDF5EA;
+    border: 0.5px solid #FFD696;
+    color: #E79519;
+}
+
+.rm-status-badge.inactive {
+    background: #F2F2F2;
+    border: 0.5px solid #B8B8B8;
+    color: #777879;
+}
+
+.rm-null-hyphen {
+    font-size: 12px;
+    font-weight: 500;
+    color: #777879;
+    display: inline-block;
+    padding-left: 2px;
+}
+
+/* =========================================================
+   3B. PROGRESS OVERVIEW FLOATING HOVER POPOVER
+   ========================================================= */
+
+.rm-team-table .rm-progress-bar-cell {
+    cursor: pointer;
+    position: relative;
+    padding: 3px 6px;
+    border-radius: 4px;
+    transition: background-color 0.15s ease;
+}
+
+.rm-team-table .rm-progress-bar-cell:hover {
+    background-color: #EDF2FE;
+}
+
+.rm-progress-popover {
+    position: fixed;
+    min-width: 190px;
+    max-width: 280px;
+    width: max-content;
+    background: #FFFFFF;
+    border: 1px solid #DDE0EE;
+    border-radius: 8px;
+    box-shadow: 0 10px 25px -4px rgba(15, 23, 42, 0.16), 0 4px 8px -2px rgba(15, 23, 42, 0.08);
+    padding: 10px 12px;
+    box-sizing: border-box;
+    z-index: 99999;
+    pointer-events: none;
+    user-select: none;
+    transition: opacity 0.18s cubic-bezier(0.16, 1, 0.3, 1), transform 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.rm-progress-popover.rm-popover-top {
+    transform: translate(-50%, -100%);
+    animation: rmPopoverFadeInTop 0.18s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes rmPopoverFadeInTop {
+    from {
+        opacity: 0;
+        transform: translate(-50%, calc(-100% + 5px));
+    }
+
+    to {
+        opacity: 1;
+        transform: translate(-50%, -100%);
+    }
+}
+
+.rm-progress-popover.rm-popover-bottom {
+    transform: translate(-50%, 0);
+    animation: rmPopoverFadeInBottom 0.18s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes rmPopoverFadeInBottom {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -5px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translate(-50%, 0);
+    }
+}
+
+.rm-progress-popover-header {
+    font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 12.5px;
+    font-weight: 700;
+    color: #0F172A;
+    text-align: center;
+    letter-spacing: -0.1px;
+    padding-bottom: 5px;
+}
+
+.rm-progress-popover-divider {
+    width: 100%;
+    height: 1px;
+    background: #EEF2F6;
+    margin: 0 0 8px 0;
+}
+
+.rm-progress-popover-courses-list {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    max-height: 180px;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #CBD5E1 #F8FAFC;
+    padding-right: 2px;
+}
+
+.rm-progress-popover-course-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.rm-progress-popover-course-title {
+    font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    color: #0F172A;
+    padding: 3px 4px;
+    line-height: 1.4;
+    white-space: normal;
+    word-break: break-word;
+    margin: 0;
+    display: flex;
+    align-items: flex-start;
+    gap: 7px;
+}
+
+.rm-progress-popover-course-title::before {
+    content: "•";
+    color: #215EF8;
+    font-size: 14px;
+    line-height: 1.2;
+    flex-shrink: 0;
+}
+
+.rm-progress-popover-empty {
+    font-family: 'Roboto', sans-serif;
+    font-size: 12px;
+    color: #64748B;
+    text-align: center;
+    padding: 6px 8px;
+}
+
+/* Arrow Caret pointing directly to progress bar */
+.rm-progress-popover-arrow {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: #FFFFFF;
+}
+
+.rm-progress-popover-arrow.rm-arrow-top {
+    bottom: -6px;
+    left: 50%;
+    transform: translateX(-50%) rotate(45deg);
+    border-right: 1px solid #DDE0EE;
+    border-bottom: 1px solid #DDE0EE;
+}
+
+.rm-progress-popover-arrow.rm-arrow-bottom {
+    top: -6px;
+    left: 50%;
+    transform: translateX(-50%) rotate(45deg);
+    border-left: 1px solid #DDE0EE;
+    border-top: 1px solid #DDE0EE;
+}
+
+/* =========================================================
+   4. BOTTOM 2-COLUMN GRID (TOP COURSES & CERTS TABLE)
+   ========================================================= */
+
+.rm-dashboard-bottom-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    width: 100%;
+    flex: 1;
+    min-height: 0;
+    align-items: stretch;
+    overflow: hidden;
+}
+
+/* Top Performing Courses List */
+.rm-top-courses-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.rm-top-courses-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+    margin-top: 4px;
+    justify-content: space-around;
+    flex: 1;
+}
+
+.rm-top-course-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+}
+
+.rm-top-course-title {
+    font-size: 12px;
+    font-weight: 400;
+    color: #000000;
+    flex: 1;
+    min-width: 150px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.rm-top-course-track {
+    flex: 1.4;
+    height: 6px;
+    background: #F1F2F8;
+    border-radius: 4px;
+    overflow: hidden;
+    min-width: 90px;
+}
+
+.rm-top-course-fill {
+    height: 100%;
+    border-radius: 4px;
+    transition: width 0.4s ease;
+}
+
+.rm-top-course-count {
+    font-size: 12px;
+    font-weight: 500;
+    color: #080808;
+    width: 22px;
+    text-align: right;
+    flex-shrink: 0;
+}
+
+/* Certifications Table Card */
+.rm-certs-team-card {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    min-height: 0;
+    padding: 8px 0 0 0 !important;
+}
+
+.rm-certs-team-card .rm-card-header {
+    padding: 0 12px 0px 12px;
+}
+
+/* Scrollable certs table wrapper - fits 4 records */
+.rm-certs-table-wrapper {
+    flex: 1;
+    height: 100%;
+    min-height: 140px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-right: 0 !important;
+    scrollbar-width: thin;
+    scrollbar-color: #D1D5DB transparent;
+}
+
+.rm-certs-table-wrapper::-webkit-scrollbar {
+    width: 5px !important;
+    display: block !important;
+}
+
+.rm-certs-table-wrapper::-webkit-scrollbar-track {
+    background: transparent;
+    border-radius: 9999px;
+}
+
+.rm-certs-table-wrapper::-webkit-scrollbar-thumb {
+    background: #D1D5DB !important;
+    border-radius: 9999px !important;
+}
+
+.rm-certs-table-wrapper::-webkit-scrollbar-thumb:hover {
+    background: #9CA3AF !important;
+}
+
+
+.rm-certs-table th:first-child,
+.rm-certs-table td:first-child {
+    padding-left: 12px !important;
+}
+
+.rm-certs-table th:last-child,
+.rm-certs-table td:last-child {
+    padding-right: 12px !important;
+}
+
+.rm-certs-table {
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+    text-align: left;
+    font-size: 12px;
+}
+
+.rm-certs-table th:nth-child(1),
+.rm-certs-table td:nth-child(1) {
+    width: 28%;
+}
+
+.rm-certs-table th:nth-child(2),
+.rm-certs-table td:nth-child(2) {
+    width: 25%;
+}
+
+.rm-certs-table th:nth-child(3),
+.rm-certs-table td:nth-child(3) {
+    width: 25%;
+}
+
+.rm-certs-table th:nth-child(4),
+.rm-certs-table td:nth-child(4) {
+    width: 22%;
+}
+
+.rm-certs-table thead th {
+    position: sticky;
+    top: 0;
+    background: #e0e7ff;
+    z-index: 3;
+    padding: 6px 6px;
+    font-size: 12px;
+    font-weight: 500;
+    color: #3730a3;
+    border-bottom: 1px solid #E0E5F0;
+    box-shadow: inset 0 -1px 0 #E0E5F0;
+    white-space: nowrap;
+}
+
+.rm-certs-table thead th:first-child,
+.rm-certs-table td:first-child {
+    padding-left: 6px;
+}
+
+.rm-certs-table thead th:last-child,
+.rm-certs-table td:last-child {
+    padding-right: 2px;
+    text-align: left;
+}
+
+.rm-certs-table td {
+    padding: 6px 6px;
+    border-bottom: 1px solid #E0E5F0;
+    color: #000000;
+    font-size: 12px;
+    font-weight: 400;
+    vertical-align: middle;
+}
+
+.rm-certs-table-date {
+    padding: 6px 6px;
+    border-bottom: 1px solid #E0E5F0;
+    color: #000000;
+    font-size: 12px;
+    font-weight: 400;
+    vertical-align: middle;
+}
+
+.rm-certs-table tr:last-child td {
+    border-bottom: none;
+}
+
+.rm-th-cert-employee,
+.rm-td-cert-employee {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.rm-td-cert-employee .rm-avatar-pill {
+    min-width: 0;
+    overflow: hidden;
+}
+
+.rm-td-cert-employee .rm-member-name {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    min-width: 0;
+}
+
+.rm-certs-count-pill {
+    font-size: 13px;
+    font-weight: 600;
+    color: #64748b;
+    margin-left: 6px;
+}
+
+.rm-th-cert-name,
+.rm-td-cert-name {
+    color: #060606;
+    font-weight: 400;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.rm-cert-title-text {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: inline-block;
+    max-width: 100%;
+}
+
+.rm-certs-table thead th.rm-th-cert-status,
+.rm-certs-table td.rm-td-cert-status,
+.rm-th-cert-status,
+.rm-td-cert-status {
+    white-space: nowrap;
+    text-align: left !important;
+    padding-left: 15px !important;
+}
+
+.rm-cert-expiry-text {
+    color: #000000;
+    font-size: 12px;
+    font-weight: 400;
+    white-space: nowrap;
+    text-align: right;
+}
+
+.rm-th-cert-expiry,
+.rm-td-cert-expiry {
+    color: #000000;
+    font-size: 13px;
+    font-weight: 400;
+    white-space: nowrap;
+    text-align: right;
+}
+
+.rm-cert-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 10px;
+    font-weight: 500;
+    white-space: nowrap;
+    text-align: center;
+    min-width: 66px;
+    box-sizing: border-box;
+    margin: 0;
+}
+
+.rm-cert-badge.active {
+    background: #EEFBF5;
+    border: 1px solid #AEEDBE;
+    color: #0EAB62;
+}
+
+.rm-cert-badge.expiring_soon {
+    background: #FDF5EA;
+    border: 0.5px solid #FFD696;
+    color: #E79519;
+}
+
+.rm-cert-badge.expired {
+    background: #FDF4EF;
+    border: 0.5px solid #FFD6CD;
+    color: #FE7356;
+}
+
+
+/* =========================================================
+   5. LEARNING HISTORY MODAL
+   ========================================================= */
+
+.rm-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.45);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    padding: 16px;
+    box-sizing: border-box;
+    animation: rmFadeIn 0.15s ease-out;
+}
+
+@keyframes rmFadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.rm-modal-content {
+    background: #FFFFFF;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 565px;
+    max-height: 85vh;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.16);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 20px 22px;
+    box-sizing: border-box;
+    animation: rmScaleUp 0.18s ease-out;
+}
+
+@keyframes rmScaleUp {
+    from {
+        opacity: 0;
+        transform: scale(0.96);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.rm-modal-close-btn {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    background: transparent;
+    border: none;
+    color: #64748B;
+    cursor: pointer;
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.12s ease;
+}
+
+.rm-modal-close-btn:hover {
+    background: #F1F5F9;
+    color: #0F172A;
+}
+
+.rm-modal-header-row {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    padding-right: 28px;
+    margin-bottom: 14px;
+}
+
+.rm-modal-title {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 700;
+    color: #215EF8;
+    line-height: 24px;
+}
+
+.rm-modal-subtitle {
+    margin: 3px 0 0 0;
+    font-size: 13px;
+    font-weight: 400;
+    color: #64748B;
+    line-height: 16px;
+}
+
+/* Month Navigator */
+.rm-month-nav {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    flex-shrink: 0;
+}
+
+.rm-month-nav-btn {
+    background: transparent;
+    border: none;
+    color: #215EF8;
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    transition: background-color 0.12s ease;
+}
+
+.rm-month-nav-btn:hover {
+    background: #EFF6FF;
+}
+
+.rm-month-nav-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #215EF8;
+    white-space: nowrap;
+}
+
+/* Modal Body */
+.rm-learning-history-body {
+    flex: 1;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    padding-right: 4px;
+    max-height: 380px;
+}
+
+.rm-history-date-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.rm-history-date-banner {
+    background: #F1F2F8;
+    border-radius: 6px;
+    padding: 6px 12px;
+    display: flex;
+    flex-direction: column;
+}
+
+.rm-history-date-text {
+    font-size: 12px;
+    font-weight: 700;
+    color: #060606;
+}
+
+.rm-history-day-text {
+    font-size: 10px;
+    font-weight: 400;
+    color: #7F7F7F;
+}
+
+.rm-history-items-list {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.rm-history-item-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 10px;
+    border-radius: 6px;
+    border-bottom: 1px solid #F1F2F8;
+    gap: 12px;
+    transition: background-color 0.12s ease;
+}
+
+.rm-history-item-row:hover {
+    background-color: #F8FAFC;
+}
+
+.rm-history-item-row:last-child {
+    border-bottom: none;
+}
+
+.rm-history-left {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    min-width: 0;
+    flex: 1;
+}
+
+.rm-history-datetime {
+    display: flex;
+    flex-direction: column;
+    min-width: 55px;
+    flex-shrink: 0;
+}
+
+.rm-history-item-date {
+    font-size: 11px;
+    font-weight: 700;
+    color: #060606;
+}
+
+.rm-history-item-time {
+    font-size: 9.5px;
+    color: #7F7F7F;
+}
+
+.rm-history-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 0;
+}
+
+.rm-history-item-title {
+    margin: 0;
+    font-size: 12.5px;
+    font-weight: 600;
+    color: #060606;
+}
+
+.rm-history-item-desc {
+    margin: 0;
+    font-size: 11px;
+    color: #7F7F7F;
+}
+
+.rm-duration-pill {
+    background: #EFF6FF;
+    color: #215EF8;
+    padding: 4px 10px;
+    border-radius: 100px;
+    font-size: 11.5px;
+    font-weight: 600;
+    flex-shrink: 0;
+}
+
+.rm-modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 14px;
+    padding-top: 10px;
+    border-top: 1px solid #F1F2F8;
+}
+
+.rm-btn-cancel-flat {
+    background: #F1F2F8;
+    border: 1px solid #DDE0EE;
+    color: #060606;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 7px 18px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.rm-btn-cancel-flat:hover {
+    background: #E2E8F0;
+}
+
+/* =========================================================
+   6. DASHBOARD EMPTY STATES
+   ========================================================= */
+.rm-table-empty {
+    width: 100% !important;
+    height: 100% !important;
+    min-height: 100% !important;
+    flex: 1 1 auto !important;
+    display: flex !important;
+    flex-direction: column !important;
+}
+
+@media (min-width: 1024px) {
+    .rm-table-empty thead {
+        flex-shrink: 0 !important;
+        display: table !important;
+        width: 100% !important;
+        table-layout: fixed !important;
+    }
+}
+
+@media (max-width: 1023px) {
+    .rm-table-empty thead {
+        display: none !important;
+    }
+}
+
+.rm-table-empty tbody {
+    flex: 1 1 auto !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+    width: 100% !important;
+    height: 100% !important;
+    min-height: 140px !important;
+}
+
+.rm-table-empty tr.rm-empty-state-row {
+    flex: 1 1 auto !important;
+    display: flex !important;
+    width: 100% !important;
+    height: 100% !important;
+    justify-content: center !important;
+    align-items: center !important;
+    border: none !important;
+    background: transparent !important;
+}
+
+.rm-empty-state-row:hover {
+    background: transparent !important;
+}
+
+.rm-empty-state-row td,
+.rm-empty-state-cell,
+.rm-team-table td.rm-empty-state-cell,
+.rm-team-table tr.rm-empty-state-row td,
+.rm-certs-table td.rm-empty-state-cell,
+.rm-certs-table tr.rm-empty-state-row td {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    border: none !important;
+    border-bottom: none !important;
+    border-top: none !important;
+    width: 100% !important;
+    height: 100% !important;
+    text-align: center !important;
+    vertical-align: middle !important;
+    padding: 16px !important;
+    background: transparent !important;
+}
+
+.rm-empty-state-content {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 8px !important;
+    width: 100% !important;
+    height: 100% !important;
+    margin: auto !important;
+    text-align: center !important;
+}
+
+.emp-recent-log-empty-icon {
+    width: clamp(52px, 7vh, 80px) !important;
+    height: clamp(52px, 7vh, 80px) !important;
+    object-fit: contain !important;
+    opacity: 0.8 !important;
+    flex-shrink: 0 !important;
+}
+
+.rm-empty-state-text {
+    font-size: 13px !important;
+    font-weight: 400 !important;
+    color: #64748B !important;
+    line-height: 1.4 !important;
+    text-align: center !important;
+    margin: 0 !important;
+}
+
+.rm-courses-list-empty {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    height: 100% !important;
+    flex: 1 !important;
+    min-height: 140px !important;
+}
+
+/* =========================================================
+   7. RESPONSIVE MEDIA QUERIES
+   — Full responsive styles are in: responsive-rm-dashboard.css
+   ========================================================= */

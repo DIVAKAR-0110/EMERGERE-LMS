@@ -1,0 +1,1109 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700;800;900&display=swap');
+
+/* =========================================================
+   COURSE CARD - STATIC SINGLE-PAGE NO-SCROLL FIGMA FIT
+   src/styles/employee/CourseCard.css
+   ========================================================= */
+
+.emp-course-card {
+    width: 100%;
+    min-width: 0;
+    height: 100%;
+    min-height: 140px;
+    max-height: none;
+    background: #FFFFFF;
+    border-radius: 8px;
+    border: 1px solid #DDE0EE;
+    overflow: visible;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 4px;
+    box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04);
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+    transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+}
+
+.emp-course-card:hover {
+    z-index: 40;
+}
+
+.emp-course-card * {
+    font-family: 'Roboto', sans-serif;
+    box-sizing: border-box;
+}
+
+
+/* =========================================================
+   1. TOP THUMBNAIL BANNER
+   ========================================================= */
+
+.emp-course-thumbnail {
+    position: relative;
+    width: 100%;
+    height: clamp(75px, 9.5vh, 90px);
+    min-height: 70px;
+    max-height: 90px;
+    flex-shrink: 0;
+    border-radius: 6px 6px 0 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    transition: background 0.2s ease;
+}
+
+/* ── Theme 1: In-Progress / Progress (Solid Royal Blue) ── */
+.emp-thumbnail-theme-in-progress,
+.emp-thumbnail-theme-progress {
+    background: linear-gradient(180deg, #0145EE 0%, #4379FF 100%) !important;
+}
+
+.emp-badge-theme-in-progress,
+.emp-badge-theme-progress {
+    background: #FFFFFF !important;
+    color: #0145EE !important;
+}
+
+
+/* ── Theme 2: Completed / Complete (Figma Rectangle 699: #C9FFE6 -> #EEFBF5) ── */
+.emp-thumbnail-theme-completed,
+.emp-thumbnail-theme-complete {
+    background: linear-gradient(180deg, #C9FFE6 0%, #EEFBF5 100%) !important;
+}
+
+.emp-badge-theme-completed,
+.emp-badge-theme-complete {
+    background: #FFFFFF !important;
+    color: #0EAB61 !important;
+}
+
+
+/* ── Theme 3: Assigned (Warm Golden Amber: #FDE68A -> #FEF9C3) ── */
+.emp-thumbnail-theme-assigned {
+    background: linear-gradient(180deg, #FDE68A 0%, #FEF9C3 100%) !important;
+}
+
+.emp-badge-theme-assigned {
+    background: #FFFFFF !important;
+    color: #B45309 !important;
+}
+
+/* ── Theme 7: Not Started (Peach / Warm Coral: #FFE7CB -> #FEF8F1) ── */
+.emp-thumbnail-theme-not-started,
+.emp-thumbnail-theme-not_started {
+    background: linear-gradient(180deg, #FFE7CB 0%, #FEF8F1 100%) !important;
+}
+
+.emp-badge-theme-not-started,
+.emp-badge-theme-not_started {
+    background: #FFFFFF !important;
+    color: #EA580C !important;
+}
+
+
+
+/* ── Theme 4: Available / Recommended / Enroll (Figma Rectangle 720: #C7BAFF -> #EEEAFF) ── */
+.emp-thumbnail-theme-available,
+.emp-thumbnail-theme-recommended {
+    background: linear-gradient(180deg, #C7BAFF 0%, #EEEAFF 100%) !important;
+}
+
+.emp-badge-theme-available,
+.emp-badge-theme-recommended {
+    background: #FFFFFF !important;
+    color: #9E5DF9 !important;
+}
+
+
+/* ── Theme 5: Requested / Pending (Figma Soft Blue: #BFDBFE -> #EFF6FF) ── */
+.emp-thumbnail-theme-requested,
+.emp-thumbnail-theme-pending {
+    background: linear-gradient(180deg, #BFDBFE 0%, #EFF6FF 100%) !important;
+}
+
+.emp-badge-theme-requested,
+.emp-badge-theme-pending {
+    background: #FFFFFF !important;
+    color: #2563EB !important;
+}
+
+
+/* ── Theme 6: On Hold (Figma Soft Orange: #FED7AA -> #FFF7ED) ── */
+.emp-thumbnail-theme-on-hold,
+.emp-thumbnail-theme-onhold {
+    background: linear-gradient(180deg, #FED7AA 0%, #FFF7ED 100%) !important;
+}
+
+.emp-badge-theme-on-hold,
+.emp-badge-theme-onhold {
+    background: #FFFFFF !important;
+    color: #EA580C !important;
+}
+
+
+/* =========================================================
+   2. CATEGORY PILL BADGE (TOP LEFT)
+   ========================================================= */
+
+.emp-category-badge {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    width: 96px;
+    height: 17px;
+    padding: 0 4px;
+    border-radius: 3px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 600;
+    font-size: 10px;
+    line-height: 17px;
+    letter-spacing: 0.2px;
+    text-transform: uppercase;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
+    z-index: 2;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+/* =========================================================
+   3. THUMBNAIL SVG ICONS
+   ========================================================= */
+
+.emp-thumbnail-icon {
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
+    z-index: 1;
+    user-select: none;
+    pointer-events: none;
+    margin-top: 6px;
+}
+
+/* ── Icon color overrides via CSS filter ──
+   brightness(0) normalizes source to black, then chain shifts to target color.
+   In-Progress uses brightness(0) invert(1) → white, for visibility on solid blue bg. */
+
+/* Theme 1: In-Progress / Progress — White on solid blue */
+.emp-thumbnail-theme-in-progress .emp-thumbnail-icon,
+.emp-thumbnail-theme-progress .emp-thumbnail-icon {
+    filter: brightness(0) invert(1) !important;
+}
+
+/* Theme 2: Completed — #0EAB61 */
+.emp-thumbnail-theme-completed .emp-thumbnail-icon,
+.emp-thumbnail-theme-complete .emp-thumbnail-icon {
+    filter: brightness(0) saturate(100%) invert(45%) sepia(90%) saturate(650%) hue-rotate(110deg) brightness(88%) !important;
+}
+
+/* Theme 3: Assigned — #D97706 */
+.emp-thumbnail-theme-assigned .emp-thumbnail-icon {
+    filter: brightness(0) saturate(100%) invert(56%) sepia(65%) saturate(688%) hue-rotate(350deg) brightness(108%) !important;
+}
+
+/* Theme 7: Not Started — #64748B */
+.emp-thumbnail-theme-not-started .emp-thumbnail-icon,
+.emp-thumbnail-theme-not_started .emp-thumbnail-icon {
+    filter: brightness(0) saturate(100%) invert(48%) sepia(10%) saturate(800%) hue-rotate(180deg) brightness(90%) contrast(90%) !important;
+}
+
+/* Theme 4: Available / Recommended — #9E5DF9 */
+.emp-thumbnail-theme-available .emp-thumbnail-icon,
+.emp-thumbnail-theme-recommended .emp-thumbnail-icon {
+    filter: brightness(0) saturate(100%) invert(36%) sepia(71%) saturate(4700%) hue-rotate(252deg) brightness(104%) !important;
+}
+
+/* Theme 5: Requested / Pending — #2563EB */
+.emp-thumbnail-theme-requested .emp-thumbnail-icon,
+.emp-thumbnail-theme-pending .emp-thumbnail-icon {
+    filter: brightness(0) saturate(100%) invert(27%) sepia(98%) saturate(2289%) hue-rotate(218deg) brightness(97%) contrast(98%) !important;
+}
+
+/* Theme 6: On Hold — #EA580C */
+.emp-thumbnail-theme-on-hold .emp-thumbnail-icon,
+.emp-thumbnail-theme-onhold .emp-thumbnail-icon {
+    filter: brightness(0) saturate(100%) invert(48%) sepia(89%) saturate(1500%) hue-rotate(360deg) brightness(95%) !important;
+}
+
+/* =========================================================
+   4. CROWN / MANDATORY BADGE (BOTTOM RIGHT OF BANNER)
+   ========================================================= */
+
+.emp-crown-badge {
+    position: absolute;
+    bottom: 4px;
+    right: 4px;
+    width: 22px;
+    height: 20px;
+    border-radius: 3px;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+.emp-thumbnail-theme-in-progress .emp-crown-badge {
+    background: #1E5AF1;
+}
+
+.emp-thumbnail-theme-assigned .emp-crown-badge {
+    background: #FFE7CB;
+}
+
+.emp-thumbnail-theme-not-started .emp-crown-badge,
+.emp-thumbnail-theme-not_started .emp-crown-badge {
+    background: #E2E8F0;
+}
+
+.emp-thumbnail-theme-completed .emp-crown-badge {
+    background: #D1F2DE;
+}
+
+.emp-thumbnail-theme-available .emp-crown-badge {
+    background: #E9D8FD;
+}
+
+.emp-thumbnail-theme-requested .emp-crown-badge,
+.emp-thumbnail-theme-pending .emp-crown-badge {
+    background: #DBEAFE;
+}
+
+.emp-thumbnail-theme-on-hold .emp-crown-badge,
+.emp-thumbnail-theme-onhold .emp-crown-badge {
+    background: #FFEDD5;
+}
+
+.emp-crown-badge img {
+    width: 18px;
+    height: 16px;
+    object-fit: contain;
+    display: block;
+}
+
+/* =========================================================
+   5. CARD BODY CONTENT (TITLE, PROVIDER, FOOTER ACTION)
+   ========================================================= */
+
+.emp-course-card-body {
+    width: 100%;
+    flex: 1;
+    min-height: 0;
+    padding: 4px 2px 2px 2px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-sizing: border-box;
+    background: transparent;
+}
+
+.emp-course-info {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    width: 100%;
+}
+
+.emp-course-title {
+    margin: 0;
+    color: #000000;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 0%;
+    height: 16px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100%;
+}
+
+.emp-course-provider {
+    display: flex;
+    padding: 0 0 2px 0;
+    align-items: center;
+    gap: 5px;
+    color: #7F7F7F;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    font-size: 10px;
+    line-height: 14px;
+}
+
+.emp-course-provider img {
+    width: 12px;
+    height: 12px;
+    object-fit: contain;
+}
+
+/* =========================================================
+   6. ACTION BUTTONS & PROGRESS BAR
+   ========================================================= */
+
+.emp-btn-course-status {
+    width: 100%;
+    height: 25px;
+    border-radius: 4px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 25px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    transition: all 0.15s ease;
+    margin-top: auto;
+}
+
+/* Completed (Green Outline Button) */
+.emp-btn-status-completed {
+    border: 1px solid #10C670;
+    background: #EEFBF5;
+    color: #0EAB61;
+    cursor: default;
+}
+
+/* Assigned (Golden Amber Outline Button matching Figma Theme 3) */
+.emp-btn-status-assigned {
+    border: 1px solid #F59E0B;
+    background: #FFFBEB;
+    color: #D97706;
+    border-radius: 6px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.emp-btn-status-assigned:hover {
+    background: #FEF3C7;
+    border-color: #D97706;
+    color: #B45309;
+}
+
+/* Not Started (Peach Outline Button matching user specification) */
+.emp-btn-status-not-started {
+    border: 1px solid #FDBA74;
+    background: #FFF7ED;
+    color: #EA580C;
+    border-radius: 6px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.emp-btn-status-not-started:hover {
+    background: #FFEDD5;
+    border-color: #F97316;
+    color: #C2410C;
+}
+
+
+
+/* Enroll Now / Recommended (Purple Outline Button) */
+.emp-btn-status-enroll,
+.emp-btn-status-recommended {
+    border: 1px solid #A96FF9;
+    background: #F6F3FD;
+    color: #9E5DF9;
+    cursor: pointer;
+}
+
+/* Requested / Pending Approval (Blue Outline Button) */
+.emp-btn-status-pending,
+.emp-btn-status-requested {
+    border: 1px solid #3B82F6;
+    background: #EFF6FF;
+    color: #2563EB;
+    cursor: default;
+}
+
+/* On Hold (Amber/Orange Outline Button) */
+.emp-btn-status-onhold,
+.emp-btn-status-on-hold {
+    border: 1px solid #F97316;
+    background: #FFF7ED;
+    color: #EA580C;
+    cursor: default;
+}
+
+/* Progress Bar (In-Progress: Amber/Orange fill) */
+.emp-card-progress-container {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    width: 100%;
+    margin-top: auto;
+    padding: 0;
+    box-sizing: border-box;
+    position: relative;
+    cursor: pointer;
+}
+
+.emp-card-progress-track {
+    flex: 1;
+    height: 6px;
+    border-radius: 9999px;
+    background: #F1F2F8;
+    overflow: hidden;
+}
+
+.emp-card-progress-fill {
+    height: 100%;
+    border-radius: 9999px;
+    background: #FFAD0E;
+    transition: width 0.3s ease;
+}
+
+.emp-card-progress-text {
+    min-width: 20px;
+    height: 16px;
+    color: #080808;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    font-size: 10px;
+    line-height: 16px;
+    text-align: right;
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-end;
+    white-space: nowrap;
+}
+
+/* =========================================================
+   6B. PROGRESS OVERVIEW FLOATING HOVER POPOVER
+   ========================================================= */
+
+.emp-progress-popover {
+    position: absolute;
+    bottom: calc(100% + 10px);
+    left: 50%;
+    transform: translateX(-50%) translateY(6px);
+    width: 215px;
+    background: #FFFFFF;
+    border: 1px solid #DDE0EE;
+    border-radius: 8px;
+    box-shadow: 0 10px 25px -4px rgba(15, 23, 42, 0.16), 0 4px 8px -2px rgba(15, 23, 42, 0.08);
+    padding: 10px 14px;
+    box-sizing: border-box;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.2s cubic-bezier(0.16, 1, 0.3, 1), transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.2s;
+    user-select: none;
+}
+
+.emp-card-progress-container:hover .emp-progress-popover,
+.emp-card-progress-container:focus-within .emp-progress-popover,
+.emp-card-progress-container.is-active .emp-progress-popover {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+    pointer-events: auto;
+}
+
+/* Arrow pointing down directly to the progress bar */
+.emp-progress-popover-arrow {
+    position: absolute;
+    bottom: -6px;
+    left: 50%;
+    transform: translateX(-50%) rotate(45deg);
+    width: 10px;
+    height: 10px;
+    background: #FFFFFF;
+    border-right: 1px solid #DDE0EE;
+    border-bottom: 1px solid #DDE0EE;
+}
+
+.emp-progress-popover-header {
+    font-family: 'Roboto', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    color: #000000;
+    text-align: center;
+    letter-spacing: -0.1px;
+    padding-bottom: 6px;
+}
+
+.emp-progress-popover-divider {
+    width: 100%;
+    height: 1px;
+    background: #EEF2F6;
+    margin: 0 0 8px 0;
+}
+
+.emp-progress-popover-content {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.emp-progress-popover-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-family: 'Roboto', sans-serif;
+    font-size: 12px;
+    line-height: 16px;
+}
+
+.emp-progress-popover-label {
+    color: #1f1f1f;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.emp-progress-svg-icon {
+    width: 15px;
+    height: 15px;
+    object-fit: contain;
+    flex-shrink: 0;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.emp-progress-icon {
+    font-size: 13px;
+    line-height: 1;
+    display: inline-block;
+}
+
+.emp-progress-popover-value {
+    color: #000000;
+    font-weight: 500;
+    font-variant-numeric: tabular-nums;
+}
+
+.emp-progress-popover-progress-num {
+    color: #2563EB;
+    font-weight: 700;
+}
+
+/* =========================================================
+   7. PAGINATION BAR (COMPACT & CLEAN)
+   ========================================================= */
+
+.emp-course-pagination-bar,
+.emp-materials-pagination-bar {
+    width: 100%;
+    height: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 4px;
+    margin-bottom: 2px;
+    /* 1px increase from bottom */
+    padding: 0 0 1px 0;
+    box-sizing: border-box;
+    flex-shrink: 0;
+    background: transparent;
+    z-index: 10;
+}
+
+.emp-pagination-text {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 18px;
+    color: #7F7F7F;
+    display: flex;
+    align-items: center;
+}
+
+.emp-pagination-controls {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 8px;
+    box-sizing: border-box;
+}
+
+.emp-page-btn {
+    width: 30px;
+    height: 20px;
+    min-width: 30px;
+    padding: 0;
+    border-radius: 5px;
+    border: 1px solid #E6E6E6;
+    background: #FFFFFF;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-sizing: border-box;
+    transition: all 0.15s ease;
+}
+
+.emp-page-btn:hover:not(:disabled):not(.active) {
+    background: #F8FAFC;
+    border-color: #CBD5E1;
+}
+
+.emp-page-btn.active {
+    background: #215EF8;
+    border-color: #E6E6E6;
+}
+
+.emp-page-btn.active .emp-page-number-text {
+    color: #FFFFFF;
+    font-weight: 600;
+}
+
+.emp-page-number-text {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    font-size: 12px;
+    color: #666666;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.emp-pagination-arrow-icon {
+    width: 11px;
+    height: 11px;
+    object-fit: contain;
+    display: block;
+}
+
+.emp-page-dots {
+    width: 8px;
+    height: 4px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+}
+
+.emp-page-dots .emp-dot-icon {
+    width: 3.5px;
+    height: 3.5px;
+    object-fit: contain;
+    display: block;
+}
+
+/* =========================================================
+   8. RESPONSIVE MEDIA QUERIES (DESKTOP -> TABLET & MOBILE)
+   ========================================================= */
+
+/* DESKTOP & TABLET (>= 768px - PROPORTIONAL THUMBNAIL FLEX & ALIGNED FOOTER) */
+@media (min-width: 768px) {
+    .emp-course-card {
+        min-height: min-content;
+    }
+
+    .emp-course-thumbnail {
+        flex: 1 1 0;
+        height: auto;
+        min-height: 70px;
+        max-height: 76px;
+    }
+
+    .emp-course-card-body {
+        flex: 1 1 auto;
+        min-height: min-content;
+        padding: 4px 3px 2px 3px;
+        gap: 2px;
+    }
+
+    .emp-course-info {
+        margin: 0;
+    }
+
+    .emp-btn-course-status,
+    .emp-card-progress-container {
+        margin-top: 0;
+    }
+
+    .emp-card-progress-container {
+        min-height: 24px;
+        align-items: center;
+    }
+}
+
+/* SHORT VIEWPORTS (<= 700px, e.g. 110% Zoom on Laptops): COMPACT 3-ROW FIT WITHOUT SCROLLING */
+@media (min-width: 768px) and (max-height: 700px) {
+    .emp-course-card {
+        padding: 3px !important;
+        min-height: 110px !important;
+    }
+
+    .emp-course-thumbnail {
+        min-height: 70px !important;
+        max-height: 64px !important;
+    }
+
+    .emp-thumbnail-icon {
+        width: 24px !important;
+        height: 24px !important;
+        margin-top: 4px !important;
+    }
+
+    .emp-category-badge {
+        height: 15px !important;
+        line-height: 15px !important;
+        font-size: 8.5px !important;
+        width: 80px !important;
+    }
+
+    .emp-course-card-body {
+        padding: 2px 2px 1px 2px !important;
+        gap: 1px !important;
+    }
+
+    .emp-course-title {
+        font-size: 11px !important;
+        line-height: 14px !important;
+        height: 14px !important;
+    }
+
+    .emp-course-provider {
+        font-size: 9.5px !important;
+        line-height: 12px !important;
+        padding: 0 !important;
+    }
+
+    .emp-btn-course-status {
+        height: 22px !important;
+        font-size: 11px !important;
+        line-height: 22px !important;
+    }
+
+    .emp-card-progress-container {
+        min-height: 22px !important;
+    }
+}
+
+/* TABLET (768px - 1023px) */
+@media (min-width: 768px) and (max-width: 1023px) {
+    .emp-course-card {
+        height: 100% !important;
+        min-height: min-content !important;
+        max-height: none !important;
+        padding: 4px 6px !important;
+    }
+
+    .emp-course-thumbnail {
+        min-height: 70px !important;
+    }
+}
+
+/* MOBILE (< 768px - HORIZONTAL CARD LAYOUT) */
+@media (max-width: 767px) {
+    .emp-course-card {
+        width: 100% !important;
+        max-width: 100% !important;
+        height: auto !important;
+        min-height: 80px !important;
+        max-height: none !important;
+        padding: 6px 8px !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        gap: 8px !important;
+        box-sizing: border-box !important;
+    }
+
+    .emp-course-thumbnail {
+        width: 76px !important;
+        min-width: 88px !important;
+        max-width: 88px !important;
+        height: 72px !important;
+        min-height: 72px !important;
+        max-height: 72px !important;
+        flex-shrink: 0 !important;
+        border-radius: 6px !important;
+    }
+
+    .emp-category-badge {
+        top: 3px !important;
+        left: 3px !important;
+        width: 83px !important;
+        height: 15px !important;
+        padding: 0 4px !important;
+        font-size: 7.5px !important;
+        line-height: 15px !important;
+        border-radius: 3px !important;
+    }
+
+    .emp-thumbnail-icon {
+        width: 26px !important;
+        height: 26px !important;
+    }
+
+    .emp-crown-badge {
+        bottom: 3px !important;
+        right: 3px !important;
+        width: 18px !important;
+        height: 16px !important;
+        border-radius: 3px !important;
+    }
+
+    .emp-crown-badge img {
+        width: 14px !important;
+        height: 12px !important;
+    }
+
+    .emp-course-card-body {
+        flex: 1 !important;
+        min-width: 0 !important;
+        height: 100% !important;
+        padding: 0 !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: space-between !important;
+        gap: 3px !important;
+    }
+
+    .emp-course-title {
+        font-size: 12px !important;
+        line-height: 15px !important;
+        margin-bottom: 2px !important;
+        white-space: normal !important;
+        word-break: break-word !important;
+        -webkit-line-clamp: 2 !important;
+        display: -webkit-box !important;
+        -webkit-box-orient: vertical !important;
+        overflow: hidden !important;
+    }
+
+    .emp-course-provider {
+        font-size: 10px !important;
+        padding: 0 !important;
+        gap: 3px !important;
+    }
+
+    .emp-btn-course-status {
+        height: 22px !important;
+        font-size: 12px !important;
+        border-radius: 3px !important;
+        margin-top: 2px !important;
+        padding: 0 6px !important;
+    }
+
+    .emp-course-card.emp-popover-active {
+        z-index: 60 !important;
+    }
+
+    .emp-card-progress-container {
+        margin-top: 2px !important;
+        padding: 0 !important;
+        gap: 4px !important;
+        position: relative !important;
+    }
+
+    .emp-card-progress-track {
+        height: 5px !important;
+    }
+
+    .emp-card-progress-text {
+        font-size: 9px !important;
+        height: 16px !important;
+        line-height: 16px !important;
+    }
+
+    /* Mobile Progress Overview Popover - Adaptive placement (top or bottom) */
+    .emp-progress-popover {
+        right: 0 !important;
+        left: auto !important;
+        box-shadow: 0 10px 25px -4px rgba(15, 23, 42, 0.2), 0 4px 10px -2px rgba(15, 23, 42, 0.1) !important;
+        z-index: 1000 !important;
+        max-width: calc(100vw - 28px) !important;
+    }
+
+    /* Placed below (for courses in top half of screen so it doesn't hit sub-tabs) */
+    .emp-progress-popover.emp-popover-bottom {
+        top: calc(100% + 8px) !important;
+        bottom: auto !important;
+        transform: translateY(-4px) !important;
+    }
+
+    .emp-card-progress-container:hover .emp-progress-popover.emp-popover-bottom,
+    .emp-card-progress-container:focus-within .emp-progress-popover.emp-popover-bottom,
+    .emp-card-progress-container.is-active .emp-progress-popover.emp-popover-bottom {
+        transform: translateY(0) !important;
+    }
+
+    .emp-progress-popover-arrow.emp-arrow-bottom {
+        top: -6px !important;
+        bottom: auto !important;
+        right: 18px !important;
+        left: auto !important;
+        transform: rotate(45deg) !important;
+        border-right: none !important;
+        border-bottom: none !important;
+        border-top: 1px solid #DDE0EE !important;
+        border-left: 1px solid #DDE0EE !important;
+    }
+
+    /* Placed above (for courses near the bottom of viewport so it doesn't get cut off by screen edge) */
+    .emp-progress-popover.emp-popover-top {
+        bottom: calc(100% + 8px) !important;
+        top: auto !important;
+        transform: translateY(4px) !important;
+    }
+
+    .emp-card-progress-container:hover .emp-progress-popover.emp-popover-top,
+    .emp-card-progress-container:focus-within .emp-progress-popover.emp-popover-top,
+    .emp-card-progress-container.is-active .emp-progress-popover.emp-popover-top {
+        transform: translateY(0) !important;
+    }
+
+    .emp-progress-popover-arrow.emp-arrow-top {
+        bottom: -6px !important;
+        top: auto !important;
+        right: 18px !important;
+        left: auto !important;
+        transform: rotate(45deg) !important;
+        border-top: none !important;
+        border-left: none !important;
+        border-right: 1px solid #DDE0EE !important;
+        border-bottom: 1px solid #DDE0EE !important;
+    }
+}
+
+/* =========================================================
+   NOTIFICATION "VIEW COURSE" 3-SECOND HIGHLIGHT ANNOTATION
+   ========================================================= */
+@keyframes empNotifCardPulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(33, 94, 248, 0.55), 0 10px 26px rgba(33, 94, 248, 0.25);
+        transform: translateY(-2px);
+    }
+
+    50% {
+        box-shadow: 0 0 0 6px rgba(33, 94, 248, 0.22), 0 14px 32px rgba(33, 94, 248, 0.30);
+        transform: translateY(-3px);
+    }
+
+    100% {
+        box-shadow: 0 0 0 3px #215EF8, 0 10px 26px rgba(33, 94, 248, 0.22);
+        transform: translateY(-2px);
+    }
+}
+
+@keyframes empNotifPillFade {
+    0% {
+        opacity: 1;
+        transform: translateY(2px) scale(0.94);
+    }
+
+    10% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+
+    88% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateY(-2px) scale(0.97);
+    }
+}
+
+.emp-course-card-highlighted,
+.emp-material-card-highlighted {
+    position: relative !important;
+    overflow: visible !important;
+    z-index: 45 !important;
+    border-color: #215EF8 !important;
+    box-shadow: 0 0 0 3px #215EF8, 0 12px 28px rgba(33, 94, 248, 0.24) !important;
+    animation: empNotifCardPulse 1.4s ease-in-out infinite alternate !important;
+}
+
+.emp-notif-highlight-pill {
+    position: absolute;
+    top: -11px;
+    right: 10px;
+    z-index: 50;
+    background: linear-gradient(135deg, #0E3BAD 0%, #215EF8 100%);
+    color: #FFFFFF;
+    font-family: 'Roboto', sans-serif;
+    font-size: 10.5px;
+    font-weight: 600;
+    letter-spacing: 0.2px;
+    padding: 3px 10px;
+    border-radius: 999px;
+    box-shadow: 0 4px 12px rgba(14, 59, 173, 0.35);
+    border: 1.5px solid #FFFFFF;
+    pointer-events: none;
+    white-space: nowrap;
+    animation: empNotifPillFade 3s ease forwards;
+}
+
+/* =========================================================
+   8. SKELETON COURSE CARD (VIEWPORT FIT MATCHING REAL CARD)
+   ========================================================= */
+
+.emp-course-card-skeleton {
+    width: 100%;
+    min-width: 0;
+    height: 100% !important;
+    min-height: 140px;
+    max-height: none;
+    background: #FFFFFF;
+    border-radius: 8px;
+    border: 1px solid #DDE0EE;
+    box-sizing: border-box;
+    padding: 4px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04);
+}
+
+.emp-skeleton-thumb {
+    width: 100%;
+    flex: 1 1 0;
+    min-height: 58px;
+    max-height: 78px;
+    border-radius: 6px;
+    background: #F1F5F9;
+}
+
+.emp-skeleton-card-body {
+    width: 100%;
+    flex: 1 1 auto;
+    padding: 4px 4px 2px 4px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 0;
+}
+
+.emp-skeleton-badge-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.emp-skeleton-footer-row {
+    margin-top: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 6px;
+    width: 100%;
+}
+
+.emp-pagination-skeleton {
+    opacity: 0.65;
+    pointer-events: none;
+}
